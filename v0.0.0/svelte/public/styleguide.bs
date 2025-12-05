@@ -1,0 +1,554 @@
+[
+  {
+    "id": "sequential-alphabet",
+    "title": "Alphabet Usage Map (Sequential)",
+    "abstract": "Letters grouped sequentially across the alphabet.",
+    "categories": [
+      {
+        "id": "first-5-letters",
+        "title": "First 5 Letters",
+        "items": [
+          {
+            "id": "a",
+            "name": "A",
+            "deps": []
+          },
+          {
+            "id": "b",
+            "name": "B",
+            "deps": []
+          },
+          {
+            "id": "c",
+            "name": "C",
+            "deps": []
+          },
+          {
+            "id": "d",
+            "name": "D",
+            "deps": []
+          },
+          {
+            "id": "e",
+            "name": "E",
+            "deps": []
+          }
+        ]
+      },
+      {
+        "id": "second-5-letters",
+        "title": "Second 5 Letters",
+        "items": [
+          {
+            "id": "f",
+            "name": "F",
+            "deps": []
+          },
+          {
+            "id": "g",
+            "name": "G",
+            "deps": []
+          },
+          {
+            "id": "h",
+            "name": "H",
+            "deps": []
+          },
+          {
+            "id": "i",
+            "name": "I",
+            "deps": []
+          },
+          {
+            "id": "j",
+            "name": "J",
+            "deps": []
+          }
+        ]
+      },
+      {
+        "id": "third-5-letters",
+        "title": "Third 5 Letters",
+        "items": [
+          {
+            "id": "k",
+            "name": "K",
+            "deps": []
+          },
+          {
+            "id": "l",
+            "name": "L",
+            "deps": []
+          },
+          {
+            "id": "m",
+            "name": "M",
+            "deps": []
+          },
+          {
+            "id": "n",
+            "name": "N",
+            "deps": []
+          },
+          {
+            "id": "o",
+            "name": "O",
+            "deps": []
+          }
+        ]
+      },
+      {
+        "id": "fourth-5-letters",
+        "title": "Fourth 5 Letters",
+        "items": [
+          {
+            "id": "p",
+            "name": "P",
+            "deps": []
+          },
+          {
+            "id": "q",
+            "name": "Q",
+            "deps": []
+          },
+          {
+            "id": "r",
+            "name": "R",
+            "deps": []
+          },
+          {
+            "id": "s",
+            "name": "S",
+            "deps": []
+          },
+          {
+            "id": "t",
+            "name": "T",
+            "deps": []
+          }
+        ]
+      },
+      {
+        "id": "last-6-letters",
+        "title": "Last 6 Letters",
+        "items": [
+          {
+            "id": "u",
+            "name": "U",
+            "deps": []
+          },
+          {
+            "id": "v",
+            "name": "V",
+            "deps": []
+          },
+          {
+            "id": "w",
+            "name": "W",
+            "deps": []
+          },
+          {
+            "id": "x",
+            "name": "X",
+            "deps": []
+          },
+          {
+            "id": "y",
+            "name": "Y",
+            "deps": []
+          },
+          {
+            "id": "z",
+            "name": "Z",
+            "deps": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "frequency-alphabet",
+    "title": "Alphabet Usage Map (Frequency)",
+    "abstract": "Letters grouped by their usage frequency in common English vocabulary.",
+    "categories": [
+      {
+        "id": "very-common",
+        "title": "Very Common Letters",
+        "items": [
+          {
+            "id": "e",
+            "name": "E",
+            "deps": []
+          },
+          {
+            "id": "t",
+            "name": "T",
+            "deps": []
+          },
+          {
+            "id": "a",
+            "name": "A",
+            "deps": []
+          },
+          {
+            "id": "o",
+            "name": "O",
+            "deps": []
+          },
+          {
+            "id": "i",
+            "name": "I",
+            "deps": []
+          }
+        ]
+      },
+      {
+        "id": "common",
+        "title": "Common Letters",
+        "items": [
+          {
+            "id": "n",
+            "name": "N",
+            "deps": []
+          },
+          {
+            "id": "s",
+            "name": "S",
+            "deps": []
+          },
+          {
+            "id": "h",
+            "name": "H",
+            "deps": []
+          },
+          {
+            "id": "r",
+            "name": "R",
+            "deps": []
+          },
+          {
+            "id": "d",
+            "name": "D",
+            "deps": []
+          }
+        ]
+      },
+      {
+        "id": "mid",
+        "title": "Moderately Common Letters",
+        "items": [
+          {
+            "id": "l",
+            "name": "L",
+            "deps": []
+          },
+          {
+            "id": "c",
+            "name": "C",
+            "deps": []
+          },
+          {
+            "id": "u",
+            "name": "U",
+            "deps": []
+          },
+          {
+            "id": "m",
+            "name": "M",
+            "deps": []
+          },
+          {
+            "id": "w",
+            "name": "W",
+            "deps": []
+          }
+        ]
+      },
+      {
+        "id": "less-common",
+        "title": "Less Common Letters",
+        "items": [
+          {
+            "id": "f",
+            "name": "F",
+            "deps": []
+          },
+          {
+            "id": "g",
+            "name": "G",
+            "deps": []
+          },
+          {
+            "id": "y",
+            "name": "Y",
+            "deps": []
+          },
+          {
+            "id": "p",
+            "name": "P",
+            "deps": []
+          },
+          {
+            "id": "b",
+            "name": "B",
+            "deps": []
+          }
+        ]
+      },
+      {
+        "id": "rare",
+        "title": "Rare Letters",
+        "items": [
+          {
+            "id": "v",
+            "name": "V",
+            "deps": []
+          },
+          {
+            "id": "k",
+            "name": "K",
+            "deps": []
+          },
+          {
+            "id": "j",
+            "name": "J",
+            "deps": []
+          },
+          {
+            "id": "x",
+            "name": "X",
+            "deps": []
+          },
+          {
+            "id": "q",
+            "name": "Q",
+            "deps": []
+          },
+          {
+            "id": "z",
+            "name": "Z",
+            "deps": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "emoji-alphabet",
+    "title": "Alphabet Usage Map (Frequency with Emoji)",
+    "abstract": "Letters grouped by their usage frequency in common English vocabulary, each linked to a Twemoji regional indicator logo.",
+    "categories": [
+      {
+        "id": "very-common",
+        "title": "Very Common Letters",
+        "items": [
+          {
+            "id": "e",
+            "name": "E",
+            "logo": "https://twemoji.maxcdn.com/v/latest/svg/1f1ea.svg",
+            "deps": []
+          },
+          {
+            "id": "t",
+            "name": "T",
+            "logo": "https://twemoji.maxcdn.com/v/latest/svg/1f1f9.svg",
+            "deps": []
+          },
+          {
+            "id": "a",
+            "name": "A",
+            "logo": "https://twemoji.maxcdn.com/v/latest/svg/1f1e6.svg",
+            "deps": []
+          },
+          {
+            "id": "o",
+            "name": "O",
+            "logo": "https://twemoji.maxcdn.com/v/latest/svg/1f1f4.svg",
+            "deps": []
+          },
+          {
+            "id": "i",
+            "name": "I",
+            "logo": "https://twemoji.maxcdn.com/v/latest/svg/1f1ee.svg",
+            "deps": []
+          }
+        ]
+      },
+      {
+        "id": "common",
+        "title": "Common Letters",
+        "items": [
+          {
+            "id": "n",
+            "name": "N",
+            "logo": "https://twemoji.maxcdn.com/v/latest/svg/1f1f3.svg",
+            "deps": []
+          },
+          {
+            "id": "s",
+            "name": "S",
+            "logo": "https://twemoji.maxcdn.com/v/latest/svg/1f1f8.svg",
+            "deps": []
+          },
+          {
+            "id": "h",
+            "name": "H",
+            "logo": "https://twemoji.maxcdn.com/v/latest/svg/1f1ed.svg",
+            "deps": []
+          },
+          {
+            "id": "r",
+            "name": "R",
+            "logo": "https://twemoji.maxcdn.com/v/latest/svg/1f1f7.svg",
+            "deps": []
+          },
+          {
+            "id": "d",
+            "name": "D",
+            "logo": "https://twemoji.maxcdn.com/v/latest/svg/1f1e9.svg",
+            "deps": []
+          }
+        ]
+      },
+      {
+        "id": "mid",
+        "title": "Moderately Common Letters",
+        "items": [
+          {
+            "id": "l",
+            "name": "L",
+            "logo": "https://twemoji.maxcdn.com/v/latest/svg/1f1f1.svg",
+            "deps": []
+          },
+          {
+            "id": "c",
+            "name": "C",
+            "logo": "https://twemoji.maxcdn.com/v/latest/svg/1f1e8.svg",
+            "deps": []
+          },
+          {
+            "id": "u",
+            "name": "U",
+            "logo": "https://twemoji.maxcdn.com/v/latest/svg/1f1fa.svg",
+            "deps": []
+          },
+          {
+            "id": "m",
+            "name": "M",
+            "logo": "https://twemoji.maxcdn.com/v/latest/svg/1f1f2.svg",
+            "deps": []
+          },
+          {
+            "id": "w",
+            "name": "W",
+            "logo": "https://twemoji.maxcdn.com/v/latest/svg/1f1fc.svg",
+            "deps": []
+          }
+        ]
+      },
+      {
+        "id": "less-common",
+        "title": "Less Common Letters",
+        "items": [
+          {
+            "id": "f",
+            "name": "F",
+            "logo": "https://twemoji.maxcdn.com/v/latest/svg/1f1eb.svg",
+            "deps": []
+          },
+          {
+            "id": "g",
+            "name": "G",
+            "logo": "https://twemoji.maxcdn.com/v/latest/svg/1f1ec.svg",
+            "deps": []
+          },
+          {
+            "id": "y",
+            "name": "Y",
+            "logo": "https://twemoji.maxcdn.com/v/latest/svg/1f1fe.svg",
+            "deps": []
+          },
+          {
+            "id": "p",
+            "name": "P",
+            "logo": "https://twemoji.maxcdn.com/v/latest/svg/1f1f5.svg",
+            "deps": []
+          },
+          {
+            "id": "b",
+            "name": "B",
+            "logo": "https://twemoji.maxcdn.com/v/latest/svg/1f1e7.svg",
+            "deps": []
+          }
+        ]
+      },
+      {
+        "id": "rare",
+        "title": "Rare Letters",
+        "items": [
+          {
+            "id": "v",
+            "name": "V",
+            "logo": "https://twemoji.maxcdn.com/v/latest/svg/1f1fb.svg",
+            "deps": []
+          },
+          {
+            "id": "k",
+            "name": "K",
+            "logo": "https://twemoji.maxcdn.com/v/latest/svg/1f1f0.svg",
+            "deps": []
+          },
+          {
+            "id": "j",
+            "name": "J",
+            "logo": "https://twemoji.maxcdn.com/v/latest/svg/1f1ef.svg",
+            "deps": []
+          },
+          {
+            "id": "x",
+            "name": "X",
+            "logo": "https://twemoji.maxcdn.com/v/latest/svg/1f1fd.svg",
+            "deps": []
+          },
+          {
+            "id": "q",
+            "name": "Q",
+            "logo": "https://twemoji.maxcdn.com/v/latest/svg/1f1f6.svg",
+            "deps": []
+          },
+          {
+            "id": "z",
+            "name": "Z",
+            "logo": "https://twemoji.maxcdn.com/v/latest/svg/1f1ff.svg",
+            "deps": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "conventions",
+    "title": "Color Conventions",
+    "abstract": "Reference for old and new color conventions.",
+    "categories": [
+      {
+        "id": "color-conventions",
+        "title": "Color conventions",
+        "items": [
+          {
+            "id": "old",
+            "name": "Old",
+            "color": "#000000",
+            "deps": []
+          },
+          {
+            "id": "new",
+            "name": "New",
+            "color": "#FFFFFF",
+            "deps": []
+          }
+        ]
+      }
+    ]
+  }
+]

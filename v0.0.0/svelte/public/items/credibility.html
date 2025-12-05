@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="styles.css">
+        <style>
+        :root {
+            color-scheme: light dark;
+            font-family: "Inter", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            padding: 0.3rem 1.5rem 1.5rem;
+            background: radial-gradient(circle at 10% 20%, #1e293b 0%, #0f172a 45%, #020617 100%);
+            color: #e2e8f0;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background: linear-gradient(120deg, rgba(56, 189, 248, 0.18), rgba(129, 140, 248, 0.12));
+            filter: blur(80px);
+            opacity: 0.8;
+        }
+
+        .page {
+            position: relative;
+            width: min(100%, 960px);
+            display: flex;
+            flex-direction: column;
+            gap: 1.75rem;
+            z-index: 1;
+        }
+
+        .hero {
+            padding: 1.75rem;
+            border-radius: 1.5rem;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.75), rgba(30, 41, 59, 0.6));
+            border: 1px solid rgba(148, 163, 184, 0.25);
+            backdrop-filter: blur(18px);
+            box-shadow: 0 28px 60px -30px rgba(15, 23, 42, 0.85);
+        }
+
+        .hero h1 {
+            margin: 0;
+            font-size: clamp(2rem, 6vw, 2.9rem);
+            letter-spacing: -0.03em;
+        }
+
+        .author {
+            margin: 0.75rem 0 0;
+            font-size: 0.95rem;
+            color: rgba(226, 232, 240, 0.75);
+        }
+
+        .main-content {
+            padding: 0;
+        }
+
+        .content-card {
+            background: rgba(15, 23, 42, 0.65);
+            border-radius: 1.5rem;
+            border: 1px solid rgba(100, 116, 139, 0.3);
+            box-shadow: 0 18px 40px -25px rgba(15, 23, 42, 0.9);
+            padding: clamp(1rem, 2.5vw, 2.1rem) clamp(1.5rem, 3vw, 2.75rem);
+            color: #f8fafc;
+        }
+
+        .content-card :is(h2, h3, h4, h5, h6) {
+            color: #e0f2fe;
+            margin-top: 2.5rem;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        .content-card p {
+            color: rgba(248, 250, 252, 0.92);
+        }
+
+        .content-card ul {
+            margin-block-start: 0.3em;
+        }
+
+        a {
+            color: #38bdf8;
+            text-decoration: none;
+        }
+
+        a:hover,
+        a:focus {
+            text-decoration: underline;
+        }
+
+        img,
+        video,
+        canvas,
+        iframe {
+            max-width: 100%;
+            border-radius: 1rem;
+        }
+
+        pre {
+            padding: 1.25rem;
+            border-radius: 1rem;
+            background: rgba(15, 23, 42, 0.9);
+            overflow-x: auto;
+        }
+
+        code {
+            font-family: "JetBrains Mono", "Fira Code", "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
+            font-size: 0.95rem;
+        }
+
+        blockquote {
+            margin: 1.5rem 0;
+            padding: 1.5rem 1.75rem;
+            border-left: 4px solid rgba(56, 189, 248, 0.75);
+            border-radius: 1.25rem;
+            background: rgba(148, 163, 184, 0.12);
+            color: rgba(226, 232, 240, 0.85);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: rgba(15, 23, 42, 0.8);
+            border-radius: 1rem;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 0.85rem 1rem;
+            border-bottom: 1px solid rgba(100, 116, 139, 0.3);
+        }
+
+        th {
+            text-align: left;
+            color: #38bdf8;
+            font-weight: 600;
+            background: rgba(15, 23, 42, 0.9);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        @media (min-width: 768px) {
+            body {
+                padding: 1rem 3rem 3rem;
+            }
+
+            .page {
+                gap: 2.25rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <main class="main-content">
+            <article class="content-card">
+                <ul>
+                <li>Adoption and Production Use: What specific,
+                verifiable production use cases or case studies are
+                available from non-Red Hat organizations that
+                demonstrate Skupper’s reliability, scalability, and
+                performance in complex, hybrid-cloud, or multi-cluster
+                environments?</li>
+                <li>Security Audit and Vulnerability Management: Has
+                Skupper undergone any independent third-party security
+                audits or penetration testing, and what is the project’s
+                formal process and track record for disclosing and
+                patching critical security vulnerabilities (CVEs)?</li>
+                <li>Community Engagement and Contributor Diversity:
+                Beyond its primary affiliation (Red Hat), what is the
+                size, activity level, and geographic and organizational
+                diversity of the open-source contributor community
+                (e.g., commit frequency from non-affiliated individuals,
+                number of active maintainers from different
+                companies)?</li>
+                <li>Long-Term Support and Interoperability: What is the
+                long-term support (LTS) plan for major Skupper versions,
+                and what assurances are provided for backward
+                compatibility and interoperability during version
+                upgrades, particularly between major releases like v1
+                and v2?</li>
+                <li>Performance Benchmarks: Are there publicly
+                available, objective performance benchmark reports
+                (e.g., latency, throughput, CPU/memory overhead) that
+                compare Skupper against other leading multi-cluster
+                connectivity or service mesh solutions in common
+                application networking scenarios?</li>
+                </ul>
+            </article>
+        </main>
+    </div>
+</body>
+</html>

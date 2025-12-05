@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-labelledby="title desc">
+  <title id="title">Blockscape favicon</title>
+  <desc id="desc">Mini tile stack icon</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563eb" />
+      <stop offset="100%" stop-color="#0ea5e9" />
+    </linearGradient>
+    <linearGradient id="tileTop" x1="0%" y1="0%" x2="100%" y2="120%">
+      <stop offset="0%" stop-color="#fefefe" />
+      <stop offset="100%" stop-color="#dbeafe" />
+    </linearGradient>
+    <linearGradient id="tileMid" x1="0%" y1="0%" x2="120%" y2="100%">
+      <stop offset="0%" stop-color="#60a5fa" />
+      <stop offset="100%" stop-color="#3b82f6" />
+    </linearGradient>
+    <linearGradient id="tileLow" x1="0%" y1="0%" x2="120%" y2="100%">
+      <stop offset="0%" stop-color="#0ea5e9" />
+      <stop offset="100%" stop-color="#0284c7" />
+    </linearGradient>
+    <linearGradient id="spark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef3c7" />
+      <stop offset="100%" stop-color="#facc15" />
+    </linearGradient>
+  </defs>
+  <rect x="6" y="6" width="108" height="108" rx="24" fill="url(#bg)" />
+  <path d="M60 22 96 42 60 62 24 42Z" fill="url(#tileTop)" />
+  <path d="M60 44 106 68 60 92 14 68Z" fill="url(#tileMid)" />
+  <path d="M60 68 112 96 60 124 8 96Z" fill="url(#tileLow)" />
+  <circle cx="88" cy="36" r="6" fill="url(#spark)" />
+</svg>
