@@ -1,0 +1,302 @@
+{
+  "repo_notes": [
+    {
+      "content": ""
+    }
+  ],
+  "pages": [
+    {
+      "title": "Blockscape Overview",
+      "purpose": "Introduce Blockscape, its purpose as a value-chain visualization tool",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "System Architecture",
+      "purpose": "Explain the simple 2 HTML file structur (Viewer and Editor), client-side nature, and how the applications communicate via localStorage",
+      "parent": "Blockscape Overview",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Key Concepts and Terminology",
+      "purpose": "Define core terms like map models, categories, items, tiles, dependencies, and the JSON schema structure",
+      "parent": "Blockscape Overview",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Blockscape Visualizer (index.html)",
+      "purpose": "Comprehensive documentation of the main viewer index.html file , its architecture, and capabilities",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "User Interface and Controls",
+      "purpose": "Document the UI layout, navigation tabs, toolbar buttons, and map model selector",
+      "parent": "Blockscape Visualizer (index.html)",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Model Loading and Management",
+      "purpose": "Explain how models are loaded from URLs, clipboard, files, direct JSON input, and share links; how the models array is managed",
+      "parent": "Blockscape Visualizer (index.html)",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Data Processing Pipeline",
+      "purpose": "Detail the parse() function, internal data structures (fwd, rev, seen, reusedLocal, index maps), and how raw JSON is transformed for rendering",
+      "parent": "Blockscape Visualizer (index.html)",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Tile Grid and Categories",
+      "purpose": "Explain how the tile grid is rendered, category organization, tile styling, and layout",
+      "parent": "Blockscape Visualizer (index.html)",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Dependency Visualization and Selection",
+      "purpose": "Document the selection system, dependency highlighting (blue/red borders), SVG overlay for links, and the drawLinks() function",
+      "parent": "Blockscape Visualizer (index.html)",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Drag-and-Drop Reordering",
+      "purpose": "Explain how tiles can be reordered within categories via drag-and-drop and how this updates the underlying JSON",
+      "parent": "Blockscape Visualizer (index.html)",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Visual Encoding System",
+      "purpose": "Document color schemes, badges (reused, external), visual indicators, and the LETTER_COLOR_MAP for generated logos",
+      "parent": "Blockscape Visualizer (index.html)",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Item Preview and Context Menu",
+      "purpose": "Explain the right-click preview system, iframe rendering with srcdoc, and how HTML item details are displayed",
+      "parent": "Blockscape Visualizer (index.html)",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Sharing and URL Encoding",
+      "purpose": "Document the share functionality, base64url encoding of models in URL hashes, and how shared models are loaded",
+      "parent": "Blockscape Visualizer (index.html)",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Blockscape JSON Editor (editor.html)",
+      "purpose": "Comprehensive documentation of the JSON editor application for creating and modifying models",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Editor User Interface",
+      "purpose": "Document the editor's layout, master list, detail panel, JSON textarea, and toolbar controls",
+      "parent": "Blockscape JSON Editor (editor.html)",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "CRUD Operations",
+      "purpose": "Explain creating, reading, updating, and deleting categories and items, including the selection state system",
+      "parent": "Blockscape JSON Editor (editor.html)",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Drag-and-Drop in Editor",
+      "purpose": "Document the drag-and-drop system for reordering categories and moving items between categories",
+      "parent": "Blockscape JSON Editor (editor.html)",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Data Synchronization",
+      "purpose": "Explain bidirectional synchronization between the UI and JSON textarea, including debouncing and parseJSONString/toJSONString functions",
+      "parent": "Blockscape JSON Editor (editor.html)",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Validation System",
+      "purpose": "Document the validation rules, referential integrity checks, ID uniqueness validation, and error reporting",
+      "parent": "Blockscape JSON Editor (editor.html)",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "File Operations",
+      "purpose": "Explain importing JSON files, downloading models, and the passthrough object for preserving unknown fields",
+      "parent": "Blockscape JSON Editor (editor.html)",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Inter-Application Communication",
+      "purpose": "Document the localStorage-based pattern for transferring models between Viewer and Editor using EDITOR_TRANSFER_KEY",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Data Model and JSON Schema",
+      "purpose": "Define the JSON schema structure for Blockscape models, including validation rules and field definitions",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Schema Structure",
+      "purpose": "Detail the hierarchical structure: Model → Categories → Items, required and optional fields, and the deps array",
+      "parent": "Data Model and JSON Schema",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Built-in Example Models",
+      "purpose": "Document the included models: Seed template, NFR quality attributes, deployment models, and user capabilities patterns",
+      "parent": "Data Model and JSON Schema",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "AI-Assisted Model Generation",
+      "purpose": "Explain the model generation prompt template, constraints, validation checklist, and how to use AI to create new models",
+      "parent": "Data Model and JSON Schema",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Supporting Assets and Content",
+      "purpose": "Document logos, favicons, and the item preview content generation system",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Visual Assets",
+      "purpose": "Document the logos and favicons, their design, and how they're referenced in the application",
+      "parent": "Supporting Assets and Content",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Item Preview Content System",
+      "purpose": "Explain how item detail pages are generated from Markdown using pandoc, the template structure, and the HTML rendering",
+      "parent": "Supporting Assets and Content",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Testing and Quality Assurance",
+      "purpose": "Document the Cypress end-to-end testing infrastructure, test suites, and quality assurance approach",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Test Infrastructure and Configuration",
+      "purpose": "Explain Cypress configuration, test scripts, baseUrl setup, video/screenshot settings, and how to run tests",
+      "parent": "Testing and Quality Assurance",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    }
+  ]
+}The content has been copied to your clipboard. Please paste it here to complete the file creation.

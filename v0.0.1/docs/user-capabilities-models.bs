@@ -1,0 +1,699 @@
+{
+  "id": "maven-local-run-model",
+  "title": "Maven-Driven Local Run",
+  "abstract": "Developers iterate by running Maven-built services on their laptops, relying on fast builds, cached artifacts, and local runtime plumbing to mimic production dependencies.",
+  "categories": [
+    {
+      "id": "developer-flow",
+      "title": "Developer Flow",
+      "items": [
+        { "id": "hot-reload", "name": "Hot Reloaded Runs", "deps": ["maven-build", "local-runtime"] },
+        { "id": "cli-tests", "name": "CLI Test Execution", "deps": ["testing-harness", "local-runtime"] },
+        { "id": "local-sandbox", "name": "Local Sandbox Profiles", "deps": ["config-management", "dev-compute"] }
+      ]
+    },
+    {
+      "id": "build-tooling",
+      "title": "Build Tooling",
+      "items": [
+        { "id": "maven-build", "name": "Maven Build Lifecycle", "deps": ["dependency-cache", "vcs"] },
+        { "id": "dependency-cache", "name": "Dependency Cache", "deps": ["artifact-store"] },
+        { "id": "testing-harness", "name": "Testing Harness", "deps": ["observability-hooks", "local-runtime"] }
+      ]
+    },
+    {
+      "id": "runtime-support",
+      "title": "Runtime Support",
+      "items": [
+        { "id": "local-runtime", "name": "Local Runtime Environment", "deps": ["dev-compute"] },
+        { "id": "config-management", "name": "Config & Secrets Management", "deps": ["secrets-store", "vcs"] },
+        { "id": "observability-hooks", "name": "Observability Hooks", "deps": ["log-collector"] }
+      ]
+    },
+    {
+      "id": "foundation",
+      "title": "Foundation",
+      "items": [
+        { "id": "dev-compute", "name": "Developer Workstation Compute", "deps": [] },
+        { "id": "artifact-store", "name": "Artifact Store", "deps": [] },
+        { "id": "vcs", "name": "Version Control", "deps": [] },
+        { "id": "log-collector", "name": "Local Log Collector", "deps": [] },
+        { "id": "secrets-store", "name": "Secrets Store", "deps": [] }
+      ]
+    }
+  ]
+}
+
+---
+{
+  "id": "fat-jar-host-model",
+  "title": "Fat JAR on Host",
+  "abstract": "Applications are bundled into executable JARs that run on long-lived hosts, so value comes from dependable rollouts, hardened host agents, and tight observability.",
+  "categories": [
+    {
+      "id": "service-experience",
+      "title": "Service Experience",
+      "items": [
+        { "id": "fat-jar-service", "name": "Fat JAR Service", "deps": ["host-orchestrator", "config-loader"] },
+        { "id": "health-endpoints", "name": "Health Endpoints", "deps": ["observability-stack"] },
+        { "id": "traffic-management", "name": "Traffic Management Scripts", "deps": ["host-agent", "load-balancer"] }
+      ]
+    },
+    {
+      "id": "deployment",
+      "title": "Deployment Automation",
+      "items": [
+        { "id": "build-artifact", "name": "Build Artifact Pipeline", "deps": ["ci-system", "artifact-repo"] },
+        { "id": "host-orchestrator", "name": "Host Orchestrator", "deps": ["build-artifact", "host-agent"] },
+        { "id": "release-approvals", "name": "Release Approvals", "deps": ["ci-system", "audit-logs"] }
+      ]
+    },
+    {
+      "id": "runtime-ops",
+      "title": "Runtime Operations",
+      "items": [
+        { "id": "config-loader", "name": "Config Loader", "deps": ["secrets-vault", "config-store"] },
+        { "id": "host-agent", "name": "Host Agent", "deps": ["os-image", "monitoring-stack"] },
+        { "id": "observability-stack", "name": "Observability Stack", "deps": ["monitoring-stack", "log-pipeline"] }
+      ]
+    },
+    {
+      "id": "platform-services",
+      "title": "Platform Services",
+      "items": [
+        { "id": "ci-system", "name": "CI System", "deps": [] },
+        { "id": "artifact-repo", "name": "Artifact Repository", "deps": [] },
+        { "id": "config-store", "name": "Configuration Store", "deps": [] },
+        { "id": "secrets-vault", "name": "Secrets Vault", "deps": [] },
+        { "id": "audit-logs", "name": "Audit Logs", "deps": [] }
+      ]
+    },
+    {
+      "id": "infrastructure",
+      "title": "Infrastructure",
+      "items": [
+        { "id": "os-image", "name": "Hardened OS Image", "deps": [] },
+        { "id": "monitoring-stack", "name": "Monitoring Stack", "deps": [] },
+        { "id": "log-pipeline", "name": "Log Pipeline", "deps": [] },
+        { "id": "load-balancer", "name": "Load Balancer", "deps": [] }
+      ]
+    }
+  ]
+}
+
+---
+{
+  "id": "war-app-server-model",
+  "title": "WAR/EAR on App Server",
+  "abstract": "Classic application servers host packaged WAR/EAR artifacts, so dependable rollout, clustering, and stateful services are vital to keep legacy workloads healthy.",
+  "categories": [
+    {
+      "id": "experience",
+      "title": "User-Facing Modules",
+      "items": [
+        { "id": "transaction-uis", "name": "Transaction UI Modules", "deps": ["app-server-runtime", "routing-layer"] },
+        { "id": "legacy-integrations", "name": "Legacy Integration Endpoints", "deps": ["app-server-runtime", "mq-bridge"] },
+        { "id": "reporting-scripts", "name": "Reporting Scripts", "deps": ["app-server-runtime", "data-source-pool"] }
+      ]
+    },
+    {
+      "id": "deployment",
+      "title": "Deployment Delivery",
+      "items": [
+        { "id": "deployment-packages", "name": "WAR/EAR Packages", "deps": ["ci-system-j2ee", "artifact-repo-j2ee"] },
+        { "id": "domain-profiles", "name": "Domain Profiles", "deps": ["config-repo", "secrets-vault-j2ee"] },
+        { "id": "orchestration-scripts", "name": "Orchestration Scripts", "deps": ["ci-system-j2ee", "config-repo"] },
+        { "id": "rolling-rollbacks", "name": "Rolling Deploy & Rollback", "deps": ["orchestration-scripts", "session-clustering"] }
+      ]
+    },
+    {
+      "id": "runtime",
+      "title": "Runtime Platform",
+      "items": [
+        { "id": "app-server-runtime", "name": "App Server Runtime", "deps": ["jvm-tuning", "session-clustering", "data-source-pool"] },
+        { "id": "session-clustering", "name": "Session Clustering", "deps": ["shared-cache"] },
+        { "id": "routing-layer", "name": "Routing Layer", "deps": ["network-segmentation"] },
+        { "id": "mq-bridge", "name": "MQ Bridge", "deps": ["messaging-backbone"] },
+        { "id": "jvm-tuning", "name": "JVM Tuning Profiles", "deps": ["compute-cluster"] }
+      ]
+    },
+    {
+      "id": "state-services",
+      "title": "State & Integration Services",
+      "items": [
+        { "id": "data-source-pool", "name": "Data Source Pool", "deps": ["database-cluster", "secrets-vault-j2ee"] },
+        { "id": "database-cluster", "name": "Database Cluster", "deps": ["compute-cluster"] },
+        { "id": "shared-cache", "name": "Shared Cache", "deps": ["database-cluster"] },
+        { "id": "messaging-backbone", "name": "Messaging Backbone", "deps": ["network-segmentation"] },
+        { "id": "network-segmentation", "name": "Network Segmentation", "deps": ["compute-cluster"] }
+      ]
+    },
+    {
+      "id": "foundation",
+      "title": "Foundation",
+      "items": [
+        { "id": "ci-system-j2ee", "name": "CI System", "deps": [] },
+        { "id": "artifact-repo-j2ee", "name": "Artifact Repository", "deps": [] },
+        { "id": "config-repo", "name": "Configuration Repo", "deps": ["ci-system-j2ee"] },
+        { "id": "secrets-vault-j2ee", "name": "Secrets Vault", "deps": ["compute-cluster"] },
+        { "id": "compute-cluster", "name": "Compute Cluster", "deps": [] }
+      ]
+    }
+  ]
+}
+
+---
+{
+  "id": "immutable-vm-model",
+  "title": "Immutable VM Images",
+  "abstract": "Teams bake golden VM images, promote them through automated pipelines, and rely on fleet orchestration plus safe networking to roll out replacements quickly.",
+  "categories": [
+    {
+      "id": "service-surfaces",
+      "title": "Service Surfaces",
+      "items": [
+        { "id": "vm-service-rollouts", "name": "VM Service Rollouts", "deps": ["image-pipeline", "traffic-switch"] },
+        { "id": "canary-fleets", "name": "Canary Fleets", "deps": ["fleet-orchestrator", "observability-suite"] },
+        { "id": "disaster-recovery-plan", "name": "Disaster Recovery Playbooks", "deps": ["snapshot-backups", "fleet-orchestrator"] }
+      ]
+    },
+    {
+      "id": "release-engineering",
+      "title": "Release Engineering",
+      "items": [
+        { "id": "image-pipeline", "name": "Immutable Image Pipeline", "deps": ["packer-templates", "artifact-registry"] },
+        { "id": "compliance-scans", "name": "Compliance Scans", "deps": ["security-tooling", "artifact-registry"] },
+        { "id": "packer-templates", "name": "Packer Templates", "deps": ["base-amis"] }
+      ]
+    },
+    {
+      "id": "operations",
+      "title": "Operations",
+      "items": [
+        { "id": "fleet-orchestrator", "name": "Fleet Orchestrator", "deps": ["iam-service", "network-segmentation"] },
+        { "id": "snapshot-backups", "name": "Snapshot Backups", "deps": ["storage-backend", "iam-service"] },
+        { "id": "traffic-switch", "name": "Traffic Switch Automation", "deps": ["load-balancers", "dns-control"] },
+        { "id": "load-balancers", "name": "Load Balancers", "deps": ["network-segmentation"] },
+        { "id": "dns-control", "name": "DNS Control", "deps": ["network-segmentation"] }
+      ]
+    },
+    {
+      "id": "platform-services",
+      "title": "Platform Services",
+      "items": [
+        { "id": "artifact-registry", "name": "Artifact Registry", "deps": ["storage-backend"] },
+        { "id": "security-tooling", "name": "Security Tooling", "deps": ["iam-service"] },
+        { "id": "observability-suite", "name": "Observability Suite", "deps": ["metrics-stack", "log-service"] },
+        { "id": "metrics-stack", "name": "Metrics Stack", "deps": ["storage-backend"] },
+        { "id": "log-service", "name": "Log Service", "deps": ["storage-backend"] }
+      ]
+    },
+    {
+      "id": "infrastructure",
+      "title": "Infrastructure",
+      "items": [
+        { "id": "base-amis", "name": "Base AMIs", "deps": ["compute-pool"] },
+        { "id": "storage-backend", "name": "Storage Backend", "deps": [] },
+        { "id": "iam-service", "name": "IAM Service", "deps": [] },
+        { "id": "network-segmentation", "name": "Network Segmentation", "deps": [] },
+        { "id": "compute-pool", "name": "Compute Pool", "deps": [] }
+      ]
+    }
+  ]
+}
+
+---
+{
+  "id": "single-host-container-model",
+  "title": "Single-Host Container",
+  "abstract": "A lone host runs one or a few containers, so productivity hinges on fast image builds, simple release scripts, and lightweight observability tied to that machine.",
+  "categories": [
+    {
+      "id": "service-experience",
+      "title": "Service Experience",
+      "items": [
+        { "id": "containerized-service", "name": "Containerized Service", "deps": ["image-build", "runtime-engine"] },
+        { "id": "ad-hoc-scaling", "name": "Ad-hoc Scaling", "deps": ["runtime-engine", "monitoring-hooks"] },
+        { "id": "configurable-endpoints", "name": "Configurable Endpoints", "deps": ["config-injector", "host-networking"] }
+      ]
+    },
+    {
+      "id": "delivery",
+      "title": "Delivery",
+      "items": [
+        { "id": "image-build", "name": "Image Build", "deps": ["git-repo", "container-registry"] },
+        { "id": "registry-sync", "name": "Registry Sync", "deps": ["container-registry", "storage-endpoint"] },
+        { "id": "release-scripts", "name": "Release Scripts", "deps": ["config-injector", "runtime-engine"] }
+      ]
+    },
+    {
+      "id": "operations",
+      "title": "Operations",
+      "items": [
+        { "id": "runtime-engine", "name": "Runtime Engine", "deps": ["host-os", "compute-node"] },
+        { "id": "config-injector", "name": "Config Injector", "deps": ["secrets-vault", "env-profiles"] },
+        { "id": "monitoring-hooks", "name": "Monitoring Hooks", "deps": ["metrics-agent", "log-service"] },
+        { "id": "host-networking", "name": "Host Networking", "deps": ["network-stack", "host-os"] }
+      ]
+    },
+    {
+      "id": "platform-services",
+      "title": "Platform Services",
+      "items": [
+        { "id": "container-registry", "name": "Container Registry", "deps": ["storage-endpoint"] },
+        { "id": "secrets-vault", "name": "Secrets Vault", "deps": [] },
+        { "id": "env-profiles", "name": "Environment Profiles", "deps": ["git-repo"] },
+        { "id": "log-service", "name": "Log Service", "deps": ["storage-endpoint"] },
+        { "id": "metrics-agent", "name": "Metrics Agent", "deps": ["log-service"] }
+      ]
+    },
+    {
+      "id": "infrastructure",
+      "title": "Infrastructure",
+      "items": [
+        { "id": "host-os", "name": "Host OS", "deps": ["compute-node"] },
+        { "id": "compute-node", "name": "Compute Node", "deps": [] },
+        { "id": "network-stack", "name": "Network Stack", "deps": [] },
+        { "id": "git-repo", "name": "Source Repository", "deps": [] },
+        { "id": "storage-endpoint", "name": "Storage Endpoint", "deps": [] }
+      ]
+    }
+  ]
+}
+
+---
+{
+  "id": "compose-single-host-model",
+  "title": "Compose on Single Host",
+  "abstract": "Multiple containers are orchestrated on a lone host via Docker Compose, so value depends on declarative stacks, secret bundles, and simple host resources.",
+  "categories": [
+    {
+      "id": "service-experience",
+      "title": "Service Experience",
+      "items": [
+        { "id": "stacked-services", "name": "Stacked Services", "deps": ["compose-engine", "service-discovery"] },
+        { "id": "preview-envs", "name": "Preview Environments", "deps": ["compose-engine", "secret-bundles"] },
+        { "id": "automated-demos", "name": "Automated Demos", "deps": ["release-hooks", "stacked-services"] }
+      ]
+    },
+    {
+      "id": "delivery",
+      "title": "Delivery",
+      "items": [
+        { "id": "compose-manifests", "name": "Compose Manifests", "deps": ["git-repo", "secret-bundles"] },
+        { "id": "image-curation", "name": "Image Curation", "deps": ["container-registry", "observability-stack"] },
+        { "id": "release-hooks", "name": "Release Hooks", "deps": ["compose-manifests", "observability-stack"] }
+      ]
+    },
+    {
+      "id": "runtime",
+      "title": "Runtime",
+      "items": [
+        { "id": "compose-engine", "name": "Compose Engine", "deps": ["host-os", "network-bridge"] },
+        { "id": "service-discovery", "name": "Service Discovery", "deps": ["compose-engine", "network-bridge"] },
+        { "id": "volume-management", "name": "Volume Management", "deps": ["storage-pool"] }
+      ]
+    },
+    {
+      "id": "platform-services",
+      "title": "Platform Services",
+      "items": [
+        { "id": "container-registry", "name": "Container Registry", "deps": ["storage-pool"] },
+        { "id": "secret-bundles", "name": "Secret Bundles", "deps": ["secret-store"] },
+        { "id": "observability-stack", "name": "Observability Stack", "deps": ["storage-pool"] },
+        { "id": "git-repo", "name": "Source Repository", "deps": [] }
+      ]
+    },
+    {
+      "id": "infrastructure",
+      "title": "Infrastructure",
+      "items": [
+        { "id": "host-os", "name": "Host OS", "deps": ["compute-node"] },
+        { "id": "compute-node", "name": "Compute Node", "deps": [] },
+        { "id": "network-bridge", "name": "Network Bridge", "deps": [] },
+        { "id": "storage-pool", "name": "Storage Pool", "deps": [] },
+        { "id": "secret-store", "name": "Secret Store", "deps": [] }
+      ]
+    }
+  ]
+}
+
+---
+{
+  "id": "buildpack-paas-model",
+  "title": "Buildpack/PaaS Git-Push Deploy",
+  "abstract": "Developers push code to Git, buildpacks produce runnable slugs, and the platform handles routing, scaling, and observability with strong guardrails.",
+  "categories": [
+    {
+      "id": "service-experience",
+      "title": "Service Experience",
+      "items": [
+        { "id": "git-push-deploy", "name": "Git-Push Deploy", "deps": ["buildpack-builder", "routing-tier"] },
+        { "id": "preview-apps", "name": "Preview Apps", "deps": ["release-manager", "env-services"] },
+        { "id": "autoscale-rules", "name": "Autoscale Rules", "deps": ["runtime-plane", "observability-core"] }
+      ]
+    },
+    {
+      "id": "delivery",
+      "title": "Application Delivery",
+      "items": [
+        { "id": "buildpack-builder", "name": "Buildpack Builder", "deps": ["build-service", "artifact-cache"] },
+        { "id": "release-manager", "name": "Release Manager", "deps": ["buildpack-builder", "config-service"] },
+        { "id": "env-services", "name": "Env Services", "deps": ["config-service", "secret-service"] },
+        { "id": "config-service", "name": "Config Service", "deps": ["secret-service", "storage-buckets"] },
+        { "id": "build-service", "name": "Build Service", "deps": ["ci-system", "artifact-cache"] }
+      ]
+    },
+    {
+      "id": "platform",
+      "title": "Platform Runtime",
+      "items": [
+        { "id": "runtime-plane", "name": "Runtime Plane", "deps": ["container-scheduler", "network-plane"] },
+        { "id": "routing-tier", "name": "Routing Tier", "deps": ["edge-router", "dns-service"] },
+        { "id": "observability-core", "name": "Observability Core", "deps": ["metrics-pipeline", "log-pipeline"] },
+        { "id": "artifact-cache", "name": "Artifact Cache", "deps": ["storage-buckets"] }
+      ]
+    },
+    {
+      "id": "operations",
+      "title": "Operations",
+      "items": [
+        { "id": "container-scheduler", "name": "Container Scheduler", "deps": ["compute-cluster"] },
+        { "id": "network-plane", "name": "Network Plane", "deps": ["compute-cluster"] },
+        { "id": "edge-router", "name": "Edge Router", "deps": ["network-plane"] },
+        { "id": "metrics-pipeline", "name": "Metrics Pipeline", "deps": ["storage-buckets"] },
+        { "id": "log-pipeline", "name": "Log Pipeline", "deps": ["storage-buckets"] }
+      ]
+    },
+    {
+      "id": "infrastructure",
+      "title": "Infrastructure",
+      "items": [
+        { "id": "compute-cluster", "name": "Compute Cluster", "deps": [] },
+        { "id": "storage-buckets", "name": "Storage Buckets", "deps": [] },
+        { "id": "dns-service", "name": "DNS Service", "deps": [] },
+        { "id": "secret-service", "name": "Secret Service", "deps": [] },
+        { "id": "ci-system", "name": "CI System", "deps": [] }
+      ]
+    }
+  ]
+}
+
+---
+{
+  "id": "kubernetes-model",
+  "title": "Kubernetes (Manifests/Helm/Kustomize)",
+  "abstract": "Declarative manifests describe workloads that flow through release pipelines, landing on clusters with mesh, policy, and observability guardrails.",
+  "categories": [
+    {
+      "id": "application-experience",
+      "title": "Application Experience",
+      "items": [
+        { "id": "declarative-apps", "name": "Declarative Apps", "deps": ["release-pipelines", "service-mesh"] },
+        { "id": "progressive-delivery", "name": "Progressive Delivery", "deps": ["release-pipelines", "policy-gates"] },
+        { "id": "tenant-workspaces", "name": "Tenant Workspaces", "deps": ["namespace-templates", "rbac-guard"] }
+      ]
+    },
+    {
+      "id": "delivery",
+      "title": "Delivery Tooling",
+      "items": [
+        { "id": "release-pipelines", "name": "Release Pipelines", "deps": ["ci-controllers", "artifact-registry"] },
+        { "id": "gitops-repo", "name": "GitOps Repo", "deps": ["source-control"] },
+        { "id": "template-tooling", "name": "Manifest Tooling", "deps": ["gitops-repo", "schema-validators"] },
+        { "id": "policy-gates", "name": "Policy Gates", "deps": ["schema-validators", "rbac-guard"] },
+        { "id": "source-control", "name": "Source Control", "deps": [] }
+      ]
+    },
+    {
+      "id": "platform-operations",
+      "title": "Platform Operations",
+      "items": [
+        { "id": "service-mesh", "name": "Service Mesh", "deps": ["ingress-gateway", "observability-stack"] },
+        { "id": "namespace-templates", "name": "Namespace Templates", "deps": ["policy-gates", "cloud-api"] },
+        { "id": "rbac-guard", "name": "RBAC Guard", "deps": ["identity-provider"] },
+        { "id": "canary-controller", "name": "Canary Controller", "deps": ["service-mesh", "autoscaler"] }
+      ]
+    },
+    {
+      "id": "cluster-services",
+      "title": "Cluster Services",
+      "items": [
+        { "id": "ingress-gateway", "name": "Ingress Gateway", "deps": ["load-balancers"] },
+        { "id": "observability-stack", "name": "Observability Stack", "deps": ["telemetry-backend"] },
+        { "id": "ci-controllers", "name": "CI Controllers", "deps": ["cloud-api"] },
+        { "id": "schema-validators", "name": "Schema Validators", "deps": ["artifact-registry"] },
+        { "id": "autoscaler", "name": "Cluster Autoscaler", "deps": ["cloud-api"] }
+      ]
+    },
+    {
+      "id": "infrastructure",
+      "title": "Infrastructure",
+      "items": [
+        { "id": "cloud-api", "name": "Cloud API", "deps": [] },
+        { "id": "identity-provider", "name": "Identity Provider", "deps": [] },
+        { "id": "load-balancers", "name": "Load Balancers", "deps": [] },
+        { "id": "telemetry-backend", "name": "Telemetry Backend", "deps": [] },
+        { "id": "artifact-registry", "name": "Artifact Registry", "deps": [] }
+      ]
+    }
+  ]
+}
+
+---
+{
+  "id": "gitops-kubernetes-model",
+  "title": "GitOps on Kubernetes",
+  "abstract": "Git is the single source of truth; controllers continuously reconcile clusters, enforcing policy and surfacing compliance insights.",
+  "categories": [
+    {
+      "id": "user-value",
+      "title": "User Value",
+      "items": [
+        { "id": "gitops-workloads", "name": "GitOps Workloads", "deps": ["sync-automation", "controllers"] },
+        { "id": "self-service-platform", "name": "Self-Service Platform", "deps": ["declarative-repos", "policy-enforcement"] },
+        { "id": "compliance-dashboards", "name": "Compliance Dashboards", "deps": ["observability", "audit-logs"] }
+      ]
+    },
+    {
+      "id": "delivery",
+      "title": "Delivery",
+      "items": [
+        { "id": "declarative-repos", "name": "Declarative Repos", "deps": ["source-control", "artifact-registry"] },
+        { "id": "change-approval", "name": "Change Approval", "deps": ["declarative-repos", "identity-broker"] },
+        { "id": "sync-automation", "name": "Sync Automation", "deps": ["controllers", "policy-enforcement"] },
+        { "id": "promotion-workflows", "name": "Promotion Workflows", "deps": ["declarative-repos", "artifact-registry"] }
+      ]
+    },
+    {
+      "id": "platform",
+      "title": "Platform",
+      "items": [
+        { "id": "controllers", "name": "GitOps Controllers", "deps": ["kubernetes-clusters", "secret-store"] },
+        { "id": "policy-enforcement", "name": "Policy Enforcement", "deps": ["identity-broker", "observability"] },
+        { "id": "observability", "name": "Observability", "deps": ["metrics-stack", "log-stack"] },
+        { "id": "metrics-stack", "name": "Metrics Stack", "deps": ["storage-backend"] },
+        { "id": "log-stack", "name": "Log Stack", "deps": ["storage-backend"] }
+      ]
+    },
+    {
+      "id": "support-services",
+      "title": "Support Services",
+      "items": [
+        { "id": "artifact-registry", "name": "Artifact Registry", "deps": ["storage-backend"] },
+        { "id": "identity-broker", "name": "Identity Broker", "deps": ["network-plane"] },
+        { "id": "audit-logs", "name": "Audit Logs", "deps": ["storage-backend"] },
+        { "id": "secret-store", "name": "Secret Store", "deps": ["storage-backend"] }
+      ]
+    },
+    {
+      "id": "infrastructure",
+      "title": "Infrastructure",
+      "items": [
+        { "id": "kubernetes-clusters", "name": "Kubernetes Clusters", "deps": ["network-plane"] },
+        { "id": "network-plane", "name": "Network Plane", "deps": [] },
+        { "id": "storage-backend", "name": "Storage Backend", "deps": [] },
+        { "id": "source-control", "name": "Source Control", "deps": [] }
+      ]
+    }
+  ]
+}
+
+---
+{
+  "id": "k8s-serverless-model",
+  "title": "K8s-Native Serverless",
+  "abstract": "Knative/OpenFaaS extend Kubernetes with serving, eventing, and build flows so functions scale to zero while integrating with cluster services.",
+  "categories": [
+    {
+      "id": "service-experience",
+      "title": "Service Experience",
+      "items": [
+        { "id": "event-driven-apis", "name": "Event-Driven APIs", "deps": ["serving-plane", "eventing-plane"] },
+        { "id": "scale-to-zero", "name": "Scale to Zero", "deps": ["autoscaler", "serving-plane"] },
+        { "id": "multi-tenancy", "name": "Multi-tenancy", "deps": ["developer-portals", "identity-broker"] }
+      ]
+    },
+    {
+      "id": "delivery",
+      "title": "Delivery",
+      "items": [
+        { "id": "function-builds", "name": "Function Builds", "deps": ["source-control", "image-registry"] },
+        { "id": "developer-portals", "name": "Developer Portals", "deps": ["release-policies", "identity-broker"] },
+        { "id": "release-policies", "name": "Release Policies", "deps": ["policy-engine", "secret-store"] }
+      ]
+    },
+    {
+      "id": "platform",
+      "title": "Platform",
+      "items": [
+        { "id": "serving-plane", "name": "Serving Plane", "deps": ["kubernetes-clusters", "network-plane"] },
+        { "id": "eventing-plane", "name": "Eventing Plane", "deps": ["messaging-backbone", "serving-plane"] },
+        { "id": "autoscaler", "name": "Serverless Autoscaler", "deps": ["metrics-backend", "serving-plane"] },
+        { "id": "observability-core", "name": "Observability Core", "deps": ["metrics-backend", "storage-backend"] },
+        { "id": "policy-engine", "name": "Policy Engine", "deps": ["secret-store", "identity-broker"] }
+      ]
+    },
+    {
+      "id": "support-services",
+      "title": "Support Services",
+      "items": [
+        { "id": "image-registry", "name": "Image Registry", "deps": ["storage-backend"] },
+        { "id": "secret-store", "name": "Secret Store", "deps": ["storage-backend"] },
+        { "id": "identity-broker", "name": "Identity Broker", "deps": ["network-plane"] },
+        { "id": "messaging-backbone", "name": "Messaging Backbone", "deps": ["network-plane"] },
+        { "id": "source-control", "name": "Source Control", "deps": [] }
+      ]
+    },
+    {
+      "id": "infrastructure",
+      "title": "Infrastructure",
+      "items": [
+        { "id": "kubernetes-clusters", "name": "Kubernetes Clusters", "deps": ["compute-pool"] },
+        { "id": "network-plane", "name": "Network Plane", "deps": ["compute-pool"] },
+        { "id": "storage-backend", "name": "Storage Backend", "deps": [] },
+        { "id": "metrics-backend", "name": "Metrics Backend", "deps": ["storage-backend"] },
+        { "id": "compute-pool", "name": "Compute Pool", "deps": [] }
+      ]
+    }
+  ]
+}
+
+---
+{
+  "id": "managed-faas-model",
+  "title": "Managed FaaS",
+  "abstract": "Cloud Functions/Lambda run code in response to events; teams focus on packaging, guardrails, and observability while the provider operates the runtime.",
+  "categories": [
+    {
+      "id": "service-experience",
+      "title": "Service Experience",
+      "items": [
+        { "id": "event-services", "name": "Event Services", "deps": ["execution-runtime", "event-bridge"] },
+        { "id": "api-integrations", "name": "API Integrations", "deps": ["execution-runtime", "networking"] },
+        { "id": "workflow-orchestration", "name": "Workflow Orchestration", "deps": ["event-bridge", "release-controls"] }
+      ]
+    },
+    {
+      "id": "delivery",
+      "title": "Delivery",
+      "items": [
+        { "id": "function-packaging", "name": "Function Packaging", "deps": ["artifact-registry", "ci-pipeline"] },
+        { "id": "environment-config", "name": "Environment Config", "deps": ["secrets-injection", "identity-management"] },
+        { "id": "release-controls", "name": "Release Controls", "deps": ["ci-pipeline", "audit-logs"] },
+        { "id": "ci-pipeline", "name": "CI Pipeline", "deps": ["source-control", "artifact-registry"] }
+      ]
+    },
+    {
+      "id": "platform",
+      "title": "Platform",
+      "items": [
+        { "id": "execution-runtime", "name": "Execution Runtime", "deps": ["cloud-account"] },
+        { "id": "event-bridge", "name": "Event Bridge", "deps": ["networking"] },
+        { "id": "observability-suite", "name": "Observability Suite", "deps": ["monitoring-backend", "logging-backbone"] },
+        { "id": "secrets-injection", "name": "Secrets Injection", "deps": ["identity-management", "kms"] }
+      ]
+    },
+    {
+      "id": "support-services",
+      "title": "Support Services",
+      "items": [
+        { "id": "identity-management", "name": "Identity Management", "deps": ["cloud-account"] },
+        { "id": "artifact-registry", "name": "Artifact Registry", "deps": ["storage-buckets"] },
+        { "id": "monitoring-backend", "name": "Monitoring Backend", "deps": ["storage-buckets"] },
+        { "id": "networking", "name": "Networking", "deps": ["cloud-account"] },
+        { "id": "audit-logs", "name": "Audit Logs", "deps": ["logging-backbone"] }
+      ]
+    },
+    {
+      "id": "infrastructure",
+      "title": "Infrastructure",
+      "items": [
+        { "id": "cloud-account", "name": "Cloud Account", "deps": [] },
+        { "id": "storage-buckets", "name": "Storage Buckets", "deps": [] },
+        { "id": "logging-backbone", "name": "Logging Backbone", "deps": [] },
+        { "id": "kms", "name": "KMS", "deps": [] },
+        { "id": "source-control", "name": "Source Control", "deps": [] }
+      ]
+    }
+  ]
+}
+
+---
+{
+  "id": "edge-wasm-microvm-model",
+  "title": "Edge/WASM/MicroVM Platforms",
+  "abstract": "Workloads ship to constrained edge nodes using WASM or microVM sandboxes, so the value chain hinges on compact builds, remote orchestration, and resilient control planes.",
+  "categories": [
+    {
+      "id": "experience",
+      "title": "Experience",
+      "items": [
+        { "id": "low-latency-apps", "name": "Low-Latency Apps", "deps": ["webassembly-runtime", "edge-orchestrator"] },
+        { "id": "offline-first", "name": "Offline-First Experiences", "deps": ["device-fleet-updates", "storage-sync"] },
+        { "id": "secure-multitenancy", "name": "Secure Multi-tenancy", "deps": ["microvm-manager", "identity-broker"] }
+      ]
+    },
+    {
+      "id": "delivery",
+      "title": "Delivery",
+      "items": [
+        { "id": "wasm-build-pipeline", "name": "WASM Build Pipeline", "deps": ["source-control", "artifact-registry"] },
+        { "id": "device-fleet-updates", "name": "Device Fleet Updates", "deps": ["edge-orchestrator", "control-plane"] },
+        { "id": "policy-packaging", "name": "Policy Packaging", "deps": ["identity-broker", "key-distribution"] }
+      ]
+    },
+    {
+      "id": "platform",
+      "title": "Platform",
+      "items": [
+        { "id": "edge-orchestrator", "name": "Edge Orchestrator", "deps": ["control-plane", "network-backbone"] },
+        { "id": "webassembly-runtime", "name": "WebAssembly Runtime", "deps": ["edge-nodes", "observability"] },
+        { "id": "microvm-manager", "name": "MicroVM Manager", "deps": ["edge-nodes", "hardware-roots"] },
+        { "id": "observability", "name": "Observability", "deps": ["telemetry-pipeline", "storage-sync"] }
+      ]
+    },
+    {
+      "id": "support-services",
+      "title": "Support Services",
+      "items": [
+        { "id": "artifact-registry", "name": "Artifact Registry", "deps": ["storage-sync"] },
+        { "id": "identity-broker", "name": "Identity Broker", "deps": ["control-plane"] },
+        { "id": "key-distribution", "name": "Key Distribution", "deps": ["hardware-roots"] },
+        { "id": "control-plane", "name": "Control Plane", "deps": ["network-backbone"] },
+        { "id": "telemetry-pipeline", "name": "Telemetry Pipeline", "deps": ["storage-sync"] }
+      ]
+    },
+    {
+      "id": "infrastructure",
+      "title": "Infrastructure",
+      "items": [
+        { "id": "edge-nodes", "name": "Edge Nodes", "deps": ["hardware-roots"] },
+        { "id": "network-backbone", "name": "Network Backbone", "deps": [] },
+        { "id": "storage-sync", "name": "Storage Sync", "deps": [] },
+        { "id": "hardware-roots", "name": "Hardware Roots of Trust", "deps": [] },
+        { "id": "source-control", "name": "Source Control", "deps": [] }
+      ]
+    }
+  ]
+}

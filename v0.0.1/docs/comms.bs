@@ -1,0 +1,706 @@
+[
+{
+"id": "index",
+"title": "Corporate Communications Evolution – Index (with Lifecycle Layers)",
+"abstract": "<p><strong>Metadata</strong>: title: Corporate communications evolution; source: [https://chatgpt.com/share/69346882-c334-8010-86a9-575b672ec59f](https://chatgpt.com/share/69346882-c334-8010-86a9-575b672ec59f); author: ChatGPT; created: 2025-12-06.</p><p>This index map lists the major periods in corporate communication, from courier and postal systems through telephony, proprietary email, internet email, enterprise instant messaging, Slack or Teams-style platforms, and the AI layer. Items are grouped into lifecycle layers from live topics down to historical technologies. Each item id matches the model id of a detailed period map.</p>",
+"categories": [
+{
+"id": "currently-working",
+"title": "Currently Working (Dominant Today)",
+"items": [
+{
+"id": "email",
+"name": "Internet Email & Outlook Era",
+"deps": [
+"proprietary.email"
+]
+},
+{
+"id": "slack",
+"name": "Slack/Teams & Enterprise Social Era",
+"deps": [
+"im"
+]
+},
+{
+"id": "ai-layer",
+"name": "AI-layered Communication Era",
+"deps": [
+"slack"
+]
+}
+]
+},
+{
+"id": "mature-but-fading",
+"title": "Mature but Fading (Still Used, Declining)",
+"items": [
+{
+"id": "im",
+"name": "Enterprise IM & Early Social Era",
+"deps": [
+"email"
+]
+},
+{
+"id": "telephony.fax",
+"name": "Telephony, Telex & Fax Era",
+"deps": [
+"postal.courier"
+]
+}
+]
+},
+{
+"id": "likely-to-die",
+"title": "Likely to Die (Residual Use Only)",
+"items": [
+{
+"id": "proprietary.email",
+"name": "Proprietary Email & Groupware Era",
+"deps": [
+"telephony.fax"
+]
+}
+]
+},
+{
+"id": "dead-historical",
+"title": "Dead / Historical",
+"items": [
+{
+"id": "postal.courier",
+"name": "Postal & Courier Era",
+"deps": []
+}
+]
+}
+]
+}
+,
+  {
+    "id": "postal.courier",
+    "title": "Corporate Communications – Postal & Courier Era",
+    "abstract": "<p>This map describes the era in which corporate communication was dominated by courier services, national postal systems, and internal mail rooms. Communication was slow, batch-oriented and highly formal, with paper records, filing cabinets and physical distribution as the core enablers of coordination and governance.</p>",
+    "categories": [
+      {
+        "id": "pc-user-needs",
+        "title": "User & Business Needs",
+        "items": [
+          {
+            "id": "pc-internal-coordination",
+            "name": "Internal Coordination & Work Routing",
+            "deps": [
+              "pc-postal-mail",
+              "pc-internal-messenger"
+            ]
+          },
+          {
+            "id": "pc-formal-record-keeping",
+            "name": "Formal Record-keeping & Audit Trail",
+            "deps": [
+              "pc-postal-mail",
+              "pc-filing-systems"
+            ]
+          },
+          {
+            "id": "pc-external-notices",
+            "name": "External Notices & Legal Correspondence",
+            "deps": [
+              "pc-postal-mail",
+              "pc-postal-network"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "pc-channels-practices",
+        "title": "Channels & Practices",
+        "items": [
+          {
+            "id": "pc-postal-mail",
+            "name": "Postal Mail & Official Letters",
+            "deps": [
+              "pc-postal-network"
+            ]
+          },
+          {
+            "id": "pc-internal-messenger",
+            "name": "Internal Messenger & Mail Room Runs",
+            "deps": [
+              "pc-postal-network"
+            ]
+          },
+          {
+            "id": "pc-memo-practices",
+            "name": "Typed Memos & Filing Practices",
+            "deps": [
+              "pc-filing-systems"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "pc-infrastructure",
+        "title": "Infrastructure & Foundations",
+        "items": [
+          {
+            "id": "pc-postal-network",
+            "name": "Postal & Courier Network",
+            "deps": []
+          },
+          {
+            "id": "pc-filing-systems",
+            "name": "Physical Filing Systems & Archives",
+            "deps": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "telephony.fax",
+    "title": "Corporate Communications – Telephony, Telex & Fax Era",
+    "abstract": "<p>This map captures the rise of synchronous, voice-based communication via telephone, plus telex and fax for near-real-time document transmission. Organisations still relied on formal memos for records, but decision-making and coordination increasingly flowed through calls, switchboards and fax machines, setting expectations for responsiveness and real-time contact.</p>",
+    "categories": [
+      {
+        "id": "tf-user-needs",
+        "title": "User & Business Needs",
+        "items": [
+          {
+            "id": "tf-real-time-coordination",
+            "name": "Real-time Coordination Across Sites",
+            "deps": [
+              "tf-telephone-calls",
+              "tf-internal-switchboard"
+            ]
+          },
+          {
+            "id": "tf-remote-decision-making",
+            "name": "Remote Decision-making & Escalation",
+            "deps": [
+              "tf-telephone-calls",
+              "tf-meeting-habits"
+            ]
+          },
+          {
+            "id": "tf-document-transmission",
+            "name": "Rapid Document Transmission",
+            "deps": [
+              "tf-fax-workflows",
+              "tf-telephone-network"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "tf-channels-practices",
+        "title": "Channels & Practices",
+        "items": [
+          {
+            "id": "tf-telephone-calls",
+            "name": "Telephone Calls & Phone Trees",
+            "deps": [
+              "tf-telephone-network",
+              "tf-internal-switchboard"
+            ]
+          },
+          {
+            "id": "tf-fax-workflows",
+            "name": "Fax & Telex Workflows",
+            "deps": [
+              "tf-telephone-network"
+            ]
+          },
+          {
+            "id": "tf-voice-messages",
+            "name": "Voice Messages & Answering Services",
+            "deps": [
+              "tf-telephone-network"
+            ]
+          },
+          {
+            "id": "tf-meeting-habits",
+            "name": "Meeting & Follow-up Memo Habits",
+            "deps": [
+              "tf-telephone-calls"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "tf-infrastructure",
+        "title": "Infrastructure & Foundations",
+        "items": [
+          {
+            "id": "tf-telephone-network",
+            "name": "Telephony & Long-distance Network",
+            "deps": []
+          },
+          {
+            "id": "tf-internal-switchboard",
+            "name": "Internal Switchboards & Reception",
+            "deps": [
+              "tf-telephone-network"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "proprietary.email",
+    "title": "Corporate Communications – Proprietary Email & Groupware Era",
+    "abstract": "<p>This map describes the early electronic mail period, when proprietary email systems and groupware such as mainframe mail and Lotus Notes complemented rather than replaced paper. Email was intra-company, tied to specific terminals and vendors, and often integrated with shared databases and forms, foreshadowing later digital workflows.</p>",
+    "categories": [
+      {
+        "id": "pe-user-needs",
+        "title": "User & Business Needs",
+        "items": [
+          {
+            "id": "pe-electronic-messages",
+            "name": "Electronic Messaging Within the Firm",
+            "deps": [
+              "pe-proprietary-email",
+              "pe-terminals"
+            ]
+          },
+          {
+            "id": "pe-cross-site-coordination",
+            "name": "Cross-site Coordination & Routing",
+            "deps": [
+              "pe-proprietary-email",
+              "pe-groupware"
+            ]
+          },
+          {
+            "id": "pe-basic-searchability",
+            "name": "Basic Digital Search & Retrieval",
+            "deps": [
+              "pe-groupware"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "pe-systems-practices",
+        "title": "Systems & Practices",
+        "items": [
+          {
+            "id": "pe-proprietary-email",
+            "name": "Proprietary Email Systems",
+            "deps": [
+              "pe-mainframe-servers",
+              "pe-terminals"
+            ]
+          },
+          {
+            "id": "pe-groupware",
+            "name": "Early Groupware & Shared Databases",
+            "deps": [
+              "pe-mainframe-servers"
+            ]
+          },
+          {
+            "id": "pe-mixed-paper-digital",
+            "name": "Mixed Paper–Digital Workflows",
+            "deps": [
+              "pe-proprietary-email",
+              "pe-memo-culture"
+            ]
+          },
+          {
+            "id": "pe-memo-culture",
+            "name": "Memo & Paper-file Culture",
+            "deps": []
+          }
+        ]
+      },
+      {
+        "id": "pe-foundations",
+        "title": "Infrastructure & Foundations",
+        "items": [
+          {
+            "id": "pe-mainframe-servers",
+            "name": "Mainframe & Minicomputer Servers",
+            "deps": []
+          },
+          {
+            "id": "pe-terminals",
+            "name": "Terminals & Office Workstations",
+            "deps": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "email",
+    "title": "Corporate Communications – Internet Email & Outlook Era",
+    "abstract": "<p>This map covers the period in which internet-based email (SMTP, POP, IMAP) and tools like Outlook and Exchange became the default corporate medium. Email turned into both the primary system of record and a major source of overload, with mailing lists, CC culture and compliance archiving shaping how work and attention flowed.</p>",
+    "categories": [
+      {
+        "id": "ie-user-needs",
+        "title": "User & Business Needs",
+        "items": [
+          {
+            "id": "ie-global-asynchronous-comm",
+            "name": "Global Asynchronous Communication",
+            "deps": [
+              "ie-internet-email",
+              "ie-mailing-lists"
+            ]
+          },
+          {
+            "id": "ie-system-of-record",
+            "name": "System of Record for Decisions",
+            "deps": [
+              "ie-internet-email",
+              "ie-archive-policies"
+            ]
+          },
+          {
+            "id": "ie-compliance-and-audit",
+            "name": "Compliance & Audit Requirements",
+            "deps": [
+              "ie-archive-policies",
+              "ie-directory-services"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ie-channels-practices",
+        "title": "Channels & Practices",
+        "items": [
+          {
+            "id": "ie-internet-email",
+            "name": "Internet Email (Outlook-style)",
+            "deps": [
+              "ie-mail-servers",
+              "ie-directory-services"
+            ]
+          },
+          {
+            "id": "ie-mailing-lists",
+            "name": "Mailing Lists & Distribution Groups",
+            "deps": [
+              "ie-internet-email"
+            ]
+          },
+          {
+            "id": "ie-archive-policies",
+            "name": "Retention & Archiving Policies",
+            "deps": [
+              "ie-mail-servers"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ie-foundations",
+        "title": "Infrastructure & Foundations",
+        "items": [
+          {
+            "id": "ie-mail-servers",
+            "name": "Mail Servers & Gateways",
+            "deps": []
+          },
+          {
+            "id": "ie-directory-services",
+            "name": "Directory & Identity Services",
+            "deps": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "im",
+    "title": "Corporate Communications – Enterprise IM & Early Social Era",
+    "abstract": "<p>This map looks at the rise of enterprise instant messaging and early social platforms, from internal IM clients to tools like Sametime, Lync and Yammer. These channels promised to reduce email and speed up decisions, introduced presence indicators and chat culture, and laid the groundwork for later channel-based collaboration.</p>",
+    "categories": [
+      {
+        "id": "es-user-needs",
+        "title": "User & Business Needs",
+        "items": [
+          {
+            "id": "es-fast-coordination",
+            "name": "Fast Day-to-day Coordination",
+            "deps": [
+              "es-enterprise-im",
+              "es-presence-indicators"
+            ]
+          },
+          {
+            "id": "es-cross-team-qna",
+            "name": "Cross-team Q&A and Expertise Location",
+            "deps": [
+              "es-enterprise-social",
+              "es-enterprise-im"
+            ]
+          },
+          {
+            "id": "es-reduced-email-volume",
+            "name": "Pressure to Reduce Email Volume",
+            "deps": [
+              "es-enterprise-im",
+              "es-enterprise-social"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "es-channels-practices",
+        "title": "Channels & Practices",
+        "items": [
+          {
+            "id": "es-enterprise-im",
+            "name": "Enterprise Instant Messaging",
+            "deps": [
+              "es-im-servers",
+              "es-identity"
+            ]
+          },
+          {
+            "id": "es-enterprise-social",
+            "name": "Enterprise Social Platforms",
+            "deps": [
+              "es-social-platform",
+              "es-identity"
+            ]
+          },
+          {
+            "id": "es-presence-indicators",
+            "name": "Presence Indicators & Status",
+            "deps": [
+              "es-enterprise-im"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "es-foundations",
+        "title": "Infrastructure & Foundations",
+        "items": [
+          {
+            "id": "es-im-servers",
+            "name": "IM Servers & Gateways",
+            "deps": []
+          },
+          {
+            "id": "es-social-platform",
+            "name": "Enterprise Social Platform Backend",
+            "deps": []
+          },
+          {
+            "id": "es-identity",
+            "name": "Identity & Single Sign-on",
+            "deps": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "slack",
+    "title": "Corporate Communications – Slack/Teams & Enterprise Social Era",
+    "abstract": "<p>This map focuses on modern channel-based platforms such as Slack and Microsoft Teams. These tools combine synchronous chat, asynchronous threads and deep integrations, turning channels and workspaces into core coordination units, and supporting transparency, social connection and automation in distributed organisations.</p>",
+    "categories": [
+      {
+        "id": "st-user-needs",
+        "title": "User & Business Needs",
+        "items": [
+          {
+            "id": "st-channel-collaboration",
+            "name": "Channel-based Collaboration & Projects",
+            "deps": [
+              "st-slack-teams-channels",
+              "st-integrated-apps"
+            ]
+          },
+          {
+            "id": "st-transparency-and-discovery",
+            "name": "Transparency & Knowledge Discovery",
+            "deps": [
+              "st-slack-teams-channels",
+              "st-search-capability"
+            ]
+          },
+          {
+            "id": "st-remote-social-support",
+            "name": "Remote Social Support & Belonging",
+            "deps": [
+              "st-social-channels",
+              "st-reactions-emojis"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "st-channels-practices",
+        "title": "Channels & Practices",
+        "items": [
+          {
+            "id": "st-slack-teams-channels",
+            "name": "Slack/Teams Channels & Workspaces",
+            "deps": [
+              "st-workspace-config",
+              "st-identity-layer"
+            ]
+          },
+          {
+            "id": "st-social-channels",
+            "name": "Social & Interest-based Channels",
+            "deps": [
+              "st-slack-teams-channels"
+            ]
+          },
+          {
+            "id": "st-integrated-apps",
+            "name": "Integrated Apps & Bots",
+            "deps": [
+              "st-app-platform",
+              "st-identity-layer"
+            ]
+          },
+          {
+            "id": "st-search-capability",
+            "name": "Search & Message Indexing",
+            "deps": [
+              "st-indexing-services"
+            ]
+          },
+          {
+            "id": "st-reactions-emojis",
+            "name": "Reactions, Emojis & Lightweight Signals",
+            "deps": [
+              "st-slack-teams-channels"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "st-foundations",
+        "title": "Infrastructure & Foundations",
+        "items": [
+          {
+            "id": "st-workspace-config",
+            "name": "Workspace & Channel Configuration",
+            "deps": []
+          },
+          {
+            "id": "st-identity-layer",
+            "name": "Identity Layer & Access Control",
+            "deps": []
+          },
+          {
+            "id": "st-app-platform",
+            "name": "App & Integration Platform",
+            "deps": []
+          },
+          {
+            "id": "st-indexing-services",
+            "name": "Indexing & Storage Services",
+            "deps": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ai-layer",
+    "title": "Corporate Communications – AI-layered Communication Era",
+    "abstract": "<p>This map represents the emerging AI layer that sits on top of email and chat tools. AI systems summarise threads, prioritise messages, draft responses and translate content, aiming to address digital overload and make vast communication streams more manageable while raising new questions about visibility, bias and memory.</p>",
+    "categories": [
+      {
+        "id": "ai-user-needs",
+        "title": "User & Business Needs",
+        "items": [
+          {
+            "id": "ai-reduced-overload",
+            "name": "Reduced Overload & Triage Support",
+            "deps": [
+              "ai-summarisation",
+              "ai-priority-triage"
+            ]
+          },
+          {
+            "id": "ai-faster-onboarding",
+            "name": "Faster Onboarding & Context Access",
+            "deps": [
+              "ai-context-extraction",
+              "ai-summarisation"
+            ]
+          },
+          {
+            "id": "ai-multilingual-collaboration",
+            "name": "Multilingual Collaboration",
+            "deps": [
+              "ai-translation",
+              "ai-integration-email-chat"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ai-services",
+        "title": "AI Services & Behaviours",
+        "items": [
+          {
+            "id": "ai-summarisation",
+            "name": "Conversation Summarisation",
+            "deps": [
+              "ai-integration-email-chat",
+              "ai-model-hosting"
+            ]
+          },
+          {
+            "id": "ai-priority-triage",
+            "name": "Priority Triage & Notification Control",
+            "deps": [
+              "ai-integration-email-chat",
+              "ai-policy-rules"
+            ]
+          },
+          {
+            "id": "ai-context-extraction",
+            "name": "Context Extraction & Q&A",
+            "deps": [
+              "ai-integration-email-chat",
+              "ai-model-hosting"
+            ]
+          },
+          {
+            "id": "ai-translation",
+            "name": "Machine Translation in Channels",
+            "deps": [
+              "ai-model-hosting"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ai-foundations",
+        "title": "Infrastructure & Foundations",
+        "items": [
+          {
+            "id": "ai-integration-email-chat",
+            "name": "Integration with Email & Chat Platforms",
+            "deps": []
+          },
+          {
+            "id": "ai-model-hosting",
+            "name": "Model Hosting & Inference",
+            "deps": []
+          },
+          {
+            "id": "ai-policy-rules",
+            "name": "AI Policy & Governance Rules",
+            "deps": []
+          }
+        ]
+      }
+    ]
+  }
+]
