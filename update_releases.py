@@ -127,11 +127,11 @@ def render_index(release_dirs: Iterable[Path]) -> str:
     return "\n".join(
         [
             "<!doctype html>",
-            '<html lang="en">',
+            "<html lang=\"en\">",
             "<head>",
-            '  <meta charset="utf-8" />',
+            "  <meta charset=\"utf-8\" />",
             "  <title>blockscape releases</title>",
-            '  <meta name="viewport" content="width=device-width, initial-scale=1" />',
+            "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />",
             "  <style>",
             "    body { font-family: sans-serif; max-width: 720px; margin: 40px auto; padding: 0 16px; }",
             "    h1 { margin-bottom: 8px; }",
@@ -139,7 +139,7 @@ def render_index(release_dirs: Iterable[Path]) -> str:
             "  </style>",
             "</head>",
             "<body>",
-            "  <h1>blockscape releases</h1>",
+            '  <h1><a href="https://pwright.github.io/blockscape">Blockscape</a> releases</h1>',
             "  <ul>",
             body,
             "  </ul>",
