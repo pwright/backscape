@@ -1,0 +1,133 @@
+{
+  "id": "wardley-mapping",
+  "title": "Wardley Mapping",
+  "abstract": "A detailed value chain for creating, analysing, and acting upon a Wardley Map to gain strategic advantage. The **Y-axis** represents User Value / Visibility (from user-facing needs to invisible components). The **X-axis** represents Evolution (from Genesis → Custom → Product → Commodity). User value peaks in Action & Strategy, supported by increasingly abstract and commoditised enablers toward the base.",
+  "categories": [
+    {
+      "id": "strategy-action",
+      "title": "Action and Strategy (Highest User Value)",
+      "items": [
+        {
+          "id": "strategic-gameplay",
+          "name": "Strategic Gameplay Decisions",
+          "deps": ["map-analysis", "doctrine"],
+          "external": "https://www.wardleymaps.com/glossary/gameplay"
+        },
+        {
+          "id": "investment-prioritisation",
+          "name": "Investment Prioritisation",
+          "deps": ["map-analysis", "ecosystem-mapping"]
+        },
+        {
+          "id": "shared-consensus",
+          "name": "Shared Organisational Consensus",
+          "deps": ["map-visualisation", "communication"]
+        }
+      ]
+    },
+    {
+      "id": "analysis-insight",
+      "title": "Map Analysis & Insight",
+      "items": [
+        {
+          "id": "map-analysis",
+          "name": "Evolutionary Pattern Analysis",
+          "deps": ["component-positioning", "evolution-theory"],
+          "external": "https://www.wardleymaps.com/glossary/evolution-stages"
+        },
+        {
+          "id": "ecosystem-mapping",
+          "name": "Ecosystem & Competitor Mapping",
+          "deps": ["component-positioning", "market-analysis"]
+        },
+        {
+          "id": "map-visualisation",
+          "name": "Map Visualisation & Rendering",
+          "deps": ["value-chain-definition", "mapping-tools"]
+        }
+      ]
+    },
+    {
+      "id": "mapping-methodology",
+      "title": "Mapping Methodology & Data (Axes Definition)",
+      "items": [
+        {
+          "id": "value-chain-definition",
+          "name": "Value Chain Definition (Y-Axis: Visibility)",
+          "deps": ["user-need-identification", "capabilities-list"],
+          "external": "https://www.wardleymaps.com/glossary/value-chain"
+        },
+        {
+          "id": "component-positioning",
+          "name": "Component Positioning (X-Axis: Evolution)",
+          "deps": ["value-chain-definition", "evolution-theory"],
+          "external": "https://www.wardleymaps.com/glossary/component-positioning"
+        },
+        {
+          "id": "doctrine",
+          "name": "Doctrine & Principles",
+          "deps": ["communication", "learning-resources"],
+          "external": "https://www.wardleymaps.com/doctrine/"
+        }
+      ]
+    },
+    {
+      "id": "foundational-inputs",
+      "title": "Foundational Inputs & Enablers",
+      "items": [
+        {
+          "id": "user-need-identification",
+          "name": "User Need Identification",
+          "deps": ["market-analysis"]
+        },
+        {
+          "id": "capabilities-list",
+          "name": "Required Capabilities List",
+          "deps": ["business-context"]
+        },
+        {
+          "id": "evolution-theory",
+          "name": "Theory of Evolution (Genesis to Commodity)",
+          "deps": ["learning-resources"],
+          "external": "https://www.wardleymaps.com/glossary/evolution-stages"
+        },
+        {
+          "id": "mapping-tools",
+          "name": "Mapping Tools (e.g., Online Editor, DSL)",
+          "deps": ["community-support"]
+        },
+        {
+          "id": "communication",
+          "name": "Cross-Team Communication & Workshops",
+          "deps": ["business-context"]
+        }
+      ]
+    },
+    {
+      "id": "abstract-knowledge",
+      "title": "Abstract Knowledge Base (Lowest User Visibility)",
+      "items": [
+        {
+          "id": "market-analysis",
+          "name": "Market Research Data",
+          "deps": []
+        },
+        {
+          "id": "business-context",
+          "name": "Current Business Context & Goals",
+          "deps": []
+        },
+        {
+          "id": "learning-resources",
+          "name": "Wardley Mapping Learning Resources",
+          "deps": []
+        },
+        {
+          "id": "community-support",
+          "name": "Mapping Community Support",
+          "deps": []
+        }
+      ]
+    }
+  ]
+}

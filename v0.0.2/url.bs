@@ -1,0 +1,141 @@
+{
+  "title": "URL Length Constraints and Design Choices",
+  "data": {
+    "id": "url-length-constraints",
+    "title": "URL Length Constraints and Design Choices",
+    "abstract": "This model captures  how choices like fragment vs query encoding, adherence to browser and HTTP/server limits, and the behavior of databases, email clients, and logging systems together determine whether URLs remain reliable, compatible, and practical as state-carrying mechanisms\u2014and when to switch to server-side or file-based approaches.\n\n<ul>\n  <li>\n    <strong>Assume 2,000 characters as a \u201csafe everywhere\u201d ceiling.</strong><br />\n    <small>\n      If you need compatibility with older browsers, SEO, email clients, CMSes, and random third-party tools, design URLs to stay under ~2,000 characters.\n    </small>\n  </li>\n\n  <li>\n    <strong>For modern internal tools, staying under ~8,000 characters is usually fine.</strong><br />\n    <small>\n      This roughly aligns with common server/proxy limits for the HTTP request line (method + path + query). Beyond that you are increasingly likely to hit infrastructure quirks.\n    </small>\n  </li>\n\n  <li>\n    <strong>Fragments don\u2019t hit server limits, but they still hit browser and tooling limits.</strong><br />\n    <small>\n      Anything after <code>#</code> is not sent to the server, so server/request-line limits don\u2019t apply \u2013 but browser implementation caps, copy/paste tools, QR generators, and storage systems still see the full URL length.\n    </small>\n  </li>\n\n  <li>\n    <strong>If you\u2019re regularly above ~8\u201316 kB of state, stop encoding it in the URL.</strong><br />\n    <small>\n      Treat this as a red flag: move to server-side state (short IDs in the URL) or file-based export/import instead of stuffing more data into query strings or fragments.\n    </small>\n  </li>\n\n  <li>\n    <strong>Base64 + JSON is convenient but bloats size.</strong><br />\n    <small>\n      Expect ~4/3 growth from Base64 on top of the original payload, plus JSON overhead. If your raw state is 10 kB, the URL payload might easily become 13\u201315 kB before percent-encoding.\n    </small>\n  </li>\n\n  <li>\n    <strong>Don\u2019t expect <code>data:</code> URLs to bypass length limits.</strong><br />\n    <small>\n      <code>data:</code> URLs are subject to the same underlying URL length constraints as other schemes and are only practical for relatively small payloads.\n    </small>\n  </li>\n\n  <li>\n    <strong>Design for the weakest downstream system, not just the browser.</strong><br />\n    <small>\n      Check limits in logging, analytics, database columns (e.g. <code>VARCHAR(2048)</code>), email/template systems, and link shorteners; they often fail before the browser does.\n    </small>\n  </li>\n\n  <li>\n    <strong>Use URL state for \u201csmall, inspectable, copy-pastable\u201d data only.</strong><br />\n    <small>\n      IDs, filters, pagination, simple config: good. Large documents, binary blobs, or full application state: push to server or file instead.\n    </small>\n  </li>\n\n  <li>\n    <strong>Make a conscious call between fragment and query.</strong><br />\n    <small>\n      Use <code>#fragment</code> when state is purely client-side and you want to avoid server constraints; use <code>?query=</code> when the server needs to see or act on that state.\n    </small>\n  </li>\n\n  <li>\n    <strong>Document your chosen limits explicitly.</strong><br />\n    <small>\n      Write down a project-level rule (e.g. \u201cURLs &lt;= 2,000 characters for public features; up to 8,000 for internal tools\u201d) so future changes don\u2019t accidentally blow past assumptions.\n    </small>\n  </li>\n</ul>\n",
+    "categories": [
+      {
+        "id": "experience",
+        "title": "User Experience & Scenarios",
+        "items": [
+          {
+            "id": "shareable-links",
+            "name": "Shareable Links with Encoded State",
+            "deps": [
+              "fragment-state-encoding",
+              "query-state-encoding",
+              "url-size-governance",
+              "browser-implementation-limits",
+              "downstream-url-consumers"
+            ]
+          },
+          {
+            "id": "public-web-urls",
+            "name": "Public Web URLs (SEO & Compatibility)",
+            "deps": [
+              "query-state-encoding",
+              "url-size-governance",
+              "http-request-line-behavior",
+              "server-proxy-config-limits",
+              "downstream-url-consumers"
+            ]
+          },
+          {
+            "id": "internal-tool-urls",
+            "name": "Internal Tool / Local App URLs",
+            "deps": [
+              "fragment-state-encoding",
+              "query-state-encoding",
+              "browser-implementation-limits"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "url-design",
+        "title": "URL State Design",
+        "items": [
+          {
+            "id": "fragment-state-encoding",
+            "name": "Fragment-based State Encoding (#share=...)",
+            "deps": [
+              "browser-implementation-limits"
+            ]
+          },
+          {
+            "id": "query-state-encoding",
+            "name": "Query String State Encoding (?state=...)",
+            "deps": [
+              "browser-implementation-limits",
+              "http-request-line-behavior",
+              "server-proxy-config-limits"
+            ]
+          },
+          {
+            "id": "data-url-patterns",
+            "name": "Data URL Usage (data:...)",
+            "deps": [
+              "browser-implementation-limits",
+              "http-request-line-behavior"
+            ]
+          },
+          {
+            "id": "url-size-governance",
+            "name": "URL Size Policies & Rules of Thumb",
+            "deps": [
+              "browser-implementation-limits",
+              "server-proxy-config-limits",
+              "downstream-url-consumers"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "transport-runtime",
+        "title": "Transport & Runtime Limits",
+        "items": [
+          {
+            "id": "browser-implementation-limits",
+            "name": "Browser URL Implementation Limits",
+            "deps": []
+          },
+          {
+            "id": "http-request-line-behavior",
+            "name": "HTTP Request Line Behavior & Recommendations",
+            "deps": []
+          },
+          {
+            "id": "server-proxy-config-limits",
+            "name": "Server & Proxy URL Length Limits",
+            "deps": [
+              "http-request-line-behavior"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "persistence-alternatives",
+        "title": "Storage Constraints & Alternatives",
+        "items": [
+          {
+            "id": "downstream-url-consumers",
+            "name": "Downstream URL Storage & Consumers",
+            "deps": []
+          },
+          {
+            "id": "server-side-state-storage",
+            "name": "Server-side State Storage",
+            "deps": [
+              "downstream-url-consumers"
+            ]
+          },
+          {
+            "id": "short-id-linking",
+            "name": "Short-ID Linking (/share/abcd1234)",
+            "deps": [
+              "server-side-state-storage"
+            ]
+          },
+          {
+            "id": "file-based-export-import",
+            "name": "File-based Export & Import of State",
+            "deps": [
+              "downstream-url-consumers"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
