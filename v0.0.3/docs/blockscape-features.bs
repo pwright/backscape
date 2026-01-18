@@ -1,0 +1,190 @@
+[
+  {
+    "id": "blockscape-core",
+    "title": "Blockscape Core Experience",
+    "abstract": "Interactive mapping, editing, and navigation of value-chain landscapes powered by the Blockscape app.",
+    "categories": [
+      {
+        "id": "experience",
+        "title": "User Experience",
+        "items": [
+          { "id": "map-explorer", "name": "Map Explorer", "deps": ["relation-highlights", "layout-engine"], "external": "documentation/maps.md" },
+          { "id": "edit-workflow", "name": "Edit Workflow", "deps": ["json-editor", "shortcut-engine"] },
+          { "id": "series-navigation", "name": "Series Navigation", "deps": ["series-manager", "version-thumbs"] },
+          { "id": "template-loading", "name": "Template Loading", "deps": ["seed-loader", "asset-fetcher"] },
+          { "id": "version-thumbs", "name": "Version Thumbnails", "deps": ["series-manager"] }
+        ]
+      },
+      {
+        "id": "navigation-ux",
+        "title": "Navigation & UX",
+        "items": [
+          { "id": "search-navigation", "name": "Search Navigation", "deps": ["search-index", "preview-renderer"] },
+          { "id": "dependency-inspector", "name": "Dependency Inspector", "deps": ["relation-highlights", "preview-renderer"] },
+          { "id": "drag-drop-arrange", "name": "Drag & Drop Arrange", "deps": ["layout-engine"] },
+          { "id": "keyboard-travel", "name": "Keyboard Travel", "deps": ["shortcut-engine"] }
+        ]
+      },
+      {
+        "id": "data-ops",
+        "title": "Data Operations",
+        "items": [
+          { "id": "series-manager", "name": "Series Manager", "deps": ["model-parser", "storage-cache"], "external": "documentation/series.md" },
+          { "id": "json-editor", "name": "JSON Editor", "deps": ["schema-validator", "url-loader"], "external": "documentation/models.md" },
+          { "id": "share-export", "name": "Share & Export", "deps": ["encoder"] },
+          { "id": "url-loader", "name": "URL Loader", "deps": ["asset-fetcher"] },
+          { "id": "seed-loader", "name": "Seed Loader", "deps": ["asset-fetcher"] },
+          { "id": "search-index", "name": "Search Index", "deps": ["model-parser"] }
+        ]
+      },
+      {
+        "id": "integrations",
+        "title": "Integrations",
+        "items": [
+          { "id": "apicurio-integration", "name": "Apicurio Integration", "deps": ["apicurio-bridge", "model-parser"] },
+          { "id": "obsidian-linking", "name": "Obsidian Linking", "deps": ["link-resolver", "encoder"] },
+          { "id": "external-linking", "name": "External Linking", "deps": ["link-resolver"] },
+          { "id": "prompt-assisted-generation", "name": "Prompt-Assisted Generation", "deps": ["map-prompt", "model-parser"] },
+          { "id": "apicurio-bridge", "name": "Apicurio Bridge", "deps": [] }
+        ]
+      },
+      {
+        "id": "platform",
+        "title": "Platform Services",
+        "items": [
+          { "id": "layout-engine", "name": "Layout Engine", "deps": ["svelte-runtime"] },
+          { "id": "relation-highlights", "name": "Relation Highlights", "deps": ["layout-engine"] },
+          { "id": "preview-renderer", "name": "Preview Renderer", "deps": ["svelte-runtime"] },
+          { "id": "shortcut-engine", "name": "Shortcut Engine", "deps": ["svelte-runtime"] },
+          { "id": "asset-fetcher", "name": "Asset Fetcher", "deps": [] },
+          { "id": "svelte-runtime", "name": "Svelte Runtime", "deps": [] }
+        ]
+      },
+      {
+        "id": "foundations",
+        "title": "Foundations",
+        "items": [
+          { "id": "model-parser", "name": "Model Parser", "deps": [], "external": "documentation/models.md" },
+          { "id": "storage-cache", "name": "Storage Cache", "deps": [] },
+          { "id": "schema-validator", "name": "Schema Validator", "deps": ["model-parser"] },
+          { "id": "map-prompt", "name": "Map Prompt", "deps": [] },
+          { "id": "link-resolver", "name": "Link Resolver", "deps": ["asset-fetcher"] },
+          { "id": "encoder", "name": "Encoder", "deps": [] }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "blockscape-sharing",
+    "title": "Blockscape Sharing & Encoding",
+    "abstract": "How Blockscape packages, encodes, and distributes .bs maps across links, CLI tools, and desktop integrations.",
+    "categories": [
+      {
+        "id": "sharing-experience",
+        "title": "Sharing Experience",
+        "items": [
+          { "id": "share-links", "name": "Share Links", "deps": ["series-encoder", "encode-script"] },
+          { "id": "bs-file-handling", "name": ".bs File Handling", "deps": ["mime-association", "file-handler"], "external": "documentation/bs-opener.md" },
+          { "id": "clipboard-share", "name": "Clipboard Share", "deps": ["series-encoder", "decode-script"] }
+        ]
+      },
+      {
+        "id": "encoding-pipeline",
+        "title": "Encoding Pipeline",
+        "items": [
+          { "id": "series-encoder", "name": "Series Encoder", "deps": ["base64-utils", "json-validator"] },
+          { "id": "payload-fingerprint", "name": "Payload Fingerprint", "deps": ["series-encoder"] },
+          { "id": "url-tokenizer", "name": "URL Tokenizer", "deps": ["base64-utils"] },
+          { "id": "share-payload-guard", "name": "Share Payload Guard", "deps": ["json-validator"] }
+        ]
+      },
+      {
+        "id": "desktop-integration",
+        "title": "Desktop Integration",
+        "items": [
+          { "id": "mime-association", "name": "MIME Association", "deps": ["xdg-config"] },
+          { "id": "desktop-entry", "name": "Desktop Entry", "deps": ["python-runtime"] },
+          { "id": "file-handler", "name": "File Handler", "deps": ["desktop-entry", "encode-script"] },
+          { "id": "xdg-config", "name": "XDG Config", "deps": ["desktop-entry"] }
+        ]
+      },
+      {
+        "id": "cli-scripts",
+        "title": "CLI Scripts",
+        "items": [
+          { "id": "encode-script", "name": "encode-bs-share.py", "deps": ["python-runtime", "series-encoder"] },
+          { "id": "decode-script", "name": "decode-bs-share.py", "deps": ["python-runtime", "json-validator"] },
+          { "id": "link-builder", "name": "Link Builder", "deps": ["encode-script", "url-tokenizer"] }
+        ]
+      },
+      {
+        "id": "sharing-foundations",
+        "title": "Foundations",
+        "items": [
+          { "id": "base64-utils", "name": "Base64 Utils", "deps": [] },
+          { "id": "json-validator", "name": "JSON Validator", "deps": [] },
+          { "id": "python-runtime", "name": "Python Runtime", "deps": [] },
+          { "id": "file-system", "name": "File System", "deps": [] }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "blockscape-engineering",
+    "title": "Blockscape Engineering Lifecycle",
+    "abstract": "Development, quality, and content assets that support Blockscape’s delivery and evolution.",
+    "categories": [
+      {
+        "id": "product-outcomes",
+        "title": "Product Outcomes",
+        "items": [
+          { "id": "interactive-landscapes", "name": "Interactive Landscapes", "deps": ["map-ui", "template-library"] },
+          { "id": "ai-seeded-maps", "name": "AI-Seeded Maps", "deps": ["map-generation-prompt", "docs-library"] },
+          { "id": "shareable-series", "name": "Shareable Series", "deps": ["sharing-links", "template-library"] }
+        ]
+      },
+      {
+        "id": "delivery",
+        "title": "Delivery",
+        "items": [
+          { "id": "dev-server", "name": "Dev Server", "deps": ["vite-svelte"] },
+          { "id": "static-build", "name": "Static Build", "deps": ["vite-svelte"] },
+          { "id": "preview-server", "name": "Preview Server", "deps": ["static-build"] },
+          { "id": "release-artifacts", "name": "Release Artifacts", "deps": ["static-build"] }
+        ]
+      },
+      {
+        "id": "quality",
+        "title": "Quality",
+        "items": [
+          { "id": "e2e-tests", "name": "E2E Tests", "deps": ["cypress-runner", "built-in-models"] },
+          { "id": "schema-checks", "name": "Schema Checks", "deps": ["map-generation-prompt"] },
+          { "id": "docs-coverage", "name": "Docs Coverage", "deps": ["docs-library"] }
+        ]
+      },
+      {
+        "id": "toolchain",
+        "title": "Toolchain",
+        "items": [
+          { "id": "map-ui", "name": "Map UI", "deps": ["vite-svelte"] },
+          { "id": "vite-svelte", "name": "Vite + Svelte", "deps": ["node-deps"] },
+          { "id": "npm-scripts", "name": "NPM Scripts", "deps": ["node-deps"] },
+          { "id": "cypress-runner", "name": "Cypress Runner", "deps": ["node-deps"] },
+          { "id": "node-deps", "name": "Node Dependencies", "deps": [] }
+        ]
+      },
+      {
+        "id": "content-assets",
+        "title": "Content & Assets",
+        "items": [
+          { "id": "template-library", "name": "Template Library", "deps": ["built-in-models", "logos-library"] },
+          { "id": "map-generation-prompt", "name": "Map Generation Prompt", "deps": ["docs-library"] },
+          { "id": "built-in-models", "name": "Built-in Models", "deps": [] },
+          { "id": "logos-library", "name": "Logos Library", "deps": [] },
+          { "id": "docs-library", "name": "Docs Library", "deps": [] },
+          { "id": "sharing-links", "name": "Sharing Links", "deps": ["template-library"] }
+        ]
+      }
+    ]
+  }
+]

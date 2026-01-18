@@ -1,0 +1,38 @@
+site_name: Blockscape
+site_url: https://pwright.github.io/blockscape/
+
+docs_dir: docs
+site_dir: ../docs/documentation
+
+nav:
+  - Home: https://pwright.github.io/blockscape/
+  - Hello: index.md
+  - Maps:
+      - Blockscape Example: maps/blockscape-example.md
+      - Wardley Example: maps/wardley-example.md
+      - Series Example: maps/series-example.md
+  - Documentation:
+      - Overview: documentation/maps.md
+      - Features: documentation/features.md
+      - Series: documentation/series.md
+      - Models: documentation/models.md
+      - Docker for local editor: documentation/docker.md
+      - Apicurio as backend: documentation/apicurio.md
+      - MkDocs usage: documentation/mkdocs.md
+      - LLM generation: documentation/llm-generation.md
+      - Share links: documentation/share-links.md
+      - Local usage on Linux: documentation/bs-opener-linux.md
+      - Local usage on Mac: documentation/bs-opener-mac.md
+      - Local backend server: documentation/server.md
+      - JSON prompting: documentation/rise-and-fall-json.md
+  - TOC: toc.md
+
+markdown_extensions:
+  - mkdocs_blockscape.extension
+
+extra_css:
+  - site_assets/blockscape/blockscape.css
+
+extra_javascript:
+  - site_assets/blockscape/blockscape.js
+  - site_assets/blockscape/mount.js

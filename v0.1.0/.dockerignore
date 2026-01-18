@@ -1,0 +1,7 @@
+node_modules
+docs
+dist
+cypress
+.git
+.gitignore
+npm-debug.log*

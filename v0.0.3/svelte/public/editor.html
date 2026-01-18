@@ -1,0 +1,2150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Blockscape JSON Editor</title>
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+  <link rel="alternate icon" type="image/x-icon" href="./favicon.ico" />
+  <style>
+    :root {
+      color-scheme: light;
+      --space-2xs: 0.2rem;
+      --space-xs: 0.35rem;
+      --space-sm: 0.5rem;
+      --space-md: 0.75rem;
+      --space-lg: 1.25rem;
+      --space-xl: 2rem;
+      --space-2xl: 3rem;
+
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+
+      --font-text: "Inter", "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+      --font-mono: "JetBrains Mono", "Fira Code", monospace;
+      --font-size-xs: 0.75rem;
+      --font-size-sm: 0.875rem;
+      --font-size-md: 1rem;
+      --font-size-lg: 1.2rem;
+      --font-weight-regular: 400;
+      --font-weight-medium: 500;
+      --font-weight-semibold: 600;
+      --font-weight-bold: 700;
+
+      --color-text: #1f2937;
+      --color-muted: #6b7280;
+      --color-border: #d8dde8;
+      --color-border-strong: #c3cad7;
+      --color-surface: #ffffff;
+      --color-surface-muted: #f4f6fb;
+      --color-surface-subtle: #eef2f8;
+      --color-shadow: 0 18px 36px -22px rgba(15, 23, 42, 0.45);
+
+      --color-primary: #2563eb;
+      --color-primary-soft: #e3edff;
+      --color-danger: #dc2626;
+      --color-danger-soft: #fde4e2;
+      --color-warning: #f97316;
+      --color-warning-soft: #ffe8d6;
+      --color-success: #059669;
+      --color-success-soft: #d1fae5;
+
+      --transition: 160ms ease;
+
+      --blockscape-tile: 6.5rem;
+      --blockscape-gap: var(--space-md);
+      --blockscape-radius: var(--radius-lg);
+      --blockscape-foreground: var(--color-text);
+      --blockscape-muted: var(--color-muted);
+      --blockscape-border: var(--color-border);
+      --blockscape-surface: var(--color-surface);
+      --blockscape-surface-alt: var(--color-surface-muted);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      margin: 0;
+      background: var(--color-surface-subtle);
+      color: var(--color-text);
+      font-family: var(--font-text);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-weight: var(--font-weight-semibold);
+      margin: 0;
+    }
+
+    .pf-v5-c-page {
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .pf-v5-c-page__header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--color-surface);
+      box-shadow: 0 1px 0 var(--color-border);
+    }
+
+    .blockscape-masthead {
+      border-bottom: none;
+    }
+
+    .blockscape-toolbar {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: var(--space-md);
+      padding: var(--space-sm) var(--space-lg);
+      width: min(1180px, 100%);
+      margin: 0 auto;
+    }
+
+    .blockscape-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-sm);
+      font-weight: var(--font-weight-bold);
+      font-size: var(--font-size-lg);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .blockscape-brand__home {
+      display: inline-flex;
+      align-items: center;
+      line-height: 0;
+    }
+
+    .blockscape-brand__logo {
+      display: block;
+      height: 48px;
+      width: auto;
+      max-width: 260px;
+    }
+
+    .blockscape-brand__text {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2xs);
+    }
+
+    .blockscape-brand h1 {
+      font: inherit;
+      margin: 0;
+    }
+
+    .brand-sub {
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-medium);
+      letter-spacing: normal;
+      text-transform: none;
+      color: var(--color-muted);
+    }
+
+    .blockscape-toolbar__controls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-sm);
+      flex: 1 1 auto;
+      justify-content: flex-end;
+      min-width: 280px;
+    }
+
+    .blockscape-toolbar__controls .pf-v5-c-button,
+    .blockscape-toolbar__controls button,
+    .blockscape-toolbar__controls label {
+      flex: 0 0 auto;
+    }
+
+    .blockscape-editor__meta {
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-medium);
+      color: var(--blockscape-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      white-space: nowrap;
+    }
+
+    .pf-v5-c-page__main {
+      flex: 1 1 auto;
+    }
+
+    .blockscape-content {
+      display: flex;
+      gap: var(--space-lg);
+      width: min(1180px, calc(100% - 2 * var(--space-lg)));
+      margin: 0 auto;
+      padding: var(--space-lg) 0 var(--space-xl);
+      align-items: flex-start;
+    }
+
+    .blockscape-sidebar {
+      flex: 0 0 260px;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
+    .blockscape-editor__detail {
+      flex: 1 1 auto;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+      position: sticky;
+      top: calc(var(--space-xl) + 3rem);
+      max-height: calc(100vh - var(--space-xl) - 3rem);
+      overflow-y: auto;
+      padding-right: var(--space-xs);
+    }
+
+    .card {
+      background: var(--blockscape-surface);
+      border: 1px solid var(--blockscape-border);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+      box-shadow: var(--color-shadow);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+
+    .selectable {
+      cursor: pointer;
+      border-radius: var(--radius-sm);
+      border: 1px solid transparent;
+      background: var(--blockscape-surface-alt);
+      padding: var(--space-sm);
+      transition: border-color var(--transition), background var(--transition), box-shadow var(--transition);
+    }
+
+    .selectable:hover {
+      border-color: var(--color-border-strong);
+      background: var(--color-surface-muted);
+      box-shadow: 0 12px 24px -20px rgba(15, 23, 42, 0.45);
+    }
+
+    .selectable:focus-visible {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+      background: var(--color-primary-soft);
+    }
+
+    .category-grid {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+
+    .cat {
+      background: var(--blockscape-surface);
+      border: 1px solid var(--blockscape-border);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+      transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
+      box-shadow: 0 14px 32px -24px rgba(15, 23, 42, 0.5);
+    }
+
+    .cat:hover {
+      border-color: var(--color-border-strong);
+      background: var(--color-surface-muted);
+      box-shadow: var(--color-shadow);
+    }
+
+    .cat.drag-over {
+      border-color: var(--color-primary);
+      background: var(--color-primary-soft);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+    }
+
+    .cat-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-sm);
+    }
+
+    .cat-title {
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+      font-weight: var(--font-weight-semibold);
+      color: var(--blockscape-foreground);
+    }
+
+    .item-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+
+    .item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--space-sm);
+      padding: var(--space-sm);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--blockscape-border);
+      background: var(--blockscape-surface-alt);
+      transition: border-color var(--transition), background var(--transition), box-shadow var(--transition);
+      box-shadow: 0 10px 26px -22px rgba(15, 23, 42, 0.4);
+    }
+
+    .item:hover {
+      border-color: var(--color-border-strong);
+      background: var(--color-surface-muted);
+    }
+
+    .item.drag-over {
+      border-color: var(--color-primary);
+      background: var(--color-primary-soft);
+      box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.18);
+    }
+
+    .item-body {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+
+    .item-name {
+      flex: 1 1 auto;
+      min-width: 0;
+      font-weight: var(--font-weight-medium);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .item-actions {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2xs);
+    }
+
+    .item-actions .pf-v5-c-button {
+      padding: 0.25rem;
+      border-radius: var(--radius-sm);
+      border-color: var(--color-border);
+      background: transparent;
+      color: var(--color-muted);
+    }
+
+    .item-actions .pf-v5-c-button:hover:not([disabled]) {
+      color: var(--color-primary);
+      border-color: var(--color-primary);
+      background: var(--color-primary-soft);
+    }
+
+    .item-actions .pf-v5-c-button[disabled] {
+      opacity: 0.5;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    .item-actions svg {
+      display: block;
+    }
+
+    .item.selected,
+    .cat.selected {
+      border-color: var(--color-primary);
+      background: var(--color-primary-soft);
+      box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.18);
+    }
+
+    .cat[draggable="true"],
+    .item[draggable="true"] {
+      cursor: grab;
+    }
+
+    .cat[draggable="true"]:active,
+    .item[draggable="true"]:active {
+      cursor: grabbing;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2xs);
+      padding: 0.1rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid var(--blockscape-border);
+      background: var(--blockscape-surface-alt);
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-medium);
+      color: var(--blockscape-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      flex-wrap: wrap;
+    }
+
+    .grow {
+      flex: 1 1 auto;
+    }
+
+    .muted {
+      color: var(--blockscape-muted);
+    }
+
+    .model-meta {
+      margin: var(--space-xs) 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2xs);
+    }
+
+    .model-meta-title {
+      font-size: var(--font-size-md);
+      font-weight: var(--font-weight-semibold);
+      color: var(--blockscape-foreground);
+    }
+
+    .model-meta-id {
+      align-self: flex-start;
+    }
+
+    .model-meta-id.is-placeholder {
+      opacity: 0.7;
+      font-style: italic;
+    }
+
+    button,
+    .pf-v5-c-button,
+    label.pf-v5-c-button {
+      appearance: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-xs);
+      border-radius: 999px;
+      border: 1px solid var(--color-border);
+      padding: 0.45rem 1rem;
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+      line-height: 1;
+      cursor: pointer;
+      transition: background var(--transition), border-color var(--transition), color var(--transition), box-shadow var(--transition);
+      background: var(--color-surface-muted);
+      color: var(--blockscape-foreground);
+    }
+
+    button:hover,
+    .pf-v5-c-button:hover,
+    label.pf-v5-c-button:hover {
+      border-color: var(--color-border-strong);
+      background: #e5e9f4;
+      box-shadow: 0 8px 18px -16px rgba(15, 23, 42, 0.35);
+    }
+
+    button:focus-visible,
+    .pf-v5-c-button:focus-visible,
+    label.pf-v5-c-button:focus-visible {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+    }
+
+    .pf-m-primary {
+      background: var(--color-primary);
+      border-color: var(--color-primary);
+      color: #fff;
+    }
+
+    .pf-m-primary:hover {
+      background: #1d4fd7;
+      border-color: #1d4fd7;
+    }
+
+    .pf-m-tertiary {
+      background: transparent;
+      border-color: var(--color-border);
+      color: var(--color-muted);
+    }
+
+    .pf-m-tertiary:hover {
+      color: var(--blockscape-foreground);
+      border-color: var(--color-border-strong);
+      background: var(--color-surface-muted);
+    }
+
+    .pf-m-plain {
+      border: none;
+      padding: 0.35rem;
+      background: transparent;
+      color: var(--color-muted);
+    }
+
+    .pf-m-plain:hover {
+      background: var(--color-surface-muted);
+      color: var(--blockscape-foreground);
+      box-shadow: none;
+    }
+
+    .btn-danger {
+      background: var(--color-danger-soft);
+      border-color: var(--color-danger);
+      color: var(--color-danger);
+    }
+
+    .btn-danger:hover {
+      background: #fbd1cf;
+      border-color: #b91c1c;
+    }
+
+    .blockscape-file {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .blockscape-file input[type="file"] {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    input[type="text"],
+    input[type="url"],
+    input[type="color"],
+    textarea,
+    select {
+      width: 100%;
+      background: var(--color-surface);
+      color: inherit;
+      border: 1px solid var(--color-border);
+      padding: 0.55rem 0.8rem;
+      border-radius: var(--radius-sm);
+      font-size: var(--font-size-sm);
+      font-family: inherit;
+      transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
+    }
+
+    input[type="color"] {
+      padding: 0.3rem;
+      height: 2.5rem;
+    }
+
+    textarea {
+      min-height: 8rem;
+      resize: vertical;
+    }
+
+    textarea#jsonArea {
+      min-height: 20rem;
+      font-family: var(--font-mono);
+      font-size: var(--font-size-sm);
+      line-height: 1.4;
+      background: var(--blockscape-surface-alt);
+    }
+
+    select[multiple] {
+      min-height: 8rem;
+    }
+
+    input[type="text"]:focus-visible,
+    input[type="url"]:focus-visible,
+    input[type="color"]:focus-visible,
+    textarea:focus-visible,
+    select:focus-visible {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.18);
+      background: var(--color-primary-soft);
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+      margin-bottom: var(--space-sm);
+    }
+
+    .field:last-child {
+      margin-bottom: 0;
+    }
+
+    .field-label {
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-semibold);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--blockscape-muted);
+    }
+
+    .color-field-control {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-sm);
+      flex-wrap: wrap;
+    }
+
+    .color-none-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2xs);
+      font-size: var(--font-size-sm);
+      color: var(--blockscape-muted);
+      user-select: none;
+    }
+
+    .color-none-toggle input {
+      margin: 0;
+    }
+
+    .detail-section {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
+    .detail-section h2 {
+      font-size: var(--font-size-md);
+    }
+
+    .deps {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+    }
+
+    .dep {
+      font-size: var(--font-size-xs);
+      padding: 0.15rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid var(--blockscape-border);
+      background: var(--blockscape-surface-alt);
+      color: var(--blockscape-foreground);
+    }
+
+    .status {
+      white-space: pre-wrap;
+      font-family: var(--font-mono);
+      font-size: var(--font-size-xs);
+      color: var(--blockscape-muted);
+    }
+
+    .status.error {
+      color: var(--color-danger);
+    }
+
+    .status.ok {
+      color: var(--color-success);
+    }
+
+    .kbd {
+      padding: 0.1rem 0.4rem;
+      border: 1px solid var(--color-border);
+      background: var(--color-surface-muted);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-mono);
+      font-size: var(--font-size-xs);
+      color: var(--blockscape-foreground);
+    }
+
+    .kbd-hint {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2xs);
+      font-size: var(--font-size-xs);
+    }
+
+    footer {
+      padding: var(--space-sm) var(--space-lg) var(--space-lg);
+      background: var(--color-surface);
+      border-top: 1px solid var(--color-border);
+      font-size: var(--font-size-xs);
+      color: var(--color-muted);
+      text-align: center;
+    }
+
+    @media (max-width: 1024px) {
+      .blockscape-toolbar {
+        justify-content: center;
+      }
+
+      .blockscape-toolbar__controls {
+        justify-content: center;
+      }
+
+      .blockscape-editor__meta {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .blockscape-content {
+        flex-direction: column;
+        width: calc(100% - 2 * var(--space-lg));
+      }
+
+      .blockscape-sidebar {
+        width: 100%;
+      }
+
+      .blockscape-editor__detail {
+        position: static;
+        max-height: none;
+        overflow: visible;
+        padding-right: 0;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .blockscape-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .blockscape-toolbar__controls {
+        width: 100%;
+        gap: var(--space-xs);
+      }
+
+      .blockscape-toolbar__controls .pf-v5-c-button,
+      .blockscape-toolbar__controls button,
+      .blockscape-toolbar__controls label {
+        flex: 1 1 auto;
+      }
+
+      .blockscape-editor__meta {
+        white-space: normal;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="pf-v5-c-page">
+    <header class="pf-v5-c-page__header">
+      <div class="pf-v5-c-masthead pf-m-display-inline blockscape-masthead">
+        <div class="pf-v5-c-masthead__content">
+            <div class="blockscape-toolbar">
+              <div class="blockscape-brand">
+                <a class="blockscape-brand__home" href="index.html" title="Back to Blockscape viewer">
+                  <img class="blockscape-brand__logo" src="logos/blockscape-logo.svg"
+                    alt="Blockscape — return to viewer" decoding="async" />
+                </a>
+                <div class="blockscape-brand__text">
+                  <h1></h1>
+                  <span class="brand-sub">Editor</span>
+                </div>
+              </div>
+            <div class="blockscape-toolbar__controls">
+              <button id="addCategoryBtn" class="pf-v5-c-button pf-m-secondary" type="button" title="Add category (Alt+C)">+ Category</button>
+              
+              <button id="addItemBtn" class="pf-v5-c-button pf-m-secondary" type="button" title="Add item to selected category (Alt+I)">+ Item</button>
+              
+              <button id="duplicateItemBtn" class="pf-v5-c-button pf-m-secondary" type="button" title="Duplicate selected item" disabled>Duplicate</button>
+              
+              <button id="downloadBtn" class="pf-v5-c-button pf-m-tertiary" type="button" title="Download JSON (Ctrl+S)">Download</button>
+              <label class="pf-v5-c-button pf-m-secondary blockscape-file" title="Open JSON from file (Ctrl+O)">
+                <span>Load File</span>
+                <input id="fileInput" type="file" accept="application/json" />
+              </label>
+              <button id="validateBtn" class="pf-v5-c-button pf-m-primary" type="button" title="Validate JSON and references (Alt+V)">Validate</button>
+              <button id="openInViewer" class="pf-v5-c-button pf-m-primary" type="button" title="Open this JSON in the viewer">View</button>
+
+              
+            </div>
+            <div class="blockscape-editor__meta">
+              <span>Plain JS</span>
+              <span>Drag &amp; drop</span>
+              <span>Live JSON</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="pf-v5-c-page__main">
+      <div class="blockscape-content">
+        <section class="master blockscape-sidebar">
+          <div class="card card--abstract">
+            <div id="abstractPreview" class="selectable" tabindex="0" role="button" aria-label="Edit abstract">
+              <div class="row" style="justify-content: space-between;">
+                <span class="pill">Abstract</span>
+                <small id="abstractSummary" class="muted"></small>
+              </div>
+              <div class="model-meta">
+                <div id="modelTitleDisplay" class="model-meta-title"></div>
+                <span id="modelIdDisplay" class="pill model-meta-id"></span>
+              </div>
+              <p id="abstractSnippet" class="muted" style="margin: 0; font-size: var(--font-size-sm); line-height: 1.4;"></p>
+            </div>
+          </div>
+
+          <div class="card card--categories">
+            <div class="row" style="justify-content: space-between;">
+              <span class="pill">Categories</span>
+              <small class="muted">Drag to reorder</small>
+            </div>
+            <div id="categories" class="category-grid" aria-live="polite" aria-label="Categories"></div>
+          </div>
+        </section>
+
+        <section class="detail blockscape-editor__detail">
+          <div class="card" id="detailPanel" aria-live="polite" aria-label="Details"></div>
+
+          <div class="card card--json">
+            <div class="row" style="justify-content: space-between; align-items: baseline;">
+              <span class="pill">JSON (live)</span>
+              <small class="muted">Schema: { id, title, abstract?, categories:[{id,title,items:[{id,name,logo?,external?:url,color?,deps:[]}]}], links?:[{from,to}] }</small>
+            </div>
+            <textarea id="jsonArea" spellcheck="false" aria-label="JSON"></textarea>
+            <div class="row" style="justify-content: space-between;">
+              <small class="muted">Edits here update the UI. UI edits update this JSON.</small>
+              <div class="row" style="gap: var(--space-sm);">
+                <span class="kbd-hint"><span class="kbd">Alt+C</span><small class="muted">category</small></span>
+                <span class="kbd-hint"><span class="kbd">Alt+I</span><small class="muted">item</small></span>
+                <span class="kbd-hint"><span class="kbd">Alt+V</span><small class="muted">validate</small></span>
+                <span class="kbd-hint"><span class="kbd">Ctrl+S</span><small class="muted">download</small></span>
+                <span class="kbd-hint"><span class="kbd">Ctrl+O</span><small class="muted">open</small></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card card--status">
+            <div id="status" class="status">Ready.</div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <small class="muted">No external libs. Data is kept in-memory only. Drag to reorder categories and items; drag items between categories.</small>
+    </footer>
+  </div>
+
+<script>
+(function(){
+  "use strict";
+  /**
+   * Blockscape JSON Editor
+   * - Plain JS, single-file, no dependencies.
+   * - Bidirectional sync: structured UI <-> JSON textarea.
+   * - Drag & drop: reorder categories; reorder/move items.
+   * - CRUD for categories and items.
+   * - Optional fields supported: logo, external URL, color.
+   * - Minimal referential integrity checks for deps and id uniqueness.
+   *
+   * Console logging is included to aid debugging.
+   */
+
+  /** ----------------------------- Utilities ----------------------------- */
+  const $ = (sel, el=document) => el.querySelector(sel);
+  const $$ = (sel, el=document) => Array.from(el.querySelectorAll(sel));
+  const uid = (p) => `${p}_${Math.random().toString(36).slice(2,8)}`;
+
+  function debounce(fn, ms){
+    let t; return (...args)=>{ clearTimeout(t); t=setTimeout(()=>fn(...args), ms); };
+  }
+
+  function download(filename, text){
+    const blob = new Blob([text], {type: 'application/json'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = filename; a.click(); URL.revokeObjectURL(url);
+  }
+
+  function setStatus(msg, cls){
+    const el = $('#status');
+    el.textContent = msg;
+    el.className = 'status ' + (cls || '');
+    console.log('[status]', msg);
+  }
+
+  function guessViewerTitle(){
+    const title = (model.title || '').trim();
+    if (title) return title;
+    const firstCat = model.categories?.[0];
+    if (firstCat){
+      return `Editor – ${firstCat.title || firstCat.id || 'Category'}`;
+    }
+    return 'Editor Export';
+  }
+
+  function base64Encode(text){
+    const bytes = new TextEncoder().encode(text);
+    let binary = '';
+    bytes.forEach(b => { binary += String.fromCharCode(b); });
+    return btoa(binary);
+  }
+
+  function base64UrlEncode(text){
+    return base64Encode(text).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/g, '');
+  }
+
+  function createViewerShareTarget(){
+    const payload = {
+      title: guessViewerTitle(),
+      data: JSON.parse(toJSONString())
+    };
+    const encoded = base64UrlEncode(JSON.stringify(payload));
+    return {
+      hash: `share=${encoded}`,
+      url: `index.html#share=${encoded}`
+    };
+  }
+
+  function closeEditorWindow(){
+    try {
+      window.close();
+    } catch (err) {
+      console.warn('[Editor] unable to close window', err);
+    }
+  }
+
+  /** ----------------------------- Model ----------------------------- */
+  /** Internal canonical model. */
+  let model = {
+    id: "",
+    title: "",
+    abstract: "",
+    categories: [],
+    // passthrough: we preserve unknown top-level fields to avoid data loss
+  };
+
+  /** Unknown top-level keys we keep when round-tripping JSON. */
+  let passthrough = {};
+  let legacyExternalWarningIssued = false;
+
+  /** Serialize model + passthrough to JSON string. */
+  function toJSONString(){
+    const out = { ...passthrough };
+    out.id = (model.id ?? '').toString();
+    out.title = (model.title ?? '').toString();
+    out.abstract = model.abstract;
+    out.categories = structuredClone(model.categories);
+    return JSON.stringify(out, null, 2);
+  }
+
+  function normalizeExternalField(value){
+    if (typeof value === 'string'){
+      const trimmed = value.trim();
+      return trimmed || undefined;
+    }
+    if (value === true && !legacyExternalWarningIssued){
+      legacyExternalWarningIssued = true;
+      console.warn('[Blockscape Editor] boolean `external` fields are deprecated; provide a URL instead.');
+    }
+    return undefined;
+  }
+
+  /** Parse JSON string to model; throws with details on failure. */
+  function parseJSONString(text){
+    legacyExternalWarningIssued = false;
+    const raw = JSON.parse(text);
+    if (!raw || typeof raw !== 'object') throw new Error('Root must be an object');
+    if (!Array.isArray(raw.categories)) throw new Error('Missing required array: categories');
+
+    // Keep unknown top-level keys
+    const { abstract = "", categories, title = "", id = "", ...rest } = raw;
+    passthrough = rest;
+
+    // Normalize categories and items
+    const cats = categories.map((c,i)=>({
+      id: String(c.id ?? uid('cat')).trim() || uid('cat'),
+      title: String(c.title ?? c.id ?? `Category ${i+1}`),
+      items: Array.isArray(c.items) ? c.items.map((it,j)=>({
+        id: String(it.id ?? uid('item')).trim() || uid('item'),
+        name: String(it.name ?? it.id ?? `Item ${j+1}`),
+        logo: it.logo ?? undefined,
+        external: normalizeExternalField(it.external),
+        color: it.color ?? undefined,
+        deps: Array.isArray(it.deps) ? it.deps.map(String) : []
+      })) : []
+    }));
+
+    const normalizedTitle = title == null ? '' : String(title);
+    const normalizedId = id == null ? '' : String(id);
+
+    model = { 
+      id: normalizedId.trim(), 
+      title: normalizedTitle.trim(), 
+      abstract: String(abstract ?? ''), 
+      categories: cats 
+    };
+  }
+
+  /** Validate id uniqueness and dependency references. */
+  function validate(){
+    const messages = [];
+    const ids = new Map();
+
+    const trimmedId = (model.id || '').trim();
+    if (!trimmedId) {
+      messages.push('Model id is required.');
+    } else if (!/^[a-z0-9._-]+$/i.test(trimmedId)) {
+      messages.push('Model id may only contain letters, numbers, ".", "-", or "_".');
+    }
+
+    const trimmedTitle = (model.title || '').trim();
+    if (!trimmedTitle) {
+      messages.push('Model title is required.');
+    }
+
+    const abstractText = typeof model.abstract === 'string' ? model.abstract : '';
+    if (!abstractText.trim()) {
+      messages.push('Model abstract is required.');
+    }
+
+    // Collect item ids across all categories
+    const itemIds = new Set();
+    model.categories.forEach(c => c.items.forEach(it => itemIds.add(it.id)));
+
+    // Check category ids
+    for (const c of model.categories){
+      if (ids.has(c.id)) messages.push(`Duplicate category id: ${c.id}`);
+      ids.set(c.id, true);
+      // Check item ids in this category
+      const local = new Set();
+      for (const it of c.items){
+        if (ids.has(it.id) || local.has(it.id)) messages.push(`Duplicate item id: ${it.id}`);
+        local.add(it.id); ids.set(it.id, true);
+        // deps must exist
+        for (const d of (it.deps||[])){
+          if (!itemIds.has(d)) messages.push(`Missing dep id '${d}' referenced by item '${it.id}'`);
+          if (d === it.id) messages.push(`Item '${it.id}' cannot depend on itself`);
+        }
+      }
+    }
+
+    if (messages.length){
+      setStatus("Validation errors:\n- " + messages.join("\n- "), 'error');
+      return { ok:false, messages };
+    }
+
+    setStatus('Validation OK. ' + (Object.keys(passthrough).length?`(Kept extra keys: ${Object.keys(passthrough).join(', ')})`:'') , 'ok');
+    return { ok:true, messages:[] };
+  }
+
+  /** ----------------------------- Rendering ----------------------------- */
+  const categoriesEl = $('#categories');
+  const abstractPreview = $('#abstractPreview');
+  const abstractSummary = $('#abstractSummary');
+  const abstractSnippet = $('#abstractSnippet');
+  const modelTitleDisplay = $('#modelTitleDisplay');
+  const modelIdDisplay = $('#modelIdDisplay');
+  const detailPanel = $('#detailPanel');
+  const jsonArea = $('#jsonArea');
+  const EDITOR_TRANSFER_KEY = 'blockscape:editorPayload';
+  const EDITOR_TRANSFER_MESSAGE_TYPE = 'blockscape:editorTransfer';
+  const duplicateItemBtn = $('#duplicateItemBtn');
+  const openInViewerBtn = $('#openInViewer');
+
+  let selection = { type: 'abstract' };
+  let viewerPayloadError = false;
+
+  abstractPreview.addEventListener('click', ()=> selectAbstract());
+  abstractPreview.addEventListener('keydown', (e)=>{
+    if (e.key === 'Enter' || e.key === ' '){
+      e.preventDefault();
+      selectAbstract();
+    }
+  });
+
+  function createField(labelText, control){
+    const wrapper = document.createElement('div');
+    wrapper.className = 'field';
+    const label = document.createElement('div');
+    label.className = 'field-label';
+    label.textContent = labelText;
+    wrapper.append(label, control);
+    return wrapper;
+  }
+
+  // Render entire UI from model
+  function render(){
+    console.log('[render] model', model);
+    renderAbstractPreview();
+    renderMasterList();
+    renderDetail();
+    jsonArea.value = toJSONString();
+    ensureSelectedItemFromLocation();
+    updateSelectionUI();
+  }
+
+  function renderAbstractPreview(){
+    const title = (model.title || '').trim();
+    if (modelTitleDisplay){
+      modelTitleDisplay.textContent = title || 'Untitled model';
+      modelTitleDisplay.classList.toggle('muted', !title);
+    }
+    const idText = (model.id || '').trim();
+    if (modelIdDisplay){
+      if (idText){
+        modelIdDisplay.textContent = `ID: ${idText}`;
+        modelIdDisplay.classList.remove('is-placeholder');
+      } else {
+        modelIdDisplay.textContent = 'ID not set';
+        modelIdDisplay.classList.add('is-placeholder');
+      }
+    }
+
+    const text = (model.abstract || '').trim();
+    const wordCount = text ? text.split(/\s+/).filter(Boolean).length : 0;
+    abstractSummary.textContent = text ? `${wordCount} word${wordCount === 1 ? '' : 's'}` : 'No abstract yet';
+    const snippet = text ? text.slice(0, 140) + (text.length > 140 ? '…' : '') : 'Click to add an abstract.';
+    abstractSnippet.textContent = snippet;
+  }
+
+  function renderMasterList(){
+    categoriesEl.innerHTML = '';
+    model.categories.forEach(cat => {
+      categoriesEl.append(buildCategoryNode(cat));
+    });
+    enableCategoryDnD();
+    enableItemDnD();
+  }
+
+  function buildCategoryNode(cat){
+    const catEl = document.createElement('div');
+    catEl.className = 'cat selectable';
+    catEl.dataset.catId = cat.id;
+    catEl.draggable = true;
+    catEl.tabIndex = 0;
+
+    catEl.addEventListener('click', (e)=>{
+      if ((e.target instanceof HTMLElement) && e.target.closest('.item')) return;
+      selectCategory(cat.id);
+    });
+    catEl.addEventListener('keydown', (e)=>{
+      if (e.key === 'Enter' || e.key === ' '){
+        e.preventDefault();
+        selectCategory(cat.id);
+      }
+    });
+
+    const header = document.createElement('div');
+    header.className = 'cat-header';
+
+    const left = document.createElement('div');
+    left.className = 'cat-title';
+
+    const drag = document.createElement('span');
+    drag.className = 'pill';
+    drag.textContent = '≡';
+    drag.title = 'Drag to reorder category';
+
+    const title = document.createElement('span');
+    title.className = 'cat-title-text';
+    title.dataset.catId = cat.id;
+    title.textContent = cat.title || '(Untitled category)';
+
+    left.append(drag, title);
+
+    const right = document.createElement('div');
+    right.className = 'row';
+    right.style.gap = '6px';
+
+    const idBadge = document.createElement('span');
+    idBadge.className = 'pill muted cat-id-text';
+    idBadge.dataset.catId = cat.id;
+    idBadge.textContent = cat.id;
+
+    const count = document.createElement('span');
+    count.className = 'pill';
+    count.dataset.catId = cat.id;
+    count.textContent = `${cat.items.length} item${cat.items.length === 1 ? '' : 's'}`;
+
+    right.append(idBadge, count);
+
+    header.append(left, right);
+
+    const list = document.createElement('div');
+    list.className = 'item-list';
+    list.dataset.catId = cat.id;
+
+    cat.items.forEach((item, index) => {
+      list.append(buildItemNode(cat, item, index, cat.items.length));
+    });
+
+    catEl.append(header, list);
+    return catEl;
+  }
+
+  function buildItemNode(cat, item, index, total){
+    const itemEl = document.createElement('div');
+    itemEl.className = 'item selectable';
+    itemEl.dataset.itemId = item.id;
+    itemEl.dataset.catId = cat.id;
+    itemEl.draggable = true;
+    itemEl.tabIndex = 0;
+
+    itemEl.addEventListener('click', (e)=>{
+      e.stopPropagation();
+      selectItem(cat.id, item.id);
+    });
+    itemEl.addEventListener('keydown', (e)=>{
+      if (e.key === 'Enter' || e.key === ' '){
+        e.preventDefault();
+        selectItem(cat.id, item.id);
+      }
+    });
+
+    const itemBody = document.createElement('div');
+    itemBody.className = 'item-body';
+
+    const name = document.createElement('span');
+    name.className = 'item-name';
+    name.dataset.itemId = item.id;
+    name.textContent = item.name || '(Untitled item)';
+
+    const idBadge = document.createElement('span');
+    idBadge.className = 'pill item-id';
+    idBadge.dataset.itemId = item.id;
+    idBadge.textContent = item.id;
+
+    itemBody.append(name, idBadge);
+
+    const actions = document.createElement('div');
+    actions.className = 'item-actions';
+
+    const upBtn = document.createElement('button');
+    upBtn.type = 'button';
+    upBtn.className = 'pf-v5-c-button pf-m-plain';
+    upBtn.title = 'Move item up';
+    upBtn.setAttribute('aria-label', 'Move item up');
+    upBtn.innerHTML = '<svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 3.2 3.2 8H6v4h4V8h2.8z"/></svg>';
+    upBtn.addEventListener('click', (event)=>{
+      event.stopPropagation();
+      moveItem(cat.id, item.id, -1);
+    });
+
+    const downBtn = document.createElement('button');
+    downBtn.type = 'button';
+    downBtn.className = 'pf-v5-c-button pf-m-plain';
+    downBtn.title = 'Move item down';
+    downBtn.setAttribute('aria-label', 'Move item down');
+    downBtn.innerHTML = '<svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="m8 12.8 4.8-4.8H10V4H6v4H3.2z"/></svg>';
+    downBtn.addEventListener('click', (event)=>{
+      event.stopPropagation();
+      moveItem(cat.id, item.id, 1);
+    });
+
+    if (index <= 0) upBtn.disabled = true;
+    if (index === total - 1) downBtn.disabled = true;
+
+    actions.append(upBtn, downBtn);
+
+    itemEl.append(itemBody, actions);
+    return itemEl;
+  }
+
+  function renderDetail(){
+    detailPanel.innerHTML = '';
+    let content;
+    if (selection.type === 'abstract'){
+      content = renderAbstractDetail();
+    } else if (selection.type === 'category'){
+      const cat = model.categories.find(c=>c.id === selection.id);
+      if (!cat){
+        selection = { type: 'abstract' };
+        updateSelectionUI();
+        renderDetail();
+        return;
+      }
+      content = renderCategoryDetail(cat);
+    } else if (selection.type === 'item'){
+      const cat = model.categories.find(c=>c.id === selection.catId);
+      const item = cat?.items.find(it => it.id === selection.id);
+      if (!cat || !item){
+        selection = { type: 'abstract' };
+        updateSelectionUI();
+        renderDetail();
+        return;
+      }
+      content = renderItemDetail(cat, item);
+    } else {
+      content = document.createElement('div');
+      content.textContent = 'Select something to edit.';
+    }
+    detailPanel.append(content);
+  }
+
+  function renderAbstractDetail(){
+    const wrap = document.createElement('div');
+    wrap.className = 'detail-section';
+
+    const heading = document.createElement('h2');
+    heading.textContent = 'Abstract';
+    wrap.append(heading);
+
+    const titleInput = document.createElement('input');
+    titleInput.type = 'text';
+    titleInput.value = model.title || '';
+    titleInput.placeholder = 'Model title (shown in viewer)';
+    titleInput.addEventListener('input', ()=>{
+      model.title = titleInput.value;
+      renderAbstractPreview();
+      syncJSON();
+    });
+    wrap.append(createField('Model Title', titleInput));
+
+    const idInput = document.createElement('input');
+    idInput.type = 'text';
+    idInput.value = model.id || '';
+    idInput.placeholder = 'model-id';
+    idInput.addEventListener('input', ()=>{
+      model.id = idInput.value;
+      renderAbstractPreview();
+      syncJSON();
+    });
+    idInput.addEventListener('blur', ()=>{
+      idInput.value = idInput.value.trim();
+      model.id = idInput.value;
+      renderAbstractPreview();
+      syncJSON();
+    });
+    wrap.append(createField('Model ID', idInput));
+
+    const textarea = document.createElement('textarea');
+    textarea.value = model.abstract || '';
+    textarea.placeholder = 'Describe your domain...';
+    textarea.addEventListener('input', ()=>{
+      model.abstract = textarea.value;
+      renderAbstractPreview();
+      syncJSON();
+    });
+
+    wrap.append(createField('Abstract', textarea));
+    return wrap;
+  }
+
+  function renderCategoryDetail(cat){
+    const wrap = document.createElement('div');
+    wrap.className = 'detail-section';
+
+    const heading = document.createElement('h2');
+    heading.textContent = 'Category';
+    wrap.append(heading);
+
+    const info = document.createElement('div');
+    info.className = 'muted';
+    info.textContent = `${cat.items.length} item${cat.items.length === 1 ? '' : 's'}`;
+    wrap.append(info);
+
+    const titleInput = document.createElement('input');
+    titleInput.type = 'text';
+    titleInput.value = cat.title;
+    titleInput.placeholder = 'Category title';
+    titleInput.addEventListener('input', ()=>{
+      cat.title = titleInput.value;
+      const titleEl = categoriesEl.querySelector(`.cat-title-text[data-cat-id="${cat.id}"]`);
+      if (titleEl){ titleEl.textContent = cat.title || '(Untitled category)'; }
+      syncJSON();
+    });
+    wrap.append(createField('Title', titleInput));
+
+    const idInput = document.createElement('input');
+    idInput.type = 'text';
+    idInput.value = cat.id;
+    idInput.placeholder = 'category-id';
+    idInput.addEventListener('change', ()=>{
+      const oldId = cat.id;
+      const next = idInput.value.trim();
+      if (!next){
+        idInput.value = oldId;
+        return;
+      }
+      if (model.categories.some(c => c !== cat && c.id === next)){
+        alert(`Category id '${next}' already exists.`);
+        idInput.value = oldId;
+        return;
+      }
+      cat.id = next;
+      const catEl = categoriesEl.querySelector(`.cat[data-cat-id="${oldId}"]`);
+      if (catEl){
+        catEl.dataset.catId = next;
+        const list = catEl.querySelector('.item-list');
+        if (list) list.dataset.catId = next;
+        catEl.querySelectorAll('.item').forEach(itEl => itEl.dataset.catId = next);
+      }
+      const idBadge = categoriesEl.querySelector(`.cat-id-text[data-cat-id="${oldId}"]`);
+      if (idBadge){
+        idBadge.dataset.catId = next;
+        idBadge.textContent = next;
+      }
+      if (selection.type === 'category' && selection.id === oldId){ selection.id = next; }
+      if (selection.type === 'item' && selection.catId === oldId){ selection.catId = next; }
+      syncJSON();
+      updateSelectionUI();
+      renderDetail();
+    });
+    wrap.append(createField('ID', idInput));
+
+    const actions = document.createElement('div');
+    actions.className = 'row';
+    actions.style.justifyContent = 'space-between';
+
+    const addBtn = document.createElement('button');
+    addBtn.textContent = '+ Item';
+    addBtn.addEventListener('click', ()=>{ addItem(cat.id); });
+
+    const deleteBtn = document.createElement('button');
+    deleteBtn.textContent = 'Delete category';
+    deleteBtn.className = 'btn-danger';
+    deleteBtn.addEventListener('click', ()=>{
+      if (confirm(`Delete category '${cat.title || cat.id}' and its items?`)){
+        removeCategory(cat.id);
+      }
+    });
+
+    actions.append(addBtn, deleteBtn);
+    wrap.append(actions);
+
+    return wrap;
+  }
+
+  function renderItemDetail(cat, item){
+    const wrap = document.createElement('div');
+    wrap.className = 'detail-section';
+
+    const header = document.createElement('div');
+    header.className = 'row';
+    header.style.justifyContent = 'space-between';
+
+    const heading = document.createElement('h2');
+    heading.textContent = item.name || 'Item';
+    header.append(heading);
+
+    const idBadge = document.createElement('span');
+    idBadge.className = 'pill';
+    idBadge.textContent = item.id;
+    header.append(idBadge);
+
+    wrap.append(header);
+
+    const catLabel = document.createElement('div');
+    catLabel.className = 'muted';
+    catLabel.textContent = `Category: ${cat.title || cat.id}`;
+    wrap.append(catLabel);
+
+    const nameInput = document.createElement('input');
+    nameInput.type = 'text';
+    nameInput.value = item.name;
+    nameInput.placeholder = 'Item name';
+    nameInput.addEventListener('input', ()=>{
+      item.name = nameInput.value;
+      const nameEl = categoriesEl.querySelector(`.item-name[data-item-id="${item.id}"]`);
+      if (nameEl){ nameEl.textContent = item.name || '(Untitled item)'; }
+      heading.textContent = item.name || 'Item';
+      syncJSON();
+    });
+    wrap.append(createField('Name', nameInput));
+
+    const idInput = document.createElement('input');
+    idInput.type = 'text';
+    idInput.value = item.id;
+    idInput.placeholder = 'item-id';
+    idInput.addEventListener('change', ()=>{
+      const oldId = item.id;
+      const next = idInput.value.trim();
+      if (!next){
+        idInput.value = oldId;
+        return;
+      }
+      if (model.categories.some(c=>c.items.some(it=>it !== item && it.id === next))){
+        alert(`Item id '${next}' already exists.`);
+        idInput.value = oldId;
+        return;
+      }
+      model.categories.forEach(c=>c.items.forEach(x=>{
+        x.deps = (x.deps||[]).map(d => d === oldId ? next : d);
+      }));
+      item.id = next;
+      const itemEl = categoriesEl.querySelector(`.item[data-item-id="${oldId}"]`);
+      if (itemEl){
+        itemEl.dataset.itemId = next;
+        const badge = itemEl.querySelector('.item-id');
+        if (badge){ badge.dataset.itemId = next; badge.textContent = next; }
+        const nameEl = itemEl.querySelector('.item-name');
+        if (nameEl){ nameEl.dataset.itemId = next; }
+      }
+      idBadge.textContent = next;
+      if (selection.type === 'item' && selection.id === oldId){ selection.id = next; }
+      syncJSON();
+      renderDetail();
+      updateSelectionUI();
+    });
+    wrap.append(createField('ID', idInput));
+
+    const colorControls = document.createElement('div');
+    colorControls.className = 'color-field-control';
+
+    const colorInput = document.createElement('input');
+    colorInput.type = 'color';
+
+    let lastColor = item.color || '#6aa9ff';
+
+    const noneLabel = document.createElement('label');
+    noneLabel.className = 'color-none-toggle';
+    const noneCheckbox = document.createElement('input');
+    noneCheckbox.type = 'checkbox';
+    const noneText = document.createElement('span');
+    noneText.textContent = 'None';
+    noneLabel.append(noneCheckbox, noneText);
+
+    function updateColorState(){
+      const hasColor = typeof item.color === 'string' && item.color.length > 0;
+      if (hasColor){
+        colorInput.value = item.color;
+        lastColor = item.color;
+      } else {
+        colorInput.value = lastColor;
+      }
+      colorInput.disabled = !hasColor;
+      noneCheckbox.checked = !hasColor;
+    }
+
+    colorInput.addEventListener('input', ()=>{
+      item.color = colorInput.value;
+      lastColor = item.color;
+      noneCheckbox.checked = false;
+      colorInput.disabled = false;
+      syncJSON();
+    });
+
+    noneCheckbox.addEventListener('change', ()=>{
+      if (noneCheckbox.checked){
+        if (item.color){ lastColor = item.color; }
+        item.color = undefined;
+      } else {
+        item.color = lastColor || '#6aa9ff';
+      }
+      updateColorState();
+      syncJSON();
+    });
+
+    updateColorState();
+
+    colorControls.append(colorInput, noneLabel);
+    wrap.append(createField('Color', colorControls));
+
+    const logoInput = document.createElement('input');
+    logoInput.type = 'url';
+    logoInput.value = item.logo || '';
+    logoInput.placeholder = 'https://...';
+    logoInput.addEventListener('input', ()=>{
+      item.logo = logoInput.value || undefined;
+      syncJSON();
+    });
+    wrap.append(createField('Logo (optional)', logoInput));
+
+    const externalInput = document.createElement('input');
+    externalInput.type = 'url';
+    externalInput.value = typeof item.external === 'string' ? item.external : '';
+    externalInput.placeholder = 'https://...';
+    externalInput.addEventListener('input', ()=>{
+      const next = externalInput.value.trim();
+      item.external = next || undefined;
+      syncJSON();
+    });
+    wrap.append(createField('External reference URL (optional)', externalInput));
+
+    const depsField = document.createElement('div');
+    depsField.className = 'field';
+    const depsLabel = document.createElement('div');
+    depsLabel.className = 'field-label';
+    depsLabel.textContent = 'Dependencies';
+    depsField.append(depsLabel);
+
+    const depSelect = document.createElement('select');
+    depSelect.multiple = true;
+    const allItems = getAllItems();
+    depSelect.size = Math.min(8, Math.max(4, allItems.length || 4));
+    for (const optItem of allItems){
+      const opt = document.createElement('option');
+      opt.value = optItem.id;
+      opt.textContent = `${optItem.id} — ${optItem.name}`;
+      if (optItem.id === item.id) opt.disabled = true;
+      if ((item.deps || []).includes(optItem.id)) opt.selected = true;
+      depSelect.append(opt);
+    }
+    depsField.append(depSelect);
+
+    const depsBox = document.createElement('div');
+    depsBox.className = 'deps';
+    (item.deps || []).forEach(d => {
+      const chip = document.createElement('span');
+      chip.className = 'dep';
+      chip.textContent = d;
+      depsBox.append(chip);
+    });
+    depsField.append(depsBox);
+
+    depSelect.addEventListener('change', ()=>{
+      item.deps = Array.from(depSelect.selectedOptions).map(o=>o.value);
+      depsBox.innerHTML = '';
+      item.deps.forEach(d => {
+        const chip = document.createElement('span');
+        chip.className = 'dep';
+        chip.textContent = d;
+        depsBox.append(chip);
+      });
+      syncJSON();
+    });
+
+    wrap.append(depsField);
+
+    const dependents = getDependents(item.id);
+    if (dependents.length){
+      const usedField = document.createElement('div');
+      usedField.className = 'field';
+      const usedLabel = document.createElement('div');
+      usedLabel.className = 'field-label';
+      usedLabel.textContent = 'Used by';
+      const usedBox = document.createElement('div');
+      usedBox.className = 'deps';
+      dependents.forEach(dep => {
+        const chip = document.createElement('span');
+        chip.className = 'dep';
+        chip.textContent = dep.id;
+        chip.title = dep.name;
+        usedBox.append(chip);
+      });
+      usedField.append(usedLabel, usedBox);
+      wrap.append(usedField);
+    }
+
+    const actions = document.createElement('div');
+    actions.className = 'row';
+    actions.style.marginTop = '8px';
+    actions.style.justifyContent = 'space-between';
+
+    const deleteBtn = document.createElement('button');
+    deleteBtn.textContent = 'Delete item';
+    deleteBtn.className = 'btn-danger';
+    deleteBtn.addEventListener('click', ()=>{
+      if (confirm(`Delete item '${item.name || item.id}'?`)){
+        removeItem(cat.id, item.id);
+      }
+    });
+
+    actions.append(deleteBtn);
+    wrap.append(actions);
+
+    return wrap;
+  }
+
+  function updateSelectionUI(){
+    abstractPreview.classList.toggle('selected', selection.type === 'abstract');
+    $$('.cat', categoriesEl).forEach(catEl => {
+      catEl.classList.toggle('selected', selection.type === 'category' && catEl.dataset.catId === selection.id);
+    });
+    $$('.item', categoriesEl).forEach(itemEl => {
+      itemEl.classList.toggle('selected', selection.type === 'item' && itemEl.dataset.itemId === selection.id);
+    });
+    if (duplicateItemBtn){
+      duplicateItemBtn.disabled = selection.type !== 'item';
+    }
+    syncSelectedQueryParam();
+  }
+
+  function syncSelectedQueryParam(){
+    if (typeof history === 'undefined' || typeof history.replaceState !== 'function') return;
+    try {
+      const url = new URL(window.location.href);
+      const existing = url.searchParams.get('selected');
+      if (selection.type === 'item') {
+        if (existing === selection.id) return;
+        url.searchParams.set('selected', selection.id);
+      } else {
+        if (!existing) return;
+        url.searchParams.delete('selected');
+      }
+      history.replaceState(null, '', url.toString());
+    } catch (err) {
+      console.warn('[Editor] failed to sync selected item param', err);
+    }
+  }
+
+  function getSelectedItemIdFromLocation(){
+    try {
+      const params = new URLSearchParams(window.location.search);
+      if (params.has('selected')) {
+        return params.get('selected');
+      }
+      const hashMatch = window.location.hash.match(/(?:[?&]|^)selected=([^&]+)/);
+      if (hashMatch) {
+        return decodeURIComponent(hashMatch[1]);
+      }
+    } catch (err) {
+      console.warn('[Editor] unable to read selected from location', err);
+    }
+    return null;
+  }
+
+  function selectAbstract(){
+    if (selection.type === 'abstract') {
+      updateSelectionUI();
+      return;
+    }
+    selection = { type: 'abstract' };
+    updateSelectionUI();
+    renderDetail();
+  }
+
+  function selectCategory(catId){
+    if (selection.type === 'category' && selection.id === catId){
+      updateSelectionUI();
+      return;
+    }
+    selection = { type: 'category', id: catId };
+    updateSelectionUI();
+    renderDetail();
+  }
+
+  function selectItem(catId, itemId){
+    if (selection.type === 'item' && selection.id === itemId) {
+      updateSelectionUI();
+      return;
+    }
+    selection = { type: 'item', id: itemId, catId };
+    updateSelectionUI();
+    renderDetail();
+  }
+
+  function findItemById(itemId){
+    if (!itemId) return null;
+    for (const cat of model.categories){
+      const hit = cat.items.find(it => it.id === itemId);
+      if (hit) return { cat, item: hit };
+    }
+    return null;
+  }
+
+  function ensureSelectedItemFromLocation(){
+    const targetId = getSelectedItemIdFromLocation();
+    if (!targetId) return;
+    if (selection.type === 'item' && selection.id === targetId) return;
+    const match = findItemById(targetId);
+    if (!match) return;
+    selectItem(match.cat.id, match.item.id);
+    requestAnimationFrame(() => {
+      const targetEl = categoriesEl.querySelector(`.item[data-item-id="${match.item.id}"]`);
+      if (targetEl) {
+        targetEl.scrollIntoView({ block: 'center' });
+        targetEl.focus({ preventScroll: true });
+      }
+    });
+  }
+
+  function getTargetCategoryId(){
+    if (selection.type === 'category') return selection.id;
+    if (selection.type === 'item') return selection.catId;
+    return model.categories[0]?.id;
+  }
+
+  function getAllItems(){
+    const arr = [];
+    for (const c of model.categories){ for (const it of c.items){ arr.push(it); } }
+    return arr;
+  }
+
+  function buildDuplicateId(baseId){
+    const trimmed = (baseId || '').trim();
+    if (!trimmed) return uid('item');
+    const taken = new Set(getAllItems().map(it => it.id));
+    let nextId = `${trimmed}-1`;
+    while (taken.has(nextId)){
+      nextId = `${nextId}-1`;
+    }
+    return nextId;
+  }
+
+  function getDependents(itemId){
+    const arr = [];
+    for (const c of model.categories){
+      for (const it of c.items){
+        if ((it.deps || []).includes(itemId)){ arr.push(it); }
+      }
+    }
+    return arr;
+  }
+
+  /** ----------------------------- DnD ----------------------------- */
+  function enableCategoryDnD(){
+    $$('.cat', categoriesEl).forEach(catEl => {
+      catEl.addEventListener('dragstart', (e)=>{
+        e.dataTransfer.setData('text/plain', JSON.stringify({ type:'category', id: catEl.dataset.catId }));
+      });
+      catEl.addEventListener('dragover', (e)=>{ e.preventDefault(); catEl.classList.add('drag-over'); });
+      catEl.addEventListener('dragleave', ()=> catEl.classList.remove('drag-over'));
+      catEl.addEventListener('drop', (e)=>{
+        e.preventDefault(); catEl.classList.remove('drag-over');
+        const data = JSON.parse(e.dataTransfer.getData('text/plain'));
+        if (data.type !== 'category') return;
+        const fromIdx = model.categories.findIndex(c=>c.id===data.id);
+        const toIdx = model.categories.findIndex(c=>c.id===catEl.dataset.catId);
+        if (fromIdx<0 || toIdx<0 || fromIdx===toIdx) return;
+        const [moved] = model.categories.splice(fromIdx,1);
+        model.categories.splice(toIdx,0,moved);
+        render(); // re-render to refresh order
+      });
+    });
+  }
+
+  function enableItemDnD(){
+    $$('.item', categoriesEl).forEach(itemEl => {
+      itemEl.addEventListener('dragstart', (e)=>{
+        e.dataTransfer.setData('text/plain', JSON.stringify({ type:'item', itemId: itemEl.dataset.itemId, fromCatId: itemEl.dataset.catId }));
+      });
+    });
+
+    $$('.item-list', categoriesEl).forEach(listEl => {
+      listEl.addEventListener('dragover', (e)=>{ e.preventDefault(); listEl.classList.add('drag-over'); });
+      listEl.addEventListener('dragleave', ()=> listEl.classList.remove('drag-over'));
+      listEl.addEventListener('drop', (e)=>{
+        e.preventDefault(); listEl.classList.remove('drag-over');
+        const data = JSON.parse(e.dataTransfer.getData('text/plain'));
+        if (data.type !== 'item') return;
+        const fromCat = model.categories.find(c=>c.id===data.fromCatId);
+        const toCat = model.categories.find(c=>c.id===listEl.dataset.catId);
+        if (!fromCat || !toCat) return;
+        const idx = fromCat.items.findIndex(it=>it.id===data.itemId);
+        if (idx<0) return;
+        const [moved] = fromCat.items.splice(idx,1);
+        toCat.items.push(moved);
+        if (selection.type === 'item' && selection.id === moved.id){
+          selection = { type: 'item', id: moved.id, catId: toCat.id };
+        }
+        render();
+      });
+    });
+  }
+
+  /** ----------------------------- CRUD ----------------------------- */
+  function addCategory(){
+    const cat = { id: uid('category'), title: 'New Category', items: [] };
+    model.categories.push(cat);
+    selection = { type: 'category', id: cat.id };
+    render();
+    return cat;
+  }
+  function removeCategory(catId){
+    const i = model.categories.findIndex(c=>c.id===catId);
+    if (i>=0){
+      const next = model.categories[i+1] || model.categories[i-1];
+      model.categories.splice(i,1);
+      if (selection.type === 'category' && selection.id === catId){
+        if (next){ selection = { type: 'category', id: next.id }; }
+        else { selection = { type: 'abstract' }; }
+      } else if (selection.type === 'item' && selection.catId === catId){
+        if (next){ selection = { type: 'category', id: next.id }; }
+        else { selection = { type: 'abstract' }; }
+      }
+      render();
+    }
+  }
+
+  function addItem(catId){
+    const cat = model.categories.find(c=>c.id===catId) || model.categories[0];
+    if (!cat){ alert('No categories exist. Create a category first.'); return; }
+    const id = uid('item');
+    const item = { id, name: 'New Item', deps: [] };
+    cat.items.push(item);
+    selection = { type: 'item', id, catId: cat.id };
+    render();
+    return item;
+  }
+  function removeItem(catId, itemId){
+    const cat = model.categories.find(c=>c.id===catId); if (!cat) return;
+    const i = cat.items.findIndex(it=>it.id===itemId);
+    if (i>=0){
+      // also remove references from others' deps
+      model.categories.forEach(c=>c.items.forEach(x=> x.deps = (x.deps||[]).filter(d=>d!==itemId)));
+      const next = cat.items[i+1] || cat.items[i-1];
+      cat.items.splice(i,1);
+      if (selection.type === 'item' && selection.id === itemId){
+        if (next){ selection = { type: 'item', id: next.id, catId: cat.id }; }
+        else { selection = { type: 'category', id: cat.id }; }
+      }
+      render();
+    }
+  }
+
+  function moveItem(catId, itemId, delta){
+    const cat = model.categories.find(c=>c.id === catId); if (!cat) return;
+    const fromIdx = cat.items.findIndex(it => it.id === itemId);
+    if (fromIdx < 0) return;
+    const toIdx = fromIdx + delta;
+    if (toIdx < 0 || toIdx >= cat.items.length) return;
+    const [moved] = cat.items.splice(fromIdx, 1);
+    cat.items.splice(toIdx, 0, moved);
+    selection = { type: 'item', id: itemId, catId };
+    render();
+  }
+
+  function duplicateItem(catId, itemId){
+    const cat = model.categories.find(c => c.id === catId); if (!cat) return null;
+    const index = cat.items.findIndex(it => it.id === itemId);
+    if (index < 0) return null;
+    const source = cat.items[index];
+    const duplicate = typeof structuredClone === 'function'
+      ? structuredClone(source)
+      : JSON.parse(JSON.stringify(source));
+    duplicate.id = buildDuplicateId(source.id);
+    cat.items.splice(index + 1, 0, duplicate);
+    selection = { type: 'item', id: duplicate.id, catId: cat.id };
+    render();
+    return duplicate;
+  }
+
+  /** ----------------------------- Sync ----------------------------- */
+  const syncJSON = debounce(()=>{
+    jsonArea.value = toJSONString();
+  }, 120);
+
+  jsonArea.addEventListener('input', debounce(()=>{
+    try {
+      parseJSONString(jsonArea.value);
+      selection = { type: 'abstract' };
+      render();
+      setStatus('Parsed JSON OK.', 'ok');
+    } catch (e){
+      setStatus('JSON parse error: ' + e.message, 'error');
+    }
+  }, 220));
+
+  /** ----------------------------- IO & UX ----------------------------- */
+  $('#addCategoryBtn').addEventListener('click', ()=>{ addCategory(); });
+  $('#addItemBtn').addEventListener('click', ()=>{
+    if (!model.categories.length){
+      const cat = addCategory();
+      if (cat) addItem(cat.id);
+      return;
+    }
+    const targetId = getTargetCategoryId();
+    addItem(targetId);
+  });
+  if (duplicateItemBtn){
+    duplicateItemBtn.addEventListener('click', ()=>{
+      if (selection.type !== 'item') return;
+      duplicateItem(selection.catId, selection.id);
+    });
+  }
+  $('#validateBtn').addEventListener('click', validate);
+  $('#downloadBtn').addEventListener('click', ()=>{
+    validate();
+    download('blockscape.json', toJSONString());
+  });
+
+  if (openInViewerBtn){
+    openInViewerBtn.addEventListener('click', ()=>{
+      const text = (toJSONString() || '').trim();
+      if (!text){
+        alert('Nothing to send yet. Build a model first.');
+        return;
+      }
+      try {
+        localStorage.setItem(EDITOR_TRANSFER_KEY, JSON.stringify({
+          ts: Date.now(),
+          text,
+          source: 'editor',
+          title: guessViewerTitle()
+        }));
+      } catch (err) {
+        console.warn('[Editor] unable to store viewer payload', err);
+        alert('Unable to stash JSON for the viewer (storage disabled?).');
+        return;
+      }
+      let shareTarget = null;
+      try {
+        shareTarget = createViewerShareTarget();
+      } catch (err) {
+        console.warn('[Editor] unable to build share URL for viewer', err);
+      }
+
+      const viewerUrl = shareTarget?.url || 'index.html#editor';
+      let deliveredToExistingViewer = false;
+      if (window.opener && !window.opener.closed) {
+        try {
+          const targetOrigin = (window.location.origin && window.location.origin !== 'null')
+            ? window.location.origin
+            : '*';
+          window.opener.postMessage({ type: EDITOR_TRANSFER_MESSAGE_TYPE, ts: Date.now() }, targetOrigin);
+          if (shareTarget?.hash){
+            window.opener.location.hash = shareTarget.hash;
+          }
+          window.opener.focus();
+          deliveredToExistingViewer = true;
+        } catch (err) {
+          console.warn('[Editor] unable to notify existing viewer window', err);
+        }
+      }
+      if (!deliveredToExistingViewer) {
+        const win = window.open(viewerUrl, '_blank');
+        if (!win){
+          alert('Popup blocked. Please allow popups for this site or open the viewer manually.');
+        } else {
+          win.focus();
+        }
+      }
+      setStatus('Sent JSON to viewer.', 'ok');
+      closeEditorWindow();
+    });
+  }
+
+  $('#fileInput').addEventListener('change', (e)=>{
+    const f = e.target.files?.[0]; if (!f) return;
+    const reader = new FileReader();
+    reader.onload = ()=>{
+      try {
+        parseJSONString(String(reader.result));
+        selection = { type: 'abstract' };
+        render();
+        setStatus(`Loaded: ${f.name}`, 'ok');
+      }
+      catch(err){ setStatus('Failed to load: ' + err.message, 'error'); }
+    };
+    reader.readAsText(f);
+  });
+
+  // Keyboard shortcuts
+  window.addEventListener('keydown', (e)=>{
+    if (e.altKey && e.code==='KeyC'){ e.preventDefault(); addCategory(); }
+    if (e.altKey && e.code==='KeyI'){
+      e.preventDefault();
+      if (!model.categories.length){
+        const cat = addCategory();
+        if (cat) addItem(cat.id);
+        return;
+      }
+      const targetId = getTargetCategoryId();
+      addItem(targetId);
+    }
+    if (e.altKey && e.code==='KeyV'){ e.preventDefault(); validate(); }
+    if ((e.ctrlKey||e.metaKey) && e.code==='KeyS'){ e.preventDefault(); download('blockscape.json', toJSONString()); }
+    if ((e.ctrlKey||e.metaKey) && e.code==='KeyO'){ e.preventDefault(); $('#fileInput').click(); }
+  });
+
+  /** ----------------------------- Boot ----------------------------- */
+  function consumeViewerPayload(){
+    if (typeof window === 'undefined' || !window.localStorage) return false;
+    let raw;
+    try {
+      raw = localStorage.getItem(EDITOR_TRANSFER_KEY);
+    } catch (err) {
+      console.warn('[Editor] failed to read viewer payload', err);
+      return false;
+    }
+    if (!raw) return false;
+    try {
+      localStorage.removeItem(EDITOR_TRANSFER_KEY);
+    } catch (err) {
+      console.warn('[Editor] failed to clear viewer payload', err);
+    }
+    try {
+      const payload = JSON.parse(raw);
+      if (!payload || typeof payload.text !== 'string'){
+        throw new Error('Missing payload text');
+      }
+      const payloadSelectedId = typeof payload.selectedItemId === 'string' ? payload.selectedItemId : null;
+      const selectedItemId = payloadSelectedId || getSelectedItemIdFromLocation();
+      parseJSONString(payload.text);
+      const match = selectedItemId ? findItemById(selectedItemId) : null;
+      selection = match
+        ? { type: 'item', id: match.item.id, catId: match.cat.id }
+        : { type: 'abstract' };
+      if (selectedItemId && !match) {
+        console.warn('[Editor] viewer-selected item not found in payload:', selectedItemId);
+      }
+      render();
+      if (match) {
+        requestAnimationFrame(() => {
+          const target = categoriesEl.querySelector(`.item[data-item-id="${match.item.id}"]`);
+          if (target) {
+            target.scrollIntoView({ block: 'center', behavior: 'smooth' });
+            target.focus({ preventScroll: true });
+          }
+        });
+      }
+      setStatus('Loaded JSON from viewer.', 'ok');
+      return true;
+    } catch (err) {
+      viewerPayloadError = true;
+      console.warn('[Editor] invalid viewer payload', err);
+      return false;
+    }
+  }
+
+  // Seed with example if textarea is empty (first run)
+  const SAMPLE = {
+    id: "blockscape",
+    title: "Blockscape Sample",
+    abstract: "Describe your domain here…",
+    categories: [
+      { id:"communication", title:"Communication Effects", items:[
+        { id:"glance_comprehension", name:"Glanceable Landscape", deps:["value_visibility_axis","legend_minimal"], color: "#6aa9ff" },
+        { id:"component_values", name:"Component Values", deps:["layout_engine","model_components"], color: "#9f7aea" },
+        { id:"review_alignment", name:"Shared Understanding", deps:["glance_comprehension","component_values"], color: "#40d39c" }
+      ]},
+      { id:"inputs", title:"Inputs", items:[
+        { id:"domain_prompt", name:"Domain Prompt", deps:[] },
+        { id:"domain_json", name:"Domain JSON", deps:[] }
+      ]}
+    ],
+    links: []
+  };
+
+  if (consumeViewerPayload()){
+    return;
+  }
+
+  try {
+    parseJSONString(JSON.stringify(SAMPLE));
+    selection = { type: 'abstract' };
+    render();
+    setStatus('Initialized with sample. Start editing.');
+  } catch (e){
+    setStatus('Initialization error: ' + e.message, 'error');
+  }
+
+  if (viewerPayloadError){
+    setStatus('Viewer payload was invalid; loaded default sample instead.', 'error');
+  }
+
+})();
+</script>
+</body>
+</html>

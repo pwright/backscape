@@ -1,0 +1,1136 @@
+[
+  {
+    "id": "solar-system",
+    "title": "Solar System Model",
+    "abstract": "Index of all planetary exploration models in this series.",
+    "categories": [
+      {
+        "id": "habitable",
+        "title": "Habitable",
+        "items": [
+          {
+            "id": "earth",
+            "name": "Earth",
+            "deps": [],
+            "logo": "https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apollo_17.jpg"
+          }
+        ]
+      },
+      {
+        "id": "visible-by-eye",
+        "title": "Visible by Eye",
+        "items": [
+          {
+            "id": "mercury",
+            "name": "Mercury",
+            "deps": [],
+            "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Mercury_in_true_color.jpg/250px-Mercury_in_true_color.jpg"
+          },
+          {
+            "id": "venus",
+            "name": "Venus",
+            "deps": [],
+            "logo": "https://upload.wikimedia.org/wikipedia/commons/e/e5/Venus-real_color.jpg"
+          },
+          {
+            "id": "mars",
+            "name": "Mars",
+            "deps": [],
+            "logo": "https://upload.wikimedia.org/wikipedia/commons/0/02/OSIRIS_Mars_true_color.jpg"
+          },
+          {
+            "id": "jupiter",
+            "name": "Jupiter",
+            "deps": [],
+            "logo": "https://upload.wikimedia.org/wikipedia/commons/e/e2/Jupiter.jpg"
+          },
+          {
+            "id": "saturn",
+            "name": "Saturn",
+            "deps": [],
+            "logo": "https://upload.wikimedia.org/wikipedia/commons/c/c7/Saturn_during_Equinox.jpg"
+          }
+        ]
+      },
+      {
+        "id": "outer",
+        "title": "Telescope",
+        "items": [
+          {
+            "id": "uranus",
+            "name": "Uranus",
+            "deps": [],
+            "logo": "https://upload.wikimedia.org/wikipedia/commons/3/3d/Uranus2.jpg"
+          },
+          {
+            "id": "neptune",
+            "name": "Neptune",
+            "deps": [],
+            "logo": "https://upload.wikimedia.org/wikipedia/commons/5/56/Neptune_Full.jpg"
+          }
+        ]
+      },
+      {
+        "id": "former-planets",
+        "title": "Former Planets",
+        "items": [
+          {
+            "id": "pluto",
+            "name": "Pluto",
+            "color": "#000000",
+            "deps": [],
+            "external": "https://en.wikipedia.org/wiki/Pluto"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mercury",
+    "title": "Mercury Exploration Model",
+    "abstract": "Value chain for understanding and exploring Mercury.",
+    "categories": [
+      {
+        "id": "observation",
+        "title": "Observation",
+        "items": [
+          {
+            "id": "surface-imaging",
+            "name": "Surface Imaging",
+            "deps": [
+              "orbital-navigation",
+              "thermal-protection"
+            ]
+          },
+          {
+            "id": "spectral-scan",
+            "name": "Spectral Scanning",
+            "deps": [
+              "data-processing"
+            ]
+          },
+          {
+            "id": "solar-interaction",
+            "name": "Solar Interaction Analysis",
+            "deps": [
+              "radiation-shielding"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "environment",
+        "title": "Environment",
+        "items": [
+          {
+            "id": "crater-mapping",
+            "name": "Crater Mapping",
+            "deps": [
+              "surface-imaging"
+            ]
+          },
+          {
+            "id": "exosphere-study",
+            "name": "Exosphere Study",
+            "deps": [
+              "spectral-scan"
+            ]
+          },
+          {
+            "id": "thermal-variation",
+            "name": "Thermal Variation Modeling",
+            "deps": [
+              "solar-interaction"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "resources",
+        "title": "Resources",
+        "items": [
+          {
+            "id": "minerals-analysis",
+            "name": "Minerals Analysis",
+            "deps": [
+              "crater-mapping",
+              "data-processing"
+            ]
+          },
+          {
+            "id": "ice-detection",
+            "name": "Ice Detection",
+            "deps": [
+              "spectral-scan"
+            ]
+          },
+          {
+            "id": "soil-composition",
+            "name": "Soil Composition",
+            "deps": [
+              "minerals-analysis"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "infrastructure",
+        "title": "Infrastructure",
+        "items": [
+          {
+            "id": "orbital-navigation",
+            "name": "Orbital Navigation",
+            "deps": []
+          },
+          {
+            "id": "thermal-protection",
+            "name": "Thermal Protection",
+            "deps": []
+          },
+          {
+            "id": "radiation-shielding",
+            "name": "Radiation Shielding",
+            "deps": []
+          },
+          {
+            "id": "data-processing",
+            "name": "Data Processing",
+            "deps": []
+          }
+        ]
+      },
+      {
+        "id": "moons",
+        "title": "Moons",
+        "items": []
+      }
+    ]
+  },
+  {
+    "id": "venus",
+    "title": "Venus Exploration Model",
+    "abstract": "Value chain for atmospheric and surface study of Venus.",
+    "categories": [
+      {
+        "id": "observation",
+        "title": "Observation",
+        "items": [
+          {
+            "id": "cloud-imaging",
+            "name": "Cloud Imaging",
+            "deps": [
+              "orbital-control",
+              "heat-shielding"
+            ]
+          },
+          {
+            "id": "atmospheric-sensing",
+            "name": "Atmospheric Sensing",
+            "deps": [
+              "data-pipeline"
+            ]
+          },
+          {
+            "id": "thermal-scan",
+            "name": "Thermal Scanning",
+            "deps": [
+              "heat-shielding"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "environment",
+        "title": "Environment",
+        "items": [
+          {
+            "id": "pressure-modeling",
+            "name": "Pressure Modeling",
+            "deps": [
+              "atmospheric-sensing"
+            ]
+          },
+          {
+            "id": "cloud-chemistry",
+            "name": "Cloud Chemistry Analysis",
+            "deps": [
+              "cloud-imaging"
+            ]
+          },
+          {
+            "id": "surface-temp-mapping",
+            "name": "Surface Temperature Mapping",
+            "deps": [
+              "thermal-scan"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "resources",
+        "title": "Resources",
+        "items": [
+          {
+            "id": "mineral-survey",
+            "name": "Mineral Survey",
+            "deps": [
+              "surface-temp-mapping"
+            ]
+          },
+          {
+            "id": "atmo-gas-analysis",
+            "name": "Atmospheric Gas Analysis",
+            "deps": [
+              "cloud-chemistry"
+            ]
+          },
+          {
+            "id": "volcanic-activity",
+            "name": "Volcanic Activity Study",
+            "deps": [
+              "pressure-modeling"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "infrastructure",
+        "title": "Infrastructure",
+        "items": [
+          {
+            "id": "orbital-control",
+            "name": "Orbital Control",
+            "deps": []
+          },
+          {
+            "id": "heat-shielding",
+            "name": "Heat Shielding",
+            "deps": []
+          },
+          {
+            "id": "data-pipeline",
+            "name": "Data Pipeline",
+            "deps": []
+          }
+        ]
+      },
+      {
+        "id": "moons",
+        "title": "Moons",
+        "items": []
+      }
+    ]
+  },
+  {
+    "id": "earth",
+    "title": "Earth Systems Model",
+    "abstract": "Value chain for observing and managing Earth systems.",
+    "categories": [
+      {
+        "id": "observation",
+        "title": "Observation",
+        "items": [
+          {
+            "id": "weather-monitoring",
+            "name": "Weather Monitoring",
+            "deps": [
+              "sat-network"
+            ]
+          },
+          {
+            "id": "ocean-sensing",
+            "name": "Ocean Sensing",
+            "deps": [
+              "sensor-grid"
+            ]
+          },
+          {
+            "id": "terrain-imaging",
+            "name": "Terrain Imaging",
+            "deps": [
+              "sat-network"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "environment",
+        "title": "Environment",
+        "items": [
+          {
+            "id": "climate-modeling",
+            "name": "Climate Modeling",
+            "deps": [
+              "weather-monitoring",
+              "data-lake"
+            ]
+          },
+          {
+            "id": "ecosystem-mapping",
+            "name": "Ecosystem Mapping",
+            "deps": [
+              "terrain-imaging"
+            ]
+          },
+          {
+            "id": "currents-analysis",
+            "name": "Ocean Currents Analysis",
+            "deps": [
+              "ocean-sensing"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "resources",
+        "title": "Resources",
+        "items": [
+          {
+            "id": "mineral-analysis-earth",
+            "name": "Mineral Analysis",
+            "deps": [
+              "terrain-imaging"
+            ]
+          },
+          {
+            "id": "water-cycle",
+            "name": "Water Cycle Modeling",
+            "deps": [
+              "climate-modeling"
+            ]
+          },
+          {
+            "id": "agri-forecasting",
+            "name": "Agriculture Forecasting",
+            "deps": [
+              "climate-modeling",
+              "ecosystem-mapping"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "infrastructure",
+        "title": "Infrastructure",
+        "items": [
+          {
+            "id": "sat-network",
+            "name": "Satellite Network",
+            "deps": []
+          },
+          {
+            "id": "sensor-grid",
+            "name": "Sensor Grid",
+            "deps": []
+          },
+          {
+            "id": "data-lake",
+            "name": "Data Lake",
+            "deps": []
+          }
+        ]
+      },
+      {
+        "id": "moons",
+        "title": "Moons",
+        "items": [
+          {
+            "id": "moon-earth",
+            "name": "Moon",
+            "deps": [],
+            "external": "https://en.wikipedia.org/wiki/Moon",
+            "logo": "https://favicon.im/wikipedia.org"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mars",
+    "title": "Mars Exploration Model",
+    "abstract": "Value chain for robotic and human exploration of Mars.",
+    "categories": [
+      {
+        "id": "observation",
+        "title": "Observation",
+        "items": [
+          {
+            "id": "surface-roving",
+            "name": "Surface Roving",
+            "deps": [
+              "comm-relay",
+              "radiation-hardened"
+            ]
+          },
+          {
+            "id": "atmo-profiling",
+            "name": "Atmospheric Profiling",
+            "deps": [
+              "data-store"
+            ]
+          },
+          {
+            "id": "orbital-imaging",
+            "name": "Orbital Imaging",
+            "deps": [
+              "comm-relay"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "environment",
+        "title": "Environment",
+        "items": [
+          {
+            "id": "dust-storm-modeling",
+            "name": "Dust Storm Modeling",
+            "deps": [
+              "atmo-profiling"
+            ]
+          },
+          {
+            "id": "soil-analysis-mars",
+            "name": "Soil Analysis",
+            "deps": [
+              "surface-roving"
+            ]
+          },
+          {
+            "id": "temp-gradient-study",
+            "name": "Temperature Gradient Study",
+            "deps": [
+              "orbital-imaging"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "resources",
+        "title": "Resources",
+        "items": [
+          {
+            "id": "ice-mapping",
+            "name": "Ice Mapping",
+            "deps": [
+              "temp-gradient-study"
+            ]
+          },
+          {
+            "id": "mineral-survey-mars",
+            "name": "Mineral Survey",
+            "deps": [
+              "soil-analysis-mars"
+            ]
+          },
+          {
+            "id": "atmo-gas-mars",
+            "name": "Atmospheric Gas Analysis",
+            "deps": [
+              "atmo-profiling"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "infrastructure",
+        "title": "Infrastructure",
+        "items": [
+          {
+            "id": "comm-relay",
+            "name": "Communications Relay",
+            "deps": []
+          },
+          {
+            "id": "radiation-hardened",
+            "name": "Radiation Hardened Systems",
+            "deps": []
+          },
+          {
+            "id": "data-store",
+            "name": "Data Store",
+            "deps": []
+          }
+        ]
+      },
+      {
+        "id": "moons",
+        "title": "Moons",
+        "items": [
+          {
+            "id": "phobos",
+            "name": "Phobos",
+            "deps": [],
+            "external": "https://en.wikipedia.org/wiki/Phobos_(moon)",
+            "logo": "https://favicon.im/wikipedia.org"
+          },
+          {
+            "id": "deimos",
+            "name": "Deimos",
+            "deps": [],
+            "external": "https://en.wikipedia.org/wiki/Deimos",
+            "logo": "https://favicon.im/wikipedia.org"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "jupiter",
+    "title": "Jupiter Study Model",
+    "abstract": "Value chain for observing Jupiter and its system.",
+    "categories": [
+      {
+        "id": "observation",
+        "title": "Observation",
+        "items": [
+          {
+            "id": "storm-imaging",
+            "name": "Storm Imaging",
+            "deps": [
+              "deep-radiation-shielding"
+            ]
+          },
+          {
+            "id": "magnetosphere-sensing",
+            "name": "Magnetosphere Sensing",
+            "deps": [
+              "data-center"
+            ]
+          },
+          {
+            "id": "moon-tracking",
+            "name": "Moon Tracking",
+            "deps": [
+              "orbital-system"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "environment",
+        "title": "Environment",
+        "items": [
+          {
+            "id": "atmo-composition-jupiter",
+            "name": "Atmospheric Composition",
+            "deps": [
+              "storm-imaging"
+            ]
+          },
+          {
+            "id": "radiation-modeling",
+            "name": "Radiation Modeling",
+            "deps": [
+              "magnetosphere-sensing"
+            ]
+          },
+          {
+            "id": "moon-dynamics",
+            "name": "Moon Dynamics",
+            "deps": [
+              "moon-tracking"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "resources",
+        "title": "Resources",
+        "items": [
+          {
+            "id": "moon-ice-mapping",
+            "name": "Moon Ice Mapping",
+            "deps": [
+              "moon-dynamics"
+            ]
+          },
+          {
+            "id": "gas-distribution",
+            "name": "Gas Distribution Study",
+            "deps": [
+              "atmo-composition-jupiter"
+            ]
+          },
+          {
+            "id": "magnetic-harnessing",
+            "name": "Magnetic Field Harnessing Study",
+            "deps": [
+              "radiation-modeling"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "infrastructure",
+        "title": "Infrastructure",
+        "items": [
+          {
+            "id": "deep-radiation-shielding",
+            "name": "Deep Radiation Shielding",
+            "deps": []
+          },
+          {
+            "id": "orbital-system",
+            "name": "Orbital System",
+            "deps": []
+          },
+          {
+            "id": "data-center",
+            "name": "Data Center",
+            "deps": []
+          }
+        ]
+      },
+      {
+        "id": "moons",
+        "title": "Moons",
+        "items": [
+          {
+            "id": "io",
+            "name": "Io",
+            "deps": [],
+            "external": "https://en.wikipedia.org/wiki/Io_(moon)",
+            "logo": "https://favicon.im/wikipedia.org"
+          },
+          {
+            "id": "europa",
+            "name": "Europa",
+            "deps": [],
+            "external": "https://en.wikipedia.org/wiki/Europa_(moon)",
+            "logo": "https://favicon.im/wikipedia.org"
+          },
+          {
+            "id": "ganymede",
+            "name": "Ganymede",
+            "deps": [],
+            "external": "https://en.wikipedia.org/wiki/Ganymede_(moon)",
+            "logo": "https://favicon.im/wikipedia.org"
+          },
+          {
+            "id": "callisto",
+            "name": "Callisto",
+            "deps": [],
+            "external": "https://en.wikipedia.org/wiki/Callisto_(moon)",
+            "logo": "https://favicon.im/wikipedia.org"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "saturn",
+    "title": "Saturn Study Model",
+    "abstract": "Value chain for examining Saturn and its rings.",
+    "categories": [
+      {
+        "id": "observation",
+        "title": "Observation",
+        "items": [
+          {
+            "id": "ring-imaging",
+            "name": "Ring Imaging",
+            "deps": [
+              "radiation-layer"
+            ]
+          },
+          {
+            "id": "moon-sensing-saturn",
+            "name": "Moon Sensing",
+            "deps": [
+              "telemetry"
+            ]
+          },
+          {
+            "id": "atmo-scan-saturn",
+            "name": "Atmospheric Scanning",
+            "deps": [
+              "data-mesh"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "environment",
+        "title": "Environment",
+        "items": [
+          {
+            "id": "ring-dynamics",
+            "name": "Ring Dynamics",
+            "deps": [
+              "ring-imaging"
+            ]
+          },
+          {
+            "id": "moon-orbits-saturn",
+            "name": "Moon Orbit Modeling",
+            "deps": [
+              "moon-sensing-saturn"
+            ]
+          },
+          {
+            "id": "storm-analysis-saturn",
+            "name": "Storm Analysis",
+            "deps": [
+              "atmo-scan-saturn"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "resources",
+        "title": "Resources",
+        "items": [
+          {
+            "id": "ice-distribution-saturn",
+            "name": "Ice Distribution",
+            "deps": [
+              "ring-dynamics"
+            ]
+          },
+          {
+            "id": "hydrogen-mapping",
+            "name": "Hydrogen Mapping",
+            "deps": [
+              "storm-analysis-saturn"
+            ]
+          },
+          {
+            "id": "habitability-study-saturn",
+            "name": "Habitability Study",
+            "deps": [
+              "moon-orbits-saturn"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "infrastructure",
+        "title": "Infrastructure",
+        "items": [
+          {
+            "id": "radiation-layer",
+            "name": "Radiation Layer",
+            "deps": []
+          },
+          {
+            "id": "telemetry",
+            "name": "Telemetry",
+            "deps": []
+          },
+          {
+            "id": "data-mesh",
+            "name": "Data Mesh",
+            "deps": []
+          }
+        ]
+      },
+      {
+        "id": "moons",
+        "title": "Moons",
+        "items": [
+          {
+            "id": "titan",
+            "name": "Titan",
+            "deps": [],
+            "external": "https://en.wikipedia.org/wiki/Titan_(moon)",
+            "logo": "https://favicon.im/wikipedia.org"
+          },
+          {
+            "id": "enceladus",
+            "name": "Enceladus",
+            "deps": [],
+            "external": "https://en.wikipedia.org/wiki/Enceladus",
+            "logo": "https://favicon.im/wikipedia.org"
+          },
+          {
+            "id": "rhea",
+            "name": "Rhea",
+            "deps": [],
+            "external": "https://en.wikipedia.org/wiki/Rhea_(moon)",
+            "logo": "https://favicon.im/wikipedia.org"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "uranus",
+    "title": "Uranus Study Model",
+    "abstract": "Value chain for analyzing Uranus' atmosphere and axial tilt effects.",
+    "categories": [
+      {
+        "id": "observation",
+        "title": "Observation",
+        "items": [
+          {
+            "id": "tilt-dynamics",
+            "name": "Tilt Dynamics Observation",
+            "deps": [
+              "long-range-imaging"
+            ]
+          },
+          {
+            "id": "atmo-sensing-uranus",
+            "name": "Atmospheric Sensing",
+            "deps": [
+              "data-grid"
+            ]
+          },
+          {
+            "id": "moon-scan-uranus",
+            "name": "Moon Scanning",
+            "deps": [
+              "orbital-array"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "environment",
+        "title": "Environment",
+        "items": [
+          {
+            "id": "wind-patterns-uranus",
+            "name": "Wind Pattern Modeling",
+            "deps": [
+              "atmo-sensing-uranus"
+            ]
+          },
+          {
+            "id": "seasonal-cycles-uranus",
+            "name": "Seasonal Cycles Analysis",
+            "deps": [
+              "tilt-dynamics"
+            ]
+          },
+          {
+            "id": "moon-dynamics-uranus",
+            "name": "Moon Dynamics",
+            "deps": [
+              "moon-scan-uranus"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "resources",
+        "title": "Resources",
+        "items": [
+          {
+            "id": "ice-discovery-uranus",
+            "name": "Ice Discovery",
+            "deps": [
+              "wind-patterns-uranus"
+            ]
+          },
+          {
+            "id": "gas-analysis-uranus",
+            "name": "Gas Analysis",
+            "deps": [
+              "atmo-sensing-uranus"
+            ]
+          },
+          {
+            "id": "orbit-energy-study",
+            "name": "Orbit Energy Study",
+            "deps": [
+              "moon-dynamics-uranus"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "infrastructure",
+        "title": "Infrastructure",
+        "items": [
+          {
+            "id": "long-range-imaging",
+            "name": "Long Range Imaging",
+            "deps": []
+          },
+          {
+            "id": "orbital-array",
+            "name": "Orbital Array",
+            "deps": []
+          },
+          {
+            "id": "data-grid",
+            "name": "Data Grid",
+            "deps": []
+          }
+        ]
+      },
+      {
+        "id": "moons",
+        "title": "Moons",
+        "items": [
+          {
+            "id": "titania",
+            "name": "Titania",
+            "deps": [],
+            "external": "https://en.wikipedia.org/wiki/Titania_(moon)",
+            "logo": "https://favicon.im/wikipedia.org"
+          },
+          {
+            "id": "oberon",
+            "name": "Oberon",
+            "deps": [],
+            "external": "https://en.wikipedia.org/wiki/Oberon_(moon)",
+            "logo": "https://favicon.im/wikipedia.org"
+          },
+          {
+            "id": "umbriel",
+            "name": "Umbriel",
+            "deps": [],
+            "external": "https://en.wikipedia.org/wiki/Umbriel_(moon)",
+            "logo": "https://favicon.im/wikipedia.org"
+          },
+          {
+            "id": "ariel",
+            "name": "Ariel",
+            "deps": [],
+            "external": "https://en.wikipedia.org/wiki/Ariel_(moon)",
+            "logo": "https://favicon.im/wikipedia.org"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "neptune",
+    "title": "Neptune Study Model",
+    "abstract": "Value chain for distant observation of Neptune.",
+    "categories": [
+      {
+        "id": "observation",
+        "title": "Observation",
+        "items": [
+          {
+            "id": "storm-tracking-neptune",
+            "name": "Storm Tracking",
+            "deps": [
+              "deep-imaging"
+            ]
+          },
+          {
+            "id": "atmo-sensing-neptune",
+            "name": "Atmospheric Sensing",
+            "deps": [
+              "data-cluster"
+            ]
+          },
+          {
+            "id": "moon-observation-neptune",
+            "name": "Moon Observation",
+            "deps": [
+              "nav-system"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "environment",
+        "title": "Environment",
+        "items": [
+          {
+            "id": "wind-modeling-neptune",
+            "name": "Wind Modeling",
+            "deps": [
+              "atmo-sensing-neptune"
+            ]
+          },
+          {
+            "id": "temp-distribution-neptune",
+            "name": "Temperature Distribution",
+            "deps": [
+              "storm-tracking-neptune"
+            ]
+          },
+          {
+            "id": "moon-dynamics-neptune",
+            "name": "Moon Dynamics",
+            "deps": [
+              "moon-observation-neptune"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "resources",
+        "title": "Resources",
+        "items": [
+          {
+            "id": "ice-mapping-neptune",
+            "name": "Ice Mapping",
+            "deps": [
+              "temp-distribution-neptune"
+            ]
+          },
+          {
+            "id": "gas-analysis-neptune",
+            "name": "Gas Analysis",
+            "deps": [
+              "atmo-sensing-neptune"
+            ]
+          },
+          {
+            "id": "energy-dynamics-neptune",
+            "name": "Energy Dynamics",
+            "deps": [
+              "moon-dynamics-neptune"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "infrastructure",
+        "title": "Infrastructure",
+        "items": [
+          {
+            "id": "deep-imaging",
+            "name": "Deep Imaging",
+            "deps": []
+          },
+          {
+            "id": "nav-system",
+            "name": "Navigation System",
+            "deps": []
+          },
+          {
+            "id": "data-cluster",
+            "name": "Data Cluster",
+            "deps": []
+          }
+        ]
+      },
+      {
+        "id": "moons",
+        "title": "Moons",
+        "items": [
+          {
+            "id": "triton",
+            "name": "Triton",
+            "deps": [],
+            "external": "https://en.wikipedia.org/wiki/Triton_(moon)",
+            "logo": "https://favicon.im/wikipedia.org"
+          },
+          {
+            "id": "proteus",
+            "name": "Proteus",
+            "deps": [],
+            "external": "https://en.wikipedia.org/wiki/Proteus_(moon)",
+            "logo": "https://favicon.im/wikipedia.org"
+          },
+          {
+            "id": "nereid",
+            "name": "Nereid",
+            "deps": [],
+            "external": "https://en.wikipedia.org/wiki/Nereid_(moon)",
+            "logo": "https://favicon.im/wikipedia.org"
+          }
+        ]
+      }
+    ]
+  }
+]

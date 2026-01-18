@@ -1,0 +1,342 @@
+{
+  "id": "NFR",
+  "title": "Non Functional Requirements",
+  "abstract": "This blockscape visualizes a comprehensive collection of *ility words - non functionality requirement (NFR) attributes ending in '-ility' - organized into categories and showing their relationships.<br>These *ility words represent various aspects of software quality, system behavior, and architectural characteristics. Each word is categorized by theme (Performance, Security, Maintainability, etc.) and connected to other *ility words through dependency relationships.<br>The visualization helps understand how different quality attributes influence and enable each other, creating a network of interconnected *ility concepts.<br>You can view alternative requirements standards by loading from this URL.<br>https://gist.githubusercontent.com/pwright/281441c9c07eabe9ef0cd43a27e766de/raw/030d6dd59c2c1e7dbff3b7f565acb24f3cc32c78/requirements.bs",
+
+  "categories": [
+    {
+      "id": "quality",
+      "title": "Overall Quality Attributes",
+      "items": [
+        {
+          "id": "correctness",
+          "name": "Correctness",
+          "deps": []
+        },
+        {
+          "id": "credibility",
+          "name": "Credibility",
+          "deps": ["correctness"]
+        },
+        {
+          "id": "reliability",
+          "name": "Reliability",
+          "deps": ["availability", "recoverability"]
+        },
+        {
+          "id": "dependability",
+          "name": "Dependability",
+          "deps": ["reliability", "robustness"]
+        },
+        {
+          "id": "stability",
+          "name": "Stability",
+          "deps": ["robustness"]
+        },
+        {
+          "id": "sustainability",
+          "name": "Sustainability",
+          "deps": ["maintainability", "efficiency"]
+        }
+      ]
+    },
+    {
+      "id": "performance",
+      "title": "Performance and Scalability",
+      "items": [
+        {
+          "id": "efficiency",
+          "name": "Efficiency",
+          "deps": []
+        },
+        {
+          "id": "performance",
+          "name": "Effectiveness",
+          "deps": ["efficiency"]
+        },
+        {
+          "id": "scalability",
+          "name": "Scalability",
+          "deps": ["efficiency"]
+        },
+        {
+          "id": "responsiveness",
+          "name": "Responsiveness",
+          "deps": ["efficiency"]
+        },
+        {
+          "id": "timeliness",
+          "name": "Timeliness",
+          "deps": ["responsiveness"]
+        },
+        {
+          "id": "predictability",
+          "name": "Predictability",
+          "deps": ["efficiency", "timeliness"]
+        }
+      ]
+    },
+    {
+      "id": "security",
+      "title": "Security and Safety",
+      "items": [
+        {
+          "id": "security",
+          "name": "Securability",
+          "deps": []
+        },
+        {
+          "id": "safety",
+          "name": "Safety",
+          "deps": ["security"]
+        },
+        {
+          "id": "accountability",
+          "name": "Accountability",
+          "deps": ["security", "auditability"]
+        },
+        {
+          "id": "auditability",
+          "name": "Auditability",
+          "deps": []
+        },
+        {
+          "id": "traceability",
+          "name": "Traceability",
+          "deps": ["auditability"]
+        },
+        {
+          "id": "integrity",
+          "name": "Integrity",
+          "deps": ["security"]
+        }
+      ]
+    },
+    {
+      "id": "maintainability",
+      "title": "Maintainability and Modifiability",
+      "items": [
+        {
+          "id": "maintainability",
+          "name": "Maintainability",
+          "deps": []
+        },
+        {
+          "id": "modifiability",
+          "name": "Modifiability",
+          "deps": ["maintainability"]
+        },
+        {
+          "id": "extensibility",
+          "name": "Extensibility",
+          "deps": ["modifiability"]
+        },
+        {
+          "id": "evolvability",
+          "name": "Evolvability",
+          "deps": ["modifiability", "extensibility"]
+        },
+        {
+          "id": "customizability",
+          "name": "Customizability",
+          "deps": ["modifiability"]
+        },
+        {
+          "id": "configurability",
+          "name": "Configurability",
+          "deps": ["customizability"]
+        },
+        {
+          "id": "modularity",
+          "name": "Modularity",
+          "deps": ["configurability"]
+        },
+        {
+          "id": "tailorability",
+          "name": "Tailorability",
+          "deps": ["customizability"]
+        }
+      ]
+    },
+    {
+      "id": "usability",
+      "title": "Usability and Learnability",
+      "items": [
+        {
+          "id": "usability",
+          "name": "Usability",
+          "deps": ["learnability", "understandability"]
+        },
+        {
+          "id": "learnability",
+          "name": "Learnability",
+          "deps": []
+        },
+        {
+          "id": "understandability",
+          "name": "Understandability",
+          "deps": []
+        },
+        {
+          "id": "accessibility",
+          "name": "Accessibility",
+          "deps": ["usability"]
+        },
+        {
+          "id": "simplicity",
+          "name": "Simplicity",
+          "deps": ["understandability"]
+        },
+        {
+          "id": "operability",
+          "name": "Operability",
+          "deps": ["usability"]
+        }
+      ]
+    },
+    {
+      "id": "portability",
+      "title": "Portability and Deployability",
+      "items": [
+        {
+          "id": "installability",
+          "name": "Installability",
+          "deps": []
+        },
+        {
+          "id": "deployability",
+          "name": "Deployability",
+          "deps": ["installability"]
+        },
+        {
+          "id": "distributability",
+          "name": "Distributability",
+          "deps": ["deployability"]
+        },
+        {
+          "id": "compatibility",
+          "name": "Compatibility",
+          "deps": ["interoperability"]
+        },
+        {
+          "id": "interoperability",
+          "name": "Interoperability",
+          "deps": []
+        },
+        {
+          "id": "mobility",
+          "name": "Mobility",
+          "deps": ["portability"]
+        },
+        {
+          "id": "nomadicity",
+          "name": "Nomadicity",
+          "deps": ["mobility"]
+        }
+      ]
+    },
+    {
+      "id": "dependability",
+      "title": "Reliability, Robustness, and Recovery",
+      "items": [
+        {
+          "id": "availability",
+          "name": "Availability",
+          "deps": []
+        },
+        {
+          "id": "recoverability",
+          "name": "Recoverability",
+          "deps": ["availability"]
+        },
+        {
+          "id": "robustness",
+          "name": "Robustness",
+          "deps": ["reliability"]
+        },
+        {
+          "id": "durability",
+          "name": "Durability",
+          "deps": ["reliability"]
+        },
+        {
+          "id": "survivability",
+          "name": "Survivability",
+          "deps": ["recoverability"]
+        },
+        {
+          "id": "fault_tolerance",
+          "name": "Resilience (Implied)",
+          "deps": ["robustness", "recoverability"]
+        }
+      ]
+    },
+    {
+      "id": "verification",
+      "title": "Verifiability and Test Attributes",
+      "items": [
+        {
+          "id": "testability",
+          "name": "Testability",
+          "deps": []
+        },
+        {
+          "id": "debuggability",
+          "name": "Debugability",
+          "deps": ["testability"]
+        },
+        {
+          "id": "demonstrability",
+          "name": "Demonstrability",
+          "deps": ["testability"]
+        },
+        {
+          "id": "reproducibility",
+          "name": "Reproducability",
+          "deps": ["testability"]
+        },
+        {
+          "id": "repeatability",
+          "name": "Repeatability",
+          "deps": ["testability"]
+        },
+        {
+          "id": "verifiability",
+          "name": "Audit/Compliance (Implied)",
+          "deps": ["traceability", "testability"]
+        }
+      ]
+    },
+    {
+      "id": "extensibility",
+      "title": "Adaptability and Evolution",
+      "items": [
+        {
+          "id": "adaptability",
+          "name": "Adaptability",
+          "deps": []
+        },
+        {
+          "id": "flexibility",
+          "name": "Flexibility",
+          "deps": ["adaptability"]
+        },
+        {
+          "id": "extensibility_alt",
+          "name": "Extensibility",
+          "deps": ["flexibility"]
+        },
+        {
+          "id": "evolvability_alt",
+          "name": "Evolvability",
+          "deps": ["extensibility_alt"]
+        },
+        {
+          "id": "scalability_alt",
+          "name": "Scalability",
+          "deps": ["extensibility_alt"]
+        }
+      ]
+    }
+  ]
+}

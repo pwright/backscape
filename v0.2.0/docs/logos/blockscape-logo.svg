@@ -1,0 +1,41 @@
+<svg
+  width="240"
+  height="140"
+  viewBox="0 0 240 140"
+  xmlns="http://www.w3.org/2000/svg"
+  role="img"
+  aria-labelledby="title desc"
+>
+  <title id="title">3x3 mapping logo</title>
+  <desc id="desc">
+    3 by 3 grid of solid circles. Middle-left depends on middle-center
+    and bottom-center (red lines) and enables top-center and top-right (blue lines).
+  </desc>
+
+  <!-- Dependents (red lines) -->
+  <line x1="40" y1="70" x2="120" y2="70"
+        stroke="#fb7185" stroke-width="3" stroke-linecap="round"/>
+  <line x1="40" y1="70" x2="120" y2="110"
+        stroke="#fb7185" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Enables (blue lines) -->
+  <line x1="40" y1="70" x2="120" y2="30"
+        stroke="#3b82f6" stroke-width="3" stroke-linecap="round"/>
+  <line x1="40" y1="70" x2="200" y2="30"
+        stroke="#3b82f6" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Top row -->
+  <circle cx="40" cy="30"  r="10" fill="#60a5fa" /> <!-- L (new color) -->
+  <circle cx="120" cy="30" r="10" fill="#3b82f6" />
+  <circle cx="200" cy="30" r="10" fill="#06b6d4" />
+
+  <!-- Middle row -->
+  <circle cx="40" cy="70"  r="11" fill="#a855f7" stroke="#0f172a" stroke-width="2"/>
+  <circle cx="120" cy="70" r="10" fill="#f59e0b" />
+  <circle cx="200" cy="70" r="10" fill="#f97316" />
+
+  <!-- Bottom row -->
+  <circle cx="40"  cy="110" r="10" fill="#22c55e" />
+  <circle cx="120" cy="110" r="10" fill="#84cc16" />
+  <circle cx="200" cy="110" r="10" fill="#10b981" />
+</svg>

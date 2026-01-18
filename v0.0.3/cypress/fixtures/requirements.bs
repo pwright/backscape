@@ -1,0 +1,641 @@
+{
+  "id": "ISO-IEC-25010",
+  "title": "ISO/IEC 25010 Quality Model",
+  "abstract": "This blockscape visualizes the ISO/IEC 25010 software quality model, which defines eight quality characteristics for software products: Functional Suitability, Performance Efficiency, Compatibility, Usability, Reliability, Security, Maintainability, and Portability.<br>Each characteristic contains multiple sub-characteristics that define specific aspects of software quality. The dependencies between these characteristics show how different quality aspects influence and enable each other.<br>This visualization helps understand the relationships between different quality attributes and how they contribute to overall software quality.<br>You can choose other data from the 'Seed Template' pulldown.<br>Or load data from a URL.<br>Select an item to see its dependencies.",
+  "categories": [
+    {
+      "id": "functional_suitability",
+      "title": "Functional Suitability",
+      "items": [
+        {
+          "id": "functional_completeness",
+          "name": "Functional completeness",
+          "deps": []
+        },
+        {
+          "id": "functional_correctness",
+          "name": "Functional correctness",
+          "deps": [
+            "functional_completeness"
+          ]
+        },
+        {
+          "id": "functional_appropriateness",
+          "name": "Functional appropriateness",
+          "deps": [
+            "functional_completeness"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "performance_efficiency",
+      "title": "Performance Efficiency",
+      "items": [
+        {
+          "id": "time_behaviour",
+          "name": "Time behaviour",
+          "deps": [
+            "resource_utilisation",
+            "capacity"
+          ]
+        },
+        {
+          "id": "resource_utilisation",
+          "name": "Resource utilisation",
+          "deps": []
+        },
+        {
+          "id": "capacity",
+          "name": "Capacity",
+          "deps": [
+            "resource_utilisation"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "compatibility",
+      "title": "Compatibility",
+      "items": [
+        {
+          "id": "co_existence",
+          "name": "Co-existence",
+          "deps": []
+        },
+        {
+          "id": "interoperability",
+          "name": "Interoperability",
+          "deps": []
+        }
+      ]
+    },
+    {
+      "id": "usability",
+      "title": "Usability",
+      "items": [
+        {
+          "id": "appropriateness_recognizability",
+          "name": "Appropriateness recognizability",
+          "deps": []
+        },
+        {
+          "id": "learnability",
+          "name": "Learnability",
+          "deps": [
+            "appropriateness_recognizability"
+          ]
+        },
+        {
+          "id": "operability",
+          "name": "Operability",
+          "deps": [
+            "learnability"
+          ]
+        },
+        {
+          "id": "user_error_protection",
+          "name": "User error protection",
+          "deps": [
+            "operability"
+          ]
+        },
+        {
+          "id": "user_interface_aesthetics",
+          "name": "User interface aesthetics",
+          "deps": []
+        },
+        {
+          "id": "accessibility",
+          "name": "Accessibility",
+          "deps": [
+            "operability"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reliability",
+      "title": "Reliability",
+      "items": [
+        {
+          "id": "maturity",
+          "name": "Maturity",
+          "deps": []
+        },
+        {
+          "id": "availability",
+          "name": "Availability",
+          "deps": [
+            "maturity",
+            "fault_tolerance",
+            "recoverability"
+          ]
+        },
+        {
+          "id": "fault_tolerance",
+          "name": "Fault tolerance",
+          "deps": [
+            "maturity"
+          ]
+        },
+        {
+          "id": "recoverability",
+          "name": "Recoverability",
+          "deps": [
+            "maturity"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "security",
+      "title": "Security",
+      "items": [
+        {
+          "id": "confidentiality",
+          "name": "Confidentiality",
+          "deps": []
+        },
+        {
+          "id": "integrity",
+          "name": "Integrity",
+          "deps": []
+        },
+        {
+          "id": "non_repudiation",
+          "name": "Non-repudiation",
+          "deps": [
+            "integrity",
+            "authenticity",
+            "accountability"
+          ]
+        },
+        {
+          "id": "accountability",
+          "name": "Accountability",
+          "deps": []
+        },
+        {
+          "id": "authenticity",
+          "name": "Authenticity",
+          "deps": []
+        }
+      ]
+    },
+    {
+      "id": "maintainability",
+      "title": "Maintainability",
+      "items": [
+        {
+          "id": "modularity",
+          "name": "Modularity",
+          "deps": []
+        },
+        {
+          "id": "reusability",
+          "name": "Reusability",
+          "deps": [
+            "modularity"
+          ]
+        },
+        {
+          "id": "analysability",
+          "name": "Analysability",
+          "deps": []
+        },
+        {
+          "id": "modifiability",
+          "name": "Modifiability",
+          "deps": [
+            "analysability",
+            "modularity"
+          ]
+        },
+        {
+          "id": "testability",
+          "name": "Testability",
+          "deps": [
+            "analysability",
+            "modularity"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "portability",
+      "title": "Portability",
+      "items": [
+        {
+          "id": "adaptability",
+          "name": "Adaptability",
+          "deps": []
+        },
+        {
+          "id": "installability",
+          "name": "Installability",
+          "deps": []
+        },
+        {
+          "id": "replaceability",
+          "name": "Replaceability",
+          "deps": [
+            "adaptability"
+          ]
+        }
+      ]
+    }
+  ]
+}
+---
+{
+  "id": "SEII-QAW",
+  "title": "SEII-QAW Quality Attributes",
+  "abstract": "This blockscape visualizes quality attributes for QAW (Quality Attribute Workshop) sessions, based on the SEII (Software Engineering Institute International) framework.<br>It presents key quality characteristics including Availability, Modifiability, Performance, Security, Testability, Usability, Interoperability, Portability, Maintainability, and Deployability.<br>Each characteristic contains multiple sub-characteristics that define specific aspects of software quality. The dependencies between these characteristics show how different quality aspects influence and enable each other.<br>This visualization helps QAW participants understand the relationships between different quality attributes and how they contribute to overall software quality during architecture design discussions.<br>You can choose other data from the 'Seed Template' pulldown.<br>Or load data from a URL.<br>Select an item to see its dependencies.",
+  "categories": [
+    {
+      "id": "availability",
+      "title": "Availability",
+      "items": [
+        {
+          "id": "fault_detection",
+          "name": "Fault Detection",
+          "deps": []
+        },
+        {
+          "id": "fault_recovery",
+          "name": "Fault Recovery",
+          "deps": [
+            "fault_detection"
+          ]
+        },
+        {
+          "id": "redundancy_management",
+          "name": "Redundancy Management",
+          "deps": [
+            "fault_recovery"
+          ]
+        },
+        {
+          "id": "monitoring",
+          "name": "Monitoring and Alerting",
+          "deps": [
+            "fault_detection"
+          ]
+        },
+        {
+          "id": "reconfiguration",
+          "name": "Dynamic Reconfiguration",
+          "deps": [
+            "fault_recovery"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "modifiability",
+      "title": "Modifiability",
+      "items": [
+        {
+          "id": "change_localization",
+          "name": "Change Localization",
+          "deps": []
+        },
+        {
+          "id": "change_propagation_control",
+          "name": "Change Propagation Control",
+          "deps": [
+            "change_localization"
+          ]
+        },
+        {
+          "id": "component_replacement",
+          "name": "Component Replacement",
+          "deps": [
+            "change_propagation_control"
+          ]
+        },
+        {
+          "id": "extension_points",
+          "name": "Extension Points",
+          "deps": [
+            "change_localization"
+          ]
+        },
+        {
+          "id": "configuration_management",
+          "name": "Configuration Management",
+          "deps": [
+            "change_propagation_control"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "performance",
+      "title": "Performance",
+      "items": [
+        {
+          "id": "response_time",
+          "name": "Response Time",
+          "deps": []
+        },
+        {
+          "id": "throughput",
+          "name": "Throughput",
+          "deps": [
+            "response_time"
+          ]
+        },
+        {
+          "id": "latency",
+          "name": "Latency",
+          "deps": [
+            "response_time"
+          ]
+        },
+        {
+          "id": "resource_utilization",
+          "name": "Resource Utilization",
+          "deps": []
+        },
+        {
+          "id": "load_management",
+          "name": "Load Management",
+          "deps": [
+            "resource_utilization"
+          ]
+        },
+        {
+          "id": "scalability",
+          "name": "Scalability",
+          "deps": [
+            "throughput",
+            "load_management"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "security",
+      "title": "Security",
+      "items": [
+        {
+          "id": "authentication",
+          "name": "Authentication",
+          "deps": []
+        },
+        {
+          "id": "authorization",
+          "name": "Authorization",
+          "deps": [
+            "authentication"
+          ]
+        },
+        {
+          "id": "confidentiality",
+          "name": "Confidentiality",
+          "deps": [
+            "authorization"
+          ]
+        },
+        {
+          "id": "integrity",
+          "name": "Integrity",
+          "deps": [
+            "authorization"
+          ]
+        },
+        {
+          "id": "non_repudiation",
+          "name": "Non-repudiation",
+          "deps": [
+            "integrity"
+          ]
+        },
+        {
+          "id": "auditing",
+          "name": "Auditing and Logging",
+          "deps": [
+            "authorization"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "testability",
+      "title": "Testability",
+      "items": [
+        {
+          "id": "observability",
+          "name": "Observability",
+          "deps": []
+        },
+        {
+          "id": "controllability",
+          "name": "Controllability",
+          "deps": []
+        },
+        {
+          "id": "instrumentation",
+          "name": "Instrumentation",
+          "deps": [
+            "observability"
+          ]
+        },
+        {
+          "id": "test_isolation",
+          "name": "Test Isolation",
+          "deps": [
+            "controllability"
+          ]
+        },
+        {
+          "id": "automated_testing",
+          "name": "Automated Testing",
+          "deps": [
+            "instrumentation",
+            "test_isolation"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "usability",
+      "title": "Usability",
+      "items": [
+        {
+          "id": "learnability",
+          "name": "Learnability",
+          "deps": []
+        },
+        {
+          "id": "operability",
+          "name": "Operability",
+          "deps": [
+            "learnability"
+          ]
+        },
+        {
+          "id": "understandability",
+          "name": "Understandability",
+          "deps": []
+        },
+        {
+          "id": "accessibility",
+          "name": "Accessibility",
+          "deps": [
+            "operability"
+          ]
+        },
+        {
+          "id": "user_feedback",
+          "name": "User Feedback",
+          "deps": [
+            "operability"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "interoperability",
+      "title": "Interoperability",
+      "items": [
+        {
+          "id": "protocol_compliance",
+          "name": "Protocol Compliance",
+          "deps": []
+        },
+        {
+          "id": "data_exchange",
+          "name": "Data Exchange Formats",
+          "deps": [
+            "protocol_compliance"
+          ]
+        },
+        {
+          "id": "interface_adaptation",
+          "name": "Interface Adaptation",
+          "deps": [
+            "data_exchange"
+          ]
+        },
+        {
+          "id": "api_stability",
+          "name": "API Stability",
+          "deps": [
+            "protocol_compliance"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "portability",
+      "title": "Portability",
+      "items": [
+        {
+          "id": "environment_independence",
+          "name": "Environment Independence",
+          "deps": []
+        },
+        {
+          "id": "installability",
+          "name": "Installability",
+          "deps": [
+            "environment_independence"
+          ]
+        },
+        {
+          "id": "replaceability",
+          "name": "Replaceability",
+          "deps": [
+            "environment_independence"
+          ]
+        },
+        {
+          "id": "adaptability",
+          "name": "Adaptability",
+          "deps": [
+            "environment_independence"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "maintainability",
+      "title": "Maintainability",
+      "items": [
+        {
+          "id": "analyzability",
+          "name": "Analyzability",
+          "deps": []
+        },
+        {
+          "id": "modularity",
+          "name": "Modularity",
+          "deps": []
+        },
+        {
+          "id": "change_management",
+          "name": "Change Management Process",
+          "deps": [
+            "analyzability"
+          ]
+        },
+        {
+          "id": "tool_support",
+          "name": "Tool Support and Automation",
+          "deps": [
+            "modularity"
+          ]
+        },
+        {
+          "id": "reusability",
+          "name": "Reusability",
+          "deps": [
+            "modularity"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "deployability",
+      "title": "Deployability",
+      "items": [
+        {
+          "id": "automation",
+          "name": "Deployment Automation",
+          "deps": []
+        },
+        {
+          "id": "rollback",
+          "name": "Rollback and Recovery",
+          "deps": [
+            "automation"
+          ]
+        },
+        {
+          "id": "configuration",
+          "name": "Configuration Management",
+          "deps": [
+            "automation"
+          ]
+        },
+        {
+          "id": "monitoring_deploy",
+          "name": "Deployment Monitoring",
+          "deps": [
+            "automation"
+          ]
+        },
+        {
+          "id": "scalability_deploy",
+          "name": "Horizontal and Vertical Scaling",
+          "deps": [
+            "automation"
+          ]
+        }
+      ]
+    }
+  ]
+}
