@@ -1,0 +1,197 @@
+{
+  "id": "deployment-models-blockscape",
+  "title": "Deployment Models Value Chain",
+  "abstract": "Users want reliable, fast, and secure delivery of software into production; value is realized by choosing an appropriate deployment model (from local Maven runs and fat JARs through VMs, containers, Kubernetes, GitOps, serverless, and edge/WASM) that is enabled by platform services (CI/CD, registries, observability, secrets, identity) and grounded on infrastructure (compute, network, storage).<br> Load details from <br> https://gist.githubusercontent.com/pwright/91c0dc3e2a625e44ea1d5f3534f43d8f/raw/d0233131d6bbcec806a885aa50482ece348e3629/deployment-models.bs",
+  "categories": [
+    {
+      "id": "user-capabilities",
+      "title": "Deployment Models (User-Facing)",
+      "items": [
+        {
+          "id": "maven-local-run",
+          "name": "Maven-Driven Local Run",
+          "deps": [
+            "compute"
+          ]
+        },
+        {
+          "id": "fat-jar-host",
+          "name": "Fat JAR on Host",
+          "deps": [
+            "compute",
+            "secrets",
+            "monitoring"
+          ]
+        },
+        {
+          "id": "war-app-server",
+          "name": "WAR/EAR on App Server",
+          "deps": [
+            "compute",
+            "network",
+            "secrets",
+            "monitoring"
+          ]
+        },
+        {
+          "id": "immutable-vm",
+          "name": "Immutable VM Images",
+          "deps": [
+            "compute",
+            "network",
+            "ci-cd",
+            "secrets",
+            "monitoring"
+          ]
+        },
+        {
+          "id": "single-host-container",
+          "name": "Single-Host Container",
+          "deps": [
+            "registry",
+            "compute",
+            "network",
+            "monitoring"
+          ]
+        },
+        {
+          "id": "compose-single-host",
+          "name": "Compose on Single Host",
+          "deps": [
+            "registry",
+            "compute",
+            "network",
+            "monitoring"
+          ]
+        },
+        {
+          "id": "buildpack-paas",
+          "name": "Buildpack/PaaS Git-Push Deploy",
+          "deps": [
+            "identity",
+            "ci-cd",
+            "registry",
+            "monitoring",
+            "network"
+          ]
+        },
+        {
+          "id": "k8s",
+          "name": "Kubernetes (Manifests/Helm/Kustomize)",
+          "deps": [
+            "registry",
+            "compute",
+            "network",
+            "storage",
+            "monitoring",
+            "secrets",
+            "identity"
+          ]
+        },
+        {
+          "id": "gitops",
+          "name": "GitOps on Kubernetes",
+          "deps": [
+            "k8s",
+            "ci-cd",
+            "registry",
+            "identity"
+          ]
+        },
+        {
+          "id": "k8s-serverless",
+          "name": "K8s-Native Serverless (Knative/OpenFaaS)",
+          "deps": [
+            "k8s",
+            "monitoring",
+            "secrets"
+          ]
+        },
+        {
+          "id": "managed-faas",
+          "name": "Managed FaaS (Lambda/Cloud Functions)",
+          "deps": [
+            "identity",
+            "secrets",
+            "monitoring",
+            "network"
+          ]
+        },
+        {
+          "id": "edge-wasm-microvm",
+          "name": "Edge/WASM/MicroVM Platforms",
+          "deps": [
+            "registry",
+            "network",
+            "identity"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "platform-services",
+      "title": "Platform Services",
+      "items": [
+        {
+          "id": "ci-cd",
+          "name": "CI/CD Automation",
+          "deps": [
+            "registry",
+            "identity"
+          ]
+        },
+        {
+          "id": "registry",
+          "name": "Artifact/OCI Registry",
+          "deps": [
+            "storage"
+          ]
+        },
+        {
+          "id": "monitoring",
+          "name": "Monitoring & Logging",
+          "deps": [
+            "storage",
+            "network"
+          ]
+        },
+        {
+          "id": "secrets",
+          "name": "Secrets Management",
+          "deps": [
+            "identity",
+            "storage"
+          ]
+        },
+        {
+          "id": "identity",
+          "name": "Identity & Access",
+          "deps": [
+            "storage"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "infrastructure",
+      "title": "Infrastructure",
+      "items": [
+        {
+          "id": "compute",
+          "name": "Compute",
+          "deps": []
+        },
+        {
+          "id": "network",
+          "name": "Networking",
+          "deps": []
+        },
+        {
+          "id": "storage",
+          "name": "Storage",
+          "deps": []
+        }
+      ]
+    }
+  ]
+}

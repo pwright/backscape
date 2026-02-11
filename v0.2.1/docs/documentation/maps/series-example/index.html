@@ -1,0 +1,1447 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://pwright.github.io/blockscape/maps/series-example/">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Series Example - Blockscape</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../css/brands.min.css" rel="stylesheet">
+        <link href="../../css/solid.min.css" rel="stylesheet">
+        <link href="../../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <link href="../../site_assets/blockscape/blockscape.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Blockscape</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="https://pwright.github.io/blockscape/" class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../.." class="nav-link">Hello</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Maps</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../blockscape-example/" class="dropdown-item">Blockscape Example</a>
+</li>
+                                    
+<li>
+    <a href="../wardley-example/" class="dropdown-item">Wardley Example</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">Series Example</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Documentation</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../documentation/maps/" class="dropdown-item">Overview</a>
+</li>
+                                    
+<li>
+    <a href="../../documentation/features/" class="dropdown-item">Features</a>
+</li>
+                                    
+<li>
+    <a href="../../documentation/series/" class="dropdown-item">Series</a>
+</li>
+                                    
+<li>
+    <a href="../../documentation/models/" class="dropdown-item">Models</a>
+</li>
+                                    
+<li>
+    <a href="../../documentation/docker/" class="dropdown-item">Docker for local editor</a>
+</li>
+                                    
+<li>
+    <a href="../../documentation/apicurio/" class="dropdown-item">Apicurio as backend</a>
+</li>
+                                    
+<li>
+    <a href="../../documentation/mkdocs/" class="dropdown-item">MkDocs usage</a>
+</li>
+                                    
+<li>
+    <a href="../../documentation/llm-generation/" class="dropdown-item">LLM generation</a>
+</li>
+                                    
+<li>
+    <a href="../../documentation/share-links/" class="dropdown-item">Share links</a>
+</li>
+                                    
+<li>
+    <a href="../../documentation/bs-opener-linux/" class="dropdown-item">Local usage on Linux</a>
+</li>
+                                    
+<li>
+    <a href="../../documentation/bs-opener-mac/" class="dropdown-item">Local usage on Mac</a>
+</li>
+                                    
+<li>
+    <a href="../../documentation/server/" class="dropdown-item">Local backend server</a>
+</li>
+                                    
+<li>
+    <a href="../../documentation/rise-and-fall-json/" class="dropdown-item">JSON prompting</a>
+</li>
+                                    
+<li>
+    <a href="../../documentation/editor/" class="dropdown-item">Editor</a>
+</li>
+                                    
+<li>
+    <a href="../../documentation/evolution/" class="dropdown-item">Evolution</a>
+</li>
+                                    
+<li>
+    <a href="../../documentation/gestalt/" class="dropdown-item">Gestalt</a>
+</li>
+                                    
+<li>
+    <a href="../../documentation/gists/" class="dropdown-item">Gists</a>
+</li>
+                                    
+<li>
+    <a href="../../documentation/icons/" class="dropdown-item">Icons</a>
+</li>
+                                    
+<li>
+    <a href="../../documentation/llm-consume/" class="dropdown-item">LLM consume</a>
+</li>
+                                    
+<li>
+    <a href="../../documentation/navigation/" class="dropdown-item">Navigation</a>
+</li>
+                                    
+<li>
+    <a href="../../documentation/paste/" class="dropdown-item">Paste</a>
+</li>
+                                    
+<li>
+    <a href="../../documentation/portfolio/" class="dropdown-item">Portfolio</a>
+</li>
+                                    
+<li>
+    <a href="../../documentation/relational-awareness/" class="dropdown-item">Relational awareness</a>
+</li>
+                                    
+<li>
+    <a href="../../documentation/stages/" class="dropdown-item">Stages</a>
+</li>
+                                    
+<li>
+    <a href="../../documentation/value-chain/" class="dropdown-item">Value chain</a>
+</li>
+                                    
+<li>
+    <a href="../../documentation/watch-models/" class="dropdown-item">Watch models</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../toc/" class="nav-link">TOC</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../wardley-example/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../../documentation/maps/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#series-example" class="nav-link">Series example</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="series-example">Series example</h1>
+<div class="blockscape-root">
+  <script type="application/json" class="blockscape-seed">
+[
+  {
+    "id": "solar-system",
+    "title": "Solar System Model",
+    "abstract": "Index of all planetary exploration models in this series.",
+    "categories": [
+      {
+        "id": "habitable",
+        "title": "Habitable",
+        "items": [
+          {
+            "id": "earth",
+            "name": "Earth",
+            "deps": [],
+            "logo": "https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apollo_17.jpg"
+          }
+        ]
+      },
+      {
+        "id": "visible-by-eye",
+        "title": "Visible by Eye",
+        "items": [
+          {
+            "id": "mercury",
+            "name": "Mercury",
+            "deps": [],
+            "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Mercury_in_true_color.jpg/250px-Mercury_in_true_color.jpg"
+          },
+          {
+            "id": "venus",
+            "name": "Venus",
+            "deps": [],
+            "logo": "https://upload.wikimedia.org/wikipedia/commons/e/e5/Venus-real_color.jpg"
+          },
+          {
+            "id": "mars",
+            "name": "Mars",
+            "deps": [],
+            "logo": "https://upload.wikimedia.org/wikipedia/commons/0/02/OSIRIS_Mars_true_color.jpg"
+          },
+          {
+            "id": "jupiter",
+            "name": "Jupiter",
+            "deps": [],
+            "logo": "https://upload.wikimedia.org/wikipedia/commons/e/e2/Jupiter.jpg"
+          },
+          {
+            "id": "saturn",
+            "name": "Saturn",
+            "deps": [],
+            "logo": "https://upload.wikimedia.org/wikipedia/commons/c/c7/Saturn_during_Equinox.jpg"
+          }
+        ]
+      },
+      {
+        "id": "outer",
+        "title": "Telescope",
+        "items": [
+          {
+            "id": "uranus",
+            "name": "Uranus",
+            "deps": [],
+            "logo": "https://upload.wikimedia.org/wikipedia/commons/3/3d/Uranus2.jpg"
+          },
+          {
+            "id": "neptune",
+            "name": "Neptune",
+            "deps": [],
+            "logo": "https://upload.wikimedia.org/wikipedia/commons/5/56/Neptune_Full.jpg"
+          }
+        ]
+      },
+      {
+        "id": "former-planets",
+        "title": "Former Planets",
+        "items": [
+          {
+            "id": "pluto",
+            "name": "Pluto",
+            "color": "#000000",
+            "deps": [],
+            "external": "https://en.wikipedia.org/wiki/Pluto"
+          }
+        ]
+      }
+    ],
+    "seriesId": "planets"
+  },
+  {
+    "id": "mercury",
+    "title": "Mercury Exploration Model",
+    "abstract": "Value chain for understanding and exploring Mercury.",
+    "categories": [
+      {
+        "id": "observation",
+        "title": "Observation",
+        "items": [
+          {
+            "id": "surface-imaging",
+            "name": "Surface Imaging",
+            "deps": [
+              "orbital-navigation",
+              "thermal-protection"
+            ]
+          },
+          {
+            "id": "spectral-scan",
+            "name": "Spectral Scanning",
+            "deps": [
+              "data-processing"
+            ]
+          },
+          {
+            "id": "solar-interaction",
+            "name": "Solar Interaction Analysis",
+            "deps": [
+              "radiation-shielding"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "environment",
+        "title": "Environment",
+        "items": [
+          {
+            "id": "crater-mapping",
+            "name": "Crater Mapping",
+            "deps": [
+              "surface-imaging"
+            ]
+          },
+          {
+            "id": "exosphere-study",
+            "name": "Exosphere Study",
+            "deps": [
+              "spectral-scan"
+            ]
+          },
+          {
+            "id": "thermal-variation",
+            "name": "Thermal Variation Modeling",
+            "deps": [
+              "solar-interaction"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "resources",
+        "title": "Resources",
+        "items": [
+          {
+            "id": "minerals-analysis",
+            "name": "Minerals Analysis",
+            "deps": [
+              "crater-mapping",
+              "data-processing"
+            ]
+          },
+          {
+            "id": "ice-detection",
+            "name": "Ice Detection",
+            "deps": [
+              "spectral-scan"
+            ]
+          },
+          {
+            "id": "soil-composition",
+            "name": "Soil Composition",
+            "deps": [
+              "minerals-analysis"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "infrastructure",
+        "title": "Infrastructure",
+        "items": [
+          {
+            "id": "orbital-navigation",
+            "name": "Orbital Navigation",
+            "deps": []
+          },
+          {
+            "id": "thermal-protection",
+            "name": "Thermal Protection",
+            "deps": []
+          },
+          {
+            "id": "radiation-shielding",
+            "name": "Radiation Shielding",
+            "deps": []
+          },
+          {
+            "id": "data-processing",
+            "name": "Data Processing",
+            "deps": []
+          }
+        ]
+      },
+      {
+        "id": "moons",
+        "title": "Moons",
+        "items": []
+      }
+    ],
+    "seriesId": "planets"
+  },
+  {
+    "id": "venus",
+    "title": "Venus Exploration Model",
+    "abstract": "Value chain for atmospheric and surface study of Venus.",
+    "categories": [
+      {
+        "id": "observation",
+        "title": "Observation",
+        "items": [
+          {
+            "id": "cloud-imaging",
+            "name": "Cloud Imaging",
+            "deps": [
+              "orbital-control",
+              "heat-shielding"
+            ]
+          },
+          {
+            "id": "atmospheric-sensing",
+            "name": "Atmospheric Sensing",
+            "deps": [
+              "data-pipeline"
+            ]
+          },
+          {
+            "id": "thermal-scan",
+            "name": "Thermal Scanning",
+            "deps": [
+              "heat-shielding"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "environment",
+        "title": "Environment",
+        "items": [
+          {
+            "id": "pressure-modeling",
+            "name": "Pressure Modeling",
+            "deps": [
+              "atmospheric-sensing"
+            ]
+          },
+          {
+            "id": "cloud-chemistry",
+            "name": "Cloud Chemistry Analysis",
+            "deps": [
+              "cloud-imaging"
+            ]
+          },
+          {
+            "id": "surface-temp-mapping",
+            "name": "Surface Temperature Mapping",
+            "deps": [
+              "thermal-scan"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "resources",
+        "title": "Resources",
+        "items": [
+          {
+            "id": "mineral-survey",
+            "name": "Mineral Survey",
+            "deps": [
+              "surface-temp-mapping"
+            ]
+          },
+          {
+            "id": "atmo-gas-analysis",
+            "name": "Atmospheric Gas Analysis",
+            "deps": [
+              "cloud-chemistry"
+            ]
+          },
+          {
+            "id": "volcanic-activity",
+            "name": "Volcanic Activity Study",
+            "deps": [
+              "pressure-modeling"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "infrastructure",
+        "title": "Infrastructure",
+        "items": [
+          {
+            "id": "orbital-control",
+            "name": "Orbital Control",
+            "deps": []
+          },
+          {
+            "id": "heat-shielding",
+            "name": "Heat Shielding",
+            "deps": []
+          },
+          {
+            "id": "data-pipeline",
+            "name": "Data Pipeline",
+            "deps": []
+          }
+        ]
+      },
+      {
+        "id": "moons",
+        "title": "Moons",
+        "items": []
+      }
+    ],
+    "seriesId": "planets"
+  },
+  {
+    "id": "earth",
+    "title": "Earth Systems Model",
+    "abstract": "Value chain for observing and managing Earth systems.",
+    "categories": [
+      {
+        "id": "observation",
+        "title": "Observation",
+        "items": [
+          {
+            "id": "weather-monitoring",
+            "name": "Weather Monitoring",
+            "deps": [
+              "sat-network"
+            ]
+          },
+          {
+            "id": "ocean-sensing",
+            "name": "Ocean Sensing",
+            "deps": [
+              "sensor-grid"
+            ]
+          },
+          {
+            "id": "terrain-imaging",
+            "name": "Terrain Imaging",
+            "deps": [
+              "sat-network"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "environment",
+        "title": "Environment",
+        "items": [
+          {
+            "id": "climate-modeling",
+            "name": "Climate Modeling",
+            "deps": [
+              "weather-monitoring",
+              "data-lake"
+            ]
+          },
+          {
+            "id": "ecosystem-mapping",
+            "name": "Ecosystem Mapping",
+            "deps": [
+              "terrain-imaging"
+            ]
+          },
+          {
+            "id": "currents-analysis",
+            "name": "Ocean Currents Analysis",
+            "deps": [
+              "ocean-sensing"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "resources",
+        "title": "Resources",
+        "items": [
+          {
+            "id": "mineral-analysis-earth",
+            "name": "Mineral Analysis",
+            "deps": [
+              "terrain-imaging"
+            ]
+          },
+          {
+            "id": "water-cycle",
+            "name": "Water Cycle Modeling",
+            "deps": [
+              "climate-modeling"
+            ]
+          },
+          {
+            "id": "agri-forecasting",
+            "name": "Agriculture Forecasting",
+            "deps": [
+              "climate-modeling",
+              "ecosystem-mapping"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "infrastructure",
+        "title": "Infrastructure",
+        "items": [
+          {
+            "id": "sat-network",
+            "name": "Satellite Network",
+            "deps": []
+          },
+          {
+            "id": "sensor-grid",
+            "name": "Sensor Grid",
+            "deps": []
+          },
+          {
+            "id": "data-lake",
+            "name": "Data Lake",
+            "deps": []
+          }
+        ]
+      },
+      {
+        "id": "moons",
+        "title": "Moons",
+        "items": [
+          {
+            "id": "moon-earth",
+            "name": "Moon",
+            "deps": [],
+            "external": "https://en.wikipedia.org/wiki/Moon",
+            "logo": "https://favicon.im/wikipedia.org"
+          }
+        ]
+      }
+    ],
+    "seriesId": "planets"
+  },
+  {
+    "id": "mars",
+    "title": "Mars Exploration Model",
+    "abstract": "Value chain for robotic and human exploration of Mars.",
+    "categories": [
+      {
+        "id": "observation",
+        "title": "Observation",
+        "items": [
+          {
+            "id": "surface-roving",
+            "name": "Surface Roving",
+            "deps": [
+              "comm-relay",
+              "radiation-hardened"
+            ]
+          },
+          {
+            "id": "atmo-profiling",
+            "name": "Atmospheric Profiling",
+            "deps": [
+              "data-store"
+            ]
+          },
+          {
+            "id": "orbital-imaging",
+            "name": "Orbital Imaging",
+            "deps": [
+              "comm-relay"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "environment",
+        "title": "Environment",
+        "items": [
+          {
+            "id": "dust-storm-modeling",
+            "name": "Dust Storm Modeling",
+            "deps": [
+              "atmo-profiling"
+            ]
+          },
+          {
+            "id": "soil-analysis-mars",
+            "name": "Soil Analysis",
+            "deps": [
+              "surface-roving"
+            ]
+          },
+          {
+            "id": "temp-gradient-study",
+            "name": "Temperature Gradient Study",
+            "deps": [
+              "orbital-imaging"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "resources",
+        "title": "Resources",
+        "items": [
+          {
+            "id": "ice-mapping",
+            "name": "Ice Mapping",
+            "deps": [
+              "temp-gradient-study"
+            ]
+          },
+          {
+            "id": "mineral-survey-mars",
+            "name": "Mineral Survey",
+            "deps": [
+              "soil-analysis-mars"
+            ]
+          },
+          {
+            "id": "atmo-gas-mars",
+            "name": "Atmospheric Gas Analysis",
+            "deps": [
+              "atmo-profiling"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "infrastructure",
+        "title": "Infrastructure",
+        "items": [
+          {
+            "id": "comm-relay",
+            "name": "Communications Relay",
+            "deps": []
+          },
+          {
+            "id": "radiation-hardened",
+            "name": "Radiation Hardened Systems",
+            "deps": []
+          },
+          {
+            "id": "data-store",
+            "name": "Data Store",
+            "deps": []
+          }
+        ]
+      },
+      {
+        "id": "moons",
+        "title": "Moons",
+        "items": [
+          {
+            "id": "phobos",
+            "name": "Phobos",
+            "deps": [],
+            "external": "https://en.wikipedia.org/wiki/Phobos_(moon)",
+            "logo": "https://favicon.im/wikipedia.org"
+          },
+          {
+            "id": "deimos",
+            "name": "Deimos",
+            "deps": [],
+            "external": "https://en.wikipedia.org/wiki/Deimos",
+            "logo": "https://favicon.im/wikipedia.org"
+          }
+        ]
+      }
+    ],
+    "seriesId": "planets"
+  },
+  {
+    "id": "jupiter",
+    "title": "Jupiter Study Model",
+    "abstract": "Value chain for observing Jupiter and its system.",
+    "categories": [
+      {
+        "id": "observation",
+        "title": "Observation",
+        "items": [
+          {
+            "id": "storm-imaging",
+            "name": "Storm Imaging",
+            "deps": [
+              "deep-radiation-shielding"
+            ]
+          },
+          {
+            "id": "magnetosphere-sensing",
+            "name": "Magnetosphere Sensing",
+            "deps": [
+              "data-center"
+            ]
+          },
+          {
+            "id": "moon-tracking",
+            "name": "Moon Tracking",
+            "deps": [
+              "orbital-system"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "environment",
+        "title": "Environment",
+        "items": [
+          {
+            "id": "atmo-composition-jupiter",
+            "name": "Atmospheric Composition",
+            "deps": [
+              "storm-imaging"
+            ]
+          },
+          {
+            "id": "radiation-modeling",
+            "name": "Radiation Modeling",
+            "deps": [
+              "magnetosphere-sensing"
+            ]
+          },
+          {
+            "id": "moon-dynamics",
+            "name": "Moon Dynamics",
+            "deps": [
+              "moon-tracking"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "resources",
+        "title": "Resources",
+        "items": [
+          {
+            "id": "moon-ice-mapping",
+            "name": "Moon Ice Mapping",
+            "deps": [
+              "moon-dynamics"
+            ]
+          },
+          {
+            "id": "gas-distribution",
+            "name": "Gas Distribution Study",
+            "deps": [
+              "atmo-composition-jupiter"
+            ]
+          },
+          {
+            "id": "magnetic-harnessing",
+            "name": "Magnetic Field Harnessing Study",
+            "deps": [
+              "radiation-modeling"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "infrastructure",
+        "title": "Infrastructure",
+        "items": [
+          {
+            "id": "deep-radiation-shielding",
+            "name": "Deep Radiation Shielding",
+            "deps": []
+          },
+          {
+            "id": "orbital-system",
+            "name": "Orbital System",
+            "deps": []
+          },
+          {
+            "id": "data-center",
+            "name": "Data Center",
+            "deps": []
+          }
+        ]
+      },
+      {
+        "id": "moons",
+        "title": "Moons",
+        "items": [
+          {
+            "id": "io",
+            "name": "Io",
+            "deps": [],
+            "external": "https://en.wikipedia.org/wiki/Io_(moon)",
+            "logo": "https://favicon.im/wikipedia.org"
+          },
+          {
+            "id": "europa",
+            "name": "Europa",
+            "deps": [],
+            "external": "https://en.wikipedia.org/wiki/Europa_(moon)",
+            "logo": "https://favicon.im/wikipedia.org"
+          },
+          {
+            "id": "ganymede",
+            "name": "Ganymede",
+            "deps": [],
+            "external": "https://en.wikipedia.org/wiki/Ganymede_(moon)",
+            "logo": "https://favicon.im/wikipedia.org"
+          },
+          {
+            "id": "callisto",
+            "name": "Callisto",
+            "deps": [],
+            "external": "https://en.wikipedia.org/wiki/Callisto_(moon)",
+            "logo": "https://favicon.im/wikipedia.org"
+          }
+        ]
+      }
+    ],
+    "seriesId": "planets"
+  },
+  {
+    "id": "saturn",
+    "title": "Saturn Study Model",
+    "abstract": "Value chain for examining Saturn and its rings.",
+    "categories": [
+      {
+        "id": "observation",
+        "title": "Observation",
+        "items": [
+          {
+            "id": "ring-imaging",
+            "name": "Ring Imaging",
+            "deps": [
+              "radiation-layer"
+            ]
+          },
+          {
+            "id": "moon-sensing-saturn",
+            "name": "Moon Sensing",
+            "deps": [
+              "telemetry"
+            ]
+          },
+          {
+            "id": "atmo-scan-saturn",
+            "name": "Atmospheric Scanning",
+            "deps": [
+              "data-mesh"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "environment",
+        "title": "Environment",
+        "items": [
+          {
+            "id": "ring-dynamics",
+            "name": "Ring Dynamics",
+            "deps": [
+              "ring-imaging"
+            ]
+          },
+          {
+            "id": "moon-orbits-saturn",
+            "name": "Moon Orbit Modeling",
+            "deps": [
+              "moon-sensing-saturn"
+            ]
+          },
+          {
+            "id": "storm-analysis-saturn",
+            "name": "Storm Analysis",
+            "deps": [
+              "atmo-scan-saturn"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "resources",
+        "title": "Resources",
+        "items": [
+          {
+            "id": "ice-distribution-saturn",
+            "name": "Ice Distribution",
+            "deps": [
+              "ring-dynamics"
+            ]
+          },
+          {
+            "id": "hydrogen-mapping",
+            "name": "Hydrogen Mapping",
+            "deps": [
+              "storm-analysis-saturn"
+            ]
+          },
+          {
+            "id": "habitability-study-saturn",
+            "name": "Habitability Study",
+            "deps": [
+              "moon-orbits-saturn"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "infrastructure",
+        "title": "Infrastructure",
+        "items": [
+          {
+            "id": "radiation-layer",
+            "name": "Radiation Layer",
+            "deps": []
+          },
+          {
+            "id": "telemetry",
+            "name": "Telemetry",
+            "deps": []
+          },
+          {
+            "id": "data-mesh",
+            "name": "Data Mesh",
+            "deps": []
+          }
+        ]
+      },
+      {
+        "id": "moons",
+        "title": "Moons",
+        "items": [
+          {
+            "id": "titan",
+            "name": "Titan",
+            "deps": [],
+            "external": "https://en.wikipedia.org/wiki/Titan_(moon)",
+            "logo": "https://favicon.im/wikipedia.org"
+          },
+          {
+            "id": "enceladus",
+            "name": "Enceladus",
+            "deps": [],
+            "external": "https://en.wikipedia.org/wiki/Enceladus",
+            "logo": "https://favicon.im/wikipedia.org"
+          },
+          {
+            "id": "rhea",
+            "name": "Rhea",
+            "deps": [],
+            "external": "https://en.wikipedia.org/wiki/Rhea_(moon)",
+            "logo": "https://favicon.im/wikipedia.org"
+          }
+        ]
+      }
+    ],
+    "seriesId": "planets"
+  },
+  {
+    "id": "uranus",
+    "title": "Uranus Study Model",
+    "abstract": "Value chain for analyzing Uranus' atmosphere and axial tilt effects.",
+    "categories": [
+      {
+        "id": "observation",
+        "title": "Observation",
+        "items": [
+          {
+            "id": "tilt-dynamics",
+            "name": "Tilt Dynamics Observation",
+            "deps": [
+              "long-range-imaging"
+            ]
+          },
+          {
+            "id": "atmo-sensing-uranus",
+            "name": "Atmospheric Sensing",
+            "deps": [
+              "data-grid"
+            ]
+          },
+          {
+            "id": "moon-scan-uranus",
+            "name": "Moon Scanning",
+            "deps": [
+              "orbital-array"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "environment",
+        "title": "Environment",
+        "items": [
+          {
+            "id": "wind-patterns-uranus",
+            "name": "Wind Pattern Modeling",
+            "deps": [
+              "atmo-sensing-uranus"
+            ]
+          },
+          {
+            "id": "seasonal-cycles-uranus",
+            "name": "Seasonal Cycles Analysis",
+            "deps": [
+              "tilt-dynamics"
+            ]
+          },
+          {
+            "id": "moon-dynamics-uranus",
+            "name": "Moon Dynamics",
+            "deps": [
+              "moon-scan-uranus"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "resources",
+        "title": "Resources",
+        "items": [
+          {
+            "id": "ice-discovery-uranus",
+            "name": "Ice Discovery",
+            "deps": [
+              "wind-patterns-uranus"
+            ]
+          },
+          {
+            "id": "gas-analysis-uranus",
+            "name": "Gas Analysis",
+            "deps": [
+              "atmo-sensing-uranus"
+            ]
+          },
+          {
+            "id": "orbit-energy-study",
+            "name": "Orbit Energy Study",
+            "deps": [
+              "moon-dynamics-uranus"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "infrastructure",
+        "title": "Infrastructure",
+        "items": [
+          {
+            "id": "long-range-imaging",
+            "name": "Long Range Imaging",
+            "deps": []
+          },
+          {
+            "id": "orbital-array",
+            "name": "Orbital Array",
+            "deps": []
+          },
+          {
+            "id": "data-grid",
+            "name": "Data Grid",
+            "deps": []
+          }
+        ]
+      },
+      {
+        "id": "moons",
+        "title": "Moons",
+        "items": [
+          {
+            "id": "titania",
+            "name": "Titania",
+            "deps": [],
+            "external": "https://en.wikipedia.org/wiki/Titania_(moon)",
+            "logo": "https://favicon.im/wikipedia.org"
+          },
+          {
+            "id": "oberon",
+            "name": "Oberon",
+            "deps": [],
+            "external": "https://en.wikipedia.org/wiki/Oberon_(moon)",
+            "logo": "https://favicon.im/wikipedia.org"
+          },
+          {
+            "id": "umbriel",
+            "name": "Umbriel",
+            "deps": [],
+            "external": "https://en.wikipedia.org/wiki/Umbriel_(moon)",
+            "logo": "https://favicon.im/wikipedia.org"
+          },
+          {
+            "id": "ariel",
+            "name": "Ariel",
+            "deps": [],
+            "external": "https://en.wikipedia.org/wiki/Ariel_(moon)",
+            "logo": "https://favicon.im/wikipedia.org"
+          }
+        ]
+      }
+    ],
+    "seriesId": "planets"
+  },
+  {
+    "id": "neptune",
+    "title": "Neptune Study Model",
+    "abstract": "Value chain for distant observation of Neptune.",
+    "categories": [
+      {
+        "id": "observation",
+        "title": "Observation",
+        "items": [
+          {
+            "id": "storm-tracking-neptune",
+            "name": "Storm Tracking",
+            "deps": [
+              "deep-imaging"
+            ]
+          },
+          {
+            "id": "atmo-sensing-neptune",
+            "name": "Atmospheric Sensing",
+            "deps": [
+              "data-cluster"
+            ]
+          },
+          {
+            "id": "moon-observation-neptune",
+            "name": "Moon Observation",
+            "deps": [
+              "nav-system"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "environment",
+        "title": "Environment",
+        "items": [
+          {
+            "id": "wind-modeling-neptune",
+            "name": "Wind Modeling",
+            "deps": [
+              "atmo-sensing-neptune"
+            ]
+          },
+          {
+            "id": "temp-distribution-neptune",
+            "name": "Temperature Distribution",
+            "deps": [
+              "storm-tracking-neptune"
+            ]
+          },
+          {
+            "id": "moon-dynamics-neptune",
+            "name": "Moon Dynamics",
+            "deps": [
+              "moon-observation-neptune"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "resources",
+        "title": "Resources",
+        "items": [
+          {
+            "id": "ice-mapping-neptune",
+            "name": "Ice Mapping",
+            "deps": [
+              "temp-distribution-neptune"
+            ]
+          },
+          {
+            "id": "gas-analysis-neptune",
+            "name": "Gas Analysis",
+            "deps": [
+              "atmo-sensing-neptune"
+            ]
+          },
+          {
+            "id": "energy-dynamics-neptune",
+            "name": "Energy Dynamics",
+            "deps": [
+              "moon-dynamics-neptune"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "infrastructure",
+        "title": "Infrastructure",
+        "items": [
+          {
+            "id": "deep-imaging",
+            "name": "Deep Imaging",
+            "deps": []
+          },
+          {
+            "id": "nav-system",
+            "name": "Navigation System",
+            "deps": []
+          },
+          {
+            "id": "data-cluster",
+            "name": "Data Cluster",
+            "deps": []
+          }
+        ]
+      },
+      {
+        "id": "moons",
+        "title": "Moons",
+        "items": [
+          {
+            "id": "triton",
+            "name": "Triton",
+            "deps": [],
+            "external": "https://en.wikipedia.org/wiki/Triton_(moon)",
+            "logo": "https://favicon.im/wikipedia.org"
+          },
+          {
+            "id": "proteus",
+            "name": "Proteus",
+            "deps": [],
+            "external": "https://en.wikipedia.org/wiki/Proteus_(moon)",
+            "logo": "https://favicon.im/wikipedia.org"
+          },
+          {
+            "id": "nereid",
+            "name": "Nereid",
+            "deps": [],
+            "external": "https://en.wikipedia.org/wiki/Nereid_(moon)",
+            "logo": "https://favicon.im/wikipedia.org"
+          }
+        ]
+      }
+    ],
+    "seriesId": "planets"
+  }
+]
+  </script>
+</div></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js"></script>
+        <script src="../../site_assets/blockscape/blockscape.js"></script>
+        <script src="../../site_assets/blockscape/mount.js"></script>
+        <script src="../../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

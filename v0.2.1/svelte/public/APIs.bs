@@ -1,0 +1,57 @@
+{
+  "id": "apis",
+  "title": "API Styles",
+  "abstract": "APIs expose business capabilities to consumers through fit-for-purpose styles (REST, SOAP, gRPC, GraphQL) and real-time channels (Webhooks, WebSockets, WebRTC). User-facing integrations depend on platform services such as gateways, auth, rate limits, and observability, which in turn rely on core infrastructure like HTTP transport, TLS, and data encodings (JSON, XML, Protobuf).",
+  "categories": [
+    {
+      "id": "experience",
+      "title": "Consumption",
+      "items": [
+        { "id": "client-apps", "name": "Client Applications", "deps": ["rest-api", "graphql-api", "grpc-api"] },
+        { "id": "partner-integrations", "name": "Partner Integrations", "deps": ["rest-api", "soap-api", "webhooks"] },
+        { "id": "ops-dashboards", "name": "Operational Dashboards", "deps": ["observability"] }
+      ]
+    },
+    {
+      "id": "api-styles",
+      "title": "Styles",
+      "items": [
+        { "id": "rest-api", "name": "REST API", "deps": ["api-gateway", "http-transport", "tls", "json-format"] },
+        { "id": "soap-api", "name": "SOAP API", "deps": ["api-gateway", "http-transport", "tls", "xml-format"] },
+        { "id": "grpc-api", "name": "gRPC API", "deps": ["api-gateway", "http-transport", "tls", "protobuf-format"] },
+        { "id": "graphql-api", "name": "GraphQL API", "deps": ["api-gateway", "http-transport", "tls", "json-format"] }
+      ]
+    },
+    {
+      "id": "realtime",
+      "title": "Real-time & Events",
+      "items": [
+        { "id": "webhooks", "name": "Webhooks", "deps": ["api-gateway", "http-transport", "tls"] },
+        { "id": "websockets", "name": "WebSockets", "deps": ["api-gateway", "http-transport", "tls"] },
+        { "id": "webrtc", "name": "WebRTC", "deps": ["api-gateway", "http-transport", "tls"] }
+      ]
+    },
+    {
+      "id": "platform",
+      "title": "Platform Services",
+      "items": [
+        { "id": "api-gateway", "name": "API Gateway", "deps": ["http-transport", "tls"] },
+        { "id": "authn-authz", "name": "AuthN/AuthZ", "deps": ["tls"] },
+        { "id": "rate-limits", "name": "Rate Limiting", "deps": ["http-transport"] },
+        { "id": "observability", "name": "Observability", "deps": [] },
+        { "id": "docs-portal", "name": "Developer Docs Portal", "deps": [] }
+      ]
+    },
+    {
+      "id": "infrastructure",
+      "title": "Core Infrastructure",
+      "items": [
+        { "id": "http-transport", "name": "HTTP Transport", "deps": [] },
+        { "id": "tls", "name": "TLS Security", "deps": [] },
+        { "id": "json-format", "name": "JSON Encoding", "deps": [] },
+        { "id": "xml-format", "name": "XML Encoding", "deps": [] },
+        { "id": "protobuf-format", "name": "Protobuf Encoding", "deps": [] }
+      ]
+    }
+  ]
+}

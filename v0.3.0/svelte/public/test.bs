@@ -1,0 +1,13 @@
+{
+  "id": "blank-series-20260202-171307-20260202-171307",
+  "title": "Blank map",
+  "categories": [
+    {
+      "id": "new-category-1",
+      "title": "New category 1",
+      "items": []
+    }
+  ],
+  "abstract": "",
+  "seriesId": "blank-series-20260202-171307"
+}

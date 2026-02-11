@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://pwright.github.io/blockscape/documentation/rise-and-fall-json/">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>JSON prompting - Blockscape</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../css/brands.min.css" rel="stylesheet">
+        <link href="../../css/solid.min.css" rel="stylesheet">
+        <link href="../../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <link href="../../site_assets/blockscape/blockscape.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Blockscape</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="https://pwright.github.io/blockscape/" class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../.." class="nav-link">Hello</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Maps</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../maps/blockscape-example/" class="dropdown-item">Blockscape Example</a>
+</li>
+                                    
+<li>
+    <a href="../../maps/wardley-example/" class="dropdown-item">Wardley Example</a>
+</li>
+                                    
+<li>
+    <a href="../../maps/series-example/" class="dropdown-item">Series Example</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Documentation</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../maps/" class="dropdown-item">Overview</a>
+</li>
+                                    
+<li>
+    <a href="../features/" class="dropdown-item">Features</a>
+</li>
+                                    
+<li>
+    <a href="../series/" class="dropdown-item">Series</a>
+</li>
+                                    
+<li>
+    <a href="../models/" class="dropdown-item">Models</a>
+</li>
+                                    
+<li>
+    <a href="../docker/" class="dropdown-item">Docker for local editor</a>
+</li>
+                                    
+<li>
+    <a href="../apicurio/" class="dropdown-item">Apicurio as backend</a>
+</li>
+                                    
+<li>
+    <a href="../mkdocs/" class="dropdown-item">MkDocs usage</a>
+</li>
+                                    
+<li>
+    <a href="../llm-generation/" class="dropdown-item">LLM generation</a>
+</li>
+                                    
+<li>
+    <a href="../share-links/" class="dropdown-item">Share links</a>
+</li>
+                                    
+<li>
+    <a href="../bs-opener-linux/" class="dropdown-item">Local usage on Linux</a>
+</li>
+                                    
+<li>
+    <a href="../bs-opener-mac/" class="dropdown-item">Local usage on Mac</a>
+</li>
+                                    
+<li>
+    <a href="../server/" class="dropdown-item">Local backend server</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">JSON prompting</a>
+</li>
+                                    
+<li>
+    <a href="../editor/" class="dropdown-item">Editor</a>
+</li>
+                                    
+<li>
+    <a href="../evolution/" class="dropdown-item">Evolution</a>
+</li>
+                                    
+<li>
+    <a href="../gestalt/" class="dropdown-item">Gestalt</a>
+</li>
+                                    
+<li>
+    <a href="../gists/" class="dropdown-item">Gists</a>
+</li>
+                                    
+<li>
+    <a href="../icons/" class="dropdown-item">Icons</a>
+</li>
+                                    
+<li>
+    <a href="../llm-consume/" class="dropdown-item">LLM consume</a>
+</li>
+                                    
+<li>
+    <a href="../navigation/" class="dropdown-item">Navigation</a>
+</li>
+                                    
+<li>
+    <a href="../paste/" class="dropdown-item">Paste</a>
+</li>
+                                    
+<li>
+    <a href="../portfolio/" class="dropdown-item">Portfolio</a>
+</li>
+                                    
+<li>
+    <a href="../relational-awareness/" class="dropdown-item">Relational awareness</a>
+</li>
+                                    
+<li>
+    <a href="../stages/" class="dropdown-item">Stages</a>
+</li>
+                                    
+<li>
+    <a href="../value-chain/" class="dropdown-item">Value chain</a>
+</li>
+                                    
+<li>
+    <a href="../watch-models/" class="dropdown-item">Watch models</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../toc/" class="nav-link">TOC</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../server/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../editor/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#json-prompting" class="nav-link">JSON prompting</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#the-rise-and-fall-of-json-prompting" class="nav-link">The rise and fall of JSON prompting</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#the-rise-why-json-prompting-took-off" class="nav-link">The rise: why JSON prompting took off</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#the-peak-json-everywhere-even-where-it-didnt-belong" class="nav-link">The peak: JSON everywhere, even where it didn’t belong</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#the-fall-why-json-prompting-lost-favor" class="nav-link">The fall: why JSON prompting lost favor</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#what-replaced-json-prompting" class="nav-link">What replaced JSON prompting</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#the-honest-verdict" class="nav-link">The honest verdict</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#when-json-prompting-still-makes-sense" class="nav-link">When JSON prompting still makes sense</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#what-a-json-wardley-map-actually-does-and-does-not" class="nav-link">What a JSON Wardley map actually does (and does not)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#where-json-prompting-failed-vs-where-json-maps-succeed" class="nav-link">Where JSON prompting failed vs where JSON maps succeed</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#why-humans-map-llm-is-the-correct-flow" class="nav-link">Why humans → map → LLM is the correct flow</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#what-json-wardley-models-are-actually-good-for" class="nav-link">What JSON Wardley models are actually good for</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#where-this-breaks-down-be-honest" class="nav-link">Where this breaks down (be honest)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#the-right-mental-model" class="nav-link">The right mental model</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#when-this-approach-is-genuinely-worth-it" class="nav-link">When this approach is genuinely worth it</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#the-uncomfortable-truth" class="nav-link">The uncomfortable truth</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#comparison-axis-that-actually-matters" class="nav-link">Comparison axis that actually matters</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#json-wardley-type-models-blockscape-style" class="nav-link">JSON Wardley-type models (Blockscape-style)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#mermaid" class="nav-link">Mermaid</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#plantuml" class="nav-link">PlantUML</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#architecture-decision-records-adrs" class="nav-link">Architecture Decision Records (ADRs)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#why-wardley-maps-are-different-and-why-json-helps" class="nav-link">Why Wardley maps are different (and why JSON helps)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#the-key-insight-for-llm-usage" class="nav-link">The key insight for LLM usage</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#practical-guidance-no-theory" class="nav-link">Practical guidance (no theory)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#final-verdict" class="nav-link">Final verdict</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#what-blockscape-models-are-actually-for" class="nav-link">What Blockscape models are actually for</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#why-blockscape-is-a-poor-primary-tool-for-software-relations" class="nav-link">Why Blockscape is a poor primary tool for software relations</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#what-blockscape-is-good-for-relation-wise" class="nav-link">What Blockscape is good for (relation-wise)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#comparison-blockscape-vs-software-diagrams" class="nav-link">Comparison: Blockscape vs software diagrams</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#correct-way-to-combine-them-this-is-key" class="nav-link">Correct way to combine them (this is key)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#the-dangerous-misuse-to-avoid" class="nav-link">The dangerous misuse to avoid</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#verdict-no-hedging" class="nav-link">Verdict (no hedging)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+<div class="source-links">
+
+    <span class="label label-primary">h</span>
+
+    <span class="label label-primary">t</span>
+
+    <span class="label label-primary">t</span>
+
+    <span class="label label-primary">p</span>
+
+    <span class="label label-primary">s</span>
+
+    <span class="label label-primary">:</span>
+
+    <span class="label label-primary">/</span>
+
+    <span class="label label-primary">/</span>
+
+    <span class="label label-primary">c</span>
+
+    <span class="label label-primary">h</span>
+
+    <span class="label label-primary">a</span>
+
+    <span class="label label-primary">t</span>
+
+    <span class="label label-primary">g</span>
+
+    <span class="label label-primary">p</span>
+
+    <span class="label label-primary">t</span>
+
+    <span class="label label-primary">.</span>
+
+    <span class="label label-primary">c</span>
+
+    <span class="label label-primary">o</span>
+
+    <span class="label label-primary">m</span>
+
+    <span class="label label-primary">/</span>
+
+    <span class="label label-primary">c</span>
+
+    <span class="label label-primary">/</span>
+
+    <span class="label label-primary">6</span>
+
+    <span class="label label-primary">9</span>
+
+    <span class="label label-primary">5</span>
+
+    <span class="label label-primary">e</span>
+
+    <span class="label label-primary">4</span>
+
+    <span class="label label-primary">5</span>
+
+    <span class="label label-primary">e</span>
+
+    <span class="label label-primary">f</span>
+
+    <span class="label label-primary">-</span>
+
+    <span class="label label-primary">9</span>
+
+    <span class="label label-primary">8</span>
+
+    <span class="label label-primary">e</span>
+
+    <span class="label label-primary">8</span>
+
+    <span class="label label-primary">-</span>
+
+    <span class="label label-primary">8</span>
+
+    <span class="label label-primary">3</span>
+
+    <span class="label label-primary">2</span>
+
+    <span class="label label-primary">f</span>
+
+    <span class="label label-primary">-</span>
+
+    <span class="label label-primary">8</span>
+
+    <span class="label label-primary">8</span>
+
+    <span class="label label-primary">1</span>
+
+    <span class="label label-primary">d</span>
+
+    <span class="label label-primary">-</span>
+
+    <span class="label label-primary">3</span>
+
+    <span class="label label-primary">0</span>
+
+    <span class="label label-primary">e</span>
+
+    <span class="label label-primary">d</span>
+
+    <span class="label label-primary">9</span>
+
+    <span class="label label-primary">4</span>
+
+    <span class="label label-primary">1</span>
+
+    <span class="label label-primary">2</span>
+
+    <span class="label label-primary">9</span>
+
+    <span class="label label-primary">0</span>
+
+    <span class="label label-primary">7</span>
+
+    <span class="label label-primary">0</span>
+
+</div>
+
+
+<h1 id="json-prompting">JSON prompting</h1>
+<p>tell me about the rise and fall of json prompting</p>
+<hr />
+<h2 id="the-rise-and-fall-of-json-prompting">The rise and fall of JSON prompting</h2>
+<p>JSON prompting had a very specific moment in the evolution of LLM usage. It didn’t “fail” so much as get outgrown.</p>
+<hr />
+<h2 id="the-rise-why-json-prompting-took-off">The rise: why JSON prompting took off</h2>
+<h3 id="1-llms-met-software-engineers">1. LLMs met software engineers</h3>
+<p>As soon as LLMs were used inside real systems (not just chat), engineers wanted:</p>
+<ul>
+<li><strong>Deterministic structure</strong></li>
+<li><strong>Machine-readable output</strong></li>
+<li><strong>Easy parsing</strong></li>
+<li><strong>Schema validation</strong></li>
+</ul>
+<p>JSON was the obvious answer. Everyone already had:</p>
+<ul>
+<li>JSON parsers</li>
+<li>JSON schemas</li>
+<li>JSON-based APIs</li>
+</ul>
+<p>So the pattern emerged:</p>
+<blockquote>
+<p>“Respond ONLY with valid JSON in the following format…”</p>
+</blockquote>
+<h3 id="2-early-models-needed-brute-force-constraints">2. Early models needed brute-force constraints</h3>
+<p>Early GPT-3–era models were:</p>
+<ul>
+<li>Verbose</li>
+<li>Chatty</li>
+<li>Inconsistent</li>
+</ul>
+<p>JSON prompting worked as a <strong>soft straitjacket</strong>:</p>
+<ul>
+<li>Curly braces discouraged rambling</li>
+<li>Key names anchored intent</li>
+<li>The <em>illusion</em> of determinism reduced failure modes</li>
+</ul>
+<p>This was especially attractive for:</p>
+<ul>
+<li>Tool pipelines</li>
+<li>Data extraction</li>
+<li>Classification</li>
+<li>ETL-style workflows</li>
+</ul>
+<h3 id="3-prompt-engineering-culture-rewarded-hacks">3. Prompt engineering culture rewarded hacks</h3>
+<p>JSON prompting fit perfectly into the “prompt engineering” mindset:</p>
+<ul>
+<li>Clever formatting tricks</li>
+<li>Capitalized warnings</li>
+<li>“DO NOT ADD ANY EXTRA TEXT”</li>
+<li>Nested examples</li>
+</ul>
+<p>It <em>felt</em> like control.</p>
+<hr />
+<h2 id="the-peak-json-everywhere-even-where-it-didnt-belong">The peak: JSON everywhere, even where it didn’t belong</h2>
+<p>At its height, JSON prompting was used for:</p>
+<ul>
+<li>Natural language reasoning</li>
+<li>Planning</li>
+<li>Multi-step analysis</li>
+<li>Creative workflows</li>
+</ul>
+<p>This is where cracks started to show.</p>
+<p>Common symptoms:</p>
+<ul>
+<li>Models hallucinating keys</li>
+<li>Trailing commas, comments, or explanations</li>
+<li>Broken UTF-8</li>
+<li>Half-valid JSON with correct intent but invalid syntax</li>
+<li>Overfitting to examples instead of schemas</li>
+</ul>
+<p>Developers compensated with:</p>
+<ul>
+<li>Regex cleanup</li>
+<li>Retry loops</li>
+<li>“Fix this JSON” repair prompts</li>
+<li>Increasingly complex scaffolding</li>
+</ul>
+<p>The system worked—but it was fragile.</p>
+<hr />
+<h2 id="the-fall-why-json-prompting-lost-favor">The fall: why JSON prompting lost favor</h2>
+<h3 id="1-structure-understanding">1. Structure ≠ understanding</h3>
+<p>JSON constrains <strong>output shape</strong>, not <strong>semantic correctness</strong>.</p>
+<p>You can get:</p>
+<p>…and still have a completely wrong answer.</p>
+<p>This exposed a core truth:</p>
+<blockquote>
+<p>JSON prompting improves <em>parseability</em>, not <em>reliability</em>.</p>
+</blockquote>
+<h3 id="2-models-got-better-at-following-instructions">2. Models got better at following instructions</h3>
+<p>Newer models:</p>
+<ul>
+<li>Follow formatting rules more reliably</li>
+<li>Can separate “reasoning” from “final output”</li>
+<li>Are trained on structured outputs natively</li>
+</ul>
+<p>The hacks became unnecessary.</p>
+<h3 id="3-native-structured-output-features-replaced-it">3. Native structured-output features replaced it</h3>
+<p>Modern APIs introduced:</p>
+<ul>
+<li><strong>Function calling</strong></li>
+<li><strong>Tool invocation</strong></li>
+<li><strong>Typed outputs</strong></li>
+<li><strong>Schema-constrained decoding</strong></li>
+</ul>
+<p>These moved structure enforcement:</p>
+<ul>
+<li>Out of the prompt</li>
+<li>Into the decoding and runtime layer</li>
+</ul>
+<p>This is the key shift.</p>
+<p>Instead of:</p>
+<blockquote>
+<p>“Please emit JSON like this…”</p>
+</blockquote>
+<p>You now say:</p>
+<blockquote>
+<p>“Call this function with these parameters.”</p>
+</blockquote>
+<p>The model no longer <em>pretends</em> to output JSON — it actually does.</p>
+<h3 id="4-json-prompting-polluted-prompts">4. JSON prompting polluted prompts</h3>
+<p>Large prompts full of:</p>
+<ul>
+<li>Schema definitions</li>
+<li>Escaped examples</li>
+<li>Validation rules</li>
+</ul>
+<p>…made prompts:</p>
+<ul>
+<li>Hard to read</li>
+<li>Hard to maintain</li>
+<li>Hard to reason about</li>
+</ul>
+<p>This hurt iteration speed and correctness.</p>
+<hr />
+<h2 id="what-replaced-json-prompting">What replaced JSON prompting</h2>
+<h3 id="1-tool-function-calling">1. Tool / function calling</h3>
+<ul>
+<li>The model selects a function</li>
+<li>Arguments are guaranteed to be valid</li>
+<li>Parsing is no longer probabilistic</li>
+</ul>
+<p>This is the <strong>true successor</strong>.</p>
+<h3 id="2-typed-intermediate-representations">2. Typed intermediate representations</h3>
+<p>Instead of raw JSON:</p>
+<ul>
+<li>Enums</li>
+<li>AST-like structures</li>
+<li>Domain-specific objects</li>
+</ul>
+<p>Often generated <em>after</em> reasoning, not during it.</p>
+<h3 id="3-two-phase-patterns">3. Two-phase patterns</h3>
+<p>A common modern pattern:</p>
+<ol>
+<li>Free-form reasoning (unstructured)</li>
+<li>Structured extraction (machine-facing)</li>
+</ol>
+<p>JSON is still used—but <strong>after</strong>, not <strong>during</strong>, thinking.</p>
+<hr />
+<h2 id="the-honest-verdict">The honest verdict</h2>
+<p>JSON prompting was:</p>
+<ul>
+<li>A <strong>necessary hack</strong></li>
+<li>A <strong>bridge technology</strong></li>
+<li>A symptom of missing platform features</li>
+</ul>
+<p>It solved real problems at the time.</p>
+<p>But it also:</p>
+<ul>
+<li>Encouraged false confidence</li>
+<li>Hid semantic errors behind syntactic success</li>
+<li>Made prompts brittle and over-engineered</li>
+</ul>
+<p>Today, if you’re still relying heavily on JSON prompting for control, it usually means:</p>
+<ul>
+<li>You’re compensating for missing tooling</li>
+<li>Or you’re using structure where intent would be better expressed declaratively</li>
+</ul>
+<hr />
+<h2 id="when-json-prompting-still-makes-sense">When JSON prompting still makes sense</h2>
+<p>It’s not dead—just demoted.</p>
+<p>Still reasonable for:</p>
+<ul>
+<li>One-off extraction</li>
+<li>Lightweight scripts</li>
+<li>Offline batch processing</li>
+<li>Environments without tool calling</li>
+</ul>
+<p>But for production systems:</p>
+<ul>
+<li>Prefer <strong>native structured outputs</strong></li>
+<li>Treat JSON as a <em>transport</em>, not a <em>control mechanism</em></li>
+</ul>
+<hr />
+<h3 id="bottom-line">Bottom line</h3>
+<p>JSON prompting wasn’t wrong — it was <strong>early</strong>.</p>
+<p>It taught the ecosystem what developers actually needed:</p>
+<ul>
+<li>Reliable structure</li>
+<li>Clear contracts</li>
+<li>Separation of reasoning and execution</li>
+</ul>
+<p>Once platforms caught up, the hack quietly retired.</p>
+<hr />
+<p>Is there any point in json wardley type models as per https://pwright.github.io/blockscape/documentation/documentation/maps/ The ideas is that humans can visualise a strategy, then use that json to provide high level direction to LLM to avoid 'directional error'</p>
+<hr />
+<p>Short answer: <strong>yes, but only if you’re honest about what problem you’re solving</strong>.<br />
+JSON Wardley-type models help with <em>directional alignment</em>, not <em>correctness</em> or <em>execution</em>.</p>
+<p>Long answer below — no sugar-coating.</p>
+<hr />
+<h2 id="what-a-json-wardley-map-actually-does-and-does-not">What a JSON Wardley map actually does (and does not)</h2>
+<p>A JSON representation of a Wardley-style map is <strong>not</strong> about structure for parsing. It’s about <strong>freezing intent</strong>.</p>
+<p>That’s an important distinction.</p>
+<p>You are not trying to make the LLM “behave deterministically”.<br />
+You are trying to say:</p>
+<blockquote>
+<p><em>“This is the strategic terrain. Do not invent a different one.”</em></p>
+</blockquote>
+<p>That’s a valid goal — and different from classic JSON prompting.</p>
+<hr />
+<h2 id="where-json-prompting-failed-vs-where-json-maps-succeed">Where JSON prompting failed vs where JSON maps succeed</h2>
+<h3 id="classic-json-prompting-tried-to-control-output">Classic JSON prompting tried to control output</h3>
+<p>That failed because:</p>
+<ul>
+<li>Structure ≠ semantics</li>
+<li>Syntax ≠ truth</li>
+<li>The model still reasoned however it wanted</li>
+</ul>
+<h3 id="json-wardley-maps-constrain-orientation">JSON Wardley maps constrain orientation</h3>
+<p>This is subtler and more powerful.</p>
+<p>They:</p>
+<ul>
+<li>Anchor <strong>relative positioning</strong> (novel vs commodity)</li>
+<li>Encode <strong>visibility and dependency assumptions</strong></li>
+<li>Encode <strong>what not to innovate</strong></li>
+<li>Encode <strong>what is strategic vs industrial</strong></li>
+</ul>
+<p>This attacks <em>directional error</em>, not formatting error.</p>
+<p>That’s the right layer to intervene.</p>
+<hr />
+<h2 id="why-humans-map-llm-is-the-correct-flow">Why humans → map → LLM is the correct flow</h2>
+<p>The flow you’re describing is crucial:</p>
+<ol>
+<li><strong>Humans decide strategy visually</strong></li>
+<li><strong>Strategy is frozen into a machine-readable form</strong></li>
+<li><strong>LLM is constrained to operate <em>within</em> that landscape</strong></li>
+</ol>
+<p>This avoids a common failure mode:</p>
+<blockquote>
+<p>LLMs are excellent at <em>local reasoning</em> but terrible at <em>global orientation</em>.</p>
+</blockquote>
+<p>They will happily:</p>
+<ul>
+<li>Innovate on commodities</li>
+<li>Productize best practices</li>
+<li>Treat novel practices as stable</li>
+<li>Optimize things that should be rented</li>
+</ul>
+<p>A Wardley map — even serialized — acts as a <strong>global orientation lock</strong>.</p>
+<hr />
+<h2 id="what-json-wardley-models-are-actually-good-for">What JSON Wardley models are actually good for</h2>
+<h3 id="1-preventing-category-errors">1. Preventing category errors</h3>
+<p>You can say:</p>
+<ul>
+<li>“This component is commodity — do not design it”</li>
+<li>“This is novel — expect uncertainty”</li>
+<li>“This is product — buy, don’t build”</li>
+</ul>
+<p>That’s huge.</p>
+<h3 id="2-forcing-consistent-tradeoffs">2. Forcing consistent tradeoffs</h3>
+<p>Given two options, the model can be told:</p>
+<ul>
+<li>Prefer evolution movement left → right</li>
+<li>Avoid regressions</li>
+<li>Surface tension explicitly when violating map constraints</li>
+</ul>
+<p>You’re no longer asking for “the best answer”.<br />
+You’re asking for “the best answer <strong>on this map</strong> ”.</p>
+<p>That’s a big improvement.</p>
+<h3 id="3-making-assumptions-inspectable">3. Making assumptions inspectable</h3>
+<p>A serialized map lets you:</p>
+<ul>
+<li>Diff strategy over time</li>
+<li>Review assumptions</li>
+<li>Detect when the model is pushing against declared reality</li>
+</ul>
+<p>This is especially valuable in documentation and architecture work.</p>
+<hr />
+<h2 id="where-this-breaks-down-be-honest">Where this breaks down (be honest)</h2>
+<h3 id="1-json-does-not-make-the-model-believe-the-map">1. JSON does not make the model believe the map</h3>
+<p>The model does not internally adopt the map as truth.<br />
+It pattern-matches against it.</p>
+<p>That means:</p>
+<ul>
+<li>Subtle violations still happen</li>
+<li>The model may “rationalize” deviations unless explicitly guarded</li>
+</ul>
+<p>You still need <strong>explicit instructions</strong> like:</p>
+<blockquote>
+<p>“If a suggestion violates map evolution constraints, flag it.”</p>
+</blockquote>
+<h3 id="2-over-precision-backfires">2. Over-precision backfires</h3>
+<p>If your JSON map becomes:</p>
+<ul>
+<li>Too granular</li>
+<li>Too mechanical</li>
+<li>Too schema-heavy</li>
+</ul>
+<p>You recreate the worst parts of JSON prompting:</p>
+<ul>
+<li>Prompt bloat</li>
+<li>Brittleness</li>
+<li>Overfitting to representation instead of meaning</li>
+</ul>
+<p>Wardley maps work because they are <em>imprecise but directional</em>.<br />
+Don’t kill that.</p>
+<h3 id="3-llms-dont-reason-spatially-they-reason-narratively">3. LLMs don’t reason spatially — they reason narratively</h3>
+<p>The visual power of Wardley maps is partly lost in serialization.</p>
+<p>To compensate:</p>
+<ul>
+<li>Reinforce relative language (“more evolved than”, “less visible than”)</li>
+<li>Avoid absolute numeric positioning unless necessary</li>
+</ul>
+<hr />
+<h2 id="the-right-mental-model">The right mental model</h2>
+<p>Think of a JSON Wardley map as:</p>
+<blockquote>
+<p><strong>A constitutional document for strategy</strong></p>
+</blockquote>
+<p>Not:</p>
+<ul>
+<li>A schema</li>
+<li>A command language</li>
+<li>A validation mechanism</li>
+</ul>
+<p>It sets boundaries and norms.<br />
+It does not execute policy.</p>
+<hr />
+<h2 id="when-this-approach-is-genuinely-worth-it">When this approach is genuinely worth it</h2>
+<p>This <em>is</em> worth doing when:</p>
+<ul>
+<li>You’re guiding architecture decisions</li>
+<li>You’re steering documentation strategy</li>
+<li>You’re trying to avoid cargo-cult innovation</li>
+<li>You need consistency across many LLM interactions</li>
+<li>You want humans to remain the strategic authority</li>
+</ul>
+<p>It is <strong>not</strong> worth doing for:</p>
+<ul>
+<li>Simple Q&amp;A</li>
+<li>Code generation</li>
+<li>Narrow technical tasks</li>
+<li>Anything where direction is already obvious</li>
+</ul>
+<hr />
+<h2 id="the-uncomfortable-truth">The uncomfortable truth</h2>
+<p>JSON Wardley models don’t make LLMs smarter.</p>
+<p>They make <strong>humans less sloppy</strong> about what they’ve already decided.</p>
+<p>That alone is enough to justify them — if you keep them:</p>
+<ul>
+<li>Sparse</li>
+<li>Directional</li>
+<li>Human-first</li>
+<li>And explicitly normative (“this is how we see the world”)</li>
+</ul>
+<p>If you try to turn them into a control system, they’ll fail.</p>
+<p>Used as a <strong>strategic guardrail</strong>, they’re one of the few structure layers that actually make sense in LLM workflows.</p>
+<hr />
+<p>Compare to other diagram techniques, eg mermaid, plantuml, etc</p>
+<hr />
+<p>Below is a <strong>straight comparison</strong>, framed around your actual goal:<br />
+<em>humans reason → freeze intent → guide LLMs → avoid directional error.</em></p>
+<p>I’ll be blunt where things don’t work.</p>
+<hr />
+<h2 id="comparison-axis-that-actually-matters">Comparison axis that actually matters</h2>
+<p>Forget syntax and tooling for a moment. The meaningful comparison dimensions are:</p>
+<ol>
+<li><strong>What kind of thinking does the diagram encode?</strong></li>
+<li><strong>Does it preserve strategic intent when serialized?</strong></li>
+<li><strong>Does it constrain LLM orientation or just output shape?</strong></li>
+<li><strong>Does it age well as context changes?</strong></li>
+</ol>
+<p>Most diagram tools fail on (2) and (3).</p>
+<hr />
+<h2 id="json-wardley-type-models-blockscape-style">JSON Wardley-type models (Blockscape-style)</h2>
+<h3 id="what-they-encode">What they encode</h3>
+<ul>
+<li><strong>Strategy</strong></li>
+<li><strong>Evolutionary position</strong></li>
+<li><strong>Relative visibility</strong></li>
+<li><strong>Assumptions about build vs buy</strong></li>
+<li><strong>Intentional inertia</strong></li>
+</ul>
+<p>This is the <em>only</em> option in your list that encodes <strong>why</strong>, not just <strong>what</strong>.</p>
+<h3 id="strengths">Strengths</h3>
+<ul>
+<li>Explicitly normative: <em>“this is how we see the landscape”</em></li>
+<li>Directionally constraining without being prescriptive</li>
+<li>Humans can agree visually first, then serialize</li>
+<li>LLMs can be instructed to <strong>surface violations</strong>, not just comply</li>
+<li>Diffable strategy over time</li>
+</ul>
+<h3 id="weaknesses">Weaknesses</h3>
+<ul>
+<li>Loses spatial intuition unless reinforced linguistically</li>
+<li>Requires discipline to keep imprecise</li>
+<li>Not executable</li>
+<li>Not discoverable by accident (you must already care about strategy)</li>
+</ul>
+<h3 id="llm-fit">LLM fit</h3>
+<p><strong>Excellent for orientation.</strong><br />
+This is a <em>guardrail</em>, not a control surface.</p>
+<blockquote>
+<p>JSON Wardley maps tell the model what <em>not</em> to optimize.</p>
+</blockquote>
+<hr />
+<h2 id="mermaid">Mermaid</h2>
+<h3 id="what-it-encodes">What it encodes</h3>
+<ul>
+<li><strong>Relationships</strong></li>
+<li><strong>Flows</strong></li>
+<li><strong>Sequences</strong></li>
+<li><strong>Hierarchies</strong></li>
+</ul>
+<p>Mermaid is about <strong>structure and flow</strong>, not intent.</p>
+<h3 id="strengths_1">Strengths</h3>
+<ul>
+<li>Human-readable</li>
+<li>Lightweight</li>
+<li>Embeddable in Markdown</li>
+<li>Easy to regenerate and tweak</li>
+<li>Good for explaining systems</li>
+</ul>
+<h3 id="weaknesses_1">Weaknesses</h3>
+<ul>
+<li>No concept of evolution</li>
+<li>No concept of strategic value</li>
+<li>No concept of inertia</li>
+<li>Diagrams describe <em>how things connect</em>, not <em>why they exist</em></li>
+</ul>
+<h3 id="llm-fit_1">LLM fit</h3>
+<p><strong>Good for explanation, weak for guidance.</strong></p>
+<p>If you feed Mermaid diagrams to an LLM, it will:</p>
+<ul>
+<li>Summarize them</li>
+<li>Rephrase them</li>
+<li>Rebuild them</li>
+</ul>
+<p>It will <strong>not</strong> adopt them as constraints.</p>
+<p>Mermaid answers:</p>
+<blockquote>
+<p>“What talks to what?”</p>
+</blockquote>
+<p>It cannot answer:</p>
+<blockquote>
+<p>“What must not change?”</p>
+</blockquote>
+<hr />
+<h2 id="plantuml">PlantUML</h2>
+<h3 id="what-it-encodes_1">What it encodes</h3>
+<ul>
+<li><strong>Formal structure</strong></li>
+<li><strong>Roles</strong></li>
+<li><strong>Protocols</strong></li>
+<li><strong>Contracts</strong></li>
+<li><strong>Static architecture</strong></li>
+</ul>
+<p>PlantUML is precise by design.</p>
+<h3 id="strengths_2">Strengths</h3>
+<ul>
+<li>Extremely expressive</li>
+<li>Multiple diagram types</li>
+<li>Versionable</li>
+<li>Widely understood by engineers</li>
+<li>Good at locking down <em>current-state reality</em></li>
+</ul>
+<h3 id="weaknesses_2">Weaknesses</h3>
+<ul>
+<li>Precision encourages false certainty</li>
+<li>Strategy gets buried under structure</li>
+<li>Easy to confuse <em>representation</em> with <em>decision</em></li>
+<li>Tends to fossilize architectures</li>
+</ul>
+<h3 id="llm-fit_2">LLM fit</h3>
+<p><strong>Actively dangerous for strategic guidance.</strong></p>
+<p>LLMs will treat PlantUML as:</p>
+<ul>
+<li>Ground truth</li>
+<li>Optimal design</li>
+<li>Something to extend symmetrically</li>
+</ul>
+<p>Which leads to:</p>
+<ul>
+<li>Over-engineering</li>
+<li>Local optimization</li>
+<li>“Just add another box” thinking</li>
+</ul>
+<p>PlantUML answers:</p>
+<blockquote>
+<p>“What exists?”</p>
+</blockquote>
+<p>It does not answer:</p>
+<blockquote>
+<p>“What should we stop caring about?”</p>
+</blockquote>
+<hr />
+<h2 id="architecture-decision-records-adrs">Architecture Decision Records (ADRs)</h2>
+<p>(Important comparison, even though not a diagram)</p>
+<h3 id="what-they-encode_1">What they encode</h3>
+<ul>
+<li><strong>Decisions</strong></li>
+<li><strong>Context</strong></li>
+<li><strong>Rationale</strong></li>
+<li><strong>Tradeoffs</strong></li>
+</ul>
+<h3 id="strengths_3">Strengths</h3>
+<ul>
+<li>Human-readable</li>
+<li>Narrative</li>
+<li>Explicit intent</li>
+<li>LLMs summarize them well</li>
+</ul>
+<h3 id="weaknesses_3">Weaknesses</h3>
+<ul>
+<li>Linear, not spatial</li>
+<li>Hard to reason about interactions between decisions</li>
+<li>No sense of evolution</li>
+<li>Don’t compose well at scale</li>
+</ul>
+<h3 id="llm-fit_3">LLM fit</h3>
+<p><strong>Good locally, weak globally.</strong></p>
+<p>ADRs help explain <em>why something happened</em>.<br />
+They don’t prevent future directional drift.</p>
+<hr />
+<h2 id="why-wardley-maps-are-different-and-why-json-helps">Why Wardley maps are different (and why JSON helps)</h2>
+<p>Wardley maps uniquely encode:</p>
+<ul>
+<li><strong>Relative position</strong>, not absolute design</li>
+<li><strong>Change over time</strong>, not static state</li>
+<li><strong>Constraint through context</strong>, not rules</li>
+</ul>
+<p>When serialized carefully, they become:</p>
+<blockquote>
+<p><em>A shared strategic coordinate system.</em></p>
+</blockquote>
+<p>Mermaid and PlantUML describe <strong>systems</strong>.<br />
+Wardley maps describe <strong>landscapes</strong>.</p>
+<p>LLMs are very good at navigating landscapes <strong>if the landmarks are named</strong>.</p>
+<hr />
+<h2 id="the-key-insight-for-llm-usage">The key insight for LLM usage</h2>
+<p>LLMs fail most often by:</p>
+<ul>
+<li>Innovating where stability is required</li>
+<li>Optimizing what should be rented</li>
+<li>Treating everything as equally malleable</li>
+</ul>
+<p>Only Wardley-style models directly counter this failure mode.</p>
+<p>Everything else:</p>
+<ul>
+<li>Improves communication</li>
+<li>Improves documentation</li>
+<li>Improves explanation</li>
+</ul>
+<p>But does not improve <strong>orientation</strong>.</p>
+<hr />
+<h2 id="practical-guidance-no-theory">Practical guidance (no theory)</h2>
+<p><strong>Use Wardley JSON when:</strong></p>
+<ul>
+<li>You want consistent architectural advice over time</li>
+<li>You want to prevent “solutioneering”</li>
+<li>You want LLMs to flag violations, not invent direction</li>
+<li>Strategy matters more than structure</li>
+</ul>
+<p><strong>Use Mermaid when:</strong></p>
+<ul>
+<li>Explaining flows</li>
+<li>Teaching</li>
+<li>Documenting interactions</li>
+<li>Letting humans understand systems quickly</li>
+</ul>
+<p><strong>Use PlantUML when:</strong></p>
+<ul>
+<li>You need precision</li>
+<li>You are freezing a design</li>
+<li>The cost of ambiguity is higher than the cost of rigidity</li>
+</ul>
+<hr />
+<h2 id="final-verdict">Final verdict</h2>
+<p>JSON Wardley-type models are not competing with Mermaid or PlantUML.</p>
+<p>They sit <strong>above them</strong>.</p>
+<ul>
+<li>Mermaid / PlantUML: <em>How</em></li>
+<li>ADRs: <em>Why (locally)</em></li>
+<li>Wardley maps: <em>Why (globally, over time)</em></li>
+</ul>
+<p>If your goal is to reduce <strong>directional error in LLM-assisted work</strong>, Wardley-style models are one of the <em>very few</em> diagrammatic techniques that meaningfully help — <strong>provided you resist the urge to over-formalize them</strong>.</p>
+<hr />
+<p>Are blockscape models good for showing relations between components in software?</p>
+<hr />
+<p>Short answer: <strong>no — not primarily, and not well if that’s your main goal</strong>.</p>
+<p>Blockscape (Wardley-style) models <em>can</em> show relationships, but that’s not what they’re good at. Using them that way is a category error.</p>
+<p>Let’s be precise.</p>
+<hr />
+<h2 id="what-blockscape-models-are-actually-for">What Blockscape models are actually for</h2>
+<p>Blockscape models (as you’re using them) are optimized to show:</p>
+<ul>
+<li><strong>Value relationships</strong>, not technical dependencies</li>
+<li><strong>Visibility</strong>, not coupling</li>
+<li><strong>Evolutionary state</strong>, not implementation detail</li>
+<li><strong>Strategic importance</strong>, not call graphs</li>
+</ul>
+<p>A line in a Blockscape map means:</p>
+<blockquote>
+<p>“This exists <em>because of</em> that”</p>
+</blockquote>
+<p>—not:</p>
+<blockquote>
+<p>“This calls that”, “This imports that”, or “This depends on that at runtime”.</p>
+</blockquote>
+<p>That distinction matters.</p>
+<hr />
+<h2 id="why-blockscape-is-a-poor-primary-tool-for-software-relations">Why Blockscape is a poor primary tool for software relations</h2>
+<h3 id="1-dependency-semantics-are-too-weak">1. Dependency semantics are too weak</h3>
+<p>Blockscape edges do not encode:</p>
+<ul>
+<li>Direction of data flow</li>
+<li>Sync vs async</li>
+<li>Runtime vs build-time dependency</li>
+<li>Failure modes</li>
+<li>Performance characteristics</li>
+</ul>
+<p>All of those matter in software architecture.</p>
+<p>Trying to overload a Blockscape edge to mean “dependency” quickly collapses into ambiguity.</p>
+<hr />
+<h3 id="2-evolution-axis-distorts-technical-reasoning">2. Evolution axis distorts technical reasoning</h3>
+<p>The evolution axis is <strong>strategically correct</strong> but <strong>technically misleading</strong>.</p>
+<p>Example:</p>
+<ul>
+<li>“Authentication” might be a commodity</li>
+<li>“Token validation” might be a product</li>
+<li>“Custom authorization logic” might be novel</li>
+</ul>
+<p>Technically, these components may be tightly coupled.<br />
+Strategically, they belong in different places.</p>
+<p>Blockscape intentionally <strong>breaks technical proximity</strong> to reveal strategic tension.</p>
+<p>That’s a feature — but it makes it a bad dependency diagram.</p>
+<hr />
+<h3 id="3-precision-actively-harms-the-model">3. Precision actively harms the model</h3>
+<p>The more you try to show:</p>
+<ul>
+<li>Ports</li>
+<li>Interfaces</li>
+<li>APIs</li>
+<li>Call sequences</li>
+</ul>
+<p>…the more you destroy what makes the map useful.</p>
+<p>Blockscape works because it is:</p>
+<ul>
+<li>Imprecise</li>
+<li>Relative</li>
+<li>Directional</li>
+</ul>
+<p>Software dependency diagrams need the opposite.</p>
+<hr />
+<h2 id="what-blockscape-is-good-for-relation-wise">What Blockscape is good for (relation-wise)</h2>
+<p>That said, Blockscape <em>does</em> express some relationships very well:</p>
+<h3 id="1-value-dependency">1. Value dependency</h3>
+<ul>
+<li>“This user need depends on these capabilities”</li>
+<li>“This product is built on these activities”</li>
+<li>“This system exists to support that outcome”</li>
+</ul>
+<p>This is gold for:</p>
+<ul>
+<li>Documentation structure</li>
+<li>Platform strategy</li>
+<li>Build vs buy discussions</li>
+</ul>
+<h3 id="2-strategic-tension">2. Strategic tension</h3>
+<p>It’s excellent at showing:</p>
+<ul>
+<li>Where you’re over-investing</li>
+<li>Where you’re differentiating by accident</li>
+<li>Where you’re building bespoke versions of commodities</li>
+</ul>
+<p>These are <em>relations of intent</em>, not code.</p>
+<hr />
+<h2 id="comparison-blockscape-vs-software-diagrams">Comparison: Blockscape vs software diagrams</h2>
+<table>
+<thead>
+<tr>
+<th>Goal</th>
+<th>Blockscape</th>
+<th>Mermaid / PlantUML</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Show runtime calls</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Show module imports</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Show value chains</td>
+<td>✅</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Show strategic dependencies</td>
+<td>✅</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Show evolution over time</td>
+<td>✅</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Show failure paths</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Guide architectural investment</td>
+<td>✅</td>
+<td>❌</td>
+</tr>
+</tbody>
+</table>
+<p>They solve <strong>orthogonal problems</strong>.</p>
+<hr />
+<h2 id="correct-way-to-combine-them-this-is-key">Correct way to combine them (this is key)</h2>
+<p>The <em>right</em> pattern is:</p>
+<ol>
+<li><strong>Blockscape first</strong><ul>
+<li>Establish what matters</li>
+<li>Establish what should be stable vs experimental</li>
+<li>Establish where not to innovate</li>
+</ul>
+</li>
+<li><strong>Software diagrams second</strong><ul>
+<li>Only for components that matter</li>
+<li>Only where precision is required</li>
+<li>Only within the constraints set by the map</li>
+</ul>
+</li>
+</ol>
+<p>In practice:</p>
+<ul>
+<li>Blockscape decides <em>where you care</em></li>
+<li>PlantUML / Mermaid decide <em>how it works</em></li>
+</ul>
+<p>If you invert this order, you get:</p>
+<ul>
+<li>Over-engineering</li>
+<li>Accidental complexity</li>
+<li>Strategy-by-diagram</li>
+</ul>
+<hr />
+<h2 id="the-dangerous-misuse-to-avoid">The dangerous misuse to avoid</h2>
+<p>A common anti-pattern:</p>
+<blockquote>
+<p>“Let’s make a Blockscape map that shows all our services and how they connect.”</p>
+</blockquote>
+<p>That produces:</p>
+<ul>
+<li>A worse dependency diagram</li>
+<li>A worse strategy map</li>
+<li>False confidence</li>
+<li>Endless debate over placement</li>
+</ul>
+<p>If your question is:</p>
+<blockquote>
+<p>“What talks to what?”</p>
+</blockquote>
+<p>Blockscape is the wrong tool.</p>
+<p>If your question is:</p>
+<blockquote>
+<p>“What deserves our attention and investment?”</p>
+</blockquote>
+<p>Blockscape is one of the best tools you have.</p>
+<hr />
+<h2 id="verdict-no-hedging">Verdict (no hedging)</h2>
+<p>Blockscape models are <strong>not good</strong> for showing software component relationships <em>in the technical sense</em>.</p>
+<p>They are <strong>excellent</strong> for showing:</p>
+<ul>
+<li>Why components exist</li>
+<li>How visible they are to users</li>
+<li>How mature they should be</li>
+<li>Where change is risky vs safe</li>
+</ul>
+<p>Use them to <strong>govern</strong> software design, not to <strong>describe</strong> it.</p>
+<p>If you want, the next useful step is to sketch a concrete example:</p>
+<ul>
+<li>Same system shown once as a Blockscape map</li>
+<li>Once as a PlantUML component diagram</li>
+</ul>
+<p>That contrast usually makes the boundary obvious in seconds.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js"></script>
+        <script src="../../site_assets/blockscape/blockscape.js"></script>
+        <script src="../../site_assets/blockscape/mount.js"></script>
+        <script src="../../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

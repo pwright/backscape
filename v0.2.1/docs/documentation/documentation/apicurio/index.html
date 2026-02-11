@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://pwright.github.io/blockscape/documentation/apicurio/">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Apicurio as backend - Blockscape</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../css/brands.min.css" rel="stylesheet">
+        <link href="../../css/solid.min.css" rel="stylesheet">
+        <link href="../../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <link href="../../site_assets/blockscape/blockscape.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Blockscape</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="https://pwright.github.io/blockscape/" class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../.." class="nav-link">Hello</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Maps</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../maps/blockscape-example/" class="dropdown-item">Blockscape Example</a>
+</li>
+                                    
+<li>
+    <a href="../../maps/wardley-example/" class="dropdown-item">Wardley Example</a>
+</li>
+                                    
+<li>
+    <a href="../../maps/series-example/" class="dropdown-item">Series Example</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Documentation</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../maps/" class="dropdown-item">Overview</a>
+</li>
+                                    
+<li>
+    <a href="../features/" class="dropdown-item">Features</a>
+</li>
+                                    
+<li>
+    <a href="../series/" class="dropdown-item">Series</a>
+</li>
+                                    
+<li>
+    <a href="../models/" class="dropdown-item">Models</a>
+</li>
+                                    
+<li>
+    <a href="../docker/" class="dropdown-item">Docker for local editor</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">Apicurio as backend</a>
+</li>
+                                    
+<li>
+    <a href="../mkdocs/" class="dropdown-item">MkDocs usage</a>
+</li>
+                                    
+<li>
+    <a href="../llm-generation/" class="dropdown-item">LLM generation</a>
+</li>
+                                    
+<li>
+    <a href="../share-links/" class="dropdown-item">Share links</a>
+</li>
+                                    
+<li>
+    <a href="../bs-opener-linux/" class="dropdown-item">Local usage on Linux</a>
+</li>
+                                    
+<li>
+    <a href="../bs-opener-mac/" class="dropdown-item">Local usage on Mac</a>
+</li>
+                                    
+<li>
+    <a href="../server/" class="dropdown-item">Local backend server</a>
+</li>
+                                    
+<li>
+    <a href="../rise-and-fall-json/" class="dropdown-item">JSON prompting</a>
+</li>
+                                    
+<li>
+    <a href="../editor/" class="dropdown-item">Editor</a>
+</li>
+                                    
+<li>
+    <a href="../evolution/" class="dropdown-item">Evolution</a>
+</li>
+                                    
+<li>
+    <a href="../gestalt/" class="dropdown-item">Gestalt</a>
+</li>
+                                    
+<li>
+    <a href="../gists/" class="dropdown-item">Gists</a>
+</li>
+                                    
+<li>
+    <a href="../icons/" class="dropdown-item">Icons</a>
+</li>
+                                    
+<li>
+    <a href="../llm-consume/" class="dropdown-item">LLM consume</a>
+</li>
+                                    
+<li>
+    <a href="../navigation/" class="dropdown-item">Navigation</a>
+</li>
+                                    
+<li>
+    <a href="../paste/" class="dropdown-item">Paste</a>
+</li>
+                                    
+<li>
+    <a href="../portfolio/" class="dropdown-item">Portfolio</a>
+</li>
+                                    
+<li>
+    <a href="../relational-awareness/" class="dropdown-item">Relational awareness</a>
+</li>
+                                    
+<li>
+    <a href="../stages/" class="dropdown-item">Stages</a>
+</li>
+                                    
+<li>
+    <a href="../value-chain/" class="dropdown-item">Value chain</a>
+</li>
+                                    
+<li>
+    <a href="../watch-models/" class="dropdown-item">Watch models</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../toc/" class="nav-link">TOC</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../docker/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../mkdocs/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#using-apicurio-as-backend" class="nav-link">Using Apicurio as backend</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#local-server" class="nav-link">Local server</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#apicurio-registry-https-reverse-proxy-on-unraid" class="nav-link">Apicurio Registry: HTTPS Reverse Proxy on Unraid</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="using-apicurio-as-backend">Using Apicurio as backend</h1>
+<p>Due to PNA, local only works in Firefox.</p>
+<h2 id="local-server">Local server</h2>
+<p>Backend</p>
+<pre><code>podman run --replace --name registry   -p 8080:8080   -e QUARKUS_HTTP_CORS=true   -e QUARKUS_HTTP_CORS_ORIGINS=&quot;*&quot;  -e APICURIO_SEMVER_BRANCHING_ENABLED=true  -e QUARKUS_HTTP_CORS_ACCESS_CONTROL_ALLOW_METHODS=&quot;GET,PUT,POST,DELETE,OPTIONS,HEAD&quot;   -e QUARKUS_HTTP_CORS_ACCESS_CONTROL_ALLOW_HEADERS=&quot;accept,authorization,content-type,x-requested-with&quot;   apicurio/apicurio-registry:latest-release
+</code></pre>
+<p>UI</p>
+<pre><code>podman run -it --rm   -p 8081:8080   -e REGISTRY_API_URL=http://localhost:8080/apis/registry/v3   docker.io/apicurio/apicurio-registry-ui:latest-release
+
+</code></pre>
+<p>That config is especially good with:</p>
+<pre><code>npx http-server . -p 4173
+</code></pre>
+<h2 id="apicurio-registry-https-reverse-proxy-on-unraid">Apicurio Registry: HTTPS Reverse Proxy on Unraid</h2>
+<p>This README documents the final working setup for running Apicurio Registry behind an HTTPS facade on an Unraid server using Docker Compose. The goal is to provide a secure, self-signed TLS endpoint for remote clients while keeping the Registry itself running internally over HTTP.</p>
+<hr />
+<h3 id="overview">Overview</h3>
+<p>The deployment consists of:</p>
+<ul>
+<li><strong>Apicurio Registry</strong> — running on an internal bridge network, exposed on port <code>8080</code> (HTTP)</li>
+<li><strong>Apicurio Registry UI</strong> — exposed on port <code>8081</code> (HTTP)</li>
+<li><strong>Nginx HTTPS Proxy</strong> — terminates TLS, forwards requests to the Registry backend, exposed on port <code>9443</code> (HTTPS)</li>
+</ul>
+<p>Clients call the proxy endpoint, not the Registry directly.</p>
+<p>Example client URL:</p>
+<pre><code>https://&lt;host&gt;.&lt;tailscale-net&gt;.ts.net:9443/apis/registry/v3/system/info
+</code></pre>
+<hr />
+<h3 id="directory-structure">Directory Structure</h3>
+<p>On Unraid, the proxy configuration and certificates are stored under:</p>
+<pre><code>/mnt/user/appdata/apicurio-nginx/
+├── nginx.conf
+└── certs/
+    ├── fullchain.pem
+    └── privkey.pem
+</code></pre>
+<hr />
+<h3 id="self-signed-certificate-generation">Self-Signed Certificate Generation</h3>
+<p>Generate a certificate matching your public hostname:</p>
+<pre><code>openssl req -x509 -nodes -newkey rsa:2048 \
+  -keyout /mnt/user/appdata/apicurio-nginx/certs/privkey.pem \
+  -out /mnt/user/appdata/apicurio-nginx/certs/fullchain.pem \
+  -days 365 \
+  -subj &quot;/CN=&lt;host&gt;.&lt;tailscale-net&gt;.ts.net&quot; \
+  -addext &quot;subjectAltName=DNS:&lt;host&gt;.&lt;tailscale-net&gt;.ts.net&quot;
+</code></pre>
+<p>Browsers will warn due to self-signing; users must trust or add an exception.</p>
+<hr />
+<h3 id="nginx-configuration">Nginx Configuration</h3>
+<p>The reverse proxy uses a dedicated <code>nginx.conf</code> file:</p>
+<pre><code>worker_processes  1;
+
+events {
+    worker_connections  1024;
+}
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    access_log  /var/log/nginx/access.log;
+    error_log   /var/log/nginx/error.log warn;
+
+    sendfile        on;
+    keepalive_timeout  65;
+
+    server {
+        listen 443 ssl;
+        server_name _;
+
+        ssl_certificate     /certs/fullchain.pem;
+        ssl_certificate_key /certs/privkey.pem;
+
+        # CORS support
+        add_header Access-Control-Allow-Origin &quot;*&quot; always;
+        add_header Access-Control-Allow-Methods &quot;GET,PUT,POST,DELETE,OPTIONS,HEAD&quot; always;
+        add_header Access-Control-Allow-Headers &quot;accept,authorization,content-type,x-requested-with&quot; always;
+
+        if ($request_method = OPTIONS) {
+            add_header Access-Control-Max-Age 86400;
+            add_header Content-Length 0;
+            add_header Content-Type &quot;text/plain; charset=UTF-8&quot;;
+            return 204;
+        }
+
+        location / {
+            proxy_pass http://apicurio-registry:8080;
+            proxy_set_header Host              $host;
+            proxy_set_header X-Real-IP         $remote_addr;
+            proxy_set_header X-Forwarded-For   $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto https;
+        }
+    }
+}
+</code></pre>
+<hr />
+<h3 id="compose-service-definition">Compose Service Definition</h3>
+<p>The following service is added to the Unraid Docker Compose stack:</p>
+<pre><code>apicurio-registry-proxy:
+  image: nginx:alpine
+  container_name: apicurio-registry-proxy
+  volumes:
+    - /mnt/user/appdata/apicurio-nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    - /mnt/user/appdata/apicurio-nginx/certs:/certs:ro
+  ports:
+    - &quot;9443:443&quot;   # HTTPS entrypoint
+  depends_on:
+    - apicurio-registry
+  networks:
+    - apicurio-network
+</code></pre>
+<p>Ensure the Registry backend and UI are also attached to <code>apicurio-network</code>.</p>
+<hr />
+<h3 id="verification">Verification</h3>
+<ol>
+<li>Test TLS from Unraid</li>
+</ol>
+<pre><code>curl -vk https://127.0.0.1:9443/apis/registry/v3/system/info
+</code></pre>
+<p>You should receive JSON.</p>
+<ol>
+<li>Test Remote Client Access</li>
+</ol>
+<pre><code>curl -k https://&lt;host&gt;.&lt;tailscale-net&gt;.ts.net:9443/apis/registry/v3/system/info
+</code></pre>
+<p>If the certificate is trusted, omit <code>-k</code>.</p>
+<hr />
+<p>.Browser Access</p>
+<ul>
+<li>Browsers must trust the self-signed certificate.</li>
+<li>Once trusted, remote JS clients can successfully call the Registry because the proxy injects valid CORS headers.</li>
+</ul>
+<hr />
+<h3 id="summary">Summary</h3>
+<p>You now have:</p>
+<ul>
+<li>A functioning HTTPS reverse proxy on Unraid</li>
+<li>Working CORS for browser-based clients</li>
+<li>A fully reachable Apicurio Registry endpoint over TLS</li>
+<li>Self-signed certs configured with proper hostname matching</li>
+</ul>
+<p>This setup is suitable for LAN, Tailscale, or test deployments where full certificate authority integration isn’t needed.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js"></script>
+        <script src="../../site_assets/blockscape/blockscape.js"></script>
+        <script src="../../site_assets/blockscape/mount.js"></script>
+        <script src="../../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

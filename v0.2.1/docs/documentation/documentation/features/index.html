@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://pwright.github.io/blockscape/documentation/features/">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Features - Blockscape</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../css/brands.min.css" rel="stylesheet">
+        <link href="../../css/solid.min.css" rel="stylesheet">
+        <link href="../../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <link href="../../site_assets/blockscape/blockscape.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Blockscape</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="https://pwright.github.io/blockscape/" class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../.." class="nav-link">Hello</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Maps</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../maps/blockscape-example/" class="dropdown-item">Blockscape Example</a>
+</li>
+                                    
+<li>
+    <a href="../../maps/wardley-example/" class="dropdown-item">Wardley Example</a>
+</li>
+                                    
+<li>
+    <a href="../../maps/series-example/" class="dropdown-item">Series Example</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Documentation</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../maps/" class="dropdown-item">Overview</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">Features</a>
+</li>
+                                    
+<li>
+    <a href="../series/" class="dropdown-item">Series</a>
+</li>
+                                    
+<li>
+    <a href="../models/" class="dropdown-item">Models</a>
+</li>
+                                    
+<li>
+    <a href="../docker/" class="dropdown-item">Docker for local editor</a>
+</li>
+                                    
+<li>
+    <a href="../apicurio/" class="dropdown-item">Apicurio as backend</a>
+</li>
+                                    
+<li>
+    <a href="../mkdocs/" class="dropdown-item">MkDocs usage</a>
+</li>
+                                    
+<li>
+    <a href="../llm-generation/" class="dropdown-item">LLM generation</a>
+</li>
+                                    
+<li>
+    <a href="../share-links/" class="dropdown-item">Share links</a>
+</li>
+                                    
+<li>
+    <a href="../bs-opener-linux/" class="dropdown-item">Local usage on Linux</a>
+</li>
+                                    
+<li>
+    <a href="../bs-opener-mac/" class="dropdown-item">Local usage on Mac</a>
+</li>
+                                    
+<li>
+    <a href="../server/" class="dropdown-item">Local backend server</a>
+</li>
+                                    
+<li>
+    <a href="../rise-and-fall-json/" class="dropdown-item">JSON prompting</a>
+</li>
+                                    
+<li>
+    <a href="../editor/" class="dropdown-item">Editor</a>
+</li>
+                                    
+<li>
+    <a href="../evolution/" class="dropdown-item">Evolution</a>
+</li>
+                                    
+<li>
+    <a href="../gestalt/" class="dropdown-item">Gestalt</a>
+</li>
+                                    
+<li>
+    <a href="../gists/" class="dropdown-item">Gists</a>
+</li>
+                                    
+<li>
+    <a href="../icons/" class="dropdown-item">Icons</a>
+</li>
+                                    
+<li>
+    <a href="../llm-consume/" class="dropdown-item">LLM consume</a>
+</li>
+                                    
+<li>
+    <a href="../navigation/" class="dropdown-item">Navigation</a>
+</li>
+                                    
+<li>
+    <a href="../paste/" class="dropdown-item">Paste</a>
+</li>
+                                    
+<li>
+    <a href="../portfolio/" class="dropdown-item">Portfolio</a>
+</li>
+                                    
+<li>
+    <a href="../relational-awareness/" class="dropdown-item">Relational awareness</a>
+</li>
+                                    
+<li>
+    <a href="../stages/" class="dropdown-item">Stages</a>
+</li>
+                                    
+<li>
+    <a href="../value-chain/" class="dropdown-item">Value chain</a>
+</li>
+                                    
+<li>
+    <a href="../watch-models/" class="dropdown-item">Watch models</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../toc/" class="nav-link">TOC</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../maps/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../series/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#blockscape-features-beginner-friendly" class="nav-link">Blockscape features (beginner-friendly)</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#what-blockscape-is" class="nav-link">What Blockscape is</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#core-map-experience" class="nav-link">Core map experience</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#data-model-and-files" class="nav-link">Data model and files</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#getting-data-into-blockscape" class="nav-link">Getting data into Blockscape</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#editing-tools" class="nav-link">Editing tools</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#sharing-and-collaboration" class="nav-link">Sharing and collaboration</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#running-the-app" class="nav-link">Running the app</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#quality-and-tests" class="nav-link">Quality and tests</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="blockscape-features-beginner-friendly">Blockscape features (beginner-friendly)</h1>
+<p>Welcome to Blockscape! This page walks through what the project does and how to use it, starting from zero knowledge.</p>
+<h2 id="what-blockscape-is">What Blockscape is</h2>
+<ul>
+<li>A web app for turning JSON models into interactive landscape maps (inspired by Wardley maps).</li>
+<li>Ships with ready-to-explore samples (<code>blockscape.bs</code>, <code>planets.bs</code>) that auto-load on startup so you can click around immediately.</li>
+<li>Lives in <code>svelte/</code> (Vite + Svelte) with a legacy <code>index.html</code> kept for reference; both render the same maps.</li>
+</ul>
+<h2 id="core-map-experience">Core map experience</h2>
+<ul>
+<li><strong>Visual grid:</strong> Categories run top-to-bottom (more visible value at the top); items flow left-to-right (left = novel/custom, right = commodity/standard).</li>
+<li><strong>Tile interactions:</strong> Click to highlight dependencies; right-click shows a preview panel (used in Cypress tests); dashed border + ↗ indicates an external link; orange badge means the item is reused multiple times.</li>
+<li><strong>Keyboard + mouse:</strong> Arrow keys walk the tiles; <code>Shift+←/→</code> reorders inside a category; <code>Shift+↑/↓</code> moves an item between categories; drag-and-drop works too. <code>Del</code> removes the selected item (undo with your browser’s undo).</li>
+<li><strong>Logos and links:</strong> Add <code>logo</code> paths for inline icons and <code>external</code> URLs to launch docs, ADRs, repos, or APIs from the map.</li>
+</ul>
+<h2 id="data-model-and-files">Data model and files</h2>
+<ul>
+<li>Models are simple JSON objects (<code>id</code>, <code>title</code>, optional <code>abstract</code>, <code>categories[]</code>, and <code>items[]</code> with <code>deps</code>, <code>logo</code>, <code>external</code>). See <code>documentation/models.md</code> for the schema.</li>
+<li>A <code>.bs</code> file is just JSON: a single model or an array of models (a “series”). Multiple models let you compare versions or viewpoints.</li>
+<li>Built-in templates: “Blockscape”, “NFR”, and “Deployments” are available from the picker so you always have a starting point.</li>
+</ul>
+<h2 id="getting-data-into-blockscape">Getting data into Blockscape</h2>
+<ul>
+<li><strong>Add JSON files:</strong> Use the UI button to load one or more <code>.json</code>/<code>.bs</code> files; new models are appended to your list.</li>
+<li><strong>Paste JSON:</strong> Paste directly into the JSON editor (top of the page) and click <strong>Append model(s)</strong>.</li>
+<li><strong>Jump between models:</strong> Use the model selector to flip between maps without reloading the page.</li>
+<li><strong>LLM generation:</strong> Use <a href="../llm-generation/">Generate maps with an LLM</a> for the ready-made prompt that drafts models from your domain notes.</li>
+</ul>
+<h2 id="editing-tools">Editing tools</h2>
+<ul>
+<li><strong>Map-side edits:</strong> Click <strong>Edit</strong> to open the JSON editor (<code>editor.html</code>). All changes you make there immediately reflect in the map.</li>
+<li><strong>CRUD in the editor:</strong> Add/remove categories and items, reorder them, and edit IDs/titles/names. A validate button checks the JSON before you save.</li>
+<li><strong>Reordering aids:</strong> Drag categories, drag items, or use the move up/down buttons tested in <code>cypress/e2e/editor-workflow.cy.js</code>.</li>
+</ul>
+<h2 id="sharing-and-collaboration">Sharing and collaboration</h2>
+<ul>
+<li><strong>Download/share files:</strong> Because everything is JSON, you can version <code>.bs</code> files in git, send them over chat, or drop them in docs.</li>
+<li><strong>Share links:</strong> See <a href="../share-links/">Share Blockscape maps via encoded links</a> for wrapping <code>.bs</code> files into URLs and decoding them later.</li>
+<li><strong>External references:</strong> Attach documentation, RFCs, or dashboards via the <code>external</code> field so each tile doubles as a launch point.</li>
+</ul>
+<h2 id="running-the-app">Running the app</h2>
+<ul>
+<li><strong>Fast local dev:</strong> <code>npm install</code> then <code>npm run dev</code> (Vite on http://localhost:5173). The JSON editor lives at <code>/editor.html</code>.</li>
+<li><strong>Production build:</strong> <code>npm run build</code> emits <code>docs/</code>; serve it with <code>npm run preview</code> or <code>npm run serve</code> (<code>http-server</code>).</li>
+<li><strong>Local backend (optional):</strong> <code>npm run server</code> serves the built app and a file API rooted at <code>~/blockscape</code> (override with <code>BLOCKSCAPE_ROOT</code>). You can auto-load a local file via <code>http://127.0.0.1:4173/server/path/to/file.bs</code>.</li>
+<li><strong>Docker:</strong> Pull <code>docker.io/pwrightrd/blockscape:latest</code> and run it to serve the static build plus the optional file API.</li>
+<li><strong>Apicurio (optional backend):</strong> Use <code>documentation/apicurio.md</code> if you want to back maps with Apicurio Registry.</li>
+<li><strong>Docs/MkDocs:</strong> Follow <a href="../mkdocs/">MkDocs usage</a> to serve the bundled docs or embed Blockscape maps in other MkDocs sites.</li>
+</ul>
+<h2 id="quality-and-tests">Quality and tests</h2>
+<ul>
+<li>Cypress specs cover the preview flow (<code>model-preview.cy.js</code>) and full CRUD in the JSON editor (<code>editor-workflow.cy.js</code>).</li>
+<li>Token builds (<code>npm run build:tokens</code>) and docs builds (<code>npm run docs:build</code>) are part of the standard <code>npm run build</code> pipeline.</li>
+</ul>
+<p>If you’re new: start the dev server, load a sample map, click tiles to see dependencies, then open <strong>Edit</strong> to tweak the JSON and watch the map update. That’s the whole loop.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js"></script>
+        <script src="../../site_assets/blockscape/blockscape.js"></script>
+        <script src="../../site_assets/blockscape/mount.js"></script>
+        <script src="../../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

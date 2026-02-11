@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "exportedAt": "2025-12-31T14:35:35.393Z",
+  "settings": {
+    "theme": "light",
+    "hoverScale": 1.5,
+    "selectionDimOpacity": 0.2,
+    "selectionDimEnabled": true,
+    "tileCompactness": 1,
+    "titleWrapMode": "wrap",
+    "titleHoverWidthMultiplier": 1.3,
+    "titleHoverTextPortion": 0.25,
+    "obsidianLinksEnabled": false,
+    "obsidianLinkMode": "title",
+    "obsidianVault": "",
+    "autoIdFromName": true,
+    "seriesNavDoubleClickMs": 900,
+    "showSecondaryLinks": false,
+    "centerItems": true,
+    "showReusedInMap": false,
+    "colorPresets": [
+      {
+        "name": "Black",
+        "value": "#111111"
+      },
+      {
+        "name": "White",
+        "value": "#ffffff"
+      },
+      {
+        "name": "Red",
+        "value": "#ef4444"
+      },
+      {
+        "name": "Green",
+        "value": "#22c55e"
+      },
+      {
+        "name": "Blue",
+        "value": "#2563eb"
+      }
+    ],
+    "linkThickness": "l"
+  }
+}
