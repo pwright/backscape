@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Blockscape</title>
+    <link rel="stylesheet" href="./site_assets/blockscape/blockscape.css" />
+    <style>
+      :root {
+        color-scheme: light;
+      }
+
+      body {
+        margin: 0;
+        background: var(--color-surface-subtle);
+        color: var(--color-text);
+        font-family: var(--font-text);
+        min-height: 100vh;
+      }
+
+      header {
+        background: var(--color-surface);
+        border-bottom: 1px solid var(--color-border);
+        padding: 1rem 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+      }
+
+      header h1 {
+        margin: 0;
+        font-size: 1.1rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      header p {
+        margin: 0;
+        color: var(--color-muted);
+        font-size: 0.9rem;
+      }
+
+      .file-controls {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+      }
+
+      .zoom-controls {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        padding: 0.2rem 0.5rem;
+        border-radius: 999px;
+        border: 1px solid var(--color-border);
+        background: var(--color-surface-muted);
+      }
+
+      .zoom-label {
+        font-size: 0.72rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--color-muted);
+      }
+
+      .zoom-button {
+        border: 1px solid var(--color-border);
+        background: var(--color-surface);
+        color: var(--color-text);
+        padding: 0.2rem 0.55rem;
+        border-radius: 999px;
+        font-size: 0.8rem;
+        font-weight: var(--font-weight-semibold);
+        cursor: pointer;
+        min-width: 2.1rem;
+      }
+
+      .zoom-button:hover {
+        background: var(--color-surface);
+      }
+
+      .zoom-button--reset {
+        min-width: 3.1rem;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .file-button {
+        border: 1px solid var(--color-border);
+        background: var(--color-surface);
+        color: var(--color-text);
+        padding: 0.35rem 0.8rem;
+        border-radius: 999px;
+        font-size: 0.85rem;
+        font-weight: var(--font-weight-semibold);
+        cursor: pointer;
+      }
+
+      .file-button:hover {
+        background: var(--color-surface-muted);
+      }
+
+      .file-toggle {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        font-size: 0.85rem;
+        color: var(--color-muted);
+      }
+
+      main {
+        padding: 1rem 1.5rem 2rem;
+      }
+
+      .neutralino-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 280px;
+        gap: 1rem;
+        align-items: start;
+      }
+
+      .recent-panel {
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: 16px;
+        padding: 1rem;
+        box-shadow: var(--shadow-lg);
+        position: sticky;
+        top: 1rem;
+      }
+
+      .recent-panel h2 {
+        margin: 0 0 0.75rem;
+        font-size: 0.95rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .recent-panel p {
+        margin: 0;
+        color: var(--color-muted);
+        font-size: 0.85rem;
+      }
+
+      .recent-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .recent-item {
+        width: 100%;
+        text-align: left;
+        border: 1px solid var(--color-border);
+        background: var(--color-surface);
+        color: var(--color-text);
+        padding: 0.45rem 0.6rem;
+        border-radius: 10px;
+        font-size: 0.82rem;
+        cursor: pointer;
+      }
+
+      .recent-item:hover {
+        background: var(--color-surface-muted);
+      }
+
+      .recent-item__path {
+        display: block;
+        font-size: 0.72rem;
+        color: var(--color-muted);
+        margin-top: 0.2rem;
+        word-break: break-all;
+      }
+
+      .blockscape-root {
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: 16px;
+        padding: 1rem;
+        min-height: 70vh;
+        box-shadow: var(--shadow-lg);
+        --blockscape-logo-offset: 0px;
+        --blockscape-name-offset: 0px;
+        --blockscape-tile-gap-inner: calc(var(--space-2xs) * 0.8);
+      }
+
+      /* Neutralino-only overrides: force map-only layout */
+      .pf-v5-c-page__header,
+      .blockscape-sidebar,
+      .blockscape-footer,
+      .blockscape-json-panel,
+      #itemPreview,
+      #tileContextMenu,
+      #shortcutHelp {
+        display: none !important;
+      }
+
+      .blockscape-main,
+      .blockscape-content,
+      .pf-v5-c-page__main,
+      .pf-v5-c-page {
+        min-height: 100vh;
+      }
+
+      .blockscape-main-section {
+        padding: 0;
+      }
+
+      .blockscape-render {
+        min-height: calc(100vh - 2rem);
+      }
+
+      .tile .logo {
+        transform: translateY(0);
+      }
+
+      .tile .name {
+        margin-top: 0;
+        line-height: 1.2;
+      }
+
+      @media (max-width: 1024px) {
+        .neutralino-layout {
+          grid-template-columns: 1fr;
+        }
+
+        .recent-panel {
+          position: static;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Blockscape Viewer</h1>
+      <p>Neutralino shell: map-only view with local file features enabled.</p>
+      <p class="file-path" id="filePath" aria-live="polite">No file loaded</p>
+      <div class="file-controls" aria-label="File controls">
+        <button class="file-button" id="fileOpenBtn" type="button">Open</button>
+        <button class="file-button" id="fileSaveBtn" type="button">Save</button>
+        <button class="file-button" id="fileSaveAsBtn" type="button">Save As</button>
+        <button class="file-button" id="newMapBtn" type="button">New</button>
+        <div class="zoom-controls" role="group" aria-label="Zoom controls">
+          <span class="zoom-label">Zoom</span>
+          <button class="zoom-button" id="zoomOutBtn" type="button" title="Zoom out (Ctrl -)">-</button>
+          <button class="zoom-button zoom-button--reset" id="zoomResetBtn" type="button" title="Reset zoom (Ctrl 0)">100%</button>
+          <button class="zoom-button" id="zoomInBtn" type="button" title="Zoom in (Ctrl +)">+</button>
+        </div>
+        <label class="file-toggle">
+          <input id="fileAutosaveToggle" type="checkbox" />
+          <span>Autosave</span>
+        </label>
+      </div>
+    </header>
+
+    <main>
+      <div class="neutralino-layout">
+        <section class="blockscape-root">
+          <script type="application/json">
+            {
+              "id": "wardley-minimap",
+              "title": "Wardley-Inspired Knowledge Schema",
+              "abstract": "A useful Wardley-inspired map for quick conversations is: <br><br>Y-axis = user visibility/value (top = directly user-facing, bottom = back-end/enabling), <br><br>X-axis = evolution/maturity (left = novel/custom, right = commodity/standard). <br><br>This helps teams decide where to build enabling capabilities (bottom-left).",
+              "categories": [
+                {
+                  "id": "user-facing",
+                  "title": "User",
+                  "items": [
+                    {
+                      "id": "idea",
+                      "name": "Idea",
+                      "deps": [
+                        "experiments-learning"
+                      ]
+                    },
+                    {
+                      "id": "differentiation",
+                      "name": "Proof of concept",
+                      "deps": [
+                        "experiments-learning",
+                        "custom-build"
+                      ]
+                    },
+                    {
+                      "id": "productized",
+                      "name": "Product",
+                      "deps": [
+                        "standard-components",
+                        "managed-service"
+                      ]
+                    },
+                    {
+                      "id": "service",
+                      "name": "Service",
+                      "deps": [
+                        "productized"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "shared-foundations",
+                  "title": "Shared Foundations",
+                  "items": [
+                    {
+                      "id": "experiments-learning",
+                      "name": "Experiments & Learning",
+                      "deps": []
+                    },
+                    {
+                      "id": "custom-build",
+                      "name": "Custom Build",
+                      "deps": []
+                    },
+                    {
+                      "id": "standard-components",
+                      "name": "Standard Components",
+                      "deps": []
+                    }
+                  ]
+                }
+              ]
+            }
+          </script>
+        </section>
+        <aside class="recent-panel" aria-label="Recent files">
+          <h2>Recent files</h2>
+          <ul class="recent-list" id="recentFilesList"></ul>
+          <p id="recentFilesEmpty">No recent files yet.</p>
+        </aside>
+      </div>
+    </main>
+
+    <script src="./js/neutralino.js"></script>
+    <script src="./site_assets/blockscape/blockscape.js"></script>
+    <script src="./site_assets/blockscape/mount.js"></script>
+    <script src="./js/app.js"></script>
+  </body>
+</html>

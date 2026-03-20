@@ -1,0 +1,175 @@
+[
+{
+"id": "a2a-agent-to-agent",
+"title": "A2A — Agent to Agent",
+"abstract": "Agent-to-Agent (A2A) systems enable autonomous agents to coordinate, delegate tasks, negotiate goals, and exchange capabilities. User-visible value emerges through collaborative automation (multi-step task completion, orchestration, specialization), while underlying layers provide messaging, identity, shared memory, and compute infrastructure.",
+"categories": [
+{
+"id": "applications",
+"title": "Collaborative Applications",
+"items": [
+{ "id": "multi-agent-workflows", "name": "Multi-Agent Workflows", "deps": ["task-orchestrator", "agent-directory"] },
+{ "id": "delegation-chains", "name": "Delegation Chains", "deps": ["task-orchestrator", "agent-identity"] },
+{ "id": "negotiation-protocols", "name": "Negotiation Protocols", "deps": ["agent-messaging", "shared-memory"] }
+]
+},
+{
+"id": "coordination",
+"title": "Coordination Layer",
+"items": [
+{ "id": "task-orchestrator", "name": "Task Orchestrator", "deps": ["agent-messaging", "shared-memory"] },
+{ "id": "agent-directory", "name": "Agent Directory", "deps": ["agent-identity"] },
+{ "id": "agent-messaging", "name": "Agent Messaging Bus", "deps": ["network-transport"] }
+]
+},
+{
+"id": "trust",
+"title": "Identity & Trust",
+"items": [
+{ "id": "agent-identity", "name": "Agent Identity", "deps": ["key-management"] },
+{ "id": "shared-memory", "name": "Shared Memory Store", "deps": ["database"] },
+{ "id": "policy-engine", "name": "Policy Engine", "deps": ["agent-identity", "database"] }
+]
+},
+{
+"id": "infrastructure",
+"title": "Infrastructure",
+"items": [
+{ "id": "network-transport", "name": "Network Transport", "deps": [] },
+{ "id": "database", "name": "Database", "deps": [] },
+{ "id": "key-management", "name": "Key Management", "deps": [] }
+]
+}
+]
+},
+{
+"id": "a2w-agent-to-web",
+"title": "A2W — Agent to Web",
+"abstract": "Agent-to-Web (A2W) systems allow AI agents to securely discover and invoke web-based tools, APIs, and SaaS services. User-visible value comes from real-world task execution (booking, deploying, updating systems), supported by protocol gateways, authentication, schema registries, and web infrastructure.",
+"categories": [
+{
+"id": "user-outcomes",
+"title": "User Outcomes",
+"items": [
+{ "id": "real-world-actions", "name": "Real-World Actions", "deps": ["tool-invocation", "auth-gateway"] },
+{ "id": "automated-saas-ops", "name": "Automated SaaS Operations", "deps": ["tool-invocation"] },
+{ "id": "cross-platform-flows", "name": "Cross-Platform Flows", "deps": ["tool-registry", "tool-invocation"] }
+]
+},
+{
+"id": "protocol-layer",
+"title": "Protocol Layer",
+"items": [
+{ "id": "tool-invocation", "name": "Tool Invocation Engine", "deps": ["http-client", "schema-registry"] },
+{ "id": "tool-registry", "name": "Tool Registry", "deps": ["schema-registry", "database"] },
+{ "id": "auth-gateway", "name": "Auth Gateway", "deps": ["key-management"] }
+]
+},
+{
+"id": "web-integration",
+"title": "Web Integration",
+"items": [
+{ "id": "http-client", "name": "HTTP Client", "deps": ["network-stack"] },
+{ "id": "schema-registry", "name": "Schema Registry", "deps": ["database"] },
+{ "id": "rate-limiter", "name": "Rate Limiter", "deps": ["cache"] }
+]
+},
+{
+"id": "infrastructure",
+"title": "Infrastructure",
+"items": [
+{ "id": "network-stack", "name": "Network Stack", "deps": [] },
+{ "id": "database", "name": "Database", "deps": [] },
+{ "id": "cache", "name": "Cache", "deps": [] },
+{ "id": "key-management", "name": "Key Management", "deps": [] }
+]
+}
+]
+},
+{
+"id": "a2h-agent-to-human",
+"title": "A2H — Agent to Human",
+"abstract": "Agent-to-Human (A2H) systems deliver direct user-facing assistance through chat, voice, or embedded copilots. Visible value appears as guidance, generation, or task support, built on conversation management, personalization, safety controls, and model infrastructure.",
+"categories": [
+{
+"id": "interfaces",
+"title": "User Interfaces",
+"items": [
+{ "id": "chat-interface", "name": "Chat Interface", "deps": ["conversation-engine", "identity-profile"] },
+{ "id": "voice-interface", "name": "Voice Interface", "deps": ["speech-models", "conversation-engine"] },
+{ "id": "embedded-copilot", "name": "Embedded Copilot", "deps": ["conversation-engine", "context-adapter"] }
+]
+},
+{
+"id": "interaction-core",
+"title": "Interaction Core",
+"items": [
+{ "id": "conversation-engine", "name": "Conversation Engine", "deps": ["foundation-model", "memory-store"] },
+{ "id": "context-adapter", "name": "Context Adapter", "deps": ["memory-store"] },
+{ "id": "safety-guardrails", "name": "Safety Guardrails", "deps": ["policy-engine"] }
+]
+},
+{
+"id": "personalization",
+"title": "Identity & Personalization",
+"items": [
+{ "id": "identity-profile", "name": "User Identity Profile", "deps": ["database"] },
+{ "id": "memory-store", "name": "Memory Store", "deps": ["database"] },
+{ "id": "policy-engine", "name": "Policy Engine", "deps": ["database"] }
+]
+},
+{
+"id": "infrastructure",
+"title": "Model Infrastructure",
+"items": [
+{ "id": "foundation-model", "name": "Foundation Model", "deps": ["compute"] },
+{ "id": "speech-models", "name": "Speech Models", "deps": ["compute"] },
+{ "id": "compute", "name": "Compute Infrastructure", "deps": [] },
+{ "id": "database", "name": "Database", "deps": [] }
+]
+}
+]
+},
+{
+"id": "a2d-agent-to-data",
+"title": "A2D — Agent to Data",
+"abstract": "Agent-to-Data (A2D) systems allow agents to retrieve, reason over, and transform structured and unstructured data. User-visible value includes analytics, retrieval-augmented generation, and insights, supported by indexing, storage, and data infrastructure.",
+"categories": [
+{
+"id": "insights",
+"title": "Insights & Outputs",
+"items": [
+{ "id": "rag-responses", "name": "RAG Responses", "deps": ["retrieval-engine", "foundation-model"] },
+{ "id": "analytics-reports", "name": "Analytics Reports", "deps": ["query-engine"] },
+{ "id": "data-transformations", "name": "Data Transformations", "deps": ["pipeline-engine"] }
+]
+},
+{
+"id": "access-layer",
+"title": "Data Access Layer",
+"items": [
+{ "id": "retrieval-engine", "name": "Retrieval Engine", "deps": ["vector-index", "document-store"] },
+{ "id": "query-engine", "name": "Query Engine", "deps": ["database"] },
+{ "id": "pipeline-engine", "name": "Pipeline Engine", "deps": ["database"] }
+]
+},
+{
+"id": "storage",
+"title": "Storage Systems",
+"items": [
+{ "id": "vector-index", "name": "Vector Index", "deps": ["compute"] },
+{ "id": "document-store", "name": "Document Store", "deps": ["database"] },
+{ "id": "database", "name": "Database", "deps": [] }
+]
+},
+{
+"id": "infrastructure",
+"title": "Infrastructure",
+"items": [
+{ "id": "foundation-model", "name": "Foundation Model", "deps": ["compute"] },
+{ "id": "compute", "name": "Compute Infrastructure", "deps": [] }
+]
+}
+]
+}
+]

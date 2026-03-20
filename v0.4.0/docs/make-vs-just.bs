@@ -1,0 +1,294 @@
+[
+  {
+    "id": "make-legacy-task-runner",
+    "title": "Legacy Task Running with Make",
+    "abstract": "This map illustrates how GNU Make is commonly repurposed as a general task runner. While powerful and ubiquitous, it introduces friction when used outside its original file-based build model, especially for modern cross-platform application workflows.",
+    "categories": [
+      {
+        "id": "developer-interface",
+        "title": "Developer Interface",
+        "items": [
+          {
+            "id": "make-cli",
+            "name": "make <target>",
+            "external": "https://www.gnu.org/software/make/manual/make.html",
+            "deps": [
+              "make-targets"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "task-model",
+        "title": "Task Model",
+        "items": [
+          {
+            "id": "make-targets",
+            "name": "Targets as File",
+            "external": "https://www.gnu.org/software/make/manual/html_node/Rule-Introduction.html",
+            "deps": [
+              "make-phony"
+            ]
+          },
+          {
+            "id": "make-phony",
+            "name": ".PHONY for Non-File",
+            "external": "https://www.gnu.org/software/make/manual/html_node/Phony-Targets.html",
+            "color": "#ff4d4f",
+            "deps": []
+          }
+        ]
+      },
+      {
+        "id": "ergonomics",
+        "title": "Ergonomic Friction",
+        "items": [
+          {
+            "id": "make-tabs",
+            "name": "Tab-Only Recipe",
+            "external": "https://www.gnu.org/software/make/manual/html_node/Recipe-Syntax.html",
+            "color": "#ff4d4f",
+            "deps": []
+          },
+          {
+            "id": "make-string-vars",
+            "name": "Complex String &",
+            "external": "https://www.gnu.org/software/make/manual/html_node/Functions.html",
+            "color": "#ff4d4f",
+            "deps": []
+          }
+        ]
+      },
+      {
+        "id": "platform-execution",
+        "title": "Platform & Execution",
+        "items": [
+          {
+            "id": "make-uname",
+            "name": "Manual uname",
+            "external": "https://www.gnu.org/software/make/manual/make.html",
+            "color": "#ff4d4f",
+            "deps": []
+          },
+          {
+            "id": "make-parallel",
+            "name": "Parallel Execution",
+            "external": "https://www.gnu.org/software/make/manual/html_node/Parallel.html",
+            "deps": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "just-modern-task-runner",
+    "title": "Modern Task Running with Just",
+    "abstract": "This map shows Just as a purpose-built task runner for modern development workflows. It improves ergonomics, parameter handling, documentation, and cross-platform execution while preserving a familiar CLI experience.",
+    "categories": [
+      {
+        "id": "developer-interface",
+        "title": "Developer Interface",
+        "items": [
+          {
+            "id": "just-cli",
+            "name": "just <recipe>",
+            "external": "https://just.systems/man/en/",
+            "color": "#ffffff",
+            "deps": [
+              "just-recipes"
+            ]
+          },
+          {
+            "id": "just-list",
+            "name": "Self-Documenting",
+            "external": "https://just.systems/man/en/listing-recipes.html",
+            "color": "#ffffff",
+            "deps": [
+              "just-recipes"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "task-model",
+        "title": "Recipe Model",
+        "items": [
+          {
+            "id": "just-recipes",
+            "name": "Recipes Without",
+            "external": "https://just.systems/man/en/recipes.html",
+            "color": "#ffffff",
+            "deps": []
+          },
+          {
+            "id": "just-groups",
+            "name": "Recipe Grouping",
+            "external": "https://just.systems/man/en/listing-recipes.html",
+            "color": "#ffffff",
+            "deps": [
+              "just-recipes"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "parameters-variables",
+        "title": "Parameters & Variables",
+        "items": [
+          {
+            "id": "just-parameters",
+            "name": "First-Class",
+            "external": "https://just.systems/man/en/parameters.html",
+            "color": "#ffffff",
+            "deps": []
+          },
+          {
+            "id": "just-variables",
+            "name": "Local & Env",
+            "external": "https://just.systems/man/en/variables.html",
+            "color": "#ffffff",
+            "deps": []
+          },
+          {
+            "id": "just-dotenv",
+            "name": "Built-in dotenv",
+            "external": "https://just.systems/man/en/settings.html#dotenv-settings",
+            "color": "#ffffff",
+            "deps": []
+          }
+        ]
+      },
+      {
+        "id": "platform-execution",
+        "title": "Cross-Platform Execution",
+        "items": [
+          {
+            "id": "just-platform",
+            "name": "Platform Attributes",
+            "external": "https://just.systems/man/en/conditional-expressions.html",
+            "color": "#ffffff",
+            "deps": []
+          },
+          {
+            "id": "just-dependencies",
+            "name": "Recipe Deps",
+            "external": "https://just.systems/man/en/dependencies.html",
+            "color": "#ffffff",
+            "deps": [
+              "just-recipes"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "just-cross-platform-workflow",
+    "title": "Cross-Platform Release Workflow with Just",
+    "abstract": "This map highlights how Just enables clean, platform-aware workflows for modern multi-platform projects (Rust, TypeScript, Go). It models build, test, dev, and release flows using parameters, environment management, and platform attributes without shell hacks.",
+    "categories": [
+      {
+        "id": "workflow-interface",
+        "title": "Workflow Commands",
+        "items": [
+          {
+            "id": "dev-command",
+            "name": "dev",
+            "external": "https://just.systems/man/en/parameters.html",
+            "color": "#ffffff",
+            "deps": [
+              "parameter-bin",
+              "env-management"
+            ]
+          },
+          {
+            "id": "deploy-command",
+            "name": "deploy",
+            "external": "https://just.systems/man/en/dependencies.html",
+            "color": "#ffffff",
+            "deps": [
+              "build-command",
+              "test-command"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "core-recipes",
+        "title": "Core Recipes",
+        "items": [
+          {
+            "id": "build-command",
+            "name": "build",
+            "external": "https://just.systems/man/en/recipes.html",
+            "color": "#ffffff",
+            "deps": []
+          },
+          {
+            "id": "test-command",
+            "name": "test",
+            "external": "https://just.systems/man/en/parameters.html",
+            "color": "#ffffff",
+            "deps": [
+              "parameter-filter"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "configuration-layer",
+        "title": "Configuration Layer",
+        "items": [
+          {
+            "id": "parameter-bin",
+            "name": "Binary Parameter with",
+            "external": "https://just.systems/man/en/parameters.html",
+            "color": "#ffffff",
+            "deps": []
+          },
+          {
+            "id": "parameter-filter",
+            "name": "Test Filter Parameter",
+            "external": "https://just.systems/man/en/parameters.html",
+            "color": "#ffffff",
+            "deps": []
+          },
+          {
+            "id": "env-management",
+            "name": "dotenv + Exported",
+            "external": "https://just.systems/man/en/settings.html#dotenv-settings",
+            "color": "#ffffff",
+            "deps": []
+          }
+        ]
+      },
+      {
+        "id": "platform-layer",
+        "title": "Platform Awareness",
+        "items": [
+          {
+            "id": "platform-macos",
+            "name": "macOS Recipe Variant",
+            "external": "https://just.systems/man/en/conditional-expressions.html",
+            "color": "#ffffff",
+            "deps": []
+          },
+          {
+            "id": "platform-linux",
+            "name": "Linux Recipe Variant",
+            "external": "https://just.systems/man/en/conditional-expressions.html",
+            "color": "#ffffff",
+            "deps": []
+          },
+          {
+            "id": "platform-windows",
+            "name": "Windows Recipe",
+            "external": "https://just.systems/man/en/conditional-expressions.html",
+            "color": "#ffffff",
+            "deps": []
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,216 @@
+[
+    {
+    "id": "kubernetes-concepts-overview",
+    "title": "Kubernetes Concepts Overview",
+    "abstract": "Kubernetes enables users to declaratively run and manage containerized applications. Users express desired state via the Kubernetes API; controllers reconcile that state; cluster components and nodes execute workloads. This map spans from user-facing API objects down to control plane and node infrastructure.",
+    "categories": [
+    {
+    "id": "api-objects",
+    "title": "API & Declarative Objects",
+    "items": [
+    { "id": "pod", "name": "Pod", "external": "https://kubernetes.io/docs/concepts/workloads/pods/", "deps": ["kubelet", "container-runtime"] },
+    { "id": "workload", "name": "Workload Resources", "external": "https://kubernetes.io/docs/concepts/workloads/", "deps": ["controller-manager"] },
+    { "id": "service", "name": "Service", "external": "https://kubernetes.io/docs/concepts/services-networking/service/", "deps": ["kube-proxy", "cni"] },
+    { "id": "config-resource", "name": "Configuration Resources", "external": "https://kubernetes.io/docs/concepts/configuration/", "deps": ["api-server", "etcd"] },
+    { "id": "volume", "name": "Volume", "external": "https://kubernetes.io/docs/concepts/storage/volumes/", "deps": ["kubelet"] }
+    ]
+    },
+    {
+    "id": "cluster-architecture",
+    "title": "Cluster Architecture",
+    "items": [
+    { "id": "control-plane", "name": "Control Plane", "external": "https://kubernetes.io/docs/concepts/architecture/", "deps": ["api-server", "scheduler", "controller-manager", "etcd"] },
+    { "id": "node", "name": "Worker Node", "external": "https://kubernetes.io/docs/concepts/architecture/nodes/", "deps": ["kubelet", "container-runtime", "kube-proxy"] },
+    { "id": "namespace", "name": "Namespace", "external": "https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/", "deps": ["api-server"] }
+    ]
+    },
+    {
+    "id": "control-plane-components",
+    "title": "Control Plane Components",
+    "items": [
+    { "id": "api-server", "name": "kube-apiserver", "external": "https://kubernetes.io/docs/concepts/architecture/#kube-apiserver", "deps": ["etcd"] },
+    { "id": "scheduler", "name": "kube-scheduler", "external": "https://kubernetes.io/docs/concepts/architecture/#kube-scheduler", "deps": ["api-server"] },
+    { "id": "controller-manager", "name": "kube-controller-manager", "external": "https://kubernetes.io/docs/concepts/architecture/#kube-controller-manager", "deps": ["api-server"] },
+    { "id": "etcd", "name": "etcd", "external": "https://kubernetes.io/docs/concepts/architecture/#etcd", "deps": [] }
+    ]
+    },
+    {
+    "id": "node-components",
+    "title": "Node Components",
+    "items": [
+    { "id": "kubelet", "name": "kubelet", "external": "https://kubernetes.io/docs/concepts/architecture/#kubelet", "deps": ["api-server"] },
+    { "id": "kube-proxy", "name": "kube-proxy", "external": "https://kubernetes.io/docs/concepts/architecture/#kube-proxy", "deps": ["api-server"] },
+    { "id": "container-runtime", "name": "Container Runtime", "external": "https://kubernetes.io/docs/concepts/architecture/#container-runtime", "deps": [] },
+    { "id": "cni", "name": "CNI Plugin", "external": "https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/", "deps": [] }
+    ]
+    }
+    ]
+    },
+    {
+    "id": "kubernetes-workloads",
+    "title": "Kubernetes Workloads",
+    "abstract": "Kubernetes workloads define how applications run: from single Pods to replicated and stateful controllers. Users declare desired replicas and rollout strategies; controllers ensure Pods are scheduled and kept healthy on nodes.",
+    "categories": [
+    {
+    "id": "workload-apis",
+    "title": "Workload APIs",
+    "items": [
+    { "id": "wl-pod", "name": "Pod", "external": "https://kubernetes.io/docs/concepts/workloads/pods/", "deps": ["wl-kubelet", "wl-container-runtime"] },
+    { "id": "deployment", "name": "Deployment", "external": "https://kubernetes.io/docs/concepts/workloads/controllers/deployment/", "deps": ["replicaset"] },
+    { "id": "statefulset", "name": "StatefulSet", "external": "https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/", "deps": ["wl-pod", "wl-volume"] },
+    { "id": "daemonset", "name": "DaemonSet", "external": "https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/", "deps": ["wl-pod"] },
+    { "id": "job", "name": "Job", "external": "https://kubernetes.io/docs/concepts/workloads/controllers/job/", "deps": ["wl-pod"] },
+    { "id": "cronjob", "name": "CronJob", "external": "https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/", "deps": ["job"] }
+    ]
+    },
+    {
+    "id": "replication-rollouts",
+    "title": "Replication & Rollouts",
+    "items": [
+    { "id": "replicaset", "name": "ReplicaSet", "external": "https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/", "deps": ["wl-pod"] },
+    { "id": "rolling-update", "name": "Rolling Updates", "external": "https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#strategy", "deps": ["replicaset"] },
+    { "id": "horizontal-pod-autoscaler", "name": "Horizontal Pod Autoscaler", "external": "https://kubernetes.io/docs/concepts/workloads/autoscaling/", "deps": ["deployment", "metrics-server"] }
+    ]
+    },
+    {
+    "id": "scheduling",
+    "title": "Scheduling & Placement",
+    "items": [
+    { "id": "scheduler-constraints", "name": "Affinity & Tolerations", "external": "https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/", "deps": ["wl-scheduler"] },
+    { "id": "priority-preemption", "name": "Priority & Preemption", "external": "https://kubernetes.io/docs/concepts/scheduling-eviction/pod-priority-preemption/", "deps": ["wl-scheduler"] },
+    { "id": "wl-scheduler", "name": "kube-scheduler", "external": "https://kubernetes.io/docs/concepts/architecture/#kube-scheduler", "deps": ["wl-api-server"] }
+    ]
+    },
+    {
+    "id": "workload-runtime",
+    "title": "Runtime Foundations",
+    "items": [
+    { "id": "wl-api-server", "name": "kube-apiserver", "external": "https://kubernetes.io/docs/concepts/architecture/#kube-apiserver", "deps": ["wl-etcd"] },
+    { "id": "wl-kubelet", "name": "kubelet", "external": "https://kubernetes.io/docs/concepts/architecture/#kubelet", "deps": ["wl-api-server"] },
+    { "id": "wl-container-runtime", "name": "Container Runtime", "external": "https://kubernetes.io/docs/concepts/architecture/#container-runtime", "deps": [] },
+    { "id": "wl-volume", "name": "Volume", "external": "https://kubernetes.io/docs/concepts/storage/volumes/", "deps": ["wl-kubelet"] },
+    { "id": "metrics-server", "name": "Metrics Server", "external": "https://kubernetes.io/docs/tasks/debug/debug-cluster/resource-metrics-pipeline/", "deps": ["wl-api-server"] },
+    { "id": "wl-etcd", "name": "etcd", "external": "https://kubernetes.io/docs/concepts/architecture/#etcd", "deps": [] }
+    ]
+    }
+    ]
+    },
+    {
+    "id": "kubernetes-services-networking",
+    "title": "Kubernetes Services & Networking",
+    "abstract": "Kubernetes networking exposes workloads and enables secure, reliable communication. Services provide stable virtual IPs and DNS; Ingress and Gateway APIs manage external traffic; network plugins and proxies implement cluster connectivity.",
+    "categories": [
+    {
+    "id": "traffic-apis",
+    "title": "Traffic APIs",
+    "items": [
+    { "id": "svc-clusterip", "name": "Service (ClusterIP)", "external": "https://kubernetes.io/docs/concepts/services-networking/service/", "deps": ["kube-proxy-sn", "cni-sn"] },
+    { "id": "svc-nodeport", "name": "Service (NodePort)", "external": "https://kubernetes.io/docs/concepts/services-networking/service/#type-nodeport", "deps": ["svc-clusterip"] },
+    { "id": "svc-loadbalancer", "name": "Service (LoadBalancer)", "external": "https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer", "deps": ["svc-clusterip"] },
+    { "id": "ingress", "name": "Ingress", "external": "https://kubernetes.io/docs/concepts/services-networking/ingress/", "deps": ["ingress-controller"] },
+    { "id": "gateway-api", "name": "Gateway API", "external": "https://kubernetes.io/docs/concepts/services-networking/gateway/", "deps": ["gateway-controller"] }
+    ]
+    },
+    {
+    "id": "service-discovery",
+    "title": "Service Discovery",
+    "items": [
+    { "id": "dns", "name": "Cluster DNS", "external": "https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/", "deps": ["svc-clusterip"] },
+    { "id": "endpoints", "name": "Endpoints / EndpointSlice", "external": "https://kubernetes.io/docs/concepts/services-networking/endpoint-slices/", "deps": ["api-server-sn"] }
+    ]
+    },
+    {
+    "id": "traffic-policy",
+    "title": "Traffic Policy & Security",
+    "items": [
+    { "id": "network-policy", "name": "NetworkPolicy", "external": "https://kubernetes.io/docs/concepts/services-networking/network-policies/", "deps": ["cni-sn"] },
+    { "id": "service-mesh", "name": "Service Mesh (Concept)", "external": "https://kubernetes.io/docs/concepts/services-networking/", "deps": ["svc-clusterip"] }
+    ]
+    },
+    {
+    "id": "network-foundations",
+    "title": "Network Foundations",
+    "items": [
+    { "id": "api-server-sn", "name": "kube-apiserver", "external": "https://kubernetes.io/docs/concepts/architecture/#kube-apiserver", "deps": ["etcd-sn"] },
+    { "id": "kube-proxy-sn", "name": "kube-proxy", "external": "https://kubernetes.io/docs/concepts/architecture/#kube-proxy", "deps": ["api-server-sn"] },
+    { "id": "cni-sn", "name": "CNI Plugin", "external": "https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/", "deps": [] },
+    { "id": "ingress-controller", "name": "Ingress Controller", "external": "https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/", "deps": ["api-server-sn"] },
+    { "id": "gateway-controller", "name": "Gateway Controller", "external": "https://kubernetes.io/docs/concepts/services-networking/gateway/", "deps": ["api-server-sn"] },
+    { "id": "etcd-sn", "name": "etcd", "external": "https://kubernetes.io/docs/concepts/architecture/#etcd", "deps": [] }
+    ]
+    }
+    ]
+    },
+    {
+    "id": "kubernetes-storage",
+    "title": "Kubernetes Storage",
+    "abstract": "Kubernetes storage lets workloads persist and share data. Users declare storage needs via volumes and claims; controllers provision storage dynamically; CSI drivers and nodes mount and attach underlying storage systems.",
+    "categories": [
+    {
+    "id": "storage-apis",
+    "title": "Storage APIs",
+    "items": [
+    { "id": "volume-concept", "name": "Volume", "external": "https://kubernetes.io/docs/concepts/storage/volumes/", "deps": ["kubelet-st"] },
+    { "id": "persistentvolume", "name": "PersistentVolume (PV)", "external": "https://kubernetes.io/docs/concepts/storage/persistent-volumes/", "deps": ["storage-backend"] },
+    { "id": "persistentvolumeclaim", "name": "PersistentVolumeClaim (PVC)", "external": "https://kubernetes.io/docs/concepts/storage/persistent-volumes/", "deps": ["persistentvolume"] },
+    { "id": "storageclass", "name": "StorageClass", "external": "https://kubernetes.io/docs/concepts/storage/storage-classes/", "deps": ["csi-driver"] }
+    ]
+    },
+    {
+    "id": "provisioning",
+    "title": "Provisioning & Expansion",
+    "items": [
+    { "id": "dynamic-provisioning", "name": "Dynamic Provisioning", "external": "https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/", "deps": ["storageclass"] },
+    { "id": "volume-expansion", "name": "Volume Expansion", "external": "https://kubernetes.io/docs/concepts/storage/persistent-volumes/#expanding-persistent-volumes-claims", "deps": ["persistentvolumeclaim"] }
+    ]
+    },
+    {
+    "id": "storage-runtime",
+    "title": "Storage Runtime",
+    "items": [
+    { "id": "kubelet-st", "name": "kubelet", "external": "https://kubernetes.io/docs/concepts/architecture/#kubelet", "deps": ["api-server-st"] },
+    { "id": "csi-driver", "name": "CSI Driver", "external": "https://kubernetes.io/docs/concepts/storage/volumes/#csi", "deps": ["api-server-st"] },
+    { "id": "api-server-st", "name": "kube-apiserver", "external": "https://kubernetes.io/docs/concepts/architecture/#kube-apiserver", "deps": ["etcd-st"] },
+    { "id": "storage-backend", "name": "Storage Backend", "external": "https://kubernetes.io/docs/concepts/storage/", "deps": [] },
+    { "id": "etcd-st", "name": "etcd", "external": "https://kubernetes.io/docs/concepts/architecture/#etcd", "deps": [] }
+    ]
+    }
+    ]
+    },
+    {
+    "id": "kubernetes-configuration",
+    "title": "Kubernetes Configuration",
+    "abstract": "Kubernetes configuration manages application settings and secrets separately from container images. Users define ConfigMaps and Secrets; Pods consume them as environment variables or volumes; the API server stores and distributes configuration securely.",
+    "categories": [
+    {
+    "id": "config-apis",
+    "title": "Configuration APIs",
+    "items": [
+    { "id": "configmap", "name": "ConfigMap", "external": "https://kubernetes.io/docs/concepts/configuration/configmap/", "deps": ["api-server-cfg"] },
+    { "id": "secret", "name": "Secret", "external": "https://kubernetes.io/docs/concepts/configuration/secret/", "deps": ["api-server-cfg"] },
+    { "id": "resourcequota", "name": "ResourceQuota", "external": "https://kubernetes.io/docs/concepts/policy/resource-quotas/", "deps": ["api-server-cfg"] },
+    { "id": "limit-range", "name": "LimitRange", "external": "https://kubernetes.io/docs/concepts/policy/limit-range/", "deps": ["api-server-cfg"] }
+    ]
+    },
+    {
+    "id": "injection-consumption",
+    "title": "Injection & Consumption",
+    "items": [
+    { "id": "env-vars", "name": "Environment Variables", "external": "https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-environment-variables", "deps": ["secret", "configmap"] },
+    { "id": "projected-volumes", "name": "Projected Volumes", "external": "https://kubernetes.io/docs/concepts/storage/projected-volumes/", "deps": ["secret", "configmap", "kubelet-cfg"] },
+    { "id": "downward-api", "name": "Downward API", "external": "https://kubernetes.io/docs/concepts/workloads/pods/downward-api/", "deps": ["api-server-cfg"] }
+    ]
+    },
+    {
+    "id": "config-foundations",
+    "title": "Configuration Foundations",
+    "items": [
+    { "id": "api-server-cfg", "name": "kube-apiserver", "external": "https://kubernetes.io/docs/concepts/architecture/#kube-apiserver", "deps": ["etcd-cfg"] },
+    { "id": "kubelet-cfg", "name": "kubelet", "external": "https://kubernetes.io/docs/concepts/architecture/#kubelet", "deps": ["api-server-cfg"] },
+    { "id": "rbac", "name": "RBAC", "external": "https://kubernetes.io/docs/reference/access-authn-authz/rbac/", "deps": ["api-server-cfg"] },
+    { "id": "etcd-cfg", "name": "etcd", "external": "https://kubernetes.io/docs/concepts/architecture/#etcd", "deps": [] }
+    ]
+    }
+    ]
+    }
+    ]

@@ -1,0 +1,30 @@
+{
+  "name": "blockscape",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "serve": "http-server -c-1 -p 4173 docs",
+    "predev": "npm run build:tokens",
+    "dev": "vite",
+    "build:tokens": "node scripts/build-tokens.js",
+    "build": "npm run build:tokens && npm run clean-docs && vite build && npm run export && npm run docs:build",
+    "export": "npm run build:tokens && vite build --config vite.config.export.mjs && cp svelte/src/mount.js documentation/docs/site_assets/blockscape/mount.js",
+    "export:nj": "npm run build:tokens && vite build --config vite.config.export.nj.mjs && cp svelte/src/mount.js nj/resources/site_assets/blockscape/mount.js",
+    "build-app": "npm run export:nj && cd nj && neu build",
+    "docs:build": "cd documentation && PYTHONPATH=. mkdocs build",
+    "clean-docs": "node scripts/clean-docs.js",
+    "preview": "vite preview",
+    "server": "node server.js",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "cypress:report": "ELECTRON_RUN_AS_NODE= ELECTRON_NO_ATTACH_CONSOLE= cypress run --reporter json > cypress/results/report.json"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^3.1.2",
+    "cypress": "^13.7.3",
+    "http-server": "^14.1.1",
+    "svelte": "^4.2.20",
+    "svelte-check": "^3.8.6",
+    "vite": "^5.4.21"
+  }
+}

@@ -1,0 +1,12 @@
+node_modules/
+cypress/screenshots/
+cypress/videos/
+cypress/results/
+blockscape-data/
+*.log
+.DS_Store
+site/
+.site-test/
+#mkdocs-blockscape/
+**/.tmp/
+__pycache__/

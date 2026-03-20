@@ -1,0 +1,95 @@
+{
+  "id": "models-catalog",
+  "title": "Blockscape Sample Catalog",
+  "abstract": "Jump to any bundled sample via the built-in loader. Each tile opens the model in this app using the ?load=<file> query.",
+  "categories": [
+    {
+      "id": "public-samples",
+      "title": "Public Samples",
+      "items": [
+        {
+          "id": "comms",
+          "name": "Comms",
+          "external": "?load=comms.bs"
+        },
+        {
+          "id": "industrial-revolution",
+          "name": "Industrial Revolution",
+          "external": "?load=Industrial-revolution.bs"
+        },
+        {
+          "id": "nfr",
+          "name": "NFR (Non-Functional Requirements)",
+          "external": "?load=NFR.bs"
+        },
+        {
+          "id": "planets",
+          "name": "Planets",
+          "external": "?load=planets.bs"
+        },
+        {
+          "id": "renaissance",
+          "name": "Renaissance",
+          "external": "?load=Renaissance.bs"
+        }
+      ]
+    },
+    {
+      "id": "it",
+      "title": "IT",
+      "items": [
+        {
+          "id": "skupper",
+          "name": "Skupper",
+          "external": "?load=Skupper.bs"
+        },
+        {
+          "id": "agents",
+          "name": "Agents",
+          "external": "?load=agents.bs"
+        },
+        {
+          "id": "make-vs-just",
+          "name": "Make vs Just",
+          "external": "?load=make-vs-just.bs"
+        },
+        {
+          "id": "kubernetes",
+          "name": "Kubernetes",
+          "external": "?load=Kubernetes.bs"
+        },
+        {
+          "id": "deploy",
+          "name": "Deploy",
+          "external": "?load=deploy.bs"
+        },
+        {
+          "id": "apis",
+          "name": "APIs",
+          "external": "?load=APIs.bs"
+        }
+      ]
+    },
+    {
+      "id": "blockscape",
+      "title": "Blockscape",
+      "items": [
+        {
+          "id": "blockscape-features",
+          "name": "Blockscape Features",
+          "external": "?load=blockscape-features.bs"
+        },
+        {
+          "id": "wardley",
+          "name": "Wardley",
+          "external": "?load=wardley.bs"
+        },
+        {
+          "id": "styleguide",
+          "name": "Styleguide",
+          "external": "?load=styleguide.bs"
+        }
+      ]
+    }
+  ]
+}
