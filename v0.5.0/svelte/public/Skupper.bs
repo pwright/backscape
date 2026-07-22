@@ -1,0 +1,1029 @@
+[
+  {
+    "id": "k8s-direct-tcp",
+    "title": "Direct TCP Across Kubernetes Network",
+    "abstract": "This landscape represents a traditional end-to-end TCP connection between a client and server application across load balancers and firewalls. TCP state is shared directly between client and server. Intermediate infrastructure forwards packets but does not terminate connections, creating tight coupling between endpoints and exposing failure modes such as hanging sockets when infrastructure components restart.",
+    "categories": [
+      {
+        "id": "application-experience",
+        "title": "Application Experience",
+        "items": [
+          {
+            "id": "client-app",
+            "name": "Client Application",
+            "deps": [
+              "load-balancer",
+              "tcp-session"
+            ]
+          },
+          {
+            "id": "server-app",
+            "name": "Server Application",
+            "deps": [
+              "firewall",
+              "tcp-session"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "edge-network",
+        "title": "Edge & Network Controls",
+        "items": [
+          {
+            "id": "load-balancer",
+            "name": "Load Balancer / Route",
+            "deps": [
+              "kubernetes-pod",
+              "tcp-session"
+            ]
+          },
+          {
+            "id": "firewall",
+            "name": "Firewall / Gateway",
+            "deps": [
+              "kubernetes-pod",
+              "tcp-session"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "transport",
+        "title": "Transport Semantics",
+        "items": [
+          {
+            "id": "tcp-session",
+            "name": "End-to-End TCP",
+            "deps": []
+          }
+        ]
+      },
+      {
+        "id": "infrastructure",
+        "title": "Cluster Infrastructure",
+        "items": [
+          {
+            "id": "kubernetes-pod",
+            "name": "Kubernetes Pods /",
+            "deps": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "skupper-van",
+    "title": "Skupper Virtual Application Network (VAN)",
+    "abstract": "This landscape models a Skupper-enabled architecture where client and server TCP sessions are independently terminated by routers and bridged over a Virtual Application Network (VAN). Instead of sharing a single end-to-end TCP state, connections are proxied, encapsulated, and routed across clusters. This decouples failure domains, enables multi-cluster service exposure without load balancers, and provides resilient cross-network connectivity.",
+    "categories": [
+      {
+        "id": "application-experience",
+        "title": "Application Experience",
+        "items": [
+          {
+            "id": "client-app",
+            "name": "Client Application",
+            "deps": [
+              "skupper-listener"
+            ]
+          },
+          {
+            "id": "server-app",
+            "name": "Server Application",
+            "deps": [
+              "skupper-connector"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "service-proxy",
+        "title": "Service Proxies",
+        "items": [
+          {
+            "id": "skupper-listener",
+            "name": "Skupper Router",
+            "deps": [
+              "van-fabric"
+            ],
+            "logo": "logos/skupper-logo.svg"
+          },
+          {
+            "id": "skupper-connector",
+            "name": "Skupper Router",
+            "deps": [
+              "van-fabric"
+            ],
+            "logo": "logos/skupper-logo.svg"
+          }
+        ]
+      },
+      {
+        "id": "van-layer",
+        "title": "Virtual Application Network",
+        "items": [
+          {
+            "id": "van-fabric",
+            "name": "Routing Fabric",
+            "deps": [
+              "router-runtime"
+            ],
+            "logo": "logos/skupper-logo.svg"
+          }
+        ]
+      },
+      {
+        "id": "infrastructure",
+        "title": "Cluster Infrastructure",
+        "items": [
+          {
+            "id": "router-runtime",
+            "name": "Router Pods / Runtime",
+            "logo": "logos/skupper-logo.svg",
+            "deps": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sk-amqp-tcp-data-plane",
+    "title": "Skupper Data Plane: TCP Payload over AMQP/TCP",
+    "abstract": "Skupper carries only application payloads across the fabric. Client and server TCP sessions terminate at edge routers (listener/connector). The payload stream is segmented, framed, and forwarded across a VAN transport (often AMQP over TCP/TLS). End-to-end TCP SDUs (sequence numbers, retransmits, congestion control) are not preserved across the fabric; each side has its own independent TCP state managed by the local router.",
+    "categories": [
+      {
+        "id": "app-sessions",
+        "title": "Application Sessions",
+        "items": [
+          {
+            "id": "dp-client-tcp-session",
+            "name": "Client \u2194 Listener TCP",
+            "deps": [
+              "dp-listener-proxy"
+            ]
+          },
+          {
+            "id": "dp-server-tcp-session",
+            "name": "Connector \u2194 Server TCP",
+            "deps": [
+              "dp-connector-proxy"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "edge-proxying",
+        "title": "TCP Proxying at the Edge",
+        "items": [
+          {
+            "id": "dp-listener-proxy",
+            "name": "Listening Router TCP",
+            "deps": [
+              "dp-stream-bridge",
+              "dp-socket-gating"
+            ],
+            "logo": "logos/skupper-logo.svg"
+          },
+          {
+            "id": "dp-connector-proxy",
+            "name": "Connecting Router TCP",
+            "deps": [
+              "dp-stream-bridge",
+              "dp-backend-dialer"
+            ],
+            "logo": "logos/skupper-logo.svg"
+          }
+        ]
+      },
+      {
+        "id": "payload-bridging",
+        "title": "Payload Bridging & Flow Control",
+        "items": [
+          {
+            "id": "dp-stream-bridge",
+            "name": "TCP Payload Stream",
+            "deps": [
+              "dp-frame-encoding",
+              "dp-flow-control"
+            ],
+            "logo": "logos/skupper-logo.svg"
+          },
+          {
+            "id": "dp-flow-control",
+            "name": "Credit / Backpressure",
+            "deps": [
+              "dp-van-transport"
+            ],
+            "logo": "logos/skupper-logo.svg"
+          },
+          {
+            "id": "dp-frame-encoding",
+            "name": "Framing &",
+            "deps": [
+              "dp-van-transport"
+            ],
+            "logo": "logos/skupper-logo.svg"
+          }
+        ]
+      },
+      {
+        "id": "van-transport",
+        "title": "VAN Transport (AMQP/TCP)",
+        "items": [
+          {
+            "id": "dp-van-transport",
+            "name": "AMQP over TCP",
+            "deps": [
+              "dp-router-mesh"
+            ],
+            "logo": "logos/skupper-logo.svg"
+          },
+          {
+            "id": "dp-router-mesh",
+            "name": "Inter-Router Mesh &",
+            "deps": [
+              "dp-network-connectivity"
+            ],
+            "logo": "logos/skupper-logo.svg"
+          }
+        ]
+      },
+      {
+        "id": "infrastructure",
+        "title": "Underlying Connectivity",
+        "items": [
+          {
+            "id": "dp-network-connectivity",
+            "name": "L3/L4 Network Paths",
+            "deps": []
+          }
+        ]
+      }
+    ],
+    "links": [
+      {
+        "from": "dp-socket-gating",
+        "to": "dp-router-mesh"
+      }
+    ]
+  },
+  {
+    "id": "sk-routing-socket-gating",
+    "title": "Skupper Control Plane: Reachability, Socket Gating, and Propagation Lag",
+    "abstract": "Listener sockets are gated by backend reachability: a router exposes a listening socket only when at least one connector for the service is reachable in the VAN. When connectors disappear, the listener socket closes and new connects fail (often as no-route-to-host). Because routing information propagates asynchronously, there can be a short window where a listener still believes a connector exists; it may accept a TCP handshake and then immediately close the connection before any payload is exchanged.",
+    "categories": [
+      {
+        "id": "user-visible-behavior",
+        "title": "User-Visible Connection Outcomes",
+        "items": [
+          {
+            "id": "cp-connect-success",
+            "name": "Connect Succeeds",
+            "deps": [
+              "cp-socket-open",
+              "cp-service-route"
+            ]
+          },
+          {
+            "id": "cp-no-route-to-host",
+            "name": "No-route-to-host /",
+            "deps": [
+              "cp-socket-closed"
+            ]
+          },
+          {
+            "id": "cp-accepted-then-closed",
+            "name": "Accepted then",
+            "deps": [
+              "cp-propagation-lag",
+              "cp-socket-open"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "listener-edge",
+        "title": "Listener Edge Decisions",
+        "items": [
+          {
+            "id": "cp-socket-open",
+            "name": "Listening Socket Open",
+            "deps": [
+              "cp-socket-gating"
+            ],
+            "logo": "logos/skupper-logo.svg"
+          },
+          {
+            "id": "cp-socket-closed",
+            "name": "Listening Socket",
+            "deps": [
+              "cp-socket-gating"
+            ],
+            "logo": "logos/skupper-logo.svg"
+          },
+          {
+            "id": "cp-socket-gating",
+            "name": "Socket Gating Logic",
+            "deps": [
+              "cp-service-discovery",
+              "cp-routing-updates"
+            ],
+            "logo": "logos/skupper-logo.svg"
+          }
+        ]
+      },
+      {
+        "id": "service-routing",
+        "title": "Service Routing & Reachability",
+        "items": [
+          {
+            "id": "cp-service-route",
+            "name": "Selected Connector",
+            "deps": [
+              "cp-routing-updates",
+              "cp-fabric-topology"
+            ],
+            "logo": "logos/skupper-logo.svg"
+          },
+          {
+            "id": "cp-service-discovery",
+            "name": "Connector Presence /",
+            "deps": [
+              "cp-fabric-topology"
+            ],
+            "logo": "logos/skupper-logo.svg"
+          }
+        ]
+      },
+      {
+        "id": "topology-propagation",
+        "title": "Topology Propagation",
+        "items": [
+          {
+            "id": "cp-routing-updates",
+            "name": "Routing Table",
+            "deps": [
+              "cp-control-messages"
+            ],
+            "logo": "logos/skupper-logo.svg"
+          },
+          {
+            "id": "cp-propagation-lag",
+            "name": "Propagation Lag",
+            "deps": [
+              "cp-routing-updates"
+            ],
+            "logo": "logos/skupper-logo.svg"
+          },
+          {
+            "id": "cp-control-messages",
+            "name": "Control Messaging",
+            "deps": [
+              "cp-fabric-topology"
+            ],
+            "logo": "logos/skupper-logo.svg"
+          }
+        ]
+      },
+      {
+        "id": "fabric-foundation",
+        "title": "Fabric Foundation",
+        "items": [
+          {
+            "id": "cp-fabric-topology",
+            "name": "Inter-Router",
+            "deps": [],
+            "logo": "logos/skupper-logo.svg"
+          }
+        ]
+      }
+    ],
+    "links": [
+      {
+        "from": "cp-accepted-then-closed",
+        "to": "cp-service-route"
+      }
+    ]
+  },
+  {
+    "id": "sk-lifecycle-failure-signaling",
+    "title": "Skupper Connection Lifecycle: Restarts, Path Loss, and RST/FIN Signaling",
+    "abstract": "Because TCP is proxied, routers own the responsibility of translating fabric events into TCP lifecycle signals. Router restarts or intermediary failures cause both client-side and server-side sessions to be terminated, typically via router-generated RST/FIN. Existing connections drop immediately; new connections depend on socket gating and the recovery/propagation timing. Client resilience depends on retries, keepalives, and application-level timeouts to handle fast-fail and accepted-then-closed states.",
+    "categories": [
+      {
+        "id": "application-resilience",
+        "title": "Application Resilience Objectives",
+        "items": [
+          {
+            "id": "lc-fast-retry",
+            "name": "Aggressive Reconnect",
+            "deps": [
+              "lc-observed-failures"
+            ]
+          },
+          {
+            "id": "lc-keepalives-heartbeats",
+            "name": "TCP Keepalives / App",
+            "deps": [
+              "lc-silent-drop-detection",
+              "lc-observed-failures"
+            ]
+          },
+          {
+            "id": "lc-timeouts-idempotency",
+            "name": "App Timeouts &",
+            "deps": [
+              "lc-observed-failures"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "observable-failure-modes",
+        "title": "Observable Failure Modes",
+        "items": [
+          {
+            "id": "lc-observed-failures",
+            "name": "RST/FIN Drops &",
+            "deps": [
+              "lc-router-signal-generation",
+              "lc-socket-gating-effects"
+            ]
+          },
+          {
+            "id": "lc-silent-drop-detection",
+            "name": "Detecting Silent",
+            "deps": [
+              "lc-path-loss",
+              "lc-propagation-lag-effects"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "router-actions",
+        "title": "Router-Owned Lifecycle Actions",
+        "items": [
+          {
+            "id": "lc-router-signal-generation",
+            "name": "Router Generates TCP",
+            "deps": [
+              "lc-router-restart",
+              "lc-path-loss"
+            ],
+            "logo": "logos/skupper-logo.svg"
+          },
+          {
+            "id": "lc-session-termination",
+            "name": "Terminate Client and",
+            "deps": [
+              "lc-router-signal-generation"
+            ],
+            "logo": "logos/skupper-logo.svg"
+          }
+        ]
+      },
+      {
+        "id": "availability-gating",
+        "title": "Availability & Gating Effects",
+        "items": [
+          {
+            "id": "lc-socket-gating-effects",
+            "name": "Socket Opens/Closes",
+            "deps": [
+              "lc-connectors-online"
+            ],
+            "logo": "logos/skupper-logo.svg"
+          },
+          {
+            "id": "lc-propagation-lag-effects",
+            "name": "Accepted-then-Close",
+            "deps": [
+              "lc-topology-propagation"
+            ],
+            "logo": "logos/skupper-logo.svg"
+          }
+        ]
+      },
+      {
+        "id": "fabric-events",
+        "title": "Fabric Events",
+        "items": [
+          {
+            "id": "lc-router-restart",
+            "name": "Listener/Intermedia",
+            "deps": [
+              "lc-router-runtime"
+            ],
+            "logo": "logos/skupper-logo.svg"
+          },
+          {
+            "id": "lc-path-loss",
+            "name": "Downstream/Intermed",
+            "deps": [
+              "lc-router-runtime"
+            ]
+          },
+          {
+            "id": "lc-connectors-online",
+            "name": "Connector Avail",
+            "deps": [
+              "lc-router-runtime"
+            ],
+            "logo": "logos/skupper-logo.svg"
+          },
+          {
+            "id": "lc-topology-propagation",
+            "name": "Topology & Route",
+            "deps": [
+              "lc-router-runtime"
+            ],
+            "logo": "logos/skupper-logo.svg"
+          }
+        ]
+      },
+      {
+        "id": "infrastructure",
+        "title": "Runtime Foundation",
+        "items": [
+          {
+            "id": "lc-router-runtime",
+            "name": "skupper-router Pods /",
+            "deps": [],
+            "logo": "logos/skupper-logo.svg"
+          }
+        ]
+      }
+    ],
+    "links": [
+      {
+        "from": "lc-session-termination",
+        "to": "lc-fast-retry"
+      },
+      {
+        "from": "lc-propagation-lag-effects",
+        "to": "lc-timeouts-idempotency"
+      }
+    ]
+  },
+  {
+    "id": "vanflow-spec",
+    "title": "VanFlow Protocol Specification (Skupper VAN Observability)",
+    "abstract": "VanFlow specifies how components of a Virtual Application Network (VAN) (notably Skupper) emit and exchange observability events. It defines discovery (BEACON), liveness (HEARTBEAT), incremental state updates (RECORD), and resynchronization (FLUSH), carried as AMQP 1.0 messages over multicast/anycast addresses, with a codepoint-based record/attribute data model for topology, processes, and flows.",
+    "categories": [
+      {
+        "id": "user-outcomes",
+        "title": "User Outcomes",
+        "items": [
+          {
+            "id": "topology-visualization",
+            "name": "Topology",
+            "external": "https://github.com/skupperproject/vanflow-specification#vanflow-specification",
+            "deps": [
+              "collector-query-api",
+              "record-topology-model",
+              "record-incremental-updates"
+            ]
+          },
+          {
+            "id": "flow-analytics",
+            "name": "Flow Analytics",
+            "external": "https://github.com/skupperproject/vanflow-specification#transport",
+            "deps": [
+              "collector-query-api",
+              "record-flow-model",
+              "flow-opt-in-channel"
+            ]
+          },
+          {
+            "id": "health-liveness-monitoring",
+            "name": "Health & Liveness",
+            "external": "https://github.com/skupperproject/vanflow-specification#heartbeat",
+            "deps": [
+              "collector-ingest",
+              "heartbeat-message",
+              "beacon-discovery"
+            ]
+          },
+          {
+            "id": "alerting-automation",
+            "name": "Alerting & Automation",
+            "deps": [
+              "collector-query-api",
+              "record-lifecycle",
+              "collector-storage-index"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "collection-aggregation",
+        "title": "Collection & Aggregation",
+        "items": [
+          {
+            "id": "collector-ingest",
+            "name": "Collector Ingest &",
+            "external": "https://github.com/skupperproject/vanflow-specification#message-types",
+            "deps": [
+              "amqp-addressing",
+              "record-message",
+              "beacon-discovery",
+              "flush-sync"
+            ]
+          },
+          {
+            "id": "collector-storage-index",
+            "name": "Record Store / Index",
+            "deps": [
+              "collector-ingest",
+              "record-types-codepoints",
+              "record-attributes-codepoints"
+            ]
+          },
+          {
+            "id": "collector-query-api",
+            "name": "Query API",
+            "deps": [
+              "collector-storage-index",
+              "record-types-codepoints",
+              "record-lifecycle"
+            ]
+          },
+          {
+            "id": "collector-export-integrations",
+            "name": "Export & Integrations",
+            "deps": [
+              "collector-query-api",
+              "collector-storage-index"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "event-sources",
+        "title": "Event Sources",
+        "items": [
+          {
+            "id": "router-event-source",
+            "name": "Router Event Source",
+            "external": "https://github.com/skupperproject/vanflow-specification#beacon",
+            "deps": [
+              "beacon-discovery",
+              "record-message",
+              "heartbeat-message",
+              "vanflow-message-format"
+            ]
+          },
+          {
+            "id": "controller-event-source",
+            "name": "Controller Event",
+            "external": "https://github.com/skupperproject/vanflow-specification#beacon",
+            "deps": [
+              "beacon-discovery",
+              "record-message",
+              "heartbeat-message",
+              "vanflow-message-format"
+            ]
+          },
+          {
+            "id": "collector-event-source",
+            "name": "Collector Event",
+            "external": "https://github.com/skupperproject/vanflow-specification#beacon",
+            "deps": [
+              "beacon-discovery",
+              "heartbeat-message",
+              "vanflow-message-format"
+            ]
+          },
+          {
+            "id": "flow-opt-in-channel",
+            "name": "Flow Publishing",
+            "external": "https://github.com/skupperproject/vanflow-specification#transport",
+            "deps": [
+              "amqp-addressing",
+              "record-flow-model",
+              "record-message"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "protocol-operations",
+        "title": "Protocol Operations",
+        "items": [
+          {
+            "id": "beacon-discovery",
+            "name": "BEACON",
+            "external": "https://github.com/skupperproject/vanflow-specification#beacon",
+            "deps": [
+              "amqp-addressing",
+              "vanflow-message-format",
+              "protocol-versioning"
+            ]
+          },
+          {
+            "id": "heartbeat-message",
+            "name": "HEARTBEAT",
+            "external": "https://github.com/skupperproject/vanflow-specification#heartbeat",
+            "deps": [
+              "amqp-addressing",
+              "vanflow-message-format",
+              "protocol-versioning"
+            ]
+          },
+          {
+            "id": "record-message",
+            "name": "RECORD",
+            "external": "https://github.com/skupperproject/vanflow-specification#record",
+            "deps": [
+              "vanflow-message-format",
+              "record-incremental-updates",
+              "record-types-codepoints",
+              "record-attributes-codepoints"
+            ]
+          },
+          {
+            "id": "flush-sync",
+            "name": "FLUSH",
+            "external": "https://github.com/skupperproject/vanflow-specification#flush",
+            "deps": [
+              "amqp-addressing",
+              "vanflow-message-format",
+              "record-lifecycle"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "data-model",
+        "title": "Records & Semantics",
+        "items": [
+          {
+            "id": "record-types-codepoints",
+            "name": "Record Types",
+            "external": "https://github.com/skupperproject/vanflow-specification#record-types",
+            "deps": []
+          },
+          {
+            "id": "record-attributes-codepoints",
+            "name": "Record Attributes",
+            "external": "https://github.com/skupperproject/vanflow-specification#record-attributes",
+            "deps": []
+          },
+          {
+            "id": "record-incremental-updates",
+            "name": "Incremental Update",
+            "external": "https://github.com/skupperproject/vanflow-specification#record",
+            "deps": [
+              "record-types-codepoints",
+              "record-attributes-codepoints"
+            ]
+          },
+          {
+            "id": "record-lifecycle",
+            "name": "Record Lifecycle",
+            "deps": [
+              "record-attributes-codepoints",
+              "record-incremental-updates"
+            ]
+          },
+          {
+            "id": "record-topology-model",
+            "name": "Topology Model",
+            "deps": [
+              "record-types-codepoints",
+              "record-attributes-codepoints"
+            ]
+          },
+          {
+            "id": "record-flow-model",
+            "name": "Flow & Process Model",
+            "deps": [
+              "record-types-codepoints",
+              "record-attributes-codepoints"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "transport-encoding",
+        "title": "Transport & Encoding",
+        "items": [
+          {
+            "id": "amqp-1-0",
+            "name": "AMQP 1.0 Transport",
+            "external": "https://docs.oasis-open.org/amqp/core/v1.0/amqp-core-complete-v1.0.pdf",
+            "deps": []
+          },
+          {
+            "id": "amqp-addressing",
+            "name": "Addressing",
+            "external": "https://github.com/skupperproject/vanflow-specification#transport",
+            "deps": [
+              "amqp-1-0"
+            ]
+          },
+          {
+            "id": "vanflow-message-format",
+            "name": "VanFlow AMQP Message",
+            "external": "https://github.com/skupperproject/vanflow-specification#transport",
+            "deps": [
+              "amqp-1-0"
+            ]
+          },
+          {
+            "id": "protocol-versioning",
+            "name": "Protocol Version",
+            "external": "https://github.com/skupperproject/vanflow-specification#beacon",
+            "deps": [
+              "vanflow-message-format"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "skupper-network-observer-openapi",
+    "title": "Skupper Network Observer API (OpenAPI)",
+    "abstract": "The Skupper Network Observer API exposes a REST interface for retrieving live and historical topology, site, router, link, and flow information from a Skupper virtual application network. It enables UI consoles and automation tools to query observed resources, relationships, and metrics collected from the underlying VanFlow event stream and maintained by the Network Observer service.",
+    "categories": [
+      {
+        "id": "consumer-experience",
+        "title": "Consumer Experience",
+        "items": [
+          {
+            "id": "topology-view",
+            "name": "Topology View",
+            "external": "https://raw.githubusercontent.com/skupperproject/skupper/main/cmd/network-observer/spec/openapi.yaml",
+            "deps": [
+              "topology-endpoint",
+              "sites-endpoint",
+              "links-endpoint"
+            ]
+          },
+          {
+            "id": "site-detail-view",
+            "name": "Site Detail View",
+            "deps": [
+              "sites-endpoint",
+              "routers-endpoint"
+            ]
+          },
+          {
+            "id": "flow-monitoring-view",
+            "name": "Flow Monitoring View",
+            "deps": [
+              "flows-endpoint",
+              "metrics-endpoint"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "api-surface",
+        "title": "REST API Surface",
+        "items": [
+          {
+            "id": "topology-endpoint",
+            "name": "Topology Endpoint",
+            "external": "https://raw.githubusercontent.com/skupperproject/skupper/6c3ea1ae613ff35228dcd8ca30b9c9bdc5fae55c/cmd/network-observer/spec/openapi.yaml",
+            "deps": [
+              "topology-model",
+              "observer-service"
+            ]
+          },
+          {
+            "id": "sites-endpoint",
+            "name": "Sites Endpoint",
+            "deps": [
+              "site-model",
+              "observer-service"
+            ]
+          },
+          {
+            "id": "routers-endpoint",
+            "name": "Routers Endpoint",
+            "deps": [
+              "router-model",
+              "observer-service"
+            ]
+          },
+          {
+            "id": "links-endpoint",
+            "name": "Links Endpoint",
+            "deps": [
+              "link-model",
+              "observer-service"
+            ]
+          },
+          {
+            "id": "flows-endpoint",
+            "name": "Flows Endpoint",
+            "deps": [
+              "flow-model",
+              "observer-service"
+            ]
+          },
+          {
+            "id": "metrics-endpoint",
+            "name": "Metrics Endpoint",
+            "deps": [
+              "metrics-model",
+              "observer-service"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "api-models",
+        "title": "API Schemas & Models",
+        "items": [
+          {
+            "id": "topology-model",
+            "name": "Topology Schema",
+            "deps": []
+          },
+          {
+            "id": "site-model",
+            "name": "Site Schema",
+            "deps": []
+          },
+          {
+            "id": "router-model",
+            "name": "Router Schema",
+            "deps": []
+          },
+          {
+            "id": "link-model",
+            "name": "Link Schema",
+            "deps": []
+          },
+          {
+            "id": "flow-model",
+            "name": "Flow Schema",
+            "deps": []
+          },
+          {
+            "id": "metrics-model",
+            "name": "Metrics Schema",
+            "deps": []
+          }
+        ]
+      },
+      {
+        "id": "observer-core",
+        "title": "Network Observer Core",
+        "items": [
+          {
+            "id": "observer-service",
+            "name": "Observer Service",
+            "deps": [
+              "state-store",
+              "vanflow-ingest"
+            ]
+          },
+          {
+            "id": "state-store",
+            "name": "In-Memory State Store",
+            "deps": [
+              "vanflow-ingest"
+            ]
+          },
+          {
+            "id": "vanflow-ingest",
+            "name": "VanFlow Event",
+            "deps": [
+              "amqp-transport"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "transport-runtime",
+        "title": "Transport & Runtime",
+        "items": [
+          {
+            "id": "amqp-transport",
+            "name": "AMQP Transport",
+            "deps": []
+          },
+          {
+            "id": "http-server",
+            "name": "HTTP Server",
+            "deps": []
+          },
+          {
+            "id": "openapi-definition",
+            "name": "OpenAPI",
+            "external": "https://raw.githubusercontent.com/skupperproject/skupper/main/cmd/network-observer/spec/openapi.yaml",
+            "deps": [
+              "http-server"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

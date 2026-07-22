@@ -1,0 +1,2 @@
+"""MkDocs Blockscape extension package."""
+

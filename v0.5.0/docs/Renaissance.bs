@@ -1,0 +1,383 @@
+[
+  {
+    "id": "early-renaissance",
+    "title": "Early Renaissance (14th\u201315th Century)",
+    "abstract": "The Early Renaissance marks the rediscovery of classical antiquity, the rise of humanism, and new artistic techniques such as linear perspective. Wealthy city-states and patrons funded experimentation in art, architecture, and scholarship, laying the groundwork for later Renaissance achievements.",
+    "categories": [
+      {
+        "id": "cultural-vision",
+        "title": "Cultural & Intellectual Vision",
+        "items": [
+          {
+            "id": "humanism",
+            "name": "Humanism",
+            "external": "https://en.wikipedia.org/wiki/Renaissance_humanism",
+            "deps": [
+              "classical-texts"
+            ]
+          },
+          {
+            "id": "individualism",
+            "name": "Individualism in Art",
+            "external": "https://en.wikipedia.org/wiki/Individualism",
+            "deps": [
+              "humanism"
+            ]
+          },
+          {
+            "id": "civic-pride",
+            "name": "Civic Pride",
+            "external": "https://en.wikipedia.org/wiki/Civic_humanism",
+            "deps": [
+              "merchant-patrons"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "artistic-innovation",
+        "title": "Artistic Innovation",
+        "items": [
+          {
+            "id": "linear-perspective",
+            "name": "Linear Perspective",
+            "external": "https://en.wikipedia.org/wiki/Linear_perspective",
+            "deps": [
+              "humanism"
+            ]
+          },
+          {
+            "id": "naturalism",
+            "name": "Naturalism",
+            "external": "https://en.wikipedia.org/wiki/Naturalism_%28art%29",
+            "deps": [
+              "humanism"
+            ]
+          },
+          {
+            "id": "classical-architecture",
+            "name": "Classical",
+            "external": "https://en.wikipedia.org/wiki/Renaissance_architecture",
+            "deps": [
+              "classical-texts"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "patronage",
+        "title": "Patronage & Institutions",
+        "items": [
+          {
+            "id": "merchant-patrons",
+            "name": "Merchant Patrons",
+            "external": "https://en.wikipedia.org/wiki/Patronage_in_the_Renaissance",
+            "deps": [
+              "banking-networks"
+            ]
+          },
+          {
+            "id": "church-commissions",
+            "name": "Church Commissions",
+            "external": "https://en.wikipedia.org/wiki/Catholic_Church_and_the_Renaissance",
+            "deps": [
+              "papal-states"
+            ]
+          },
+          {
+            "id": "city-guilds",
+            "name": "City Guilds",
+            "external": "https://en.wikipedia.org/wiki/Guild",
+            "deps": [
+              "urban-economies"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "foundations",
+        "title": "Economic & Political Foundations",
+        "items": [
+          {
+            "id": "banking-networks",
+            "name": "Banking Networks",
+            "external": "https://en.wikipedia.org/wiki/Medici_Bank",
+            "deps": []
+          },
+          {
+            "id": "urban-economies",
+            "name": "Urban Economies",
+            "external": "https://en.wikipedia.org/wiki/Italian_city-states",
+            "deps": []
+          },
+          {
+            "id": "classical-texts",
+            "name": "Rediscovered",
+            "external": "https://en.wikipedia.org/wiki/Renaissance_humanism#Recovery_of_classical_texts",
+            "deps": []
+          },
+          {
+            "id": "papal-states",
+            "name": "Papal Political Power",
+            "external": "https://en.wikipedia.org/wiki/Papal_States",
+            "deps": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "high-renaissance",
+    "title": "High Renaissance (Late 15th\u2013Early 16th Century)",
+    "abstract": "The High Renaissance represents the peak of artistic mastery, harmony, and proportion. Artists synthesized humanist philosophy, scientific observation, and technical innovation into monumental works supported by powerful patrons in Rome and Florence.",
+    "categories": [
+      {
+        "id": "masterworks",
+        "title": "Masterworks & Ideals",
+        "items": [
+          {
+            "id": "ideal-proportion",
+            "name": "Ideal Proportion",
+            "external": "https://en.wikipedia.org/wiki/Proportion_%28art%29",
+            "deps": [
+              "anatomical-study"
+            ]
+          },
+          {
+            "id": "monumental-art",
+            "name": "Monumental Art",
+            "external": "https://en.wikipedia.org/wiki/High_Renaissance",
+            "deps": [
+              "papal-patronage"
+            ]
+          },
+          {
+            "id": "unified-composition",
+            "name": "Unified Composition",
+            "external": "https://en.wikipedia.org/wiki/Composition_%28visual_arts%29",
+            "deps": [
+              "linear-perspective-hr"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "technical-advances",
+        "title": "Technical Advances",
+        "items": [
+          {
+            "id": "anatomical-study",
+            "name": "Anatomical Study",
+            "external": "https://en.wikipedia.org/wiki/Anatomy_in_the_Renaissance",
+            "deps": [
+              "classical-scholarship"
+            ]
+          },
+          {
+            "id": "sfumato",
+            "name": "Sfumato Technique",
+            "external": "https://en.wikipedia.org/wiki/Sfumato",
+            "deps": [
+              "oil-paint-refinement"
+            ]
+          },
+          {
+            "id": "linear-perspective-hr",
+            "name": "Refined Perspective",
+            "external": "https://en.wikipedia.org/wiki/Linear_perspective",
+            "deps": [
+              "classical-scholarship"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "power-structures",
+        "title": "Power & Patronage",
+        "items": [
+          {
+            "id": "papal-patronage",
+            "name": "Papal Patronage",
+            "external": "https://en.wikipedia.org/wiki/Pope_Julius_II",
+            "deps": [
+              "church-wealth"
+            ]
+          },
+          {
+            "id": "court-culture",
+            "name": "Court Culture",
+            "external": "https://en.wikipedia.org/wiki/Renaissance_court",
+            "deps": [
+              "dynastic-stability"
+            ]
+          },
+          {
+            "id": "artist-workshops",
+            "name": "Large Artist",
+            "external": "https://en.wikipedia.org/wiki/Old_master",
+            "deps": [
+              "urban-markets"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "structural-base",
+        "title": "Structural Foundations",
+        "items": [
+          {
+            "id": "classical-scholarship",
+            "name": "Classical",
+            "external": "https://en.wikipedia.org/wiki/Classics",
+            "deps": []
+          },
+          {
+            "id": "oil-paint-refinement",
+            "name": "Oil Paint Refinement",
+            "external": "https://en.wikipedia.org/wiki/Oil_painting",
+            "deps": []
+          },
+          {
+            "id": "church-wealth",
+            "name": "Church Wealth",
+            "external": "https://en.wikipedia.org/wiki/History_of_the_Catholic_Church",
+            "deps": []
+          },
+          {
+            "id": "dynastic-stability",
+            "name": "Dynastic Stability",
+            "external": "https://en.wikipedia.org/wiki/Dynasty",
+            "deps": []
+          },
+          {
+            "id": "urban-markets",
+            "name": "Urban Art Markets",
+            "external": "https://en.wikipedia.org/wiki/Art_market",
+            "deps": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "northern-renaissance",
+    "title": "Northern Renaissance",
+    "abstract": "The Northern Renaissance adapted Italian humanist ideas to Northern Europe, emphasizing detailed realism, oil painting mastery, and religious reform. The printing press and growing literacy amplified intellectual and religious transformation.",
+    "categories": [
+      {
+        "id": "intellectual-impact",
+        "title": "Intellectual & Religious Impact",
+        "items": [
+          {
+            "id": "christian-humanism",
+            "name": "Christian Humanism",
+            "external": "https://en.wikipedia.org/wiki/Christian_humanism",
+            "deps": [
+              "printed-books"
+            ]
+          },
+          {
+            "id": "reform-movements",
+            "name": "Reform Movements",
+            "external": "https://en.wikipedia.org/wiki/Protestant_Reformation",
+            "deps": [
+              "vernacular-bibles"
+            ]
+          },
+          {
+            "id": "lay-literacy",
+            "name": "Rising Lay Literacy",
+            "external": "https://en.wikipedia.org/wiki/Literacy",
+            "deps": [
+              "printed-books"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "artistic-style",
+        "title": "Artistic Style",
+        "items": [
+          {
+            "id": "detailed-realism",
+            "name": "Detailed Realism",
+            "external": "https://en.wikipedia.org/wiki/Early_Netherlandish_painting",
+            "deps": [
+              "oil-mastery"
+            ]
+          },
+          {
+            "id": "symbolic-imagery",
+            "name": "Symbolic Imagery",
+            "external": "https://en.wikipedia.org/wiki/Symbolism_%28arts%29",
+            "deps": [
+              "christian-humanism"
+            ]
+          },
+          {
+            "id": "portraiture-growth",
+            "name": "Growth of Portraiture",
+            "external": "https://en.wikipedia.org/wiki/Portrait_painting",
+            "deps": [
+              "merchant-elite"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "distribution",
+        "title": "Knowledge Distribution",
+        "items": [
+          {
+            "id": "printed-books",
+            "name": "Printed Books",
+            "external": "https://en.wikipedia.org/wiki/Printing_press",
+            "deps": [
+              "printing-press"
+            ]
+          },
+          {
+            "id": "vernacular-bibles",
+            "name": "Vernacular Bibles",
+            "external": "https://en.wikipedia.org/wiki/Bible_translations",
+            "deps": [
+              "printing-press"
+            ]
+          },
+          {
+            "id": "pamphlet-culture",
+            "name": "Pamphlet Culture",
+            "external": "https://en.wikipedia.org/wiki/Pamphlet",
+            "deps": [
+              "printing-press"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "material-foundations",
+        "title": "Material & Social Foundations",
+        "items": [
+          {
+            "id": "printing-press",
+            "name": "Printing Press",
+            "external": "https://en.wikipedia.org/wiki/Johannes_Gutenberg",
+            "deps": []
+          },
+          {
+            "id": "oil-mastery",
+            "name": "Advanced Oil",
+            "external": "https://en.wikipedia.org/wiki/Oil_painting",
+            "deps": []
+          },
+          {
+            "id": "merchant-elite",
+            "name": "Merchant Elite",
+            "external": "https://en.wikipedia.org/wiki/Bourgeoisie",
+            "deps": []
+          }
+        ]
+      }
+    ]
+  }
+]

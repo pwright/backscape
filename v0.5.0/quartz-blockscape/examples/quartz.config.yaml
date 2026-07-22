@@ -1,0 +1,7 @@
+plugins:
+  transformers:
+    - Blockscape
+
+# In a real Quartz v5 config, import the plugin from the installed package:
+# import { Blockscape } from "quartz-blockscape"
+# Then add Blockscape() to the transformers list.

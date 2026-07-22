@@ -1,0 +1,177 @@
+{
+"id": "url-length-constraints",
+"title": "URL Length Constraints and Design Choices",
+"abstract": "This model captures how URL design choices such as fragment encoding, query encoding, payload size, browser behavior, server and proxy limits, and downstream systems determine whether URLs remain reliable, compatible, and practical as state-carrying mechanisms. It also shows when teams should move from URL-encoded state to short links, server-side state, or file-based export and import.",
+"categories": [
+{
+"id": "experience",
+"title": "User Experience & Scenarios",
+"items": [
+{
+"id": "shareable-links",
+"name": "Shareable Links with Encoded State",
+"deps": [
+"fragment-state-encoding",
+"query-state-encoding",
+"url-size-governance",
+"browser-implementation-limits",
+"downstream-url-consumers"
+]
+},
+{
+"id": "public-web-urls",
+"name": "Public Web URLs",
+"deps": [
+"query-state-encoding",
+"url-size-governance",
+"http-request-line-behavior",
+"server-proxy-config-limits",
+"downstream-url-consumers"
+]
+},
+{
+"id": "internal-tool-urls",
+"name": "Internal Tool URLs",
+"deps": [
+"fragment-state-encoding",
+"query-state-encoding",
+"browser-implementation-limits"
+]
+},
+{
+"id": "portable-state-sharing",
+"name": "Portable State Sharing",
+"deps": [
+"short-id-linking",
+"file-based-export-import",
+"url-size-governance"
+]
+}
+]
+},
+{
+"id": "url-design",
+"title": "URL State Design",
+"items": [
+{
+"id": "fragment-state-encoding",
+"name": "Fragment-based State Encoding",
+"deps": [
+"browser-implementation-limits",
+"payload-encoding-overhead"
+]
+},
+{
+"id": "query-state-encoding",
+"name": "Query String State Encoding",
+"deps": [
+"browser-implementation-limits",
+"http-request-line-behavior",
+"server-proxy-config-limits",
+"payload-encoding-overhead"
+]
+},
+{
+"id": "data-url-patterns",
+"name": "Data URL Patterns",
+"deps": [
+"browser-implementation-limits",
+"payload-encoding-overhead"
+]
+},
+{
+"id": "url-size-governance",
+"name": "URL Size Policies",
+"deps": [
+"browser-implementation-limits",
+"server-proxy-config-limits",
+"downstream-url-consumers",
+"payload-encoding-overhead"
+]
+}
+]
+},
+{
+"id": "compatibility-limits",
+"title": "Compatibility & Runtime Limits",
+"items": [
+{
+"id": "browser-implementation-limits",
+"name": "Browser URL Limits",
+"deps": []
+},
+{
+"id": "http-request-line-behavior",
+"name": "HTTP Request Line Behavior",
+"deps": []
+},
+{
+"id": "server-proxy-config-limits",
+"name": "Server & Proxy Limits",
+"deps": [
+"http-request-line-behavior"
+]
+},
+{
+"id": "downstream-url-consumers",
+"name": "Downstream URL Consumers",
+"deps": []
+},
+{
+"id": "payload-encoding-overhead",
+"name": "Payload Encoding Overhead",
+"deps": []
+}
+]
+},
+{
+"id": "state-alternatives",
+"title": "State Storage Alternatives",
+"items": [
+{
+"id": "short-id-linking",
+"name": "Short-ID Linking",
+"deps": [
+"server-side-state-storage"
+]
+},
+{
+"id": "server-side-state-storage",
+"name": "Server-side State Storage",
+"deps": [
+"state-database",
+"access-control"
+]
+},
+{
+"id": "file-based-export-import",
+"name": "File-based Export & Import",
+"deps": [
+"file-serialization",
+"local-file-handling"
+]
+},
+{
+"id": "state-database",
+"name": "State Database",
+"deps": []
+},
+{
+"id": "access-control",
+"name": "Access Control",
+"deps": []
+},
+{
+"id": "file-serialization",
+"name": "State Serialization",
+"deps": []
+},
+{
+"id": "local-file-handling",
+"name": "Local File Handling",
+"deps": []
+}
+]
+}
+]
+}

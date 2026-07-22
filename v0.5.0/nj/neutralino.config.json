@@ -1,0 +1,30 @@
+{
+  "applicationId": "js.blockscape.neutralino",
+  "version": "0.1.0",
+  "defaultMode": "window",
+  "port": 0,
+  "documentRoot": "/resources/",
+  "url": "/",
+  "enableServer": true,
+  "enableNativeAPI": true,
+  "modes": {
+    "window": {
+      "title": "Blockscape",
+      "width": 1200,
+      "height": 800,
+      "minWidth": 900,
+      "minHeight": 600,
+      "enableInspector": true,
+      "openInspectorOnStartup": true,
+      "resizable": true,
+      "exitProcessOnClose": true
+    }
+  },
+  "cli": {
+    "binaryName": "blockscape-nj",
+    "clientLibrary": "resources/js/neutralino.js",
+    "resourcesPath": "resources",
+    "binaryVersion": "6.5.0",
+    "clientVersion": "6.5.0"
+  }
+}

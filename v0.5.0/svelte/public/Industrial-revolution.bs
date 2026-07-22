@@ -1,0 +1,429 @@
+[
+  {
+    "id": "first-industrial-revolution",
+    "title": "First Industrial Revolution (c.1760\u20131840)",
+    "abstract": "The First Industrial Revolution transformed agrarian economies into mechanized industrial societies. Steam power, textile mechanization, iron production, and new transport infrastructure increased productivity and urbanization, reshaping labor, capital formation, and global trade.",
+    "categories": [
+      {
+        "id": "industrial-output",
+        "title": "Industrial Output & Consumer Impact",
+        "items": [
+          {
+            "id": "mass-textiles",
+            "name": "Mass Textile",
+            "external": "https://en.wikipedia.org/wiki/Textile_manufacture_during_the_Industrial_Revolution",
+            "deps": [
+              "spinning-jenny",
+              "water-frame",
+              "steam-engine"
+            ]
+          },
+          {
+            "id": "iron-goods",
+            "name": "Iron Goods Production",
+            "external": "https://en.wikipedia.org/wiki/Iron_industry",
+            "deps": [
+              "coke-smelting"
+            ]
+          },
+          {
+            "id": "rail-transport",
+            "name": "Railway Transport",
+            "external": "https://en.wikipedia.org/wiki/History_of_rail_transport",
+            "deps": [
+              "steam-locomotive",
+              "iron-goods"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "mechanization",
+        "title": "Mechanization Technologies",
+        "items": [
+          {
+            "id": "spinning-jenny",
+            "name": "Spinning Jenny",
+            "external": "https://en.wikipedia.org/wiki/Spinning_jenny",
+            "deps": [
+              "workshops"
+            ]
+          },
+          {
+            "id": "water-frame",
+            "name": "Water Frame",
+            "external": "https://en.wikipedia.org/wiki/Water_frame",
+            "deps": [
+              "water-power"
+            ]
+          },
+          {
+            "id": "steam-engine",
+            "name": "Steam Engine",
+            "external": "https://en.wikipedia.org/wiki/Steam_engine",
+            "deps": [
+              "coal-mining"
+            ]
+          },
+          {
+            "id": "steam-locomotive",
+            "name": "Steam Locomotive",
+            "external": "https://en.wikipedia.org/wiki/Steam_locomotive",
+            "deps": [
+              "steam-engine",
+              "iron-goods"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "capital-labor",
+        "title": "Capital & Labor Systems",
+        "items": [
+          {
+            "id": "factory-system",
+            "name": "Factory System",
+            "external": "https://en.wikipedia.org/wiki/Factory_system",
+            "deps": [
+              "urbanization",
+              "workshops"
+            ]
+          },
+          {
+            "id": "wage-labor",
+            "name": "Wage Labor",
+            "external": "https://en.wikipedia.org/wiki/Wage_labour",
+            "deps": [
+              "factory-system"
+            ]
+          },
+          {
+            "id": "industrial-capital",
+            "name": "Industrial Capital",
+            "external": "https://en.wikipedia.org/wiki/Capitalism",
+            "deps": [
+              "banking-expansion"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "resource-foundations",
+        "title": "Resource & Infrastructure Foundations",
+        "items": [
+          {
+            "id": "coal-mining",
+            "name": "Coal Mining",
+            "external": "https://en.wikipedia.org/wiki/Coal_mining",
+            "deps": []
+          },
+          {
+            "id": "coke-smelting",
+            "name": "Coke Smelting",
+            "external": "https://en.wikipedia.org/wiki/Smelting",
+            "deps": [
+              "coal-mining"
+            ]
+          },
+          {
+            "id": "water-power",
+            "name": "Water Power",
+            "external": "https://en.wikipedia.org/wiki/Hydropower",
+            "deps": []
+          },
+          {
+            "id": "urbanization",
+            "name": "Urbanization",
+            "external": "https://en.wikipedia.org/wiki/Urbanization",
+            "deps": []
+          },
+          {
+            "id": "banking-expansion",
+            "name": "Banking Expansion",
+            "external": "https://en.wikipedia.org/wiki/History_of_banking",
+            "deps": []
+          },
+          {
+            "id": "workshops",
+            "name": "Artisan Workshops",
+            "external": "https://en.wikipedia.org/wiki/Cottage_industry",
+            "deps": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "second-industrial-revolution",
+    "title": "Second Industrial Revolution (c.1870\u20131914)",
+    "abstract": "The Second Industrial Revolution introduced electricity, steel, chemicals, and mass production. Corporate enterprises, global supply chains, and scientific research labs accelerated innovation, reshaping communication, transportation, and consumer goods industries.",
+    "categories": [
+      {
+        "id": "consumer-society",
+        "title": "Mass Consumer Society",
+        "items": [
+          {
+            "id": "mass-production",
+            "name": "Mass Production",
+            "external": "https://en.wikipedia.org/wiki/Mass_production",
+            "deps": [
+              "assembly-line",
+              "corporations"
+            ]
+          },
+          {
+            "id": "consumer-goods",
+            "name": "Branded Consumer",
+            "external": "https://en.wikipedia.org/wiki/Consumerism",
+            "deps": [
+              "mass-production"
+            ]
+          },
+          {
+            "id": "telecommunications",
+            "name": "Telecoms",
+            "external": "https://en.wikipedia.org/wiki/Telecommunications",
+            "deps": [
+              "electricity-grid"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "core-technologies",
+        "title": "Core Technologies",
+        "items": [
+          {
+            "id": "assembly-line",
+            "name": "Assembly Line",
+            "external": "https://en.wikipedia.org/wiki/Assembly_line",
+            "deps": [
+              "electricity-grid"
+            ]
+          },
+          {
+            "id": "steel-production",
+            "name": "Bessemer Steel",
+            "external": "https://en.wikipedia.org/wiki/Bessemer_process",
+            "deps": [
+              "iron-ore"
+            ]
+          },
+          {
+            "id": "electricity-grid",
+            "name": "Electric Power",
+            "external": "https://en.wikipedia.org/wiki/Electric_power_system",
+            "deps": [
+              "power-plants"
+            ]
+          },
+          {
+            "id": "chemical-industry",
+            "name": "Chemical Industry",
+            "external": "https://en.wikipedia.org/wiki/Chemical_industry",
+            "deps": [
+              "industrial-research"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "corporate-structures",
+        "title": "Corporate & Research Structures",
+        "items": [
+          {
+            "id": "corporations",
+            "name": "Large Corporations",
+            "external": "https://en.wikipedia.org/wiki/Corporation",
+            "deps": [
+              "capital-markets"
+            ]
+          },
+          {
+            "id": "industrial-research",
+            "name": "Industrial Research",
+            "external": "https://en.wikipedia.org/wiki/Research_and_development",
+            "deps": [
+              "universities"
+            ]
+          },
+          {
+            "id": "global-trade",
+            "name": "Global Trade Networks",
+            "external": "https://en.wikipedia.org/wiki/International_trade",
+            "deps": [
+              "steamships"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "infrastructure-base",
+        "title": "Infrastructure & Resources",
+        "items": [
+          {
+            "id": "power-plants",
+            "name": "Power Plants",
+            "external": "https://en.wikipedia.org/wiki/Power_station",
+            "deps": []
+          },
+          {
+            "id": "iron-ore",
+            "name": "Iron Ore Extraction",
+            "external": "https://en.wikipedia.org/wiki/Iron_ore",
+            "deps": []
+          },
+          {
+            "id": "capital-markets",
+            "name": "Capital Markets",
+            "external": "https://en.wikipedia.org/wiki/Capital_market",
+            "deps": []
+          },
+          {
+            "id": "universities",
+            "name": "Modern Universities",
+            "external": "https://en.wikipedia.org/wiki/History_of_universities",
+            "deps": []
+          },
+          {
+            "id": "steamships",
+            "name": "Steamships",
+            "external": "https://en.wikipedia.org/wiki/Steamship",
+            "deps": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "third-industrial-revolution",
+    "title": "Third Industrial Revolution (Digital Revolution)",
+    "abstract": "The Third Industrial Revolution digitized industry through electronics, computing, and automation. Information technologies, global networks, and software systems transformed production, communication, and service economies.",
+    "categories": [
+      {
+        "id": "digital-experience",
+        "title": "Digital Economy & Experience",
+        "items": [
+          {
+            "id": "ecommerce",
+            "name": "E-Commerce Platforms",
+            "external": "https://en.wikipedia.org/wiki/E-commerce",
+            "deps": [
+              "internet",
+              "cloud-computing"
+            ]
+          },
+          {
+            "id": "digital-services",
+            "name": "Digital Services",
+            "external": "https://en.wikipedia.org/wiki/Service_economy",
+            "deps": [
+              "software-platforms"
+            ]
+          },
+          {
+            "id": "global-communication",
+            "name": "Global Comms",
+            "external": "https://en.wikipedia.org/wiki/Internet",
+            "deps": [
+              "internet"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "core-digital-tech",
+        "title": "Core Digital Technologies",
+        "items": [
+          {
+            "id": "microprocessors",
+            "name": "Processors",
+            "external": "https://en.wikipedia.org/wiki/Microprocessor",
+            "deps": [
+              "semiconductor-fabrication"
+            ]
+          },
+          {
+            "id": "internet",
+            "name": "Internet",
+            "external": "https://en.wikipedia.org/wiki/Internet",
+            "deps": [
+              "telecom-backbone"
+            ]
+          },
+          {
+            "id": "automation",
+            "name": "Industrial",
+            "external": "https://en.wikipedia.org/wiki/Automation",
+            "deps": [
+              "microprocessors"
+            ]
+          },
+          {
+            "id": "cloud-computing",
+            "name": "Cloud Computing",
+            "external": "https://en.wikipedia.org/wiki/Cloud_computing",
+            "deps": [
+              "data-centers",
+              "internet"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "software-layer",
+        "title": "Software & Platforms",
+        "items": [
+          {
+            "id": "software-platforms",
+            "name": "Software Platforms",
+            "external": "https://en.wikipedia.org/wiki/Software_platform",
+            "deps": [
+              "microprocessors"
+            ]
+          },
+          {
+            "id": "open-source",
+            "name": "Open Source Movement",
+            "external": "https://en.wikipedia.org/wiki/Open-source_software",
+            "deps": [
+              "internet"
+            ]
+          },
+          {
+            "id": "enterprise-it",
+            "name": "Enterprise IT Systems",
+            "external": "https://en.wikipedia.org/wiki/Enterprise_software",
+            "deps": [
+              "software-platforms"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "digital-foundations",
+        "title": "Digital Infrastructure Foundations",
+        "items": [
+          {
+            "id": "semiconductor-fabrication",
+            "name": "Semiconductor",
+            "external": "https://en.wikipedia.org/wiki/Semiconductor_device_fabrication",
+            "deps": []
+          },
+          {
+            "id": "telecom-backbone",
+            "name": "Telecoms",
+            "external": "https://en.wikipedia.org/wiki/Telecommunications_network",
+            "deps": []
+          },
+          {
+            "id": "data-centers",
+            "name": "Data Centers",
+            "external": "https://en.wikipedia.org/wiki/Data_center",
+            "deps": []
+          }
+        ]
+      }
+    ]
+  }
+]

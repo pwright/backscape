@@ -1,0 +1,14 @@
+site_name: Blockscape Lite Test
+
+docs_dir: docs
+site_dir: site
+
+nav:
+  - Home: index.md
+
+markdown_extensions:
+  - mkdocs_blockscape.extension
+
+extra_javascript:
+  - site_assets/blockscape/lite.js
+

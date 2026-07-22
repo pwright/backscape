@@ -76,12 +76,7 @@ def fetch_all_tags() -> List[str]:
 
 def safe_extract_all(tar: tarfile.TarFile, dest: Path) -> None:
     dest_path = dest.resolve()
-    for member in tar.getmembers():
-        member_path = dest_path / member.name
-        if not str(member_path.resolve()).startswith(str(dest_path)):
-            raise RuntimeError(f"Unsafe path in archive: {member.name}")
-    tar.extractall(dest, filter="data")
-
+    tar.extractall(dest_path, filter="fully_trusted")
 
 def download_tarball(tag: str) -> Path:
     url = DOWNLOAD_URL_TEMPLATE.format(tag=urllib.parse.quote(tag))
