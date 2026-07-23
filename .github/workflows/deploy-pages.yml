@@ -1,0 +1,97 @@
+name: Deploy to Pages
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Prepare docs for deployment
+        run: |
+          # Create a temp directory for deployment
+          mkdir -p _site
+          
+          # Copy only the docs directories from each version folder
+          for dir in */docs; do
+            if [ -d "$dir" ]; then
+              # Extract version name (e.g., "v0.5.0" from "v0.5.0/docs")
+              version=$(dirname "$dir")
+              mkdir -p "_site/$version"
+              cp -r "$dir"/* "_site/$version/" 2>/dev/null || true
+            fi
+          done
+          
+          # Create an index if needed
+          if [ ! -f "_site/index.html" ]; then
+            cat > "_site/index.html" << 'EOF'
+          <!DOCTYPE html>
+          <html>
+          <head>
+              <title>Backscape Documentation</title>
+              <style>
+                  body { font-family: Arial, sans-serif; margin: 40px; }
+                  h1 { color: #333; }
+                  ul { list-style-type: none; padding: 0; }
+                  li { margin: 10px 0; }
+                  a { color: #0066cc; text-decoration: none; }
+                  a:hover { text-decoration: underline; }
+              </style>
+          </head>
+          <body>
+              <h1>Backscape Documentation</h1>
+              <p>Select a version:</p>
+              <ul>
+          EOF
+            for version_dir in _site/*/; do
+              if [ -d "$version_dir" ]; then
+                version=$(basename "$version_dir")
+                echo "                <li><a href=\"$version/\">$version</a></li>" >> _site/index.html
+              fi
+            done
+            cat >> "_site/index.html" << 'EOF'
+              </ul>
+          </body>
+          </html>
+          EOF
+          fi
+          
+          # Verify what we're uploading
+          echo "Size of _site directory:"
+          du -sh _site
+          echo ""
+          echo "Contents of _site:"
+          find _site -type f | head -30
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '_site'
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
